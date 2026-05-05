@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title data-title-es="Sobre Rainey Laguna Studios" data-title-en="About Rainey Laguna Studios">Sobre Rainey Laguna Studios</title>
+<meta name="description" content="Quiénes somos. Un estudio en Lima que diseña en pantalla y fabrica en taller — con raíces en Glasgow." data-desc-es="Quiénes somos. Un estudio en Lima que diseña en pantalla y fabrica en taller — con raíces en Glasgow." data-desc-en="Who we are. A studio in Lima that designs on screen and fabricates in the workshop — with roots in Glasgow.">
+<meta name="author" content="Stuart John Andrew Rainey">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0E0D0B">
+<meta name="color-scheme" content="dark">
+
+<link rel="canonical" href="https://raineylagunastudios.com/about/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --iron:      #0E0D0B;
+    --iron-02:   #15130F;
+    --iron-04:   #1E1B15;
+    --bone:      #F6F2E8;
+    --bone-70:   rgba(246,242,232,0.70);
+    --bone-45:   rgba(246,242,232,0.45);
+    --bone-20:   rgba(246,242,232,0.20);
+    --vermilion: #E83C1E;
+    --copper:    #8AA9A0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--iron);
+    color: var(--bone);
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: 'wght' 360, 'opsz' 24;
+    line-height: 1.55;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .skip-link {
+    position: absolute; top: -40px; left: 0;
+    background: var(--bone); color: var(--iron);
+    padding: 8px 12px; font-family: 'JetBrains Mono',monospace;
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .skip-link:focus { top: 0; }
+
+  /* --- nav --- */
+  .top-nav {
+    position: sticky; top: 0;
+    background: var(--iron);
+    border-bottom: 1px solid var(--iron-04);
+    padding: 16px 5vw;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100;
+  }
+  .top-nav .wordmark {
+    color: var(--bone);
+    text-decoration: none;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 320, 'opsz' 36;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+  }
+  .top-nav .wordmark em { color: var(--vermilion); font-style: italic; }
+  .top-nav nav { display: flex; gap: 24px; align-items: center; }
+  .top-nav nav a, .top-nav nav button {
+    color: var(--bone-70);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: transparent; border: 0; cursor: pointer;
+    transition: color .2s;
+  }
+  .top-nav nav a:hover, .top-nav nav button:hover { color: var(--vermilion); }
+  .lang-toggle button.active { color: var(--bone); }
+
+  /* --- main --- */
+  main { max-width: 760px; margin: 0 auto; padding: 80px 24px 120px; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--bone-45); margin-bottom: 24px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 320, 'opsz' 144;
+    font-size: clamp(48px, 7vw, 84px);
+    line-height: 1; letter-spacing: -2px;
+    margin-bottom: 32px;
+  }
+  h1 em { color: var(--vermilion); font-style: italic; }
+  .lede {
+    font-size: clamp(20px, 2.4vw, 26px);
+    line-height: 1.5;
+    color: var(--bone-70);
+    font-style: italic;
+    font-variation-settings: 'wght' 320, 'opsz' 24, 'slnt' -8;
+    margin-bottom: 64px;
+    max-width: 600px;
+  }
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 320, 'opsz' 96;
+    font-size: clamp(28px, 3.5vw, 40px);
+    line-height: 1.1; letter-spacing: -1px;
+    margin: 48px 0 20px;
+  }
+  h2 em { color: var(--vermilion); font-style: italic; }
+  p { margin-bottom: 18px; max-width: 640px; color: var(--bone-70); }
+  p strong { color: var(--bone); font-variation-settings: 'wght' 500; }
+  ul { margin: 0 0 18px 22px; color: var(--bone-70); }
+  ul li { margin-bottom: 10px; }
+  hr { border: 0; border-top: 1px solid var(--iron-04); margin: 56px 0; }
+
+  /* --- service grid --- */
+  .field-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+    margin: 24px 0 8px;
+  }
+  .field-cell {
+    border-top: 1px solid var(--iron-04);
+    padding-top: 16px;
+  }
+  .field-cell .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 2px; color: var(--vermilion);
+    margin-bottom: 6px; display: block;
+  }
+  .field-cell h3 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 360, 'opsz' 36;
+    font-size: 18px; line-height: 1.25;
+    margin-bottom: 4px; letter-spacing: -0.3px;
+  }
+  .field-cell p { font-size: 14px; color: var(--bone-45); margin: 0; }
+
+  /* --- footer --- */
+  footer {
+    border-top: 1px solid var(--iron-04);
+    padding: 40px 5vw;
+    display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--bone-45);
+  }
+  footer a { color: var(--bone-70); text-decoration: none; transition: color .2s; }
+  footer a:hover { color: var(--vermilion); }
+
+  /* hidden until a JS pass swaps */
+  [data-en] { display: inline; }
+  body[data-lang="en"] [data-es]:not([data-en]) { display: none; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body data-lang="es">
+
+<a href="#main" class="skip-link" data-es="Ir al contenido" data-en="Skip to content">Ir al contenido</a>
+
+<header class="top-nav">
+  <a href="/" class="wordmark">Rainey <em>Laguna</em> Studios</a>
+  <nav aria-label="Primary">
+    <a href="/" data-es="← Estudio" data-en="← Studio">← Estudio</a>
+    <span class="lang-toggle">
+      <button id="langEs" class="active">ES</button>
+      /
+      <button id="langEn">EN</button>
+    </span>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="eyebrow" data-es="01 · Sobre nosotros" data-en="01 · About">01 · Sobre nosotros</div>
+  <h1 data-es="Un taller con<br>una <em>pantalla</em> al frente." data-en="A workshop with<br>a <em>screen</em> at the front."></h1>
+  <p class="lede" data-es="Diseñamos en pantalla y fabricamos en el taller. Cada interacción aquí deja una huella en el mundo físico." data-en="We design on screen and fabricate in the workshop. Every interaction here leaves a trace in the physical world."></p>
+
+  <h2 data-es="Quién está detrás" data-en="Who's behind it">Quién está detrás</h2>
+  <p data-es="<strong>Stuart John Andrew Rainey</strong> — diseñador, fabricante, fundador. De Glasgow a Lima en 2024. El estudio empezó con una impresora 3D, una mesa de hidrografía, y la convicción de que un sitio web es una extensión del taller, no un sustituto." data-en="<strong>Stuart John Andrew Rainey</strong> — designer, fabricator, founder. Glasgow to Lima in 2024. The studio started with a 3D printer, a hydrographic tank, and the conviction that a website is an extension of the workshop, not a substitute for it."></p>
+
+  <h2 data-es="La tesis" data-en="The thesis">La tesis</h2>
+  <p data-es="<strong>Studios hace cosas.</strong> Cada interacción en el sitio corresponde a algo en un banco, una pared, un estante, o un objeto que alguien sostiene. La pantalla es la antesala. El taller es el destino." data-en="<strong>Studios makes things.</strong> Every interaction on the site corresponds to something on a bench, a wall, a shelf, or an object someone is holding. The screen is the antechamber. The workshop is the destination."></p>
+
+  <h2 data-es="La familia" data-en="The family">La familia</h2>
+  <p data-es="Rainey Laguna Studios es la marca matriz. <a href=\"https://raineylaguna.com\">raineylaguna.com</a> es la rama web — sitios y vigilancia competitiva para negocios locales independientes en Lima. Las dos comparten cabeza, palabras, y RUC. Lo demás se diferencia." data-en="Rainey Laguna Studios is the parent brand. <a href=\"https://raineylaguna.com\">raineylaguna.com</a> is the web vertical — sites and competitive intelligence for independent local businesses in Lima. They share head, words, and RUC. Everything else differs."></p>
+
+  <h2 data-es="Los siete campos" data-en="Seven fields">Los siete campos</h2>
+  <div class="field-grid">
+    <div class="field-cell"><span class="num">01</span><h3 data-es="Diseño gráfico" data-en="Graphic design">Diseño gráfico</h3><p data-es="Identidades, libros, sistemas." data-en="Identities, books, systems."></p></div>
+    <div class="field-cell"><span class="num">02</span><h3 data-es="Gestión de marca" data-en="Brand management">Gestión de marca</h3><p data-es="Asesoría continua, no proyecto cerrado." data-en="Continuous stewardship, not finite projects."></p></div>
+    <div class="field-cell"><span class="num">03</span><h3 data-es="Impresión 3D" data-en="3D printing">Impresión 3D</h3><p data-es="Cerámica, polímero, metal por encargo." data-en="Ceramic, polymer, metal on commission."></p></div>
+    <div class="field-cell"><span class="num">04</span><h3 data-es="Hidrografía" data-en="Hydroprinting">Hidrografía</h3><p data-es="Patrones que envuelven cualquier forma." data-en="Patterns that wrap any shape."></p></div>
+    <div class="field-cell"><span class="num">05</span><h3 data-es="Láser" data-en="Laser">Láser</h3><p data-es="Corte, grabado, marcaje sobre placa y panel." data-en="Cutting, engraving, marking on plate and panel."></p></div>
+    <div class="field-cell"><span class="num">06</span><h3 data-es="Comisiones reversas" data-en="Reverse commissions">Comisiones reversas</h3><p data-es="Pieza primero, brief después." data-en="Object first, brief after."></p></div>
+    <div class="field-cell"><span class="num">07</span><h3 data-es="Memoria física" data-en="Physical memory">Memoria física</h3><p data-es="Cada objeto certificado, gemelo, fotografiado." data-en="Every object signed, twinned, photographed."></p></div>
+  </div>
+
+  <hr>
+
+  <h2 data-es="Conversemos" data-en="Talk to us">Conversemos</h2>
+  <p data-es="WhatsApp es el canal preferido. Email para archivos grandes y propuestas formales. El taller en Av. Conquistadores, San Isidro — con cita." data-en="WhatsApp is the preferred channel. Email for large files and formal proposals. The workshop is on Av. Conquistadores, San Isidro — by appointment."></p>
+  <p>
+    <a href="https://wa.me/51912418482?text=Hola%20Stuart%20%E2%80%94%20vi%20la%20p%C3%A1gina%20Sobre%20y%20quiero%20conversar.">WhatsApp · +51 912 418 482 →</a><br>
+    <a href="mailto:hola@raineylaguna.com">hola@raineylaguna.com →</a>
+  </p>
+</main>
+
+<footer>
+  <span>© 2026 Rainey Laguna Studios</span>
+  <span><a href="/">Estudio</a> · <a href="/privacy/">Privacidad</a> · <a href="/terms/">Términos</a> · <a href="/verify.html">Verificar</a></span>
+  <span>Lima · Perú</span>
+</footer>
+
+<script>
+(function(){
+  var body = document.body;
+  var btnEs = document.getElementById('langEs');
+  var btnEn = document.getElementById('langEn');
+
+  function applyLang(lang){
+    body.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'es-PE');
+    btnEs.classList.toggle('active', lang === 'es');
+    btnEn.classList.toggle('active', lang === 'en');
+
+    // swap text & html for every [data-es]/[data-en]
+    document.querySelectorAll('[data-es]').forEach(function(el){
+      var key = lang === 'en' ? 'data-en' : 'data-es';
+      var v = el.getAttribute(key);
+      if (v != null) {
+        if (/<[a-z]/i.test(v)) el.innerHTML = v;
+        else el.textContent = v;
+      }
+    });
+
+    // title + description
+    var t = document.querySelector('title');
+    var d = document.querySelector('meta[name="description"]');
+    if (t) {
+      var tk = t.getAttribute(lang === 'en' ? 'data-title-en' : 'data-title-es');
+      if (tk) t.textContent = tk;
+    }
+    if (d) {
+      var dk = d.getAttribute(lang === 'en' ? 'data-desc-en' : 'data-desc-es');
+      if (dk) d.setAttribute('content', dk);
+    }
+
+    try { localStorage.setItem('rls-lang', lang); } catch(e){}
+  }
+
+  btnEs.addEventListener('click', function(){ applyLang('es'); });
+  btnEn.addEventListener('click', function(){ applyLang('en'); });
+
+  // init
+  var saved;
+  try { saved = localStorage.getItem('rls-lang'); } catch(e){}
+  var url = new URLSearchParams(location.search).get('lang');
+  var initial = url || saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'es');
+  applyLang(initial);
+})();
+</script>
+
+</body>
+</html>

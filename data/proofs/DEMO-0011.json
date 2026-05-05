@@ -1,0 +1,66 @@
+{
+  "serial": "DEMO-0011",
+  "object": {
+    "name_es": "Botella reusable · banda hidrografiada",
+    "name_en": "Reusable bottle · hydroprinted band",
+    "type_es": "Botella acero + cerámica · 500 ml",
+    "type_en": "Steel + ceramic bottle · 500 ml",
+    "material_es": "Acero inoxidable + collar cerámico · 500 ml · 340 g",
+    "material_en": "Stainless steel + ceramic collar · 500 ml · 340 g",
+    "edition": "011 / 020"
+  },
+  "client": {
+    "name": "Cliente reservado",
+    "location_es": "Barranco, Lima",
+    "location_en": "Barranco, Lima",
+    "consented_public": false
+  },
+  "fabrication": {
+    "operator": "Stuart John Andrew Rainey",
+    "workshop_es": "Taller Conquistadores · San Isidro, Lima",
+    "workshop_en": "Conquistadores Workshop · San Isidro, Lima",
+    "started_at": "2026-02-12T11:42:00-05:00",
+    "finished_at": "2026-02-12T16:23:00-05:00",
+    "cad_file_hash": "sha256:2d5e8c1b4a7f0e3d6c9b2a5f8e1d4c7b0a3f6e9d2c5b8a1f4e7d0c3b6a9f2e5d",
+    "cad_file_name": "bottle-collar-011.step",
+    "print_parameters": {
+      "layer_height_mm": 0.06,
+      "nozzle_temp_c": 215,
+      "bed_temp_c": 60,
+      "infill_percent": 100,
+      "material_batch": "Prusament PLA · Galaxy Black · lot 2026-01-D"
+    },
+    "hydroprint": {
+      "film_supplier": "WTP Lima · lote 2026-02-A",
+      "pattern_name_es": "Cobre quemado · banda Pacífico",
+      "pattern_name_en": "Burnt copper · Pacific band",
+      "activator": "PVA standard · 22°C tank",
+      "cure_time_h": 24
+    },
+    "climate_during_fab": {
+      "lima_weather_es": "verano limpio · brisa",
+      "lima_weather_en": "clear summer · breeze",
+      "temperature_c": 26,
+      "humidity_percent": 64,
+      "atmospheric_pressure_hpa": 1010,
+      "source": "Open-Meteo · SENAMHI cross-reference"
+    },
+    "manifesto_state_that_day": {
+      "wght": 360,
+      "opsz": 32,
+      "tracking_em": -0.004
+    }
+  },
+  "cryptography": {
+    "algorithm": "Ed25519",
+    "public_key": "3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29",
+    "signature": "1a4d7f0c3b6a9d2e5f8c1b4a7d0e3f6c9b2a5d8e1f4c7b0a3d6e9f2c5b8a1d4e7f0c3b6a9d2e5f8c1b4a7d0e3f6c9b2a5d8e1f4c7b0a3d6e9f2c5b8a1d4e7f0c3b",
+    "signed_payload": "serial|cad_file_hash|finished_at|public_key",
+    "signed_at": "2026-02-12T16:28:55-05:00",
+    "verification_url": "https://raineylagunastudios.com/verify.html?serial=DEMO-0011"
+  },
+  "shipped": {
+    "ship_date": "2026-02-14",
+    "tracking": "OLV-2902-3318"
+  }
+}

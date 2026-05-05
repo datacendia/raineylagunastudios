@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title data-title-es="Memoria del objeto · Rainey Laguna Studios" data-title-en="Object memory · Rainey Laguna Studios">Memoria del objeto · Rainey Laguna Studios</title>
+<meta name="description" content="La página privada que aparece al acercar el teléfono al chip NFC del objeto. Fecha de encargo, clima ese día, estado tipográfico del manifiesto, fabricación, firma." data-desc-es="La página privada que aparece al acercar el teléfono al chip NFC del objeto. Fecha de encargo, clima ese día, estado tipográfico del manifiesto, fabricación, firma." data-desc-en="The private page that appears when you tap a phone to the object's NFC chip. Order date, weather that day, manifesto typographic state, fabrication, signature.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0E0D0B">
+<meta name="color-scheme" content="dark">
+
+<link rel="canonical" href="https://raineylagunastudios.com/memory/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --iron:      #0E0D0B;
+    --iron-02:   #15130F;
+    --iron-04:   #1E1B15;
+    --bone:      #F6F2E8;
+    --bone-70:   rgba(246,242,232,0.70);
+    --bone-45:   rgba(246,242,232,0.45);
+    --bone-20:   rgba(246,242,232,0.20);
+    --vermilion: #E83C1E;
+    --copper:    #8AA9A0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--iron);
+    color: var(--bone);
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: 'wght' 360, 'opsz' 24;
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+
+  /* nav */
+  .top-nav {
+    position: sticky; top: 0;
+    background: var(--iron);
+    border-bottom: 1px solid var(--iron-04);
+    padding: 16px 5vw;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100;
+  }
+  .top-nav .wordmark {
+    color: var(--bone); text-decoration: none;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 320, 'opsz' 36;
+    font-size: 18px; letter-spacing: -0.5px;
+  }
+  .top-nav .wordmark em { color: var(--vermilion); font-style: italic; }
+  .top-nav nav { display: flex; gap: 24px; align-items: center; }
+  .top-nav nav a, .top-nav nav button {
+    color: var(--bone-70); text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    background: transparent; border: 0; cursor: pointer;
+  }
+  .top-nav nav a:hover, .top-nav nav button:hover { color: var(--vermilion); }
+  .lang-toggle button.active { color: var(--bone); }
+
+  main { max-width: 720px; margin: 0 auto; padding: 60px 24px 100px; }
+
+  .nfc-banner {
+    border: 0.5px solid var(--copper); border-radius: 4px;
+    background: rgba(138,169,160,0.05);
+    padding: 14px 18px; margin-bottom: 32px;
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 1.5px; color: var(--copper);
+  }
+  .nfc-banner::before {
+    content: ''; width: 8px; height: 8px;
+    background: var(--copper); border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(138,169,160,0.18);
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--bone-45); margin-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 320, 'opsz' 144;
+    font-size: clamp(36px, 6vw, 56px);
+    line-height: 1.05; letter-spacing: -2px;
+    margin-bottom: 8px;
+  }
+  h1 em { color: var(--vermilion); font-style: italic; }
+  .subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 2px; color: var(--vermilion);
+    margin-bottom: 28px;
+  }
+  .blurb {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-variation-settings: 'wght' 320, 'opsz' 24, 'slnt' -8;
+    font-size: 18px; color: var(--bone-70);
+    margin-bottom: 48px; max-width: 540px;
+  }
+
+  section.mem {
+    border-top: 1px solid var(--iron-04);
+    padding: 32px 0;
+  }
+  section.mem h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--vermilion); margin-bottom: 14px;
+  }
+  section.mem .lede {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 360, 'opsz' 36;
+    font-size: 22px; line-height: 1.35; color: var(--bone);
+    margin-bottom: 12px; max-width: 540px;
+    letter-spacing: -0.3px;
+  }
+  section.mem p {
+    color: var(--bone-70); margin-bottom: 12px; max-width: 580px;
+    font-size: 16px; line-height: 1.55;
+  }
+
+  .data-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px 24px; margin-top: 14px;
+  }
+  .data-cell {
+    border-top: 1px solid var(--iron-04); padding-top: 10px;
+  }
+  .data-cell .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--bone-45); margin-bottom: 4px;
+  }
+  .data-cell .val {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 360, 'opsz' 36;
+    font-size: 18px; color: var(--bone);
+  }
+  .data-cell .val.mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.5px;
+  }
+  .data-cell .val.tiny {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; word-break: break-all;
+  }
+
+  .manifesto-echo {
+    margin-top: 14px; padding: 22px;
+    background: var(--iron-02); border-left: 2px solid var(--vermilion);
+    font-family: 'Fraunces', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    line-height: 1.4; color: var(--bone);
+  }
+  .manifesto-echo em { color: var(--vermilion); font-style: italic; }
+  .manifesto-state {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 1.5px;
+    color: var(--bone-45); margin-top: 10px; text-transform: uppercase;
+  }
+
+  .actions {
+    margin-top: 56px;
+    display: flex; gap: 14px; flex-wrap: wrap;
+  }
+  .actions a {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 22px;
+    border: 0.5px solid var(--iron-04);
+    color: var(--bone-70); text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    border-radius: 2px;
+    transition: border-color .2s, color .2s;
+  }
+  .actions a.primary {
+    background: var(--vermilion); color: var(--bone); border-color: var(--vermilion);
+  }
+  .actions a:hover { border-color: var(--vermilion); color: var(--bone); }
+
+  .empty {
+    text-align: center; padding: 80px 20px;
+    color: var(--bone-45);
+  }
+  .empty h2 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 320, 'opsz' 96;
+    font-size: 32px; color: var(--bone);
+    margin-bottom: 12px;
+  }
+  .empty p {
+    font-family: 'Fraunces', serif; font-style: italic;
+    color: var(--bone-70);
+    max-width: 480px; margin: 0 auto 24px;
+  }
+
+  footer {
+    border-top: 1px solid var(--iron-04);
+    padding: 40px 5vw;
+    display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--bone-45);
+  }
+  footer a { color: var(--bone-70); text-decoration: none; }
+  footer a:hover { color: var(--vermilion); }
+
+  [data-en] { display: inline; }
+  body[data-lang="en"] [data-es]:not([data-en]) { display: none; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body data-lang="es">
+
+<header class="top-nav">
+  <a href="/" class="wordmark">Rainey <em>Laguna</em> Studios</a>
+  <nav aria-label="Primary">
+    <a href="/" data-es="← Estudio" data-en="← Studio">← Estudio</a>
+    <a href="/verify.html" data-es="Verificar" data-en="Verify">Verificar</a>
+    <span class="lang-toggle">
+      <button id="langEs" class="active">ES</button>
+      /
+      <button id="langEn">EN</button>
+    </span>
+  </nav>
+</header>
+
+<main id="main">
+  <div id="memContent">
+    <div class="empty">
+      <h2 data-es="Cargando…" data-en="Loading…">Cargando…</h2>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>© 2026 Rainey Laguna Studios</span>
+  <span><a href="/">Estudio</a> · <a href="/verify.html">Verificar</a> · <a href="/about/" data-es="Sobre" data-en="About">Sobre</a></span>
+  <span>Lima · Perú</span>
+</footer>
+
+<script>
+/* ============================================================
+   language toggle
+   ============================================================ */
+(function(){
+  var body = document.body;
+  var btnEs = document.getElementById('langEs');
+  var btnEn = document.getElementById('langEn');
+
+  function applyLang(lang){
+    body.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'es-PE');
+    btnEs.classList.toggle('active', lang === 'es');
+    btnEn.classList.toggle('active', lang === 'en');
+
+    document.querySelectorAll('[data-es]').forEach(function(el){
+      var key = lang === 'en' ? 'data-en' : 'data-es';
+      var v = el.getAttribute(key);
+      if (v != null) {
+        if (/<[a-z]/i.test(v)) el.innerHTML = v;
+        else el.textContent = v;
+      }
+    });
+
+    var t = document.querySelector('title');
+    var d = document.querySelector('meta[name="description"]');
+    if (t) {
+      var tk = t.getAttribute(lang === 'en' ? 'data-title-en' : 'data-title-es');
+      if (tk) t.textContent = tk;
+    }
+    if (d) {
+      var dk = d.getAttribute(lang === 'en' ? 'data-desc-en' : 'data-desc-es');
+      if (dk) d.setAttribute('content', dk);
+    }
+
+    try { localStorage.setItem('rls-lang', lang); } catch(e){}
+    if (typeof window.__renderMemory === 'function') window.__renderMemory();
+  }
+
+  btnEs.addEventListener('click', function(){ applyLang('es'); });
+  btnEn.addEventListener('click', function(){ applyLang('en'); });
+
+  var saved; try { saved = localStorage.getItem('rls-lang'); } catch(e){}
+  var url = new URLSearchParams(location.search).get('lang');
+  var initial = url || saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'es');
+  applyLang(initial);
+})();
+
+/* ============================================================
+   memory page renderer
+   ============================================================ */
+(function(){
+  var params = new URLSearchParams(location.search);
+  var serial = (params.get('serial') || 'DEMO-0002').trim().toUpperCase();
+  var data = null;
+  var content = document.getElementById('memContent');
+
+  fetch('/data/proofs/' + encodeURIComponent(serial) + '.json')
+    .then(function(r){ if (!r.ok) throw new Error('not found'); return r.json(); })
+    .then(function(j){ data = j; window.__renderMemory(); })
+    .catch(function(){ data = null; window.__renderMemory(); });
+
+  window.__renderMemory = function(){
+    var lang = document.body.getAttribute('data-lang') || 'es';
+    if (!data) {
+      content.innerHTML =
+        '<div class="empty">' +
+          '<h2>' + (lang === 'en' ? 'Memory not found' : 'Memoria no encontrada') + '</h2>' +
+          '<p>' + (lang === 'en'
+            ? 'No signed object is registered under serial <strong>' + escapeHtml(serial) + '</strong>. If you scanned a Studios NFC tag, the chip may be from a future production batch — Studios objects begin shipping with active memory tags from August 2026 (lot N.º 001).'
+            : 'Ningún objeto firmado existe bajo el serial <strong>' + escapeHtml(serial) + '</strong>. Si escaneaste un chip NFC de Studios, puede ser de una tirada futura — los objetos con memoria activa empiezan a despacharse desde agosto 2026 (lote N.º 001).') + '</p>' +
+          '<div class="actions">' +
+            '<a href="/" class="primary">' + (lang === 'en' ? 'Back to studio →' : 'Volver al estudio →') + '</a>' +
+            '<a href="/verify.html?serial=' + encodeURIComponent(serial) + '">' + (lang === 'en' ? 'Try the certificate verifier' : 'Probar verificador de certificado') + '</a>' +
+          '</div>' +
+        '</div>';
+      return;
+    }
+
+    var L = lang;
+    var name     = data.object[L === 'en' ? 'name_en' : 'name_es'];
+    var typeTxt  = data.object[L === 'en' ? 'type_en' : 'type_es'];
+    var matTxt   = data.object[L === 'en' ? 'material_en' : 'material_es'];
+    var fab      = data.fabrication;
+    var weather  = fab.climate_during_fab[L === 'en' ? 'lima_weather_en' : 'lima_weather_es'];
+    var pattern  = fab.hydroprint[L === 'en' ? 'pattern_name_en' : 'pattern_name_es'];
+    var workshop = fab[L === 'en' ? 'workshop_en' : 'workshop_es'];
+    var startedAt = new Date(fab.started_at);
+    var finishedAt = new Date(fab.finished_at);
+    var durationMin = Math.round((finishedAt - startedAt) / 60000);
+    var orderDateTxt = startedAt.toLocaleDateString(L === 'en' ? 'en-GB' : 'es-PE',
+      { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    var orderTimeTxt = startedAt.toLocaleTimeString(L === 'en' ? 'en-GB' : 'es-PE',
+      { hour: '2-digit', minute: '2-digit', hour12: false });
+    var clientName = data.client && data.client.consented_public ? data.client.name : null;
+
+    var manifestoNote = L === 'en'
+      ? 'The manifesto on the homepage was rendered with these axes the day your object was made — variable typography responding to that day\u2019s Lima weather. Your object was fabricated under that exact reading.'
+      : 'El manifiesto de la portada se leyó con estos ejes el día que tu objeto fue hecho — tipografía variable reaccionando al clima limeño de esa jornada. Tu pieza se fabricó bajo esa exacta lectura.';
+
+    content.innerHTML =
+      '<div class="nfc-banner">' +
+        (L === 'en' ? '◉ NFC tap registered · object recognised' : '◉ NFC reconocido · objeto identificado') +
+      '</div>' +
+
+      '<div class="eyebrow">' + (L === 'en' ? 'Object memory · serial' : 'Memoria del objeto · serial') + ' · ' + escapeHtml(data.serial) + '</div>' +
+      '<h1>' + escapeHtml(name) + '</h1>' +
+      '<div class="subtitle">' + escapeHtml(data.object.edition || '') + ' · ' + escapeHtml(typeTxt) + '</div>' +
+      '<p class="blurb">' + (L === 'en'
+        ? 'Hi. This is the private page tied to <em>your</em> object. The chip in the base just woke it up. Below is everything we know about it — the day it was ordered, the weather while it was made, what the manifesto looked like that afternoon, and the cryptographic seal.'
+        : 'Hola. Esta es la página privada de <em>tu</em> objeto. El chip de la base acaba de despertarla. Debajo, todo lo que sabemos sobre tu pieza — el día en que se encargó, el clima mientras se hacía, cómo se veía el manifiesto esa tarde, y la firma criptográfica que la respalda.') + '</p>' +
+
+      '<section class="mem">' +
+        '<h2>' + (L === 'en' ? '01 · Order' : '01 · Encargo') + '</h2>' +
+        '<div class="lede">' + capitalize(orderDateTxt) + ' · ' + orderTimeTxt + '</div>' +
+        (clientName ? '<p>' + (L === 'en' ? 'Commissioned for ' : 'Encargado para ') + '<strong>' + escapeHtml(clientName) + '</strong>' + (data.client.location_es ? ' · ' + escapeHtml(data.client[L === 'en' ? 'location_en' : 'location_es']) : '') + '.</p>' : '') +
+        '<div class="data-grid">' +
+          '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'edition' : 'edición') + '</div><div class="val mono">' + escapeHtml(data.object.edition || '—') + '</div></div>' +
+          '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'material' : 'material') + '</div><div class="val mono">' + escapeHtml(matTxt) + '</div></div>' +
+        '</div>' +
+      '</section>' +
+
+      '<section class="mem">' +
+        '<h2>' + (L === 'en' ? '02 · Weather while it was made' : '02 · Clima mientras se hacía') + '</h2>' +
+        '<div class="lede">' + (L === 'en' ? 'Lima · ' : 'Lima · ') + escapeHtml(weather) + '</div>' +
+        '<div class="data-grid">' +
+          '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'temperature' : 'temperatura') + '</div><div class="val">' + fab.climate_during_fab.temperature_c + '°C</div></div>' +
+          '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'humidity' : 'humedad') + '</div><div class="val">' + fab.climate_during_fab.humidity_percent + '%</div></div>' +
+          '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'pressure' : 'presión') + '</div><div class="val">' + fab.climate_during_fab.atmospheric_pressure_hpa + ' hPa</div></div>' +
+          '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'source' : 'fuente') + '</div><div class="val mono">' + escapeHtml(fab.climate_during_fab.source) + '</div></div>' +
+        '</div>' +
+      '</section>' +
+
+      '<section class="mem">' +
+        '<h2>' + (L === 'en' ? '03 · The manifesto, that afternoon' : '03 · El manifiesto, esa tarde') + '</h2>' +
+        '<div class="manifesto-echo" style="font-variation-settings:\'wght\' ' + (fab.manifesto_state_that_day.wght || 400) + ', \'opsz\' ' + (fab.manifesto_state_that_day.opsz || 24) + (fab.manifesto_state_that_day.tracking_em ? '; letter-spacing:' + fab.manifesto_state_that_day.tracking_em + 'em' : '') + '">' +
+          (L === 'en'
+            ? 'Rainey Laguna Studios <em>makes things</em>. Things you look at, things you hold, things that <em>last</em>.'
+            : 'Rainey Laguna Studios <em>hace cosas</em>. Cosas que se miran, que se tocan, que <em>duran</em>.') +
+        '</div>' +
+        '<div class="manifesto-state">wght ' + (fab.manifesto_state_that_day.wght || '—') + ' · opsz ' + (fab.manifesto_state_that_day.opsz || '—') + (fab.manifesto_state_that_day.tracking_em ? ' · trk ' + fab.manifesto_state_that_day.tracking_em + 'em' : '') + '</div>' +
+        '<p>' + manifestoNote + '</p>' +
+      '</section>' +
+
+      '<section class="mem">' +
+        '<h2>' + (L === 'en' ? '04 · Fabrication' : '04 · Fabricación') + '</h2>' +
+        '<div class="data-grid">' +
+          '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'workshop' : 'taller') + '</div><div class="val mono">' + escapeHtml(workshop) + '</div></div>' +
+          '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'operator' : 'operador') + '</div><div class="val mono">' + escapeHtml(fab.operator) + '</div></div>' +
+          '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'duration' : 'duración') + '</div><div class="val">' + durationMin + ' min</div></div>' +
+          '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'pattern' : 'patrón') + '</div><div class="val">' + escapeHtml(pattern) + '</div></div>' +
+          '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'film supplier' : 'proveedor película') + '</div><div class="val mono">' + escapeHtml(fab.hydroprint.film_supplier) + '</div></div>' +
+          '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'cure time' : 'curado') + '</div><div class="val">' + fab.hydroprint.cure_time_h + ' h</div></div>' +
+        '</div>' +
+      '</section>' +
+
+      '<section class="mem">' +
+        '<h2>' + (L === 'en' ? '05 · Cryptographic seal' : '05 · Sello criptográfico') + '</h2>' +
+        '<div class="data-grid">' +
+          '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'algorithm' : 'algoritmo') + '</div><div class="val mono">' + escapeHtml(data.cryptography.algorithm) + '</div></div>' +
+          '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'signed at' : 'firmado a las') + '</div><div class="val mono">' + new Date(data.cryptography.signed_at).toLocaleString(L === 'en' ? 'en-GB' : 'es-PE') + '</div></div>' +
+          '<div class="data-cell" style="grid-column:1/-1"><div class="lbl">' + (L === 'en' ? 'public key' : 'llave pública') + '</div><div class="val tiny">' + escapeHtml(data.cryptography.public_key) + '</div></div>' +
+          '<div class="data-cell" style="grid-column:1/-1"><div class="lbl">' + (L === 'en' ? 'signature' : 'firma') + '</div><div class="val tiny">' + escapeHtml(data.cryptography.signature) + '</div></div>' +
+        '</div>' +
+      '</section>' +
+
+      (data.shipped ? '<section class="mem">' +
+        '<h2>' + (L === 'en' ? '06 · Shipped' : '06 · Despacho') + '</h2>' +
+        '<div class="data-grid">' +
+          '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'ship date' : 'fecha') + '</div><div class="val mono">' + escapeHtml(data.shipped.ship_date || '') + '</div></div>' +
+          (data.shipped.tracking ? '<div class="data-cell"><div class="lbl">' + (L === 'en' ? 'tracking' : 'guía') + '</div><div class="val mono">' + escapeHtml(data.shipped.tracking) + '</div></div>' : '') +
+        '</div>' +
+      '</section>' : '') +
+
+      '<div class="actions">' +
+        '<a class="primary" href="/verify.html?serial=' + encodeURIComponent(data.serial) + '">' + (L === 'en' ? 'Verify the seal →' : 'Verificar el sello →') + '</a>' +
+        '<a href="/#work">' + (L === 'en' ? 'See the twin wall' : 'Ver el muro de gemelos') + '</a>' +
+        '<a href="https://wa.me/51912418482?text=' + encodeURIComponent(L === 'en' ? 'Hi Stuart — about my object ' + data.serial : 'Hola Stuart — sobre mi objeto ' + data.serial) + '">' + (L === 'en' ? 'Message Stuart' : 'Escribir a Stuart') + '</a>' +
+      '</div>';
+  };
+
+  function escapeHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; });
+  }
+  function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+})();
+</script>
+
+</body>
+</html>

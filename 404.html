@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>404 — Rainey Laguna Studios</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron:      #0E0D0B;
+    --bone:      #F6F2E8;
+    --bone-45:   rgba(246, 242, 232, 0.45);
+    --vermilion: #E83C1E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    background: var(--iron);
+    color: var(--bone);
+    font-family: 'Fraunces', Georgia, serif;
+    display: grid;
+    place-items: center;
+    padding: 40px;
+    text-align: center;
+    background-image:
+      linear-gradient(rgba(246,242,232,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(246,242,232,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center center;
+  }
+  .frame { max-width: 560px; position: relative; z-index: 2; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+    margin-bottom: 28px;
+  }
+  .eyebrow .red { color: var(--vermilion); }
+  h1 {
+    font-size: clamp(56px, 11vw, 110px);
+    font-weight: 320;
+    line-height: 0.95;
+    letter-spacing: -2.5px;
+    margin-bottom: 22px;
+  }
+  h1 em { color: var(--vermilion); font-style: italic; font-weight: 320; }
+  p {
+    font-size: 18px;
+    line-height: 1.55;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--bone-45);
+    margin: 0 auto 36px;
+    max-width: 460px;
+  }
+  .actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  a {
+    color: var(--bone);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    border-bottom: 0.5px solid var(--bone-45);
+    padding-bottom: 4px;
+    transition: all 0.25s;
+  }
+  a:hover { color: var(--vermilion); border-color: var(--vermilion); }
+  a.primary {
+    background: var(--bone);
+    color: var(--iron);
+    padding: 14px 22px;
+    border: none;
+  }
+  a.primary:hover { background: var(--vermilion); color: var(--bone); }
+  .mark {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 32px;
+    color: var(--bone);
+  }
+  .mark .dot { fill: var(--vermilion); }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <svg class="mark" viewBox="0 0 80 80" aria-hidden="true">
+      <circle cx="40" cy="40" r="36" fill="none" stroke="currentColor" stroke-width="2"/>
+      <line x1="40" y1="6"  x2="40" y2="74" stroke="currentColor" stroke-width="2"/>
+      <line x1="6"  y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="2"/>
+      <circle class="dot" cx="40" cy="40" r="4"/>
+    </svg>
+    <div class="eyebrow"><span class="red">404</span> · Rainey Laguna Studios</div>
+    <h1>Pieza <em>fuera</em><br>del banco.</h1>
+    <p>Esta página no figura en el inventario. Pudo perderse en producción, o nunca llegó al taller. Vuelve al estudio — todo lo demás sigue ahí.</p>
+    <div class="actions">
+      <a href="/" class="primary">Volver al estudio &rarr;</a>
+      <a href="https://wa.me/51912418482" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:hola@raineylaguna.com">Email</a>
+    </div>
+  </div>
+</body>
+</html>

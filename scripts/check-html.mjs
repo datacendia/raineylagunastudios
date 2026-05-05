@@ -1,0 +1,133 @@
+/* Rainey Laguna Studios — HTML/JS/JSON-LD parser-validator.
+   Validates inline <script> and <script type="application/ld+json"> blocks
+   in every shipped HTML page. Run from repo root:
+     node scripts/check-html.mjs
+*/
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import { spawnSync } from 'node:child_process';
+
+const PAGES = [
+  'index.html',
+  'verify.html',
+  '404.html',
+  'about/index.html',
+  'marca/index.html',
+  'memory/index.html',
+  'work/index.html',
+  'servicios/index.html',
+  'journal/index.html',
+  'journal/firmar-objetos/index.html',
+  'journal/tres-meses/index.html',
+  'privacy/index.html',
+  'terms/index.html',
+  'og-image.html',
+];
+
+let total = 0, fail = 0;
+
+for (const rel of PAGES) {
+  const abs = path.resolve(rel);
+  if (!fs.existsSync(abs)) {
+    console.log(`SKIP ${rel} (not found)`);
+    continue;
+  }
+  const html = fs.readFileSync(abs, 'utf8');
+  console.log(`\n— ${rel} (${html.length} chars) —`);
+
+  // 1. JSON-LD blocks
+  const ldRe = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
+  let i = 0;
+  for (const m of html.matchAll(ldRe)) {
+    i++; total++;
+    try { JSON.parse(m[1]); console.log(`  jsonld ${i}: OK`); }
+    catch (e) { fail++; console.log(`  jsonld ${i}: FAIL — ${e.message}`); }
+  }
+
+  // 2. Inline JS blocks — parse-check only (no exec; DOM APIs unavailable)
+  const jsRe = /<script(?![^>]*type="application\/ld\+json")(?![^>]*src=)(?:[^>]*)>([\s\S]*?)<\/script>/g;
+  let j = 0;
+  for (const m of html.matchAll(jsRe)) {
+    j++; total++;
+    try {
+      new vm.Script(m[1], { filename: `${rel}-inline-${j}.js` });
+      console.log(`  js ${j}: OK (${m[1].length} chars)`);
+    } catch (e) {
+      fail++;
+      console.log(`  js ${j}: FAIL — ${e.message}`);
+    }
+  }
+}
+
+// 3. Standalone .js modules referenced from index.html
+const SCRIPT_MODULES = [
+  'scripts/hydroprint-lab.js',
+  'scripts/memory-object.js',
+  'scripts/proof-of-fabrication.js',
+  'scripts/reverse-commissioning.js',
+  'scripts/twin-wall.js',
+];
+console.log(`\n— standalone modules —`);
+for (const rel of SCRIPT_MODULES) {
+  const abs = path.resolve(rel);
+  if (!fs.existsSync(abs)) {
+    console.log(`  SKIP ${rel} (not found)`);
+    continue;
+  }
+  total++;
+  const src = fs.readFileSync(abs, 'utf8');
+  const isModule = /^\s*(import|export)\s/m.test(src);
+  let r;
+  if (isModule) {
+    // Pipe source through stdin so we can pass --input-type=module without
+    // touching package.json's "type" field (which would break commonjs deps).
+    r = spawnSync(process.execPath,
+      ['--input-type=module', '--check', '-'],
+      { encoding: 'utf8', input: src });
+  } else {
+    r = spawnSync(process.execPath, ['--check', abs], { encoding: 'utf8' });
+  }
+  if (r.status === 0) {
+    console.log(`  ${rel}: OK (${src.length} chars${isModule ? ', ESM' : ''})`);
+  } else {
+    fail++;
+    const msg = (r.stderr || '').split('\n').find(l => l.trim()) || 'syntax error';
+    console.log(`  ${rel}: FAIL — ${msg}`);
+  }
+}
+
+// 4. Validate the data/ JSON files too
+const DATA_FILES = [
+  'data/twins.json',
+  'data/proofs/DEMO-0001.json',
+  'data/drops.json',
+  'data/brand/color-witness.json',
+  'data/brand/asset-manifest.json',
+  'site.webmanifest',
+  'sitemap.xml',
+];
+console.log(`\n— data files —`);
+for (const rel of DATA_FILES) {
+  const abs = path.resolve(rel);
+  if (!fs.existsSync(abs)) {
+    console.log(`  SKIP ${rel} (not found)`);
+    continue;
+  }
+  const src = fs.readFileSync(abs, 'utf8');
+  total++;
+  if (rel.endsWith('.json') || rel === 'site.webmanifest') {
+    try { JSON.parse(src); console.log(`  ${rel}: OK (JSON, ${src.length} chars)`); }
+    catch (e) { fail++; console.log(`  ${rel}: FAIL — ${e.message}`); }
+  } else if (rel.endsWith('.xml')) {
+    // sanity check — non-empty + has the expected root
+    const has = src.includes('<urlset') && src.includes('</urlset>');
+    if (has) console.log(`  ${rel}: OK (XML, ${src.length} chars)`);
+    else { fail++; console.log(`  ${rel}: FAIL — missing <urlset> root`); }
+  }
+}
+
+console.log(`\n========================================`);
+console.log(`${total - fail} / ${total} checks passed${fail ? ` · ${fail} failed` : ''}`);
+process.exit(fail ? 1 : 0);
+process.exit(fail ? 1 : 0);

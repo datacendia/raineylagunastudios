@@ -1,0 +1,66 @@
+{
+  "serial": "DEMO-0002",
+  "object": {
+    "name_es": "Taza Lúpula · vermellón sobre cruda",
+    "name_en": "Lúpula mug · vermilion on raw",
+    "type_es": "Taza de cerámica hidrografiada",
+    "type_en": "Hydroprinted ceramic mug",
+    "material_es": "Cerámica porcelánica · 280 ml · 195 g",
+    "material_en": "Porcelain ceramic · 280 ml · 195 g",
+    "edition": "002 / 024"
+  },
+  "client": {
+    "name": "Lúpula Panadería",
+    "location_es": "Miraflores, Lima",
+    "location_en": "Miraflores, Lima",
+    "consented_public": true
+  },
+  "fabrication": {
+    "operator": "Stuart John Andrew Rainey",
+    "workshop_es": "Taller Conquistadores · San Isidro, Lima",
+    "workshop_en": "Conquistadores Workshop · San Isidro, Lima",
+    "started_at": "2026-04-23T08:14:00-05:00",
+    "finished_at": "2026-04-23T13:47:00-05:00",
+    "cad_file_hash": "sha256:9d2a8c4f1e7b6a3d5f8e9c2b1a4d7e8f0c3b6a9d2e5f8c1b4a7d0e3f6c9b2a5d",
+    "cad_file_name": "lupula-mug-002.step",
+    "print_parameters": {
+      "layer_height_mm": 0.08,
+      "nozzle_temp_c": 215,
+      "bed_temp_c": 60,
+      "infill_percent": 100,
+      "material_batch": "Prusament PLA · Galaxy Black · lot 2026-03-B"
+    },
+    "hydroprint": {
+      "film_supplier": "WTP Lima · lote 2026-04-B",
+      "pattern_name_es": "Vermellón sobre cruda · sumi-e",
+      "pattern_name_en": "Vermilion on raw · sumi-e",
+      "activator": "PVA standard · 22°C tank",
+      "cure_time_h": 24
+    },
+    "climate_during_fab": {
+      "lima_weather_es": "garúa intermitente",
+      "lima_weather_en": "intermittent drizzle",
+      "temperature_c": 18,
+      "humidity_percent": 86,
+      "atmospheric_pressure_hpa": 1014,
+      "source": "Open-Meteo · SENAMHI cross-reference"
+    },
+    "manifesto_state_that_day": {
+      "wght": 442,
+      "opsz": 14,
+      "tracking_em": 0.008
+    }
+  },
+  "cryptography": {
+    "algorithm": "Ed25519",
+    "public_key": "3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29",
+    "signature": "2c5b8f9a1e4d7c0b3a6f9e2d5c8b1a4f7e0d3c6b9a2e5f8c1b4d7a0e3f6c9b2a5d8e1f4c7b0a3d6e9f2c5b8a1d4e7f0c3b6a9d2e5f8c1b4a7d0e3f6c9b2a5d8e1f",
+    "signed_payload": "serial|cad_file_hash|finished_at|public_key",
+    "signed_at": "2026-04-23T13:51:08-05:00",
+    "verification_url": "https://raineylagunastudios.com/verify.html?serial=DEMO-0002"
+  },
+  "shipped": {
+    "ship_date": "2026-04-25",
+    "tracking": "OLV-2904-9923"
+  }
+}

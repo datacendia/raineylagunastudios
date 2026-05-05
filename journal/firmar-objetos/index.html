@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-title-es="Por qué firmamos los objetos · Rainey Laguna Studios" data-title-en="Why we sign our objects · Rainey Laguna Studios">Por qué firmamos los objetos · Rainey Laguna Studios</title>
+<meta name="description" content="Manifiesto sobre la procedencia criptográfica aplicada a la fabricación: cómo la firma digital cambia lo que significa entregar un objeto." data-desc-es="Manifiesto sobre la procedencia criptográfica aplicada a la fabricación: cómo la firma digital cambia lo que significa entregar un objeto." data-desc-en="A manifesto on cryptographic provenance for fabrication: how a digital signature changes what it means to deliver an object.">
+<meta name="author" content="Stuart John Andrew Rainey">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0E0D0B">
+<meta name="color-scheme" content="dark">
+
+<link rel="canonical" href="https://raineylagunastudios.com/journal/firmar-objetos/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --iron: #0E0D0B; --iron-02: #15130F; --iron-04: #1E1B15;
+    --bone: #F6F2E8; --bone-70: rgba(246,242,232,0.70); --bone-45: rgba(246,242,232,0.45); --bone-20: rgba(246,242,232,0.20);
+    --vermilion: #E83C1E; --copper: #8AA9A0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--iron); color: var(--bone);
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: 'wght' 360, 'opsz' 24;
+    line-height: 1.65; min-height: 100vh;
+  }
+  .top-nav {
+    position: sticky; top: 0; background: var(--iron);
+    border-bottom: 1px solid var(--iron-04);
+    padding: 16px 5vw; display: flex; justify-content: space-between; align-items: center; z-index: 100;
+  }
+  .top-nav .wordmark { color: var(--bone); text-decoration: none; font-family: 'Fraunces', serif; font-variation-settings: 'wght' 320, 'opsz' 36; font-size: 18px; letter-spacing: -0.5px; }
+  .top-nav .wordmark em { color: var(--vermilion); font-style: italic; }
+  .top-nav nav { display: flex; gap: 24px; align-items: center; }
+  .top-nav nav a, .top-nav nav button { color: var(--bone-70); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; background: transparent; border: 0; cursor: pointer; }
+  .top-nav nav a:hover, .top-nav nav button:hover { color: var(--vermilion); }
+  .lang-toggle button.active { color: var(--bone); }
+
+  article { max-width: 720px; margin: 0 auto; padding: 56px 24px 100px; }
+  .crumbs {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1.5px;
+    color: var(--bone-45); text-transform: uppercase; margin-bottom: 24px;
+  }
+  .crumbs a { color: var(--bone-70); text-decoration: none; }
+  .crumbs a:hover { color: var(--vermilion); }
+  .crumbs .sep { padding: 0 6px; opacity: 0.4; }
+  .meta-row {
+    display: flex; gap: 18px; flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1.5px;
+    color: var(--bone-45); text-transform: uppercase;
+    border-top: 1px solid var(--iron-04); padding-top: 14px;
+    margin-bottom: 32px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 300, 'opsz' 144;
+    font-size: clamp(36px, 6vw, 64px); line-height: 1; letter-spacing: -2px;
+    margin-bottom: 32px;
+  }
+  h1 em { color: var(--vermilion); font-style: italic; }
+  .lede {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-variation-settings: 'wght' 320, 'opsz' 24, 'slnt' -8;
+    font-size: clamp(18px, 2vw, 22px);
+    color: var(--bone-70); margin-bottom: 56px;
+    border-left: 2px solid var(--vermilion); padding-left: 18px;
+  }
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 320, 'opsz' 96;
+    font-size: clamp(24px, 3vw, 32px); line-height: 1.15; letter-spacing: -0.6px;
+    margin: 56px 0 16px;
+  }
+  h2 em { color: var(--vermilion); font-style: italic; }
+  p { margin-bottom: 18px; color: var(--bone); font-size: 17px; max-width: 660px; }
+  p strong { color: var(--bone); font-variation-settings: 'wght' 460; }
+  p em { font-style: italic; color: var(--copper); }
+  blockquote {
+    margin: 32px 0; padding: 4px 0 4px 24px;
+    border-left: 1px solid var(--bone-20);
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-variation-settings: 'wght' 320, 'opsz' 36, 'slnt' -8;
+    font-size: 19px; color: var(--bone-70);
+    max-width: 580px;
+  }
+  ul { margin: 0 0 24px 24px; }
+  ul li { margin-bottom: 8px; color: var(--bone-70); }
+  ul li strong { color: var(--bone); font-variation-settings: 'wght' 460; }
+  code, .mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; background: var(--iron-02);
+    padding: 1px 6px; border-radius: 2px;
+    color: var(--copper); letter-spacing: 0.3px;
+  }
+  pre {
+    background: var(--iron-02); border: 1px solid var(--iron-04);
+    border-left: 2px solid var(--copper);
+    padding: 18px 20px; margin: 24px 0;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--bone-70); overflow-x: auto; line-height: 1.55;
+  }
+  pre code { background: transparent; padding: 0; color: inherit; }
+  hr { border: 0; border-top: 1px solid var(--iron-04); margin: 56px 0; }
+  .footnote {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--bone-45); line-height: 1.6;
+    border-top: 1px solid var(--iron-04); padding-top: 24px; margin-top: 56px;
+  }
+  .next-post {
+    margin-top: 80px; padding: 32px;
+    background: var(--iron-02); border: 1px solid var(--iron-04);
+    border-left: 2px solid var(--vermilion);
+  }
+  .next-post .label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--vermilion);
+    margin-bottom: 8px;
+  }
+  .next-post a {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 360, 'opsz' 48;
+    font-size: 22px; color: var(--bone); text-decoration: none;
+  }
+  .next-post a:hover { color: var(--vermilion); }
+  .next-post a em { color: var(--vermilion); font-style: italic; }
+
+  footer {
+    border-top: 1px solid var(--iron-04); padding: 40px 5vw;
+    display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--bone-45);
+  }
+  footer a { color: var(--bone-70); text-decoration: none; }
+  footer a:hover { color: var(--vermilion); }
+
+  [data-en] { display: inline; }
+  body[data-lang="en"] [data-es]:not([data-en]) { display: none; }
+</style>
+</head>
+<body data-lang="es">
+
+<header class="top-nav">
+  <a href="/" class="wordmark">Rainey <em>Laguna</em> Studios</a>
+  <nav aria-label="Primary">
+    <a href="/journal/" data-es="← Diario" data-en="← Journal">← Diario</a>
+    <a href="/marca/" data-es="Marca" data-en="Brand">Marca</a>
+    <a href="/verify.html" data-es="Verificar" data-en="Verify">Verificar</a>
+    <span class="lang-toggle">
+      <button id="langEs" class="active">ES</button> / <button id="langEn">EN</button>
+    </span>
+  </nav>
+</header>
+
+<article>
+  <div class="crumbs">
+    <a href="/" data-es="Estudio" data-en="Studio">Estudio</a><span class="sep">/</span>
+    <a href="/journal/" data-es="Diario" data-en="Journal">Diario</a><span class="sep">/</span>
+    <span data-es="Por qué firmamos los objetos" data-en="Why we sign our objects">Por qué firmamos los objetos</span>
+  </div>
+  <div class="meta-row">
+    <span data-es="Manifiesto" data-en="Manifesto">Manifiesto</span>
+    <span>2026 · 04 · 28</span>
+    <span data-es="Lectura · 8 min" data-en="Reading · 8 min">Lectura · 8 min</span>
+    <span data-es="Por Stuart Rainey" data-en="By Stuart Rainey">Por Stuart Rainey</span>
+  </div>
+
+  <h1 data-es="Por qué <em>firmamos</em><br>los objetos." data-en="Why we <em>sign</em><br>our objects."></h1>
+
+  <p class="lede" data-es="Una taza cualquiera puede ser falsificada — el patrón se copia, la forma se reproduce, el peso se imita. Una taza firmada con Ed25519, no. Y eso cambia lo que significa entregar un objeto." data-en="Any mug can be forged — the pattern copied, the shape reproduced, the weight imitated. A mug signed with Ed25519 cannot. And that changes what it means to deliver an object."></p>
+
+  <p data-es="Cuando alguien recibe una pieza de Studios, hay un QR pequeño debajo. Apunta el teléfono. Llega a una página pública con la firma criptográfica del archivo CAD que se imprimió, la fecha exacta de fabricación, el clima de Lima esa tarde, el nombre del operador (yo), el lote del material, la película de hidrografía usada, y un sello Ed25519 que cualquiera — incluyendo el dueño de la pieza, su seguro, su nieto en cuarenta años — puede verificar contra la llave pública del estudio." data-en="When someone receives a Studios piece, there's a small QR underneath. Point your phone at it. You land on a public page with the cryptographic signature of the CAD file that was printed, the exact fabrication date, Lima's weather that afternoon, the operator's name (mine), the material batch, the hydroprint film used, and an Ed25519 seal that anyone — including the owner, their insurer, their grandchild forty years from now — can verify against the studio's public key."></p>
+
+  <h2 data-es="<em>Por qué</em> tomarse este trabajo" data-en="<em>Why</em> bother"></h2>
+
+  <p data-es="Tres razones, ninguna sentimental." data-en="Three reasons, none of them sentimental."></p>
+
+  <p data-es="<strong>La primera</strong> es seguros. Una pieza firmada vale más en el mercado de seguros que una pieza sin procedencia, porque la fecha y el archivo son inalterables. Hace dos meses la asistente de un cliente me preguntó si podía emitirle un certificado de autenticidad para una jarra de cerámica. Le dije que no necesitaba uno: el QR ya lo es. Lo abrió, lo leyó, llamó a la corredora de seguros, y subió el valor declarado un treinta por ciento." data-en="<strong>The first</strong> is insurance. A signed piece is worth more in the insurance market than an unsigned one, because the date and the file are immutable. Two months ago a client's assistant asked me whether I could issue them a certificate of authenticity for a ceramic jar. I told her she didn't need one: the QR already is one. She opened it, read it, called her broker, and bumped the declared value by thirty percent."></p>
+
+  <p data-es="<strong>La segunda</strong> es falsificación. Estamos en Lima en 2026 — todo lo que vale algo se copia. Las copias de un objeto firmado se notan al instante: pásale el teléfono, no aparece nada, o aparece un serial que no coincide. La firma no impide la copia, pero hace inmediato el reconocimiento. Un objeto sin firma es un objeto sin defensa." data-en="<strong>The second</strong> is forgery. This is Lima in 2026 — anything worth anything gets copied. Copies of a signed object are spotted instantly: pass a phone over them, nothing appears, or a non-matching serial appears. The signature does not prevent the copy; it makes recognition immediate. An unsigned object has no defence."></p>
+
+  <p data-es="<strong>La tercera</strong>, y la que más me importa, es <em>la dignidad del objeto</em>. La cerámica que sale de este taller pasa cinco a quince horas conmigo: el archivo, la impresión, el lijado, la cocción, la película de agua, el curado, el horno final. Quiero que el objeto, treinta años después, cuando yo no esté ahí para defenderlo, sepa quién lo hizo. La firma es la voz del objeto cuando ya nadie del taller queda vivo." data-en="<strong>The third</strong>, the one that matters most to me, is <em>the dignity of the object</em>. The ceramic that leaves this workshop spends five to fifteen hours with me: the file, the print, the sanding, the bisque firing, the water film, the cure, the final glaze fire. I want the object, thirty years from now, when I'm not around to vouch for it, to know who made it. The signature is the object's voice once no one in the workshop is left alive."></p>
+
+  <h2 data-es="<em>Cómo</em> funciona, brevemente" data-en="<em>How</em> it works, briefly"></h2>
+
+  <p data-es="Ed25519 es un esquema de firma de curva elíptica. El estudio tiene un par de llaves: una privada, custodiada en una <span class=\"mono\">YubiKey</span> física que vive en una caja fuerte; una pública, publicada en <a href=\"/verify.html\">verify.html</a> de este sitio." data-en="Ed25519 is an elliptic-curve signature scheme. The studio has a key pair: a private key, stored on a physical <span class=\"mono\">YubiKey</span> kept in a safe; a public key, published on <a href=\"/verify.html\">verify.html</a> of this site."></p>
+  <p data-es="Cuando se termina una pieza, el operador (yo) firma con la llave privada un documento JSON estructurado que incluye: el hash SHA-256 del archivo CAD que se imprimió, el momento exacto de finalización, el serial del objeto, los parámetros de impresión, el clima de Lima en ese momento (vía Open-Meteo), y la llave pública. La firma se publica en <span class=\"mono\">data/proofs/&lt;serial&gt;.json</span>; el QR debajo del objeto apunta a <span class=\"mono\">verify.html?serial=…</span>." data-en="When a piece is finished, the operator (me) uses the private key to sign a structured JSON document that includes: the SHA-256 hash of the CAD file that was printed, the exact finishing timestamp, the object serial, the print parameters, Lima's weather at that moment (via Open-Meteo), and the public key. The signature is published at <span class=\"mono\">data/proofs/&lt;serial&gt;.json</span>; the QR underneath the object points to <span class=\"mono\">verify.html?serial=…</span>."></p>
+
+  <pre><code>{
+  "serial": "0001-MUG-LMJ9T",
+  "cad_file_hash": "sha256:9d2a8c4f1e7b6a3d…",
+  "fabrication": { "finished_at": "2026-04-23T13:47:00-05:00", "operator": "Stuart John Andrew Rainey" },
+  "climate_during_fab": { "lima_weather": "garúa intermitente", "humidity": 86 },
+  "manifesto_state_that_day": { "wght": 442, "opsz": 14 },
+  "cryptography": {
+    "algorithm": "Ed25519",
+    "public_key": "3b6a27bcceb6a42d62a3a8d02a6f0d73…",
+    "signature": "2c5b8f9a1e4d7c0b3a6f9e2d…"
+  }
+}</code></pre>
+
+  <p data-es="Una persona con conocimiento mínimo de criptografía puede ejecutar <span class=\"mono\">openssl pkeyutl -verify</span> contra la llave pública del estudio y la firma. El veredicto es binario: válida o no." data-en="A person with minimal cryptographic literacy can run <span class=\"mono\">openssl pkeyutl -verify</span> against the studio's public key and the signature. The verdict is binary: valid or not."></p>
+
+  <h2 data-es="<em>Lo que esto no es</em>" data-en="<em>What this is not</em>"></h2>
+
+  <p data-es="Esto no es un NFT. No es un blockchain. No hay token, no hay <em>mint</em>, no hay <em>gas fees</em>. La firma es un archivo de texto plano de 64 bytes en una página HTML pública, publicada por el estudio, gratis, para siempre. Si el estudio cierra, las firmas siguen siendo verificables por cualquiera con la llave pública — no dependen de ningún servidor centralizado." data-en="This is not an NFT. It is not a blockchain. There is no token, no mint, no gas fees. The signature is a 64-byte plain-text file on a public HTML page, published by the studio, free, forever. If the studio shuts down, the signatures remain verifiable by anyone holding the public key — they depend on no centralized server."></p>
+
+  <blockquote data-es="“Un objeto bien firmado es un objeto que sobrevive a su autor.”" data-en="“A well-signed object is one that outlives its author.”"></blockquote>
+
+  <h2 data-es="<em>Lo que cambia</em> en el taller" data-en="<em>What changes</em> in the workshop"></h2>
+
+  <p data-es="Firmar agrega tres minutos por pieza al proceso. Tres minutos. Pero también cambia <em>cómo</em> trabajamos antes de la firma. Sabiendo que cada paso queda registrado y firmado, el taller se vuelve más cuidadoso. La presión sube. El acabado mejora. La pieza que sale firmada es, casi siempre, mejor que la pieza que habría salido sin firmar." data-en="Signing adds three minutes per piece. Three minutes. But it also changes <em>how</em> we work before the signature. Knowing every step is recorded and sealed, the workshop becomes more careful. The pressure rises. The finish improves. The piece that leaves signed is, almost always, better than the piece that would have left unsigned."></p>
+
+  <p data-es="No es paradoja: es la consecuencia natural de saberse observado. La firma criptográfica es, antes que nada, una herramienta de disciplina interna." data-en="No paradox: it's the natural consequence of being observed. The cryptographic signature is, above all, a tool of internal discipline."></p>
+
+  <hr>
+
+  <p data-es="Toda pieza que sale del taller a partir de junio 2026 está firmada. Antes de junio fueron 38 piezas — todas firmadas a posteriori con fecha de fabricación documentada. La llave privada está en una <span class=\"mono\">YubiKey 5C</span>; la pública vive en <a href=\"/verify.html\">/verify.html</a>; los certificados en <span class=\"mono\">/data/proofs/</span>; el muro público en <a href=\"/#work\">el Muro de Gemelos</a>." data-en="Every piece leaving the workshop from June 2026 onward is signed. Before June there were 38 pieces — all signed retroactively with documented fabrication dates. The private key lives on a <span class=\"mono\">YubiKey 5C</span>; the public key lives at <a href=\"/verify.html\">/verify.html</a>; the certificates at <span class=\"mono\">/data/proofs/</span>; the public mosaic on <a href=\"/#work\">the Twin Wall</a>."></p>
+
+  <p data-es="Si quieres entender cómo se aplica la misma idea a una <em>marca</em> en lugar de un objeto, lee la <a href=\"/marca/#provenance\">Cadena de procedencia</a> en /marca/." data-en="If you want to see the same idea applied to a <em>brand</em> instead of an object, read <a href=\"/marca/#provenance\">The Provenance Chain</a> on /marca/."></p>
+
+  <div class="footnote" data-es="Notas: Ed25519 es el esquema descrito en RFC 8032; <span class=\"mono\">YubiKey</span> es una marca de Yubico AB. Open-Meteo es un servicio gratuito que no requiere API key. Las firmas mostradas en los ejemplos son demostrativas." data-en="Notes: Ed25519 is the scheme described in RFC 8032; <span class=\"mono\">YubiKey</span> is a trademark of Yubico AB. Open-Meteo is a free service requiring no API key. Signatures shown in examples are demonstrative."></div>
+
+  <div class="next-post">
+    <div class="label" data-es="Siguiente" data-en="Next">Siguiente</div>
+    <a href="/journal/tres-meses/" data-es="Tres meses <em>haciendo cosas</em> →" data-en="Three months <em>making things</em> →" data-html="true">Tres meses <em>haciendo cosas</em> →</a>
+  </div>
+</article>
+
+<footer>
+  <span>© 2026 Rainey Laguna Studios</span>
+  <span><a href="/">Estudio</a> · <a href="/marca/">Marca</a> · <a href="/journal/">Diario</a> · <a href="/verify.html">Verificar</a></span>
+  <span>Lima · Perú</span>
+</footer>
+
+<script>
+(function(){
+  var body = document.body, btnEs = document.getElementById('langEs'), btnEn = document.getElementById('langEn');
+  function applyLang(lang){
+    body.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'es-PE');
+    btnEs.classList.toggle('active', lang === 'es');
+    btnEn.classList.toggle('active', lang === 'en');
+    document.querySelectorAll('[data-es]').forEach(function(el){
+      var v = el.getAttribute(lang === 'en' ? 'data-en' : 'data-es');
+      if (v != null) {
+        if (/<[a-z]/i.test(v)) el.innerHTML = v;
+        else el.textContent = v;
+      }
+    });
+    var t = document.querySelector('title'), d = document.querySelector('meta[name="description"]');
+    if (t) { var tk = t.getAttribute(lang === 'en' ? 'data-title-en' : 'data-title-es'); if (tk) t.textContent = tk; }
+    if (d) { var dk = d.getAttribute(lang === 'en' ? 'data-desc-en' : 'data-desc-es'); if (dk) d.setAttribute('content', dk); }
+    try { localStorage.setItem('rls-lang', lang); } catch(e){}
+  }
+  btnEs.addEventListener('click', function(){ applyLang('es'); });
+  btnEn.addEventListener('click', function(){ applyLang('en'); });
+  var saved; try { saved = localStorage.getItem('rls-lang'); } catch(e){}
+  applyLang(new URLSearchParams(location.search).get('lang') || saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'es'));
+})();
+</script>
+
+</body>
+</html>

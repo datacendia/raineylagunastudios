@@ -1,0 +1,3581 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5">
+
+<!-- =============================================================
+     RAINEY LAGUNA STUDIOS · v0.1 · May 2026
+     A working studio in Lima. Physical + digital.
+     ================================================================ -->
+
+<title data-title-es="Rainey Laguna Studios · Un estudio de trabajo en Lima" data-title-en="Rainey Laguna Studios · A working studio in Lima">Rainey Laguna Studios · Un estudio de trabajo en Lima</title>
+<meta name="description" content="Rainey Laguna Studios — diseño gráfico, gestión de marca, impresión 3D, hidrografía. Desde Lima, con raíces en Glasgow. Cosas que se miran, que se tocan, que duran." data-desc-es="Rainey Laguna Studios — diseño gráfico, gestión de marca, impresión 3D, hidrografía. Desde Lima, con raíces en Glasgow. Cosas que se miran, que se tocan, que duran." data-desc-en="Rainey Laguna Studios — graphic design, brand management, 3D printing, hydroprinting. From Lima, with roots in Glasgow. Things you look at, things you hold, things that last.">
+<meta name="author" content="Stuart John Andrew Rainey">
+<meta name="robots" content="noindex,nofollow"><!-- v0.1 · not yet live · remove when ready to launch -->
+<meta name="theme-color" content="#0E0D0B">
+<meta name="color-scheme" content="dark">
+
+<link rel="canonical" href="https://raineylagunastudios.com/">
+<link rel="alternate" hreflang="es-PE" href="https://raineylagunastudios.com/">
+<!-- <link rel="alternate" hreflang="en" href="https://raineylagunastudios.com/en/"> · disabled until /en/ mirror exists -->
+<link rel="alternate" hreflang="x-default" href="https://raineylagunastudios.com/">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rainey Laguna Studios">
+<meta property="og:description" content="A working studio in Lima. Design on screen, fabrication in the workshop.">
+<meta property="og:url" content="https://raineylagunastudios.com/">
+<meta property="og:site_name" content="Rainey Laguna Studios">
+<meta property="og:locale" content="es_PE">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://raineylagunastudios.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Rainey Laguna Studios — cosas que se miran, que se tocan, que duran.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rainey Laguna Studios">
+<meta name="twitter:description" content="A working studio in Lima. Design on screen, fabrication in the workshop.">
+<meta name="twitter:image" content="https://raineylagunastudios.com/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://api.open-meteo.com">
+<link rel="preload" as="fetch" href="/data/twins.json" type="application/json" crossorigin="anonymous">
+<link rel="preload" as="fetch" href="/data/proofs/DEMO-0001.json" type="application/json" crossorigin="anonymous">
+<!-- Fraunces: variable serif with weight (100-900), opsz (9-144), and italic/slant axes.
+     JetBrains Mono: for all UI / metadata / technical readouts. -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ===================================================================
+     TOKENS · the iron-and-bone system
+     =================================================================== */
+  :root {
+    /* The iron mirror of .com — dark paper, bone ink, machine orange */
+    --iron:     #0E0D0B;   /* background · graphite ink */
+    --iron-02:  #15130F;   /* one step up · panel */
+    --iron-04:  #1E1B15;   /* rule · hairlines */
+    --bone:     #F6F2E8;   /* "paper" · ivory foreground */
+    --bone-70:  rgba(246, 242, 232, 0.70);
+    --bone-45:  rgba(246, 242, 232, 0.45);
+    --bone-20:  rgba(246, 242, 232, 0.20);
+
+    --vermilion:#E83C1E;   /* industrial machine orange · accent */
+    --oxide:    #8AA9A0;   /* oxidised copper · secondary accent */
+
+    /* Typography — live, weather-modulated.
+       Drives the <body> font via CSS variables updated from JS on weather fetch. */
+    --type-wght: 380;       /* Fraunces weight axis · 100-900. Default = overcast */
+    --type-slnt: 0;         /* italic axis · 0 upright → 1 italic */
+    --type-opsz: 14;        /* optical size axis · 9 display to 144 text */
+    --type-tracking: 0em;   /* letter-spacing adjustment */
+
+    --rule: rgba(246, 242, 232, 0.12);
+    --rule-heavy: rgba(246, 242, 232, 0.22);
+
+    --grid-gutter: 32px;
+    --page-pad: clamp(20px, 4vw, 48px);
+  }
+
+  /* ===================================================================
+     GROUND · reset + scaffolding
+     =================================================================== */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--iron);
+    color: var(--bone);
+    font-family: 'Fraunces', 'Times New Roman', serif;
+    font-variation-settings: "wght" var(--type-wght), "opsz" var(--type-opsz), "SOFT" 50;
+    font-feature-settings: "ss01", "liga", "kern";
+    font-size: 15px;
+    line-height: 1.55;
+    letter-spacing: var(--type-tracking);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: font-variation-settings 4s cubic-bezier(.22,1,.36,1),
+                letter-spacing 4s cubic-bezier(.22,1,.36,1);
+  }
+  body::before {
+    /* Subtle paper-grain over the iron, gives the whole page texture.
+       Very low contrast — never more than 3% luminance variation. */
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.28;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  main, nav, header, section, footer { position: relative; z-index: 1; }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible { outline: 2px solid var(--vermilion); outline-offset: 3px; }
+  button { font: inherit; color: inherit; background: transparent; border: 0; cursor: pointer; }
+
+  .mono { font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace; font-variation-settings: normal; }
+  .ital { font-style: italic; font-variation-settings: "wght" var(--type-wght), "opsz" var(--type-opsz), "SOFT" 100; }
+
+  /* Skip-to-content */
+  .skip-link {
+    position: absolute;
+    top: -40px; left: 16px;
+    background: var(--bone);
+    color: var(--iron);
+    padding: 8px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    z-index: 100;
+    transition: top 180ms ease;
+  }
+  .skip-link:focus { top: 16px; outline: 2px solid var(--vermilion); }
+
+  /* ===================================================================
+     NAV · thin, technical, always visible
+     =================================================================== */
+  nav.studio-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 18px var(--page-pad);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 24px;
+    border-bottom: 0.5px solid var(--rule);
+    background: rgba(14, 13, 11, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 50;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .wordmark {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    color: var(--bone);
+  }
+  .wordmark .rl {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 300, "opsz" 144;
+    font-size: 18px;
+    letter-spacing: -0.3px;
+    text-transform: none;
+  }
+  .wordmark em {
+    font-style: italic;
+    color: var(--vermilion);
+    font-variation-settings: "wght" 300, "opsz" 144, "SOFT" 100;
+  }
+  .wordmark .studios {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--bone-45);
+    padding-left: 8px;
+    border-left: 0.5px solid var(--rule);
+    margin-left: 4px;
+  }
+
+  .nav-links {
+    justify-self: center;
+    display: flex;
+    gap: 28px;
+  }
+  .nav-links a {
+    color: var(--bone-70);
+    transition: color 200ms ease;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--bone); }
+  .nav-links a .idx { color: var(--vermilion); margin-right: 6px; }
+
+  .nav-right { display: flex; align-items: center; gap: 18px; justify-self: end; }
+  .lang-toggle {
+    display: flex; align-items: center; gap: 6px;
+    padding: 4px 8px;
+    border: 0.5px solid var(--rule);
+    border-radius: 999px;
+  }
+  .lang-toggle button {
+    color: var(--bone-45);
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 2px 4px;
+    transition: color 200ms ease;
+  }
+  .lang-toggle button.active { color: var(--vermilion); }
+  .lang-toggle button:hover { color: var(--bone); }
+  .lang-toggle .div { color: var(--bone-20); }
+
+  .live-chip {
+    display: none;
+    align-items: center; gap: 8px;
+    padding: 4px 10px;
+    border: 0.5px solid var(--rule);
+    border-radius: 999px;
+    color: var(--bone-70);
+    font-size: 10px;
+  }
+  @media (min-width: 900px) { .live-chip { display: flex; } }
+  .live-chip .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--vermilion);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.8); }
+  }
+
+  @media (max-width: 760px) {
+    nav.studio-nav { grid-template-columns: auto auto; }
+    .nav-links { display: none; }
+  }
+
+  /* ===================================================================
+     MASTHEAD · the first thing you see, above the hero
+     Technical readout. Operating state of the studio right now.
+     =================================================================== */
+  .masthead {
+    padding: 110px var(--page-pad) 24px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--grid-gutter);
+    border-bottom: 0.5px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bone-70);
+  }
+  .masthead > div { display: flex; flex-direction: column; gap: 6px; }
+  .masthead .lbl { color: var(--bone-45); font-size: 9px; letter-spacing: 2.5px; }
+  .masthead .val { color: var(--bone); }
+  .masthead .val.accent { color: var(--vermilion); }
+
+  .mh-1 { grid-column: span 3; }
+  .mh-2 { grid-column: span 2; }
+  .mh-3 { grid-column: span 3; }
+  .mh-4 { grid-column: span 4; text-align: right; }
+  @media (max-width: 900px) {
+    .masthead { grid-template-columns: 1fr 1fr; gap: 18px; }
+    .mh-1, .mh-2, .mh-3, .mh-4 { grid-column: span 1; text-align: left; }
+  }
+
+  /* ===================================================================
+     HERO · two lines, tall, weather-modulated type
+     =================================================================== */
+  .hero {
+    padding: 120px var(--page-pad) 160px;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    margin-bottom: 64px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 0.5px;
+    background: var(--vermilion);
+  }
+  .hero-h1 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" var(--type-wght), "opsz" 144, "SOFT" 80;
+    font-size: clamp(52px, 11vw, 168px);
+    line-height: 0.94;
+    letter-spacing: -0.035em;
+    margin: 0 0 48px;
+    color: var(--bone);
+    transition: font-variation-settings 4s cubic-bezier(.22,1,.36,1);
+  }
+  .hero-h1 em {
+    font-style: italic;
+    color: var(--vermilion);
+    font-variation-settings: "wght" var(--type-wght), "opsz" 144, "SOFT" 100;
+  }
+  .hero-h1 .linebreak { display: block; }
+  .hero-lede {
+    max-width: 620px;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 320, "opsz" 24, "SOFT" 60;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.5;
+    color: var(--bone-70);
+    margin: 0;
+  }
+  .hero-lede em { color: var(--oxide); font-style: italic; }
+
+  /* ===================================================================
+     SECTION SCAFFOLDING · the architectural feel
+     =================================================================== */
+  section.chapter {
+    padding: 140px var(--page-pad);
+    border-bottom: 0.5px solid var(--rule);
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--grid-gutter);
+    position: relative;
+  }
+  .chapter-label {
+    grid-column: span 3;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+    align-self: start;
+    position: sticky;
+    top: 100px;
+  }
+  .chapter-label .num { color: var(--vermilion); }
+  .chapter-label .note {
+    display: block;
+    margin-top: 12px;
+    font-size: 10px;
+    color: var(--bone-45);
+    line-height: 1.7;
+    letter-spacing: 1.5px;
+    text-transform: none;
+  }
+  .chapter-body { grid-column: span 9; }
+
+  @media (max-width: 900px) {
+    section.chapter { grid-template-columns: 1fr; padding: 80px var(--page-pad); }
+    .chapter-label { grid-column: span 1; position: relative; top: 0; margin-bottom: 32px; }
+    .chapter-body { grid-column: span 1; }
+  }
+
+  /* ===================================================================
+     SIGNATURE 01 · THE LIVING MANIFESTO
+     Type modulated live by Lima weather.
+     =================================================================== */
+  .manifesto-body {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" var(--type-wght), "opsz" var(--type-opsz), "SOFT" 60;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.42;
+    letter-spacing: var(--type-tracking);
+    color: var(--bone);
+    max-width: 720px;
+    transition: font-variation-settings 4s cubic-bezier(.22,1,.36,1),
+                letter-spacing 4s cubic-bezier(.22,1,.36,1);
+  }
+  .manifesto-body p { margin: 0 0 1.4em; }
+  .manifesto-body em { color: var(--vermilion); font-style: italic; }
+  .manifesto-body a { border-bottom: 0.5px solid var(--oxide); padding-bottom: 1px; transition: color 200ms ease; }
+  .manifesto-body a:hover { color: var(--oxide); }
+  .manifesto-signature {
+    margin-top: 72px;
+    padding-top: 32px;
+    border-top: 0.5px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bone-70);
+  }
+  .manifesto-signature .sig-name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 28px;
+    letter-spacing: -0.3px;
+    text-transform: none;
+    color: var(--bone);
+  }
+  .weather-readout {
+    margin-top: 48px;
+    padding: 14px 18px;
+    border: 0.5px solid var(--rule);
+    display: inline-grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 18px;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bone-70);
+  }
+  .weather-readout .wr-lbl { color: var(--bone-45); font-size: 9px; }
+  .weather-readout .wr-val { color: var(--bone); }
+  .weather-readout .wr-accent { color: var(--vermilion); }
+  .weather-readout .wr-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--oxide); }
+
+  /* ===================================================================
+     SIGNATURE 02 · THE KILN
+     Live feed of the 3D printer in Lima.
+     =================================================================== */
+  .kiln-frame {
+    aspect-ratio: 16 / 10;
+    background: var(--iron-02);
+    border: 0.5px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .kiln-frame::before {
+    /* Machine lines — scanning effect to suggest live video stream */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      180deg,
+      transparent 0, transparent 3px,
+      rgba(246, 242, 232, 0.02) 3px, rgba(246, 242, 232, 0.02) 4px
+    );
+    pointer-events: none;
+  }
+  .kiln-frame::after {
+    /* Slow-sweeping "beam" — gives the sense of the printer's head moving */
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, var(--vermilion) 40%, var(--vermilion) 60%, transparent);
+    opacity: 0.6;
+    animation: kiln-sweep 11s linear infinite;
+  }
+  @keyframes kiln-sweep {
+    0% { left: -2px; }
+    100% { left: 100%; }
+  }
+  .kiln-inner {
+    position: absolute;
+    inset: 24px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bone-70);
+  }
+  .kiln-top, .kiln-bot { display: flex; justify-content: space-between; }
+  .kiln-top .state { color: var(--vermilion); }
+  .kiln-top .state .state-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--vermilion);
+    margin-right: 6px;
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  .kiln-ctr {
+    align-self: center;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 250, "opsz" 96;
+    font-style: italic;
+    font-size: clamp(22px, 3.4vw, 42px);
+    color: var(--bone);
+    letter-spacing: -0.3px;
+    line-height: 1.15;
+    text-transform: none;
+  }
+  .kiln-ctr .kiln-obj { color: var(--oxide); }
+  .kiln-bot {
+    color: var(--bone-45);
+    font-size: 9px;
+  }
+  .kiln-cta-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    background: var(--vermilion);
+    color: var(--iron);
+    border: 0.5px solid var(--vermilion);
+    transition: all 220ms ease;
+  }
+  .btn-primary:hover { background: transparent; color: var(--vermilion); gap: 14px; }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    background: transparent;
+    color: var(--bone);
+    border: 0.5px solid var(--rule-heavy);
+    transition: all 220ms ease;
+  }
+  .btn-ghost:hover { border-color: var(--bone); gap: 14px; }
+
+  .kiln-note {
+    margin-top: 32px;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 320, "opsz" 18;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--bone-70);
+    max-width: 560px;
+  }
+
+  /* ===================================================================
+     SIGNATURE 03 · THE POSTCARD
+     1-of-1 artifact generated from your visit.
+     =================================================================== */
+  .postcard {
+    aspect-ratio: 14 / 9;
+    background: var(--bone);
+    color: var(--iron);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 32px;
+    border: 0.5px solid var(--rule);
+    box-shadow:
+      0 0 0 0.5px rgba(246, 242, 232, 0.06),
+      0 20px 40px -16px rgba(0, 0, 0, 0.6);
+    transform: rotate(-0.6deg);
+    transition: transform 400ms cubic-bezier(.22,1,.36,1);
+  }
+  .postcard:hover { transform: rotate(0deg); }
+  .postcard-grid {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 0;
+  }
+  .postcard-left {
+    padding: 28px 28px 24px;
+    border-right: 1px dashed rgba(14, 13, 11, 0.22);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+  .postcard-stamp {
+    width: 74px; height: 86px;
+    border: 1px solid var(--iron);
+    padding: 8px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    align-self: start;
+    justify-self: end;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--iron);
+  }
+  .postcard-stamp .stamp-glyph {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: var(--vermilion);
+    letter-spacing: -0.5px;
+    margin-bottom: 2px;
+  }
+  .postcard-message {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 380, "opsz" 14, "SOFT" 100;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--iron);
+    margin-top: 18px;
+  }
+  .postcard-left-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(14, 13, 11, 0.6);
+  }
+  .postcard-right {
+    padding: 28px;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 14px;
+  }
+  .postcard-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(14, 13, 11, 0.55);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 12px;
+  }
+  .postcard-meta .val { color: var(--iron); }
+  .postcard-to {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--iron);
+    margin-top: 4px;
+  }
+  .postcard-bars {
+    align-self: end;
+    display: flex;
+    gap: 1px;
+    height: 34px;
+  }
+  .postcard-bars span { display: block; height: 100%; background: var(--iron); }
+  .postcard-footer-right {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(14, 13, 11, 0.6);
+  }
+
+  @media (max-width: 700px) {
+    .postcard-grid { grid-template-columns: 1fr; }
+    .postcard-left { border-right: 0; border-bottom: 1px dashed rgba(14, 13, 11, 0.22); }
+  }
+
+  /* ===================================================================
+     WORK ROWS · entries (raineylaguna.com is #01)
+     =================================================================== */
+  .work-row {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 32px;
+    padding: 42px 0;
+    border-bottom: 0.5px solid var(--rule);
+    transition: padding 300ms cubic-bezier(.22,1,.36,1);
+    align-items: center;
+    color: var(--bone);
+  }
+  .work-row:first-child { padding-top: 16px; border-top: 0.5px solid var(--rule-heavy); }
+  .work-row:hover { padding-left: 12px; }
+  .work-row:hover .work-name { color: var(--vermilion); }
+  .work-idx {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--bone-45);
+  }
+  .work-name {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 340, "opsz" 48;
+    font-size: clamp(28px, 3.4vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    transition: color 200ms ease;
+  }
+  .work-name em { font-style: italic; color: var(--oxide); }
+  .work-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+    text-align: right;
+    min-width: 180px;
+  }
+  .work-meta .cat { display: block; color: var(--bone-70); }
+  .work-meta .year { display: block; margin-top: 4px; color: var(--vermilion); }
+
+  @media (max-width: 700px) {
+    .work-row { grid-template-columns: 40px 1fr; gap: 16px; }
+    .work-meta { grid-column: 1 / -1; text-align: left; padding-left: 40px; margin-top: 8px; }
+  }
+
+  /* ===================================================================
+     MAKE · services grid
+     =================================================================== */
+  .make-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 0.5px solid var(--rule-heavy);
+  }
+  .make-cell {
+    background: var(--iron);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 220px;
+    transition: background 200ms ease;
+  }
+  .make-cell:hover { background: var(--iron-02); }
+  .make-cell .m-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--vermilion);
+  }
+  .make-cell .m-name {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 340, "opsz" 36;
+    font-size: 30px;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    color: var(--bone);
+  }
+  .make-cell .m-name em { font-style: italic; color: var(--oxide); }
+  .make-cell .m-desc {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 320, "opsz" 16, "SOFT" 60;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--bone-70);
+    flex: 1;
+  }
+  .make-cell .m-foot {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+    display: flex;
+    justify-content: space-between;
+  }
+  .make-cell .m-foot .price { color: var(--vermilion); }
+
+  @media (max-width: 700px) { .make-grid { grid-template-columns: 1fr; } }
+
+  /* ===================================================================
+     CONTACT + FOOTER
+     =================================================================== */
+  .contact-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 64px;
+  }
+  .contact-cell h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+    margin: 0 0 10px;
+  }
+  .contact-cell a {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 340, "opsz" 32;
+    font-size: 24px;
+    color: var(--bone);
+    line-height: 1.2;
+    display: inline-block;
+    border-bottom: 0.5px solid var(--rule-heavy);
+    padding-bottom: 2px;
+    transition: color 200ms ease, border-color 200ms ease;
+  }
+  .contact-cell a:hover { color: var(--vermilion); border-bottom-color: var(--vermilion); }
+  .contact-cell p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--bone-70);
+    margin: 0;
+    line-height: 1.4;
+  }
+  @media (max-width: 700px) { .contact-row { grid-template-columns: 1fr; gap: 24px; } }
+
+  footer.colophon {
+    padding: 48px var(--page-pad);
+    border-top: 0.5px solid var(--rule);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+  }
+  footer.colophon .col h5 { color: var(--bone); margin: 0 0 10px; font-weight: 500; font-size: 10px; }
+  footer.colophon .col a { color: var(--bone-70); transition: color 200ms ease; }
+  footer.colophon .col a:hover { color: var(--vermilion); }
+  footer.colophon .col p { margin: 0; color: var(--bone-45); line-height: 1.8; font-family: 'Fraunces', serif; text-transform: none; letter-spacing: 0; font-size: 13px; font-style: italic; }
+  @media (max-width: 800px) { footer.colophon { grid-template-columns: 1fr 1fr; gap: 32px 24px; } }
+
+  /* ===================================================================
+     SIGNATURE 02 · THE HYDROPRINT LAB
+     =================================================================== */
+  .lab-stage {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+    min-height: 540px;
+  }
+  @media (max-width: 900px) { .lab-stage { grid-template-columns: 1fr; gap: 28px; } }
+
+  .lab-3d {
+    background:
+      radial-gradient(ellipse at 50% 25%, rgba(246, 242, 232, 0.04), transparent 60%),
+      linear-gradient(180deg, #13110E 0%, #0E0D0B 60%, #0A0908 100%);
+    border: 0.5px solid var(--rule);
+    position: relative;
+    min-height: 540px;
+    overflow: hidden;
+  }
+  .lab-3d canvas { display: block; width: 100% !important; height: 100% !important; }
+  .lab-3d::after {
+    /* Subtle corner tick marks — technical drawing feel */
+    content: '';
+    position: absolute;
+    inset: 10px;
+    pointer-events: none;
+    background-image:
+      linear-gradient(var(--vermilion), var(--vermilion)),
+      linear-gradient(var(--vermilion), var(--vermilion)),
+      linear-gradient(var(--vermilion), var(--vermilion)),
+      linear-gradient(var(--vermilion), var(--vermilion)),
+      linear-gradient(var(--vermilion), var(--vermilion)),
+      linear-gradient(var(--vermilion), var(--vermilion)),
+      linear-gradient(var(--vermilion), var(--vermilion)),
+      linear-gradient(var(--vermilion), var(--vermilion));
+    background-size:
+      12px 0.5px, 0.5px 12px,
+      12px 0.5px, 0.5px 12px,
+      12px 0.5px, 0.5px 12px,
+      12px 0.5px, 0.5px 12px;
+    background-position:
+      top left, top left,
+      top right, top right,
+      bottom left, bottom left,
+      bottom right, bottom right;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+  }
+  .lab-3d-readout {
+    position: absolute;
+    top: 20px; left: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .lab-3d-readout .accent { color: var(--vermilion); }
+  .lab-3d-readout .live-dot {
+    display: inline-block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--vermilion);
+    margin-right: 6px;
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+
+  .lab-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .lab-group { display: flex; flex-direction: column; gap: 10px; }
+  .lab-group-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+  }
+  .lab-group-label .lgn { color: var(--vermilion); margin-right: 8px; }
+
+  .lab-patterns {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+  .lab-pattern {
+    aspect-ratio: 1;
+    background-color: var(--iron-02);
+    background-size: cover;
+    background-position: center;
+    border: 0.5px solid var(--rule);
+    cursor: pointer;
+    transition: border-color 200ms ease, transform 200ms ease;
+    position: relative;
+    padding: 0;
+  }
+  .lab-pattern:hover { border-color: var(--bone-45); transform: translateY(-1px); }
+  .lab-pattern[aria-pressed="true"] { border-color: var(--vermilion); box-shadow: inset 0 0 0 1px var(--vermilion); }
+  .lab-pattern .tick {
+    position: absolute;
+    top: 3px; right: 3px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    color: var(--vermilion);
+    opacity: 0;
+  }
+  .lab-pattern[aria-pressed="true"] .tick { opacity: 1; }
+
+  .lab-upload {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 0.5px dashed var(--rule-heavy);
+    background: var(--iron-02);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bone-70);
+    cursor: pointer;
+    transition: border-color 200ms ease, color 200ms ease;
+  }
+  .lab-upload:hover { border-color: var(--vermilion); color: var(--vermilion); }
+  .lab-upload input[type="file"] { display: none; }
+  .lab-upload .fname { color: var(--bone-45); text-transform: none; letter-spacing: 0.5px; font-size: 10px; margin-left: auto; }
+
+  .lab-swatches { display: flex; gap: 10px; }
+  .lab-swatch {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 0.5px solid var(--rule);
+    cursor: pointer;
+    padding: 0;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+    position: relative;
+  }
+  .lab-swatch:hover { transform: scale(1.05); }
+  .lab-swatch[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--iron), 0 0 0 3px var(--vermilion); }
+
+  .lab-finishes { display: flex; gap: 0; border: 0.5px solid var(--rule); }
+  .lab-finish {
+    flex: 1;
+    padding: 12px;
+    background: transparent;
+    color: var(--bone-70);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 0;
+    border-right: 0.5px solid var(--rule);
+    transition: all 200ms ease;
+  }
+  .lab-finish:last-child { border-right: 0; }
+  .lab-finish:hover { color: var(--bone); background: var(--iron-02); }
+  .lab-finish[aria-pressed="true"] { color: var(--vermilion); background: var(--iron-02); }
+
+  /* Object-type selector */
+  .lab-forms {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border: 0.5px solid var(--rule);
+  }
+  .lab-form {
+    text-align: left;
+    background: transparent;
+    border: 0;
+    border-bottom: 0.5px solid var(--rule);
+    color: var(--bone-70);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+    text-transform: uppercase;
+  }
+  .lab-form:last-child { border-bottom: 0; }
+  .lab-form:hover { background: var(--iron-02); color: var(--bone); }
+  .lab-form[aria-pressed="true"] {
+    color: var(--vermilion);
+    background: var(--iron-02);
+    border-left: 2px solid var(--vermilion);
+    padding-left: 12px;
+  }
+
+  /* Quantity stepper */
+  .lab-qty {
+    display: flex; align-items: center; gap: 12px;
+    flex-wrap: wrap;
+  }
+  .lab-qty-btn {
+    width: 36px; height: 36px;
+    background: transparent;
+    border: 0.5px solid var(--rule);
+    color: var(--bone-70);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    cursor: pointer;
+    transition: border-color .15s, color .15s;
+  }
+  .lab-qty-btn:hover { border-color: var(--vermilion); color: var(--vermilion); }
+  .lab-qty input {
+    width: 70px;
+    background: var(--iron-02);
+    border: 0.5px solid var(--rule);
+    color: var(--bone);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    text-align: center;
+    padding: 8px 0;
+    appearance: textfield;
+    -moz-appearance: textfield;
+  }
+  .lab-qty input::-webkit-outer-spin-button,
+  .lab-qty input::-webkit-inner-spin-button {
+    -webkit-appearance: none; margin: 0;
+  }
+  .lab-qty input:focus { outline: none; border-color: var(--vermilion); }
+  .lab-qty-tier {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--copper);
+    text-transform: uppercase;
+  }
+
+  /* Spec summary */
+  .lab-spec {
+    border: 0.5px solid var(--rule);
+    background: var(--iron-02);
+    padding: 14px 18px;
+    margin-top: 6px;
+  }
+  .lab-spec-eyebrow {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .lab-spec-list {
+    list-style: none;
+    margin: 0; padding: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.7;
+    color: var(--bone-70);
+  }
+  .lab-spec-list li { display: flex; gap: 10px; }
+  .lab-spec-list .label { color: var(--bone-45); min-width: 72px; }
+  .lab-spec-list .val { color: var(--bone); }
+
+  .lab-order {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 4px 18px;
+    padding: 18px 20px;
+    border: 0.5px solid var(--rule-heavy);
+    margin-top: 8px;
+  }
+  .lab-order .price {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 320, "opsz" 40;
+    font-size: 28px;
+    color: var(--bone);
+    grid-column: 1 / 2;
+  }
+  .lab-order .price small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+    margin-bottom: 2px;
+  }
+  .lab-order .lab-price-meta {
+    grid-column: 1 / 2;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--bone-45);
+    line-height: 1.5;
+    min-height: 14px;
+  }
+  .lab-order .btn-primary {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    justify-self: end;
+  }
+
+  .lab-note {
+    margin-top: 24px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-variation-settings: "wght" 320, "opsz" 18;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--bone-70);
+    max-width: 620px;
+  }
+
+  /* ===================================================================
+     SIGNATURE 02b · "What is hydroprinting" explainer
+     A compact strip placed above the 3D viewer for visitors new to the term.
+     =================================================================== */
+  .hp-explainer {
+    margin: 0 0 36px;
+    padding: 24px 28px;
+    border: 0.5px solid var(--rule-heavy);
+    background: var(--iron-raised);
+    display: grid;
+    grid-template-columns: 1.1fr 2fr;
+    gap: 36px;
+    align-items: start;
+  }
+  .hp-explainer-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    color: var(--bone-45);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .hp-explainer-def {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 360, "opsz" 24;
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--bone);
+    margin: 0;
+  }
+  .hp-explainer-def em {
+    font-style: italic;
+    color: var(--vermilion);
+    font-variation-settings: "wght" 360, "opsz" 24, "slnt" -10;
+  }
+  .hp-explainer-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .hp-step {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 14px;
+    border-left: 1px solid var(--rule-heavy);
+  }
+  .hp-step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--vermilion);
+    text-transform: uppercase;
+  }
+  .hp-step-label {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 480, "opsz" 18;
+    font-size: 15px;
+    color: var(--bone);
+    line-height: 1.2;
+  }
+  .hp-step-desc {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 360, "opsz" 14;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--bone-60);
+  }
+  @media (max-width: 880px) {
+    .hp-explainer { grid-template-columns: 1fr; gap: 28px; padding: 20px; }
+    .hp-explainer-steps { grid-template-columns: 1fr; gap: 14px; }
+  }
+
+  /* ===================================================================
+     SIGNATURE 03 · REVERSE COMMISSIONING
+     =================================================================== */
+  .rc-form {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr auto;
+    gap: 0;
+    border: 0.5px solid var(--rule-heavy);
+    margin-bottom: 40px;
+  }
+  @media (max-width: 760px) { .rc-form { grid-template-columns: 1fr; } }
+  .rc-form input, .rc-form select, .rc-form button {
+    padding: 18px 20px;
+    background: transparent;
+    border: 0;
+    color: var(--bone);
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 340, "opsz" 20;
+    font-size: 18px;
+    letter-spacing: -0.2px;
+    outline: none;
+    border-right: 0.5px solid var(--rule);
+    width: 100%;
+  }
+  @media (max-width: 760px) { .rc-form input, .rc-form select, .rc-form button { border-right: 0; border-bottom: 0.5px solid var(--rule); } }
+  .rc-form input::placeholder { color: var(--bone-45); font-style: italic; }
+  .rc-form select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--bone-45) 50%), linear-gradient(135deg, var(--bone-45) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 44px; }
+  .rc-form button {
+    background: var(--vermilion);
+    color: var(--iron);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    border-right: 0;
+    cursor: pointer;
+    padding: 18px 28px;
+    transition: background 180ms ease, color 180ms ease;
+    white-space: nowrap;
+  }
+  .rc-form button:hover { background: var(--bone); color: var(--vermilion); }
+
+  .rc-output {
+    background: var(--bone);
+    color: var(--iron);
+    padding: clamp(32px, 5vw, 56px) clamp(32px, 6vw, 72px);
+    border: 0.5px solid var(--rule);
+    margin-bottom: 28px;
+    font-family: 'Fraunces', serif;
+  }
+  .rc-output[aria-busy="true"] { opacity: 0.5; }
+  .rc-output .rc-doc-head { border-bottom: 0.5px solid rgba(14, 13, 11, 0.25); padding-bottom: 28px; margin-bottom: 32px; }
+  .rc-output .rc-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(14, 13, 11, 0.55);
+    margin-bottom: 24px;
+  }
+  @media (max-width: 700px) { .rc-output .rc-meta { grid-template-columns: 1fr 1fr; } }
+  .rc-output .rc-meta > div { display: flex; flex-direction: column; gap: 4px; }
+  .rc-output .rc-meta .k { font-size: 9px; }
+  .rc-output .rc-meta .v { color: var(--iron); }
+  .rc-output .rc-preamble {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-variation-settings: "wght" 360, "opsz" 20;
+    font-size: 18px;
+    line-height: 1.5;
+    color: rgba(14, 13, 11, 0.7);
+    margin: 0;
+  }
+  .rc-output .rc-block { margin-bottom: 32px; }
+  .rc-output .rc-h {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    margin: 0 0 14px;
+    font-weight: 500;
+  }
+  .rc-output .rc-body {
+    font-variation-settings: "wght" 380, "opsz" 20;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.48;
+    color: var(--iron);
+    margin: 0;
+  }
+  .rc-output .rc-body strong { color: var(--vermilion); font-weight: 600; }
+  .rc-output .rc-problems {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .rc-output .rc-problems li {
+    padding: 14px 18px 14px 36px;
+    border-left: 2px solid var(--vermilion);
+    background: rgba(232, 60, 30, 0.04);
+    font-size: 16px;
+    line-height: 1.45;
+    position: relative;
+    font-variation-settings: "wght" 360, "opsz" 16;
+  }
+  .rc-output .rc-problems li::before {
+    content: '✗';
+    position: absolute;
+    left: 14px; top: 14px;
+    color: var(--vermilion);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+  .rc-output .rc-program {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex; flex-direction: column;
+    border-top: 0.5px solid rgba(14, 13, 11, 0.2);
+  }
+  .rc-output .rc-program li {
+    display: grid;
+    grid-template-columns: 80px 1fr 120px 120px;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 0.5px solid rgba(14, 13, 11, 0.2);
+    align-items: baseline;
+  }
+  @media (max-width: 700px) {
+    .rc-output .rc-program li { grid-template-columns: 80px 1fr; }
+    .rc-output .rc-program .rc-phase-time, .rc-output .rc-program .rc-phase-cost {
+      grid-column: 2 / -1;
+      font-size: 12px;
+      color: rgba(14, 13, 11, 0.6);
+    }
+  }
+  .rc-output .rc-phase-n {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--vermilion);
+  }
+  .rc-output .rc-phase-name {
+    font-size: 17px;
+    line-height: 1.35;
+    color: var(--iron);
+    font-variation-settings: "wght" 380, "opsz" 18;
+  }
+  .rc-output .rc-phase-time, .rc-output .rc-phase-cost {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(14, 13, 11, 0.7);
+  }
+  .rc-output .rc-phase-cost { color: var(--vermilion); font-weight: 500; }
+  .rc-output .rc-totals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 28px;
+    background: rgba(14, 13, 11, 0.04);
+    margin: 32px 0;
+  }
+  .rc-output .rc-totals > div { display: flex; flex-direction: column; gap: 8px; }
+  .rc-output .rc-h-sm {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(14, 13, 11, 0.55);
+  }
+  .rc-output .rc-total-val {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 360, "opsz" 32;
+    font-size: 26px;
+    color: var(--iron);
+  }
+  .rc-output .rc-footer {
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(14, 13, 11, 0.55);
+    border-top: 0.5px solid rgba(14, 13, 11, 0.2);
+    padding-top: 20px;
+    margin: 0 0 28px;
+  }
+  .rc-output .rc-cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .rc-output .rc-cta-row .btn-primary {
+    background: var(--iron); color: var(--bone); border-color: var(--iron);
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .rc-output .rc-cta-row .btn-primary:hover { background: var(--vermilion); color: var(--iron); border-color: var(--vermilion); }
+  .rc-output .rc-cta-row .btn-ghost {
+    color: var(--iron); border-color: rgba(14, 13, 11, 0.25);
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .rc-output .rc-cta-row .btn-ghost:hover { border-color: var(--iron); }
+
+  /* ===================================================================
+     SIGNATURE 04 · THE OBJECT THAT REMEMBERS YOU
+     =================================================================== */
+  .memory-demo {
+    display: grid;
+    grid-template-columns: 0.9fr 1.3fr;
+    gap: 40px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 900px) { .memory-demo { grid-template-columns: 1fr; } }
+
+  .memory-object {
+    aspect-ratio: 4/5;
+    background:
+      radial-gradient(ellipse at 50% 70%, rgba(232, 60, 30, 0.08), transparent 60%),
+      linear-gradient(180deg, #18161F 0%, #0E0D0B 100%);
+    border: 0.5px solid var(--rule);
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .memory-object::before {
+    /* Glyph silhouette of a mug, as a placeholder hero image */
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%; aspect-ratio: 1;
+    background:
+      radial-gradient(ellipse at center, rgba(246, 242, 232, 0.04) 0%, transparent 70%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 220'%3E%3Cpath d='M40 40 L160 40 L150 200 Q100 215 50 200 Z' fill='none' stroke='%23F6F2E8' stroke-width='0.8' opacity='0.55'/%3E%3Cpath d='M160 70 Q195 70 195 115 Q195 160 160 160' fill='none' stroke='%23F6F2E8' stroke-width='0.8' opacity='0.55'/%3E%3Cellipse cx='100' cy='40' rx='60' ry='8' fill='none' stroke='%23F6F2E8' stroke-width='0.5' opacity='0.35'/%3E%3C/svg%3E") no-repeat center/contain;
+    opacity: 0.9;
+  }
+  .memory-serial-label {
+    position: absolute;
+    top: 20px; left: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+  }
+  .memory-serial-label .v { color: var(--bone); display: block; margin-top: 2px; }
+
+  .nfc-tap {
+    position: absolute;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%);
+    padding: 14px 24px;
+    background: var(--vermilion);
+    color: var(--iron);
+    border: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 200ms ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nfc-tap:hover { gap: 14px; }
+  .nfc-tap .nfc-icon {
+    font-size: 14px;
+  }
+  .nfc-tap--scanning { background: var(--bone); color: var(--iron); animation: pulse 0.6s ease-in-out infinite; }
+
+  .memory-page {
+    padding: 32px;
+    background: var(--iron-02);
+    border: 0.5px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 500ms cubic-bezier(.22,1,.36,1), transform 500ms cubic-bezier(.22,1,.36,1);
+  }
+  .memory-page[hidden] { display: none; }
+  .memory-page--in { opacity: 1; transform: translateY(0); }
+
+  .memory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+    border-bottom: 0.5px solid var(--rule);
+    padding-bottom: 16px;
+  }
+  .memory-header h3 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 340, "opsz" 32;
+    font-size: 26px;
+    line-height: 1.15;
+    margin: 0;
+    color: var(--bone);
+  }
+  .memory-header .serial {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--bone-45);
+    white-space: nowrap;
+  }
+
+  .memory-section { display: flex; flex-direction: column; gap: 8px; }
+  .memory-section h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    margin: 0;
+    font-weight: 500;
+  }
+  .memory-section .m-body {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 360, "opsz" 18;
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--bone);
+    margin: 0;
+  }
+  .memory-section .m-blurb {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--bone-70);
+    margin: 0;
+  }
+
+  .memory-wx-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 14px;
+    border: 0.5px solid var(--rule);
+  }
+  @media (max-width: 700px) { .memory-wx-grid { grid-template-columns: 1fr 1fr; } }
+  .memory-wx-grid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+  }
+  .memory-wx-grid .v {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--bone);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .memory-type-echo {
+    padding: 20px;
+    background: var(--iron);
+    border-left: 2px solid var(--oxide);
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--bone);
+    font-style: italic;
+    /* font-variation-settings set dynamically to match the day-of-fabrication */
+    margin: 0;
+  }
+  .memory-type-echo small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--oxide);
+    font-style: normal;
+    margin-top: 8px;
+  }
+
+  .memory-fab-list {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+  }
+  .memory-fab-list .v { color: var(--bone); text-transform: none; letter-spacing: 0; font-family: 'Fraunces', serif; font-size: 14px; }
+
+  .memory-reset {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+    padding: 0;
+    align-self: flex-start;
+    cursor: pointer;
+    transition: color 200ms ease;
+  }
+  .memory-reset:hover { color: var(--vermilion); }
+
+  /* ===================================================================
+     PROOF OF FABRICATION · mini-preview panel
+     =================================================================== */
+  .proof-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 0.5px solid var(--rule);
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .proof-panel { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .proof-panel-eyebrow {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--vermilion);
+    margin-bottom: 18px;
+  }
+  .proof-panel-title {
+    font-variation-settings: 'wght' 320, 'opsz' 72;
+    font-size: clamp(28px, 3.4vw, 40px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 18px;
+  }
+  .proof-panel-title em {
+    font-style: italic;
+    font-variation-settings: 'wght' 320, 'opsz' 72, 'slnt' -10;
+    color: var(--vermilion);
+  }
+  .proof-panel-body {
+    font-variation-settings: 'wght' 360, 'opsz' 20;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--bone-80);
+    max-width: 50ch;
+  }
+
+  /* Mini certificate card (ivory on iron) ----------------------- */
+  .proof-mini {
+    background: var(--bone);
+    color: var(--iron);
+    padding: 24px;
+    border: 0.5px solid var(--iron);
+    position: relative;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  }
+  .proof-mini::before {
+    content: '';
+    position: absolute; inset: 5px;
+    border: 0.5px solid rgba(14, 13, 11, 0.15);
+    pointer-events: none;
+  }
+  .proof-mini-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 14px;
+    padding-bottom: 14px;
+    border-bottom: 0.5px solid rgba(14, 13, 11, 0.2);
+  }
+  .proof-mini-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(14, 13, 11, 0.65);
+  }
+  .proof-mini-serial {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px; letter-spacing: 1px;
+    margin-top: 4px;
+  }
+  .proof-mini-qr {
+    width: 68px; height: 68px;
+    image-rendering: pixelated;
+    display: block;
+  }
+  .proof-mini-name {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 320, 'opsz' 48;
+    font-size: 22px;
+    line-height: 1.1;
+    margin: 16px 0 4px;
+  }
+  .proof-mini-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    color: rgba(14, 13, 11, 0.55);
+    margin-bottom: 18px;
+  }
+  .proof-mini-meta {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 14px;
+    font-size: 12px;
+  }
+  .proof-mini-meta dt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(14, 13, 11, 0.55);
+    align-self: center;
+  }
+  .proof-mini-meta dd {
+    font-variation-settings: 'wght' 380, 'opsz' 14;
+  }
+  .proof-mini-meta dd.mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    word-break: break-all;
+  }
+  .proof-mini-foot {
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: 0.5px dashed rgba(14, 13, 11, 0.2);
+  }
+  .proof-verify-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--iron);
+    text-decoration: none;
+    border-bottom: 1px solid var(--iron);
+    padding-bottom: 2px;
+  }
+  .proof-verify-link:hover { color: var(--vermilion); border-color: var(--vermilion); }
+
+  /* ===================================================================
+     TWIN WALL · growing mosaic of every twin fabricated
+     =================================================================== */
+  .twin-intro {
+    margin-bottom: 28px;
+    max-width: 56ch;
+  }
+  .twin-intro-eyebrow {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--vermilion);
+    margin-bottom: 14px;
+  }
+  .twin-intro-title {
+    font-variation-settings: 'wght' 320, 'opsz' 72;
+    font-size: clamp(22px, 2.8vw, 32px);
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+  }
+  .twin-intro-title em {
+    font-style: italic;
+    font-variation-settings: 'wght' 320, 'opsz' 72, 'slnt' -10;
+    color: var(--copper);
+  }
+
+  .twin-statement {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    gap: 24px;
+    padding-bottom: 20px;
+    border-bottom: 0.5px solid var(--rule);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .twin-quote {
+    max-width: 54ch;
+    font-variation-settings: 'wght' 360, 'opsz' 22;
+    font-size: 16px;
+    color: var(--bone-80);
+    line-height: 1.5;
+  }
+  .twin-stat {
+    font-family: 'JetBrains Mono', monospace;
+    text-align: right;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .twin-stat-num {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 300, 'opsz' 96;
+    font-size: 56px;
+    color: var(--bone);
+  }
+  .twin-stat-cap {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 280, 'opsz' 72;
+    font-size: 32px;
+    color: var(--bone-45);
+  }
+  .twin-stat-lbl {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+    margin-top: 8px;
+  }
+
+  .twin-wall-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 3px;
+    background: var(--rule);
+    padding: 3px;
+    border: 0.5px solid var(--rule-heavy);
+  }
+  @media (max-width: 900px) { .twin-wall-grid { grid-template-columns: repeat(8, 1fr); } }
+  @media (max-width: 560px) { .twin-wall-grid { grid-template-columns: repeat(6, 1fr); } }
+
+  .twin-cell {
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .twin-cell--empty {
+    background:
+      repeating-linear-gradient(45deg,
+        rgba(246, 242, 232, 0.02) 0 6px,
+        transparent 6px 12px),
+      var(--iron);
+  }
+  .twin-cell--filled {
+    background: var(--iron-raised);
+    cursor: pointer;
+  }
+  .twin-fill {
+    position: absolute; inset: 0;
+    transition: transform 500ms ease, filter 300ms ease;
+  }
+  .twin-cell--filled:hover .twin-fill {
+    transform: scale(1.04);
+    filter: brightness(1.1);
+  }
+  .twin-meta {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 10px 10px 8px;
+    background: linear-gradient(to top, rgba(14, 13, 11, 0.96) 0%, rgba(14, 13, 11, 0.7) 60%, rgba(14, 13, 11, 0) 100%);
+    display: flex; flex-direction: column; gap: 2px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 250ms ease, transform 250ms ease;
+    pointer-events: none;
+  }
+  .twin-cell--filled:hover .twin-meta,
+  .twin-cell--filled:focus-visible .twin-meta { opacity: 1; transform: translateY(0); }
+  .twin-client {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 500, 'opsz' 14;
+    font-size: 12px;
+    color: var(--bone);
+  }
+  .twin-obj {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    color: var(--bone-80);
+  }
+  .twin-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+  }
+  .twin-serial {
+    position: absolute;
+    top: 6px; right: 8px;
+    font-size: 8px;
+    color: var(--bone-45);
+    letter-spacing: 0.5px;
+    opacity: 0.7;
+  }
+  .twin-foot {
+    margin-top: 14px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+  }
+  .twin-sep {
+    height: 1px;
+    background: var(--rule);
+    margin: 48px 0 32px;
+  }
+
+  /* ===================================================================
+     Reduced-motion — respect user preference
+     =================================================================== */
+  @media (prefers-reduced-motion: reduce) {
+    * { transition-duration: 0.001ms !important; animation: none !important; }
+  }
+</style>
+
+<!-- Analytics · Plausible (hostname-guarded, only fires on production) -->
+<script>
+  (function () {
+    if (location.hostname === 'raineylagunastudios.com' || location.hostname === 'www.raineylagunastudios.com') {
+      var s = document.createElement('script');
+      s.defer = true;
+      s.setAttribute('data-domain', 'raineylagunastudios.com');
+      s.src = 'https://plausible.io/js/script.outbound-links.tagged-events.js';
+      document.head.appendChild(s);
+      window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments); };
+    }
+  })();
+</script>
+</head>
+
+<body>
+
+<noscript><style>#rls-loader{display:none!important;}</style></noscript>
+<!-- =====================================================================
+     LOADING SCREEN · "Workshop registration"
+     Iron + bone + vermilion. Blueprint grid, drawn registration mark,
+     letter-by-letter wordmark, mono prompt that types, vermilion
+     completion bar. Self-contained. Once per session.
+     ===================================================================== -->
+<div id="rls-loader" aria-hidden="true" role="presentation">
+  <div class="rls-grid"></div>
+  <div class="rls-stage">
+    <svg class="rls-mark" viewBox="0 0 80 80" width="80" height="80" aria-hidden="true">
+      <circle class="rls-circle" cx="40" cy="40" r="36" fill="none" stroke="#F6F2E8" stroke-width="1" pathLength="100"/>
+      <line   class="rls-line rls-line-v" x1="40" y1="6"  x2="40" y2="74" stroke="#F6F2E8" stroke-width="1" pathLength="100"/>
+      <line   class="rls-line rls-line-h" x1="6"  y1="40" x2="74" y2="40" stroke="#F6F2E8" stroke-width="1" pathLength="100"/>
+      <circle class="rls-dot"    cx="40" cy="40" r="3" fill="#E83C1E"/>
+    </svg>
+    <h1 class="rls-h1" id="rlsH1" aria-label="Rainey Laguna Studios"></h1>
+    <div class="rls-meta">
+      <span class="rls-meta-prompt">&gt;</span>
+      <span class="rls-meta-text" id="rlsMetaText"></span>
+      <span class="rls-meta-cursor">▌</span>
+    </div>
+  </div>
+  <div class="rls-bar"><div class="rls-bar-fill"></div></div>
+  <div class="rls-corner rls-corner-tl">RLS · 01</div>
+  <div class="rls-corner rls-corner-tr">LIMA · PE</div>
+  <div class="rls-corner rls-corner-bl">v.2026.05</div>
+  <div class="rls-corner rls-corner-br">EST. 2026</div>
+</div>
+<style>
+  #rls-loader {
+    position: fixed; inset: 0; z-index: 99999;
+    background: #0E0D0B; color: #F6F2E8;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    transition: opacity 700ms ease;
+    overflow: hidden;
+  }
+  #rls-loader.rls-out { opacity: 0; pointer-events: none; }
+  .rls-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(246,242,232,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(246,242,232,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+            mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+    opacity: 0;
+    animation: rls-grid-in 800ms ease forwards;
+  }
+  @keyframes rls-grid-in { to { opacity: 1; } }
+  .rls-stage { position: relative; z-index: 2; text-align: center; padding: 0 24px; }
+  .rls-mark { display: block; margin: 0 auto 36px; }
+  .rls-circle, .rls-line {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: rls-draw 900ms cubic-bezier(.6,0,.3,1) forwards;
+  }
+  .rls-line-v { animation-delay: 250ms; }
+  .rls-line-h { animation-delay: 450ms; }
+  .rls-dot {
+    opacity: 0;
+    transform-box: fill-box; transform-origin: center;
+    animation: rls-pulse 700ms cubic-bezier(.2,.8,.3,1) 1000ms forwards;
+  }
+  @keyframes rls-draw { to { stroke-dashoffset: 0; } }
+  @keyframes rls-pulse {
+    0%   { opacity: 0; transform: scale(0.2); }
+    60%  { opacity: 1; transform: scale(1.6); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  .rls-h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: 'wght' 320, 'opsz' 144, 'slnt' 0;
+    font-weight: 320;
+    font-size: clamp(34px, 6.8vw, 84px);
+    line-height: 1;
+    letter-spacing: -1.5px;
+    margin: 0 0 28px;
+    color: #F6F2E8;
+  }
+  .rls-h1 span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: rls-letter 560ms cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .rls-h1 span.rls-space { width: .32em; }
+  @keyframes rls-letter { to { opacity: 1; transform: translateY(0); } }
+  .rls-meta {
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(246,242,232,0.7);
+    opacity: 0;
+    animation: rls-fade 500ms ease 1500ms forwards;
+  }
+  @keyframes rls-fade { to { opacity: 1; } }
+  .rls-meta-prompt { color: #E83C1E; margin-right: 8px; }
+  .rls-meta-cursor {
+    display: inline-block;
+    margin-left: 2px;
+    color: #E83C1E;
+    animation: rls-blink 800ms steps(2) infinite;
+  }
+  @keyframes rls-blink { 50% { opacity: 0; } }
+  .rls-bar {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    height: 2px; background: rgba(246,242,232,0.10);
+  }
+  .rls-bar-fill {
+    height: 100%; background: #E83C1E; width: 0;
+    animation: rls-fill 2200ms cubic-bezier(.4,0,.2,1) forwards;
+  }
+  @keyframes rls-fill { to { width: 100%; } }
+  .rls-corner {
+    position: absolute;
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(246,242,232,0.35);
+    padding: 18px 22px;
+    opacity: 0;
+    animation: rls-fade 500ms ease 800ms forwards;
+  }
+  .rls-corner-tl { top: 0; left: 0; }
+  .rls-corner-tr { top: 0; right: 0; }
+  .rls-corner-bl { bottom: 4px; left: 0; }
+  .rls-corner-br { bottom: 4px; right: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .rls-grid, .rls-meta, .rls-corner { animation: none; opacity: 1; }
+    .rls-circle, .rls-line { animation: none; stroke-dashoffset: 0; }
+    .rls-h1 span { animation: none; opacity: 1; transform: none; }
+    .rls-dot { animation: none; opacity: 1; }
+    .rls-bar-fill { animation: none; width: 100%; }
+  }
+</style>
+<script>
+(function(){
+  try {
+    if (sessionStorage.getItem('rls-loader-seen')) {
+      var n0 = document.getElementById('rls-loader');
+      if (n0 && n0.parentNode) n0.parentNode.removeChild(n0);
+      return;
+    }
+  } catch (e) {}
+
+  var loader = document.getElementById('rls-loader');
+  if (!loader) return;
+
+  // Build the wordmark span by span so we can stagger animation delays in JS
+  var h1 = document.getElementById('rlsH1');
+  var label = 'Rainey Laguna Studios';
+  var letterIdx = 0;
+  for (var i = 0; i < label.length; i++) {
+    var ch = label.charAt(i);
+    var span = document.createElement('span');
+    if (ch === ' ') {
+      span.className = 'rls-space';
+      span.innerHTML = '&nbsp;';
+      span.style.animationDelay = (700 + letterIdx * 38) + 'ms';
+    } else {
+      span.textContent = ch;
+      span.style.animationDelay = (700 + letterIdx * 38) + 'ms';
+      letterIdx++;
+    }
+    h1.appendChild(span);
+  }
+
+  // Type the mono subtitle in
+  var meta = document.getElementById('rlsMetaText');
+  var phrase = 'taller · calibrado · listo';
+  setTimeout(function(){
+    var idx = 0;
+    var iv = setInterval(function(){
+      idx++;
+      meta.textContent = phrase.slice(0, idx);
+      if (idx >= phrase.length) clearInterval(iv);
+    }, 50);
+  }, 1700);
+
+  var startedAt = performance.now();
+  var DURATION = 2600;
+  function exitLoader() {
+    loader.classList.add('rls-out');
+    try { sessionStorage.setItem('rls-loader-seen', '1'); } catch (e) {}
+    setTimeout(function(){
+      if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
+    }, 800);
+  }
+  var domReady = document.readyState === 'complete' || document.readyState === 'interactive';
+  function maybeExit() {
+    if (!domReady) return;
+    var elapsed = performance.now() - startedAt;
+    if (elapsed >= DURATION) exitLoader();
+    else setTimeout(exitLoader, DURATION - elapsed);
+  }
+  if (!domReady) document.addEventListener('DOMContentLoaded', function(){ domReady = true; maybeExit(); });
+  else maybeExit();
+})();
+</script>
+
+<a href="#main" class="skip-link" data-es="Ir al contenido" data-en="Skip to content">Ir al contenido</a>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav class="studio-nav" aria-label="Primary">
+  <a href="/" class="wordmark" aria-label="Rainey Laguna Studios — home">
+    <span class="rl">Rainey <em>Laguna</em></span>
+    <span class="studios">Studios</span>
+  </a>
+
+  <div class="nav-links">
+    <a href="#manifesto"><span class="idx">01</span><span data-es="Manifiesto" data-en="Manifesto">Manifiesto</span></a>
+    <a href="#lab"><span class="idx">02</span><span data-es="Laboratorio" data-en="Lab">Laboratorio</span></a>
+    <a href="#brand"><span class="idx">03</span><span data-es="Marca" data-en="Brand">Marca</span></a>
+    <a href="#commission"><span class="idx">04</span><span data-es="Comisión" data-en="Brief">Comisión</span></a>
+    <a href="#memory"><span class="idx">05</span><span data-es="Memoria" data-en="Memory">Memoria</span></a>
+    <a href="#work"><span class="idx">06</span><span data-es="Trabajo" data-en="Work">Trabajo</span></a>
+    <a href="#make"><span class="idx">07</span><span data-es="Hacemos" data-en="We Make">Hacemos</span></a>
+    <a href="#contact"><span class="idx">08</span><span data-es="Contacto" data-en="Contact">Contacto</span></a>
+  </div>
+
+  <div class="nav-right">
+    <div class="live-chip" aria-live="polite">
+      <span class="dot" aria-hidden="true"></span>
+      <span id="navLiveTxt">Lima · garúa · 17°</span>
+    </div>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button id="langEs" class="active" aria-pressed="true">ES</button>
+      <span class="div">·</span>
+      <button id="langEn" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ============================================================
+     MASTHEAD · the operating state of the studio
+     ============================================================ -->
+<header class="masthead" aria-label="Studio status">
+  <div class="mh-1">
+    <span class="lbl" data-es="Edición" data-en="Issue">Edición</span>
+    <span class="val">N.º 001 · v0.1</span>
+  </div>
+  <div class="mh-2">
+    <span class="lbl" data-es="Fecha" data-en="Date">Fecha</span>
+    <span class="val" id="mhDate">—</span>
+  </div>
+  <div class="mh-3">
+    <span class="lbl" data-es="Estado" data-en="Status">Estado</span>
+    <span class="val accent" id="mhStatus" data-es="Abierto · trabajando" data-en="Open · working">Abierto · trabajando</span>
+  </div>
+  <div class="mh-4">
+    <span class="lbl" data-es="Lima · Glasgow" data-en="Lima · Glasgow">Lima · Glasgow</span>
+    <span class="val" id="mhWeather">—</span>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" aria-labelledby="heroH1">
+  <div class="hero-eyebrow">
+    <span data-es="Un estudio que trabaja · Lima · Est. 2026" data-en="A working studio · Lima · Est. 2026">Un estudio que trabaja · Lima · Est. 2026</span>
+  </div>
+  <h1 class="hero-h1" id="heroH1">
+    <span class="linebreak" data-es="Cosas que" data-en="Things you">Cosas que</span>
+    <span class="linebreak" data-es="se <em>tocan</em>." data-en="<em>hold</em>." data-html="true">se <em>tocan</em>.</span>
+  </h1>
+  <p class="hero-lede" data-es="Rainey Laguna Studios es un estudio creativo que <em>diseña en pantalla y fabrica en taller</em>. Diseño gráfico, gestión de marca, impresión 3D, hidrografía, y todo lo que un negocio necesita para ser recordado fuera del teléfono." data-en="Rainey Laguna Studios is a creative studio that <em>designs on screen and fabricates in the workshop</em>. Graphic design, brand management, 3D printing, hydroprinting, and whatever else a business needs to be remembered off the phone." data-html="true">
+    Rainey Laguna Studios es un estudio creativo que <em>diseña en pantalla y fabrica en taller</em>. Diseño gráfico, gestión de marca, impresión 3D, hidrografía, y todo lo que un negocio necesita para ser recordado fuera del teléfono.
+  </p>
+</section>
+
+<!-- ============================================================
+     SIGNATURE 01 · THE LIVING MANIFESTO
+     Type responds live to Lima weather
+     ============================================================ -->
+<section class="chapter" id="manifesto" aria-labelledby="manifestoH">
+  <div class="chapter-label">
+    <span><span class="num">01 /</span> <span data-es="Manifiesto" data-en="Manifesto">Manifiesto</span></span>
+    <span class="note" data-es="Una carilla. La tipografía responde en vivo al clima de Lima. El peso, la inclinación y el tamaño óptico cambian con la garúa, el viento, el sol. El texto es el mismo cada día. La lectura, no." data-en="One page. The typography responds live to Lima's weather. Weight, slant and optical size shift with drizzle, wind, sun. The text is the same every day. The reading is not.">Una carilla. La tipografía responde en vivo al clima de Lima. El peso, la inclinación y el tamaño óptico cambian con la garúa, el viento, el sol. El texto es el mismo cada día. La lectura, no.</span>
+  </div>
+  <div class="chapter-body">
+    <div id="manifestoH" class="mono" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bone-45);margin-bottom:40px">
+      <span data-es="MANIFIESTO · UNA CARILLA · MAYO 2026" data-en="MANIFESTO · ONE PAGE · MAY 2026">MANIFIESTO · UNA CARILLA · MAYO 2026</span>
+    </div>
+
+    <div class="manifesto-body" id="manifestoBody">
+      <p data-es="Rainey Laguna Studios hace <em>cosas</em>. Cosas que se miran, que se tocan, que duran." data-en="Rainey Laguna Studios makes <em>things</em>. Things you look at, things you hold, things that last." data-html="true">
+        Rainey Laguna Studios hace <em>cosas</em>. Cosas que se miran, que se tocan, que duran.
+      </p>
+      <p data-es="Creemos que una marca que no puede llegar a la mesa no es una marca — es una teoría. Diseñamos en pantalla y fabricamos en taller. Tipografía, impresos, objetos en 3D, hidrografía, y todo lo que un lugar necesita tener para ser recordado fuera del teléfono." data-en="We believe a brand that can't reach the table isn't a brand — it's a theory. We design on screen and fabricate in the workshop. Typography, print, 3D-printed objects, hydroprinted finishes, and whatever else a place needs to be remembered off the phone.">
+        Creemos que una marca que no puede llegar a la mesa no es una marca — es una teoría. Diseñamos en pantalla y fabricamos en taller. Tipografía, impresos, objetos en 3D, hidrografía, y todo lo que un lugar necesita tener para ser recordado fuera del teléfono.
+      </p>
+      <p data-es="Trabajamos desde Lima, con raíces en Glasgow. Pensamos despacio, respondemos rápido, y no entregamos nada que no pongamos primero sobre la mesa." data-en="We work from Lima, with roots in Glasgow. We think slowly, we answer quickly, and we don't ship anything we haven't first put on the table.">
+        Trabajamos desde Lima, con raíces en Glasgow. Pensamos despacio, respondemos rápido, y no entregamos nada que no pongamos primero sobre la mesa.
+      </p>
+      <p data-es="Si buscas <em>web</em>, te atendemos en <a href=&quot;https://raineylaguna.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>raineylaguna.com</a> — nuestra rama especializada para negocios locales en Lima. Si buscas <em>cualquier otra cosa</em> — aquí." data-en="If you need <em>web</em>, we handle that at <a href=&quot;https://raineylaguna.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>raineylaguna.com</a> — our specialist arm for Lima local businesses. For <em>anything else</em> — here." data-html="true">
+        Si buscas <em>web</em>, te atendemos en <a href="https://raineylaguna.com" target="_blank" rel="noopener">raineylaguna.com</a> — nuestra rama especializada para negocios locales en Lima. Si buscas <em>cualquier otra cosa</em> — aquí.
+      </p>
+    </div>
+
+    <div class="manifesto-signature">
+      <span class="sig-name">Stuart Rainey</span>
+      <span><span data-es="Director · Rainey Laguna Studios" data-en="Director · Rainey Laguna Studios">Director · Rainey Laguna Studios</span></span>
+    </div>
+
+    <!-- The live readout — shows how the weather is modulating the type right now -->
+    <div class="weather-readout" aria-live="polite">
+      <span class="wr-dot" aria-hidden="true"></span>
+      <span>
+        <span class="wr-lbl" data-es="Lima · ahora" data-en="Lima · now">Lima · ahora</span><br>
+        <span class="wr-val" id="wrSummary">—</span>
+      </span>
+      <span style="text-align:right">
+        <span class="wr-lbl" data-es="Tipografía" data-en="Typography">Tipografía</span><br>
+        <span class="wr-accent" id="wrType">wght · —</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SIGNATURE 02 · THE HYDROPRINT LAB
+     World-first 3D preview of any pattern hydroprinted on a real
+     Studios ceramic mug. Drop an image, pick a preset, orbit to inspect,
+     order the real object. The site IS the product configurator.
+     ============================================================ -->
+<section class="chapter" id="lab" aria-labelledby="labH">
+  <div class="chapter-label">
+    <span><span class="num">02 /</span> <span data-es="El Laboratorio" data-en="The Lab">El Laboratorio</span></span>
+    <span class="note" data-es="Deja caer una imagen, elige un patrón de la casa, arrastra para orbitar. Vemos cómo se vería hidroprinteada sobre una taza cerámica real. El mismo visor que usamos con clientes en el estudio. Si te gusta, la fabricamos." data-en="Drop in an image, pick a house pattern, drag to orbit. See how it would look hydroprinted onto a real ceramic mug. Same viewer we use with clients in the studio. If you like it, we make it.">Deja caer una imagen, elige un patrón de la casa, arrastra para orbitar. Vemos cómo se vería hidroprinteada sobre una taza cerámica real. El mismo visor que usamos con clientes en el estudio. Si te gusta, la fabricamos.</span>
+  </div>
+  <div class="chapter-body">
+    <div id="labH" class="mono" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bone-45);margin-bottom:28px">
+      <span data-es="EL LABORATORIO · VISOR EN VIVO · TAZA CONQUISTADORES" data-en="THE LAB · LIVE PREVIEW · CONQUISTADORES MUG">EL LABORATORIO · VISOR EN VIVO · TAZA CONQUISTADORES</span>
+    </div>
+
+    <!-- B6 · Compact "what is hydroprinting" explainer for first-time visitors. -->
+    <aside class="hp-explainer" aria-label="Cómo funciona la hidrografía / How hydroprinting works">
+      <div>
+        <div class="hp-explainer-eyebrow" data-es="¿QUÉ ES HIDROGRAFÍA?" data-en="WHAT IS HYDROPRINTING?">¿QUÉ ES HIDROGRAFÍA?</div>
+        <p class="hp-explainer-def" data-es="Una técnica que <em>envuelve</em> un objeto con un patrón usando una película que flota sobre agua. El objeto se sumerge, la película se ajusta a la forma. Así nace una superficie que el calado sólo no puede dar." data-en="A technique that <em>wraps</em> an object with a pattern via a film floating on water. The object is dipped; the film conforms to the shape. The result is a surface flat printing simply cannot make." data-html="true">Una técnica que <em>envuelve</em> un objeto con un patrón usando una película que flota sobre agua. El objeto se sumerge, la película se ajusta a la forma. Así nace una superficie que el calado sólo no puede dar.</p>
+      </div>
+      <div class="hp-explainer-steps">
+        <div class="hp-step">
+          <span class="hp-step-num" data-es="01 · IMPRIMIR" data-en="01 · PRINT">01 · IMPRIMIR</span>
+          <span class="hp-step-label" data-es="Patrón sobre película" data-en="Pattern onto film">Patrón sobre película</span>
+          <span class="hp-step-desc" data-es="El diseño se imprime en una película PVA hidrosoluble." data-en="The design is printed onto a water-soluble PVA film.">El diseño se imprime en una película PVA hidrosoluble.</span>
+        </div>
+        <div class="hp-step">
+          <span class="hp-step-num" data-es="02 · SUMERGIR" data-en="02 · DIP">02 · SUMERGIR</span>
+          <span class="hp-step-label" data-es="Activar y bajar" data-en="Activate, dip">Activar y bajar</span>
+          <span class="hp-step-desc" data-es="Se rocía un activador, la tinta flota, y el objeto entra en el tanque a 22 °C." data-en="An activator is sprayed, the ink floats, and the object enters the 22 °C tank.">Se rocía un activador, la tinta flota, y el objeto entra en el tanque a 22 °C.</span>
+        </div>
+        <div class="hp-step">
+          <span class="hp-step-num" data-es="03 · CURAR" data-en="03 · CURE">03 · CURAR</span>
+          <span class="hp-step-label" data-es="Sellar y secar" data-en="Seal and dry">Sellar y secar</span>
+          <span class="hp-step-desc" data-es="24 h de curado, sellado al horno; cada pieza queda única — la película nunca envuelve dos veces igual." data-en="24 h cure, kiln-sealed; every piece is unique — the film never wraps the same twice.">24 h de curado, sellado al horno; cada pieza queda única — la película nunca envuelve dos veces igual.</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="lab-stage">
+      <div class="lab-3d" id="lab3d" role="img" aria-label="3D preview of a ceramic mug with hydroprinted pattern">
+        <div class="lab-3d-readout">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span class="accent" data-es="VISOR WebGL" data-en="WebGL VIEWER">VISOR WebGL</span>
+          · <span data-es="arrastra para rotar" data-en="drag to rotate">arrastra para rotar</span>
+        </div>
+      </div>
+
+      <aside class="lab-controls">
+        <div class="lab-group">
+          <span class="lab-group-label"><span class="lgn">→ 00</span><span data-es="Tipo de pieza" data-en="Object type">Tipo de pieza</span></span>
+          <div class="lab-forms" role="radiogroup" aria-label="Object type">
+            <button type="button" class="lab-form" aria-pressed="true"  data-form="mug"     data-es="Taza · 350ml"            data-en="Mug · 350ml">Taza · 350ml</button>
+            <button type="button" class="lab-form" aria-pressed="false" data-form="plate"   data-es="Plato · 24cm"            data-en="Plate · 24cm">Plato · 24cm</button>
+            <button type="button" class="lab-form" aria-pressed="false" data-form="vase"    data-es="Florero · 22cm"          data-en="Vase · 22cm">Florero · 22cm</button>
+            <button type="button" class="lab-form" aria-pressed="false" data-form="coaster" data-es="Posavasos · juego de 4"  data-en="Coasters · set of 4">Posavasos · juego de 4</button>
+            <button type="button" class="lab-form" aria-pressed="false" data-form="panel"   data-es="Panel decorativo · 30×40" data-en="Decorative panel · 30×40">Panel decorativo · 30×40</button>
+          </div>
+        </div>
+
+        <div class="lab-group">
+          <span class="lab-group-label"><span class="lgn">→ 01</span><span data-es="Patrón de la casa" data-en="House pattern">Patrón de la casa</span></span>
+          <div class="lab-patterns" role="radiogroup" aria-label="Pattern">
+            <!-- 5 presets, inline SVG data-URI backgrounds so no external assets -->
+            <button type="button" class="lab-pattern" aria-pressed="false" data-pattern-id="p1"
+              style="background-image:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 40 40&quot;&gt;&lt;rect width=&quot;40&quot; height=&quot;40&quot; fill=&quot;%23f6f2e8&quot;/&gt;&lt;path stroke=&quot;%230e0d0b&quot; stroke-width=&quot;0.6&quot; fill=&quot;none&quot; d=&quot;M0 5 H40 M0 15 H40 M0 25 H40 M0 35 H40 M5 0 V40 M15 0 V40 M25 0 V40 M35 0 V40&quot;/&gt;&lt;/svg&gt;')"
+              data-pattern-url="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f6f2e8%22/%3E%3Cpath stroke=%22%230e0d0b%22 stroke-width=%221%22 fill=%22none%22 d=%22M0 25 H200 M0 50 H200 M0 75 H200 M0 100 H200 M0 125 H200 M0 150 H200 M0 175 H200 M25 0 V200 M50 0 V200 M75 0 V200 M100 0 V200 M125 0 V200 M150 0 V200 M175 0 V200%22/%3E%3C/svg%3E">
+              <span class="tick">✓</span>
+            </button>
+            <button type="button" class="lab-pattern" aria-pressed="false" data-pattern-id="p2"
+              style="background-image:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 40 40&quot;&gt;&lt;rect width=&quot;40&quot; height=&quot;40&quot; fill=&quot;%23f6f2e8&quot;/&gt;&lt;path stroke=&quot;%238aa9a0&quot; stroke-width=&quot;1.5&quot; fill=&quot;none&quot; d=&quot;M0 20 Q10 12 20 20 T40 20 M0 30 Q10 22 20 30 T40 30 M0 10 Q10 2 20 10 T40 10&quot;/&gt;&lt;/svg&gt;')"
+              data-pattern-url="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f6f2e8%22/%3E%3Cpath stroke=%22%238aa9a0%22 stroke-width=%223%22 fill=%22none%22 d=%22M0 40 Q25 20 50 40 T100 40 T150 40 T200 40 M0 80 Q25 60 50 80 T100 80 T150 80 T200 80 M0 120 Q25 100 50 120 T100 120 T150 120 T200 120 M0 160 Q25 140 50 160 T100 160 T150 160 T200 160%22/%3E%3C/svg%3E">
+              <span class="tick">✓</span>
+            </button>
+            <button type="button" class="lab-pattern" aria-pressed="false" data-pattern-id="p3"
+              style="background-image:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 40 40&quot;&gt;&lt;rect width=&quot;40&quot; height=&quot;40&quot; fill=&quot;%23f6f2e8&quot;/&gt;&lt;g fill=&quot;%23e83c1e&quot;&gt;&lt;circle cx=&quot;10&quot; cy=&quot;10&quot; r=&quot;3&quot;/&gt;&lt;circle cx=&quot;30&quot; cy=&quot;10&quot; r=&quot;3&quot;/&gt;&lt;circle cx=&quot;20&quot; cy=&quot;20&quot; r=&quot;3&quot;/&gt;&lt;circle cx=&quot;10&quot; cy=&quot;30&quot; r=&quot;3&quot;/&gt;&lt;circle cx=&quot;30&quot; cy=&quot;30&quot; r=&quot;3&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;')"
+              data-pattern-url="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f6f2e8%22/%3E%3Cg fill=%22%23e83c1e%22%3E%3Ccircle cx=%2225%22 cy=%2225%22 r=%228%22/%3E%3Ccircle cx=%2275%22 cy=%2225%22 r=%228%22/%3E%3Ccircle cx=%22125%22 cy=%2225%22 r=%228%22/%3E%3Ccircle cx=%22175%22 cy=%2225%22 r=%228%22/%3E%3Ccircle cx=%2250%22 cy=%2275%22 r=%228%22/%3E%3Ccircle cx=%22100%22 cy=%2275%22 r=%228%22/%3E%3Ccircle cx=%22150%22 cy=%2275%22 r=%228%22/%3E%3Ccircle cx=%2225%22 cy=%22125%22 r=%228%22/%3E%3Ccircle cx=%2275%22 cy=%22125%22 r=%228%22/%3E%3Ccircle cx=%22125%22 cy=%22125%22 r=%228%22/%3E%3Ccircle cx=%22175%22 cy=%22125%22 r=%228%22/%3E%3Ccircle cx=%2250%22 cy=%22175%22 r=%228%22/%3E%3Ccircle cx=%22100%22 cy=%22175%22 r=%228%22/%3E%3Ccircle cx=%22150%22 cy=%22175%22 r=%228%22/%3E%3C/g%3E%3C/svg%3E">
+              <span class="tick">✓</span>
+            </button>
+            <button type="button" class="lab-pattern" aria-pressed="false" data-pattern-id="p4"
+              style="background-image:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 40 40&quot;&gt;&lt;rect width=&quot;40&quot; height=&quot;40&quot; fill=&quot;%230e0d0b&quot;/&gt;&lt;path fill=&quot;%23f6f2e8&quot; d=&quot;M0 0 L20 0 L0 20 Z M20 20 L40 20 L20 40 Z&quot;/&gt;&lt;/svg&gt;')"
+              data-pattern-url="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%230e0d0b%22/%3E%3Cpath fill=%22%23f6f2e8%22 d=%22M0 0 L50 0 L0 50 Z M50 0 L100 0 L50 50 Z M100 0 L150 0 L100 50 Z M150 0 L200 0 L150 50 Z M0 50 L50 50 L0 100 Z M50 50 L100 50 L50 100 Z M100 50 L150 50 L100 100 Z M150 50 L200 50 L150 100 Z M0 100 L50 100 L0 150 Z M50 100 L100 100 L50 150 Z M100 100 L150 100 L100 150 Z M150 100 L200 100 L150 150 Z M0 150 L50 150 L0 200 Z M50 150 L100 150 L50 200 Z M100 150 L150 150 L100 200 Z M150 150 L200 150 L150 200 Z%22/%3E%3C/svg%3E">
+              <span class="tick">✓</span>
+            </button>
+            <button type="button" class="lab-pattern" aria-pressed="false" data-pattern-id="p5"
+              style="background-image:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 40 40&quot;&gt;&lt;rect width=&quot;40&quot; height=&quot;40&quot; fill=&quot;%23f6f2e8&quot;/&gt;&lt;g fill=&quot;%230e0d0b&quot; opacity=&quot;0.8&quot;&gt;&lt;rect x=&quot;3&quot; y=&quot;5&quot; width=&quot;7&quot; height=&quot;4&quot;/&gt;&lt;rect x=&quot;14&quot; y=&quot;12&quot; width=&quot;9&quot; height=&quot;3&quot;/&gt;&lt;rect x=&quot;27&quot; y=&quot;8&quot; width=&quot;6&quot; height=&quot;5&quot;/&gt;&lt;rect x=&quot;6&quot; y=&quot;22&quot; width=&quot;10&quot; height=&quot;3&quot;/&gt;&lt;rect x=&quot;20&quot; y=&quot;26&quot; width=&quot;5&quot; height=&quot;4&quot;/&gt;&lt;rect x=&quot;28&quot; y=&quot;30&quot; width=&quot;8&quot; height=&quot;3&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;')"
+              data-pattern-url="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f6f2e8%22/%3E%3Cg fill=%22%230e0d0b%22%3E%3Crect x=%2215%22 y=%2225%22 width=%2235%22 height=%2220%22/%3E%3Crect x=%2270%22 y=%2260%22 width=%2245%22 height=%2215%22/%3E%3Crect x=%22135%22 y=%2240%22 width=%2230%22 height=%2225%22/%3E%3Crect x=%2230%22 y=%22110%22 width=%2250%22 height=%2215%22/%3E%3Crect x=%22100%22 y=%22130%22 width=%2225%22 height=%2220%22/%3E%3Crect x=%22140%22 y=%22150%22 width=%2240%22 height=%2215%22/%3E%3Crect x=%2240%22 y=%22165%22 width=%2235%22 height=%2215%22/%3E%3C/g%3E%3C/svg%3E">
+              <span class="tick">✓</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="lab-group">
+          <span class="lab-group-label"><span class="lgn">→ 02</span><span data-es="O sube tu propia imagen" data-en="Or upload your own image">O sube tu propia imagen</span></span>
+          <label class="lab-upload" for="labUpload">
+            <span aria-hidden="true">↑</span>
+            <span data-es="Elegir archivo" data-en="Choose file">Elegir archivo</span>
+            <span class="fname" id="labUploadName" data-es="ninguno" data-en="none">ninguno</span>
+            <input type="file" id="labUpload" accept="image/png,image/jpeg,image/svg+xml">
+          </label>
+        </div>
+
+        <div class="lab-group">
+          <span class="lab-group-label"><span class="lgn">→ 03</span><span data-es="Color base de la cerámica" data-en="Ceramic base colour">Color base de la cerámica</span></span>
+          <div class="lab-swatches" role="radiogroup" aria-label="Base colour">
+            <button type="button" class="lab-swatch" aria-pressed="true" data-color="0xf6f2e8" style="background:#f6f2e8" aria-label="Bone"></button>
+            <button type="button" class="lab-swatch" aria-pressed="false" data-color="0x0e0d0b" style="background:#0e0d0b" aria-label="Iron"></button>
+            <button type="button" class="lab-swatch" aria-pressed="false" data-color="0x8aa9a0" style="background:#8aa9a0" aria-label="Oxide"></button>
+            <button type="button" class="lab-swatch" aria-pressed="false" data-color="0xe83c1e" style="background:#e83c1e" aria-label="Vermilion"></button>
+            <button type="button" class="lab-swatch" aria-pressed="false" data-color="0xc8b78a" style="background:#c8b78a" aria-label="Raw clay"></button>
+          </div>
+        </div>
+
+        <div class="lab-group">
+          <span class="lab-group-label"><span class="lgn">→ 04</span><span data-es="Acabado" data-en="Finish">Acabado</span></span>
+          <div class="lab-finishes" role="radiogroup" aria-label="Finish">
+            <button type="button" class="lab-finish" aria-pressed="false" data-finish="matte" data-es="Mate" data-en="Matte">Mate</button>
+            <button type="button" class="lab-finish" aria-pressed="true"  data-finish="satin" data-es="Satín" data-en="Satin">Satín</button>
+            <button type="button" class="lab-finish" aria-pressed="false" data-finish="gloss" data-es="Brillo" data-en="Gloss">Brillo</button>
+          </div>
+        </div>
+
+        <div class="lab-group">
+          <span class="lab-group-label"><span class="lgn">→ 05</span><span data-es="Cantidad" data-en="Quantity">Cantidad</span></span>
+          <div class="lab-qty" role="group" aria-label="Quantity">
+            <button type="button" class="lab-qty-btn" data-qty-step="-1" aria-label="Decrease">−</button>
+            <input type="number" id="labQty" min="1" max="500" step="1" value="1" inputmode="numeric">
+            <button type="button" class="lab-qty-btn" data-qty-step="1" aria-label="Increase">+</button>
+            <span class="lab-qty-tier" id="labQtyTier" data-es="una pieza" data-en="single piece">una pieza</span>
+          </div>
+        </div>
+
+        <div class="lab-spec" id="labSpec" aria-live="polite">
+          <span class="lab-spec-eyebrow mono" data-es="ESPECIFICACIÓN ACTUAL" data-en="CURRENT SPEC">ESPECIFICACIÓN ACTUAL</span>
+          <ul class="lab-spec-list" id="labSpecList"></ul>
+        </div>
+
+        <div class="lab-order">
+          <div class="price">
+            <small id="labPriceLabel" data-es="Taza · pedido a medida" data-en="Mug · made to order">Taza · pedido a medida</small>
+            <span id="labPrice">S/ 120</span>
+          </div>
+          <div class="lab-price-meta mono" id="labPriceMeta" aria-live="polite"></div>
+          <a class="btn-primary" id="labWaLink" href="https://wa.me/51912418482" target="_blank" rel="noopener">
+            <span data-es="Hacer este objeto" data-en="Make this object">Hacer este objeto</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <p class="lab-note" data-es="El visor usa el mismo <em>pipeline</em> WebGL con el que previsualizamos trabajos reales. La hidrografía se aplica sobre cerámica cocida; cada pieza es única — la película de agua nunca envuelve dos veces igual." data-en="The viewer uses the same WebGL <em>pipeline</em> we preview real jobs with. Hydroprinting is applied onto fired ceramic; every piece is unique — the water film never wraps the same twice." data-html="true">
+      El visor usa el mismo <em>pipeline</em> WebGL con el que previsualizamos trabajos reales. La hidrografía se aplica sobre cerámica cocida; cada pieza es única — la película de agua nunca envuelve dos veces igual.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SIGNATURE 03 · BRAND PRACTICE
+     Eight mechanics for brand stewardship that exist on no
+     other studio website. Cryptographic provenance, physical
+     color witnesses, stress-test wall, two-year letter, etc.
+     The full implementation lives at /marca/.
+     ============================================================ -->
+<style>
+  .bp-intro {
+    max-width: 780px;
+    margin-bottom: 32px;
+  }
+  .bp-intro p {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 360, 'opsz' 24;
+    font-size: 17px; line-height: 1.6;
+    color: var(--bone-70);
+  }
+  .bp-intro p strong { color: var(--bone); font-variation-settings: 'wght' 460; }
+  .bp-intro p em { color: var(--vermilion); font-style: italic; }
+
+  .bp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--iron-04);
+    border: 1px solid var(--iron-04);
+    margin: 16px 0 32px;
+  }
+  .bp-cell {
+    background: var(--iron);
+    padding: 22px 20px 24px;
+    text-decoration: none;
+    color: var(--bone);
+    transition: background .2s, color .2s;
+    display: flex;
+    flex-direction: column;
+    min-height: 150px;
+  }
+  .bp-cell:hover { background: var(--iron-04); }
+  .bp-cell .bp-num {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px; letter-spacing: 2px;
+    color: var(--vermilion); margin-bottom: 12px;
+  }
+  .bp-cell .bp-name {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 360, 'opsz' 48;
+    font-size: 19px; line-height: 1.2;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+  .bp-cell .bp-name em { color: var(--vermilion); font-style: italic; }
+  .bp-cell .bp-desc {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px; line-height: 1.5; letter-spacing: 0.5px;
+    color: var(--bone-45); margin-top: auto;
+  }
+  .bp-cell .bp-status {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--bone-20); margin-top: 8px;
+  }
+  .bp-cell .bp-status.live { color: var(--copper); }
+  .bp-cell .bp-status.scheduled { color: var(--bone-45); }
+
+  .bp-cta {
+    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    padding: 28px 24px;
+    background: var(--iron-02);
+    border: 1px solid var(--iron-04);
+    border-left: 2px solid var(--vermilion);
+  }
+  .bp-cta .bp-cta-text {
+    flex: 1; min-width: 240px;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 360, 'opsz' 36;
+    font-size: 16px; line-height: 1.4; color: var(--bone-70);
+  }
+  .bp-cta .bp-cta-text strong { color: var(--bone); font-variation-settings: 'wght' 460; }
+  .bp-cta a {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--vermilion);
+    color: var(--bone);
+    text-decoration: none;
+    padding: 14px 22px;
+    border-radius: 2px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    transition: background .2s;
+  }
+  .bp-cta a:hover { background: #d43515; }
+
+  /* tiny live preview tiles */
+  .bp-preview-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--iron-04);
+    margin: 0 0 28px;
+    border: 1px solid var(--iron-04);
+  }
+  .bp-preview-tile {
+    aspect-ratio: 1.2; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .bp-preview-tile .bpt-label {
+    position: absolute; bottom: 8px; left: 10px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    background: rgba(14,13,11,0.8); color: var(--bone);
+    padding: 3px 6px;
+  }
+  .bp-preview-tile.t-paper { background: #F6F2E8; }
+  .bp-preview-tile.t-fabric {
+    background: #F4EDD8;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(0,0,0,0.05) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(-45deg, rgba(0,0,0,0.05) 0 1px, transparent 1px 3px);
+  }
+  .bp-preview-tile.t-iron { background: radial-gradient(ellipse at 60% 40%, #1E1B15 0%, #0E0D0B 70%); }
+  .bp-preview-tile svg { width: 56%; height: auto; }
+  .bp-preview-tile.t-paper .rls-ink { fill: #E83C1E; }
+  .bp-preview-tile.t-fabric .rls-ink { fill: #E83C1E; }
+  .bp-preview-tile.t-iron .rls-ink { fill: #F6F2E8; }
+  .bp-preview-tile .bpt-label.dark { color: var(--iron); background: rgba(246,242,232,0.85); }
+
+  @media (max-width: 640px) {
+    .bp-cta { flex-direction: column; align-items: flex-start; }
+    .bp-preview-row { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+<section class="chapter" id="brand" aria-labelledby="brandH">
+  <div class="chapter-label">
+    <span><span class="num">03 /</span> <span data-es="La marca" data-en="The brand">La marca</span></span>
+    <span class="note" data-es="La mayoría de estudios entregan un PDF y una carpeta de Dropbox, y ahí termina la relación. Aquí no. Ocho mecánicas — ninguna existe en otro estudio — para que tu marca envejezca bien, se aplique correctamente, y pueda probarse en cualquier momento." data-en="Most studios deliver a PDF and a Dropbox folder, and that's where the relationship ends. Not here. Eight mechanics — none of them exist in any other studio — so your brand ages well, gets applied correctly, and can be proven at any moment.">La mayoría de estudios entregan un PDF y una carpeta de Dropbox, y ahí termina la relación. Aquí no. Ocho mecánicas — ninguna existe en otro estudio — para que tu marca envejezca bien, se aplique correctamente, y pueda probarse en cualquier momento.</span>
+  </div>
+  <div class="chapter-body">
+    <div id="brandH" class="mono" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bone-45);margin-bottom:28px">
+      <span data-es="PRÁCTICA DE MARCA · 8 MECÁNICAS · NINGUNA EXISTE EN OTRO ESTUDIO" data-en="BRAND PRACTICE · 8 MECHANICS · NONE EXIST IN ANY OTHER STUDIO">PRÁCTICA DE MARCA · 8 MECÁNICAS · NINGUNA EXISTE EN OTRO ESTUDIO</span>
+    </div>
+
+    <div class="bp-intro">
+      <p data-es="<strong>Una marca vive o muere por su gestión.</strong> Casi todo lo que se rompe en una marca pasa <em>después</em> de la entrega — el proveedor usa el archivo viejo, el equipo nuevo aplica el color desactualizado, el papel cambia y nadie lo nota. Studios trata la marca como tratamos los objetos: con procedencia firmada, testigos físicos, y verificación pública." data-en="<strong>A brand lives or dies by its stewardship.</strong> Almost everything that breaks in a brand happens <em>after</em> delivery — the vendor uses the old file, the new team applies the stale color, the paper changes and no one notices. Studios treats brands the way we treat objects: signed provenance, physical witnesses, public verification."></p>
+    </div>
+
+    <!-- mini stress-test preview to show one of the mechanics live -->
+    <div class="bp-preview-row" aria-label="Logo on three real surfaces">
+      <div class="bp-preview-tile t-paper">
+        <svg viewBox="0 0 200 80" aria-hidden="true">
+          <text x="100" y="58" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="56" font-weight="320" font-style="italic" class="rls-ink">RL<tspan font-style="normal" font-weight="400" fill="#0E0D0B">·S</tspan></text>
+        </svg>
+        <span class="bpt-label dark" data-es="Conqueror 120g" data-en="Conqueror 120g">Conqueror 120g</span>
+      </div>
+      <div class="bp-preview-tile t-fabric">
+        <svg viewBox="0 0 200 80" aria-hidden="true">
+          <text x="100" y="58" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="56" font-weight="320" font-style="italic" class="rls-ink">RL<tspan font-style="normal" font-weight="400" fill="#0E0D0B">·S</tspan></text>
+        </svg>
+        <span class="bpt-label dark" data-es="Algodón 200g" data-en="Cotton 200g">Algodón 200g</span>
+      </div>
+      <div class="bp-preview-tile t-iron">
+        <svg viewBox="0 0 200 80" aria-hidden="true">
+          <text x="100" y="58" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="56" font-weight="320" font-style="italic" class="rls-ink">RL<tspan font-style="normal" font-weight="400" fill="#F6F2E8">·S</tspan></text>
+        </svg>
+        <span class="bpt-label" data-es="Hierro mate" data-en="Matte iron">Hierro mate</span>
+      </div>
+    </div>
+
+    <!-- 8 mechanic chips -->
+    <div class="bp-grid">
+      <a class="bp-cell" href="/marca/#provenance">
+        <span class="bp-num">01</span>
+        <span class="bp-name" data-es="Cadena de <em>procedencia</em>" data-en="<em>Provenance</em> chain" data-html="true">Cadena de <em>procedencia</em></span>
+        <span class="bp-desc" data-es="Cada archivo firmado · arrastra para verificar." data-en="Every file signed · drag to verify.">Cada archivo firmado · arrastra para verificar.</span>
+        <span class="bp-status live" data-es="OPERATIVO · ED25519" data-en="LIVE · ED25519">OPERATIVO · ED25519</span>
+      </a>
+      <a class="bp-cell" href="/marca/#stress">
+        <span class="bp-num">02</span>
+        <span class="bp-name" data-es="Muro de <em>estrés</em>" data-en="<em>Stress-test</em> wall" data-html="true">Muro de <em>estrés</em></span>
+        <span class="bp-desc" data-es="Tu logo en 24+ superficies, tamaños, luces." data-en="Your logo on 24+ surfaces, sizes, lights.">Tu logo en 24+ superficies, tamaños, luces.</span>
+        <span class="bp-status live" data-es="OPERATIVO · DEMO ARRIBA" data-en="LIVE · PREVIEW ABOVE">OPERATIVO · DEMO ARRIBA</span>
+      </a>
+      <a class="bp-cell" href="/marca/#witness">
+        <span class="bp-num">03</span>
+        <span class="bp-name" data-es="Testigo de <em>color</em>" data-en="<em>Color</em> witness" data-html="true">Testigo de <em>color</em></span>
+        <span class="bp-desc" data-es="Muestras físicas · proveedor · fecha · ΔE." data-en="Physical samples · supplier · date · ΔE.">Muestras físicas · proveedor · fecha · ΔE.</span>
+        <span class="bp-status live" data-es="OPERATIVO · 8 TESTIGOS" data-en="LIVE · 8 WITNESSES">OPERATIVO · 8 TESTIGOS</span>
+      </a>
+      <a class="bp-cell" href="/marca/#letter">
+        <span class="bp-num">04</span>
+        <span class="bp-name" data-es="Carta a <em>2 años</em>" data-en="<em>Two-year</em> letter" data-html="true">Carta a <em>2 años</em></span>
+        <span class="bp-desc" data-es="Casos honestos · escritos a mano · 24 meses post-lanzamiento." data-en="Honest cases · handwritten · 24 months post-launch.">Casos honestos · escritos a mano · 24 meses post-lanzamiento.</span>
+        <span class="bp-status scheduled" data-es="PRIMERA CARTA · MAYO 2028" data-en="FIRST LETTER · MAY 2028">PRIMERA CARTA · MAYO 2028</span>
+      </a>
+      <a class="bp-cell" href="/marca/#shadow">
+        <span class="bp-num">05</span>
+        <span class="bp-name" data-es="Sombra de <em>marca</em>" data-en="<em>Brand</em> shadow" data-html="true">Sombra de <em>marca</em></span>
+        <span class="bp-desc" data-es="La dirección alterna · custodiada 7 años." data-en="The alternate direction · vaulted 7 years.">La dirección alterna · custodiada 7 años.</span>
+        <span class="bp-status scheduled" data-es="OPERATIVO CON CADA ENCARGO" data-en="LIVE WITH EVERY COMMISSION">OPERATIVO CON CADA ENCARGO</span>
+      </a>
+      <a class="bp-cell" href="/marca/#naming">
+        <span class="bp-num">06</span>
+        <span class="bp-name" data-es="Consulta de <em>nombre</em>" data-en="<em>Naming</em> Q&amp;A" data-html="true">Consulta de <em>nombre</em></span>
+        <span class="bp-desc" data-es="S/ 200 · 48 h · INDECOPI · fonética · dominio." data-en="S/ 200 · 48 h · INDECOPI · phonetics · domain.">S/ 200 · 48 h · INDECOPI · fonética · dominio.</span>
+        <span class="bp-status live" data-es="OPERATIVO · FORMULARIO ABAJO" data-en="LIVE · FORM BELOW">OPERATIVO · FORMULARIO ABAJO</span>
+      </a>
+      <a class="bp-cell" href="/marca/#heartbeat">
+        <span class="bp-num">07</span>
+        <span class="bp-name" data-es="Pulso de <em>marca</em>" data-en="<em>Brand</em> heartbeat" data-html="true">Pulso de <em>marca</em></span>
+        <span class="bp-desc" data-es="Auditoría anual de campo · informe a mano · 4 páginas." data-en="Annual field audit · handwritten report · 4 pages.">Auditoría anual de campo · informe a mano · 4 páginas.</span>
+        <span class="bp-status scheduled" data-es="SUSCRIPCIÓN · S/ 480 / AÑO" data-en="SUBSCRIPTION · S/ 480 / YEAR">SUSCRIPCIÓN · S/ 480 / AÑO</span>
+      </a>
+      <a class="bp-cell" href="/marca/#voice">
+        <span class="bp-num">08</span>
+        <span class="bp-name" data-es="Calibrador de <em>voz</em>" data-en="<em>Voice</em> calibrator" data-html="true">Calibrador de <em>voz</em></span>
+        <span class="bp-desc" data-es="Pega copy · recibe métricas · contra el perfil." data-en="Paste copy · get metrics · against the profile.">Pega copy · recibe métricas · contra el perfil.</span>
+        <span class="bp-status live" data-es="OPERATIVO · INTERACTIVO" data-en="LIVE · INTERACTIVE">OPERATIVO · INTERACTIVO</span>
+      </a>
+    </div>
+
+    <div class="bp-cta">
+      <div class="bp-cta-text" data-es="<strong>Ver las 8 mecánicas en detalle</strong> — con verificador de archivos, muro de estrés completo, galería de testigos, calibrador de voz operativo, y formulario de Consulta de nombre." data-en="<strong>See all 8 mechanics in detail</strong> — with file verifier, full stress-test wall, witness gallery, working voice calibrator, and Naming Q&amp;A form."></div>
+      <a href="/marca/" data-es="Entrar a /marca/ →" data-en="Enter /marca/ →">Entrar a /marca/ →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SIGNATURE 04 · REVERSE COMMISSIONING
+     The studio approaches you. Type your business name + category,
+     receive an unsolicited critique-and-proposal generated from
+     public signals and the studio's house brief template.
+     ============================================================ -->
+<section class="chapter" id="commission" aria-labelledby="commissionH">
+  <div class="chapter-label">
+    <span><span class="num">04 /</span> <span data-es="Comisión inversa" data-en="Reverse brief">Comisión inversa</span></span>
+    <span class="note" data-es="Tú no nos contactas. Nosotros te escribimos primero. Pon el nombre de tu lugar y la categoría. En menos de un minuto te devolvemos un briefing no solicitado — observación, diagnóstico, propuesta, inversión. Sin compromiso. Descártalo si quieres." data-en="You don't contact us. We write you first. Enter your place's name and category. In under a minute we return an unsolicited brief — observation, diagnosis, proposal, investment. No obligation. Discard it if you want.">Tú no nos contactas. Nosotros te escribimos primero. Pon el nombre de tu lugar y la categoría. En menos de un minuto te devolvemos un briefing no solicitado — observación, diagnóstico, propuesta, inversión. Sin compromiso. Descártalo si quieres.</span>
+  </div>
+  <div class="chapter-body">
+    <div id="commissionH" class="mono" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bone-45);margin-bottom:28px">
+      <span data-es="COMISIÓN INVERSA · DOS PUERTAS" data-en="REVERSE COMMISSIONING · TWO DOORS">COMISIÓN INVERSA · DOS PUERTAS</span>
+    </div>
+
+    <!-- ============= LIVE DROP PANEL ============= -->
+    <style>
+      .rc-drop {
+        border: 0.5px solid var(--rule-heavy);
+        background: var(--iron-02);
+        padding: 28px 28px 24px;
+        margin-bottom: 32px;
+      }
+      .rc-drop-head {
+        display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+        margin-bottom: 8px;
+      }
+      .rc-drop-state {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+        padding: 4px 9px; border-radius: 999px;
+      }
+      .rc-drop-state.upcoming { background: var(--iron-04); color: var(--copper); border: 1px solid var(--copper); }
+      .rc-drop-state.live     { background: var(--vermilion); color: var(--bone); }
+      .rc-drop-state.closed   { background: transparent; color: var(--bone-45); border: 1px solid var(--rule); }
+      .rc-drop-name {
+        font-family: 'Fraunces', serif;
+        font-variation-settings: 'wght' 320, 'opsz' 96;
+        font-size: clamp(28px, 4vw, 44px);
+        line-height: 1; letter-spacing: -1.2px;
+        color: var(--bone);
+      }
+      .rc-drop-name em { color: var(--vermilion); font-style: italic; }
+      .rc-drop-tagline {
+        font-family: 'Fraunces', serif; font-style: italic;
+        font-variation-settings: 'wght' 320, 'opsz' 24, 'slnt' -8;
+        font-size: 16px; color: var(--bone-70);
+        margin-bottom: 18px; max-width: 560px;
+      }
+      .rc-drop-countdown {
+        display: flex; gap: 18px; flex-wrap: wrap; margin: 12px 0 8px;
+        font-family: 'JetBrains Mono', monospace;
+      }
+      .rc-cd {
+        border-top: 1px solid var(--rule); padding-top: 6px; min-width: 64px;
+      }
+      .rc-cd .num {
+        font-family: 'Fraunces', serif;
+        font-variation-settings: 'wght' 320, 'opsz' 96;
+        font-size: 32px; line-height: 1; color: var(--bone);
+      }
+      .rc-cd .lbl {
+        font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+        color: var(--bone-45); margin-top: 2px;
+      }
+      .rc-drop-meta {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px; letter-spacing: 1px; color: var(--bone-45);
+        margin-top: 8px;
+      }
+      .rc-drop-meta strong { color: var(--bone); font-weight: 500; }
+      .rc-drop-actions {
+        display: flex; gap: 14px; flex-wrap: wrap;
+        margin-top: 18px;
+      }
+      .rc-drop-actions a, .rc-drop-actions button {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+        padding: 12px 18px; border-radius: 2px;
+        text-decoration: none; cursor: pointer;
+        border: 0.5px solid var(--rule); background: transparent; color: var(--bone-70);
+        transition: border-color .15s, color .15s;
+      }
+      .rc-drop-actions .primary {
+        background: var(--vermilion); color: var(--bone); border-color: var(--vermilion);
+      }
+      .rc-drop-actions .primary:hover { background: #d43515; }
+      .rc-drop-actions a:hover, .rc-drop-actions button:hover {
+        border-color: var(--vermilion); color: var(--bone);
+      }
+
+      .rc-pieces {
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 14px; margin: 24px 0 0;
+      }
+      .rc-piece {
+        border: 0.5px solid var(--rule);
+        background: var(--iron);
+        padding: 16px;
+        display: flex; flex-direction: column;
+        transition: border-color .2s;
+      }
+      .rc-piece:hover { border-color: var(--bone-20); }
+      .rc-piece.sold {
+        opacity: 0.55;
+      }
+      .rc-piece-thumb {
+        aspect-ratio: 1.2;
+        background: var(--iron-02);
+        position: relative; overflow: hidden;
+        margin-bottom: 12px;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .rc-piece-thumb .form-glyph {
+        font-family: 'Fraunces', serif; font-style: italic;
+        font-size: 56px; color: var(--vermilion); opacity: 0.4;
+      }
+      .rc-piece-ref {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9px; letter-spacing: 2px; color: var(--bone-45);
+      }
+      .rc-piece-name {
+        font-family: 'Fraunces', serif;
+        font-variation-settings: 'wght' 360, 'opsz' 36;
+        font-size: 16px; color: var(--bone);
+        margin: 4px 0 6px;
+      }
+      .rc-piece-pattern {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px; line-height: 1.5; letter-spacing: 0.5px;
+        color: var(--bone-45);
+        margin-bottom: 12px;
+      }
+      .rc-piece-foot {
+        display: flex; justify-content: space-between; align-items: center;
+        margin-top: auto; padding-top: 10px;
+        border-top: 0.5px solid var(--rule);
+      }
+      .rc-piece-price {
+        font-family: 'Fraunces', serif;
+        font-variation-settings: 'wght' 360, 'opsz' 48;
+        font-size: 18px; color: var(--bone);
+      }
+      .rc-piece-claim {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+        text-decoration: none;
+        color: var(--vermilion); border-bottom: 1px solid var(--vermilion);
+        padding-bottom: 2px;
+        transition: color .15s;
+      }
+      .rc-piece-claim:hover { color: var(--bone); border-color: var(--bone); }
+      .rc-piece-claim.sold-tag {
+        color: var(--bone-45); border: 0; cursor: default; pointer-events: none;
+      }
+
+      /* second-door divider */
+      .rc-second-door {
+        margin: 56px 0 24px;
+        padding-top: 28px;
+        border-top: 1px solid var(--rule);
+      }
+      .rc-second-door-eyebrow {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+        color: var(--vermilion); margin-bottom: 8px;
+      }
+      .rc-second-door-head {
+        font-family: 'Fraunces', serif;
+        font-variation-settings: 'wght' 320, 'opsz' 72;
+        font-size: clamp(22px, 3vw, 32px);
+        line-height: 1.1; letter-spacing: -0.6px;
+        color: var(--bone);
+        margin-bottom: 8px;
+      }
+      .rc-second-door-head em { color: var(--vermilion); font-style: italic; }
+      .rc-second-door-sub {
+        font-family: 'Fraunces', serif; font-style: italic;
+        font-variation-settings: 'wght' 320, 'opsz' 24, 'slnt' -8;
+        font-size: 15px; color: var(--bone-70); max-width: 540px;
+        margin-bottom: 16px;
+      }
+    </style>
+
+    <article class="rc-drop" id="rcDrop" aria-live="polite">
+      <div class="rc-drop-loading mono" style="font-size:11px;letter-spacing:2px;color:var(--bone-45);text-align:center;padding:32px 0">
+        <span data-es="cargando próxima tirada…" data-en="loading next drop…">cargando próxima tirada…</span>
+      </div>
+    </article>
+
+    <div class="rc-second-door">
+      <div class="rc-second-door-eyebrow" data-es="O · LA OTRA PUERTA" data-en="OR · THE OTHER DOOR">O · LA OTRA PUERTA</div>
+      <h3 class="rc-second-door-head" data-es="No puedes esperar. <em>Te escribimos primero</em>." data-en="Can't wait. <em>We write first</em>." data-html="true">No puedes esperar. <em>Te escribimos primero</em>.</h3>
+      <p class="rc-second-door-sub" data-es="Pon el nombre de tu lugar y la categoría. En menos de un minuto te devolvemos un briefing no solicitado — observación, diagnóstico, propuesta, inversión. Sin compromiso. Descártalo si quieres." data-en="Enter your place's name and category. In under a minute we return an unsolicited brief — observation, diagnosis, proposal, investment. No obligation. Discard it if you want."></p>
+    </div>
+
+    <form id="rcForm" class="rc-form" autocomplete="off">
+      <input name="rcName" type="text" required
+        placeholder="Nombre del lugar (ej. Curcucho Café)"
+        data-placeholder-es="Nombre del lugar (ej. Curcucho Café)"
+        data-placeholder-en="Place name (e.g. Curcucho Café)"
+        aria-label="Business name">
+      <select name="rcCategory" required aria-label="Category">
+        <option value="" data-es="— Categoría —" data-en="— Category —">— Categoría —</option>
+        <option value="cafe" data-es="Café / Cafetería" data-en="Café / Coffeeshop">Café / Cafetería</option>
+        <option value="restaurant" data-es="Restaurante" data-en="Restaurant">Restaurante</option>
+        <option value="fitness" data-es="Gimnasio / Estudio de fitness" data-en="Gym / Fitness studio">Gimnasio / Estudio de fitness</option>
+        <option value="wellness" data-es="Spa / Wellness / Estética" data-en="Spa / Wellness / Aesthetics">Spa / Wellness / Estética</option>
+        <option value="boutique" data-es="Boutique / Retail" data-en="Boutique / Retail">Boutique / Retail</option>
+        <option value="school" data-es="Escuela / Taller / Educación" data-en="School / Workshop / Education">Escuela / Taller / Educación</option>
+      </select>
+      <button type="submit" data-es="Generar briefing" data-en="Generate brief">Generar briefing</button>
+    </form>
+
+    <article class="rc-output" id="rcOutput" hidden aria-live="polite"></article>
+
+    <p class="lab-note" data-es="El briefing se genera con señales públicas y el criterio del estudio. En v0.3 se conecta a Vigía para leer el contexto real de tu distrito. Todo lo que mandamos lo revisa Stuart antes de contestar." data-en="The brief is generated from public signals and the studio's own criteria. In v0.3 it wires into Vigía to read your district's real context. Anything we send is reviewed by Stuart before replying.">
+      El briefing se genera con señales públicas y el criterio del estudio. En v0.3 se conecta a Vigía para leer el contexto real de tu distrito. Todo lo que mandamos lo revisa Stuart antes de contestar.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SIGNATURE 04 · THE OBJECT THAT REMEMBERS YOU
+     Every Studios object ships with an embedded NFC chip. Tap it
+     with your phone — land on a private memory page with order date,
+     Lima weather that day, the manifesto's typography that day, and
+     a fabrication timelapse of your specific object. Demo below.
+     ============================================================ -->
+<section class="chapter" id="memory" aria-labelledby="memoryH">
+  <div class="chapter-label">
+    <span><span class="num">05 /</span> <span data-es="Objeto con memoria" data-en="Object with memory">Objeto con memoria</span></span>
+    <span class="note" data-es="Cada objeto sale del estudio con un chip NFC discreto en la base. Acércalo al teléfono: aparece una página privada que sólo tú puedes ver — la fecha en que se encargó, el clima de Lima ese día, la tipografía del manifiesto esa tarde, un timelapse del objeto mientras se fabricaba. Prueba el demo." data-en="Every object leaves the studio with a discreet NFC chip in the base. Tap it with your phone: a private page appears, visible only to you — the order date, Lima's weather that day, the manifesto's typography that afternoon, a timelapse of your object while being fabricated. Try the demo.">Cada objeto sale del estudio con un chip NFC discreto en la base. Acércalo al teléfono: aparece una página privada que sólo tú puedes ver — la fecha en que se encargó, el clima de Lima ese día, la tipografía del manifiesto esa tarde, un timelapse del objeto mientras se fabricaba. Prueba el demo.</span>
+  </div>
+  <div class="chapter-body">
+    <div id="memoryH" class="mono" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bone-45);margin-bottom:28px">
+      <span data-es="OBJETO CON MEMORIA · DEMO INTERACTIVO" data-en="OBJECT WITH MEMORY · INTERACTIVE DEMO">OBJETO CON MEMORIA · DEMO INTERACTIVO</span>
+    </div>
+
+    <div class="memory-demo">
+      <div class="memory-object" aria-label="A Studios mug with an embedded NFC chip in the base">
+        <div class="memory-serial-label">
+          <span data-es="DEMO" data-en="DEMO">DEMO</span>
+          <span class="v">RLS-LMJ9T-4X7K</span>
+        </div>
+        <button type="button" id="nfcTap" class="nfc-tap" aria-expanded="false" aria-controls="memoryPage">
+          <span class="nfc-icon" aria-hidden="true">◉</span>
+          <span data-es="Acercar teléfono (simular)" data-en="Tap with phone (simulate)">Acercar teléfono (simular)</span>
+        </button>
+      </div>
+
+      <div class="memory-page" id="memoryPage" hidden>
+        <header class="memory-header">
+          <h3 id="memProductName">Taza Conquistadores N.º 047</h3>
+          <span class="serial" id="memSerial">RLS-LMJ9T-4X7K</span>
+        </header>
+
+        <div class="memory-section">
+          <h4 data-es="Fecha de encargo" data-en="Order date">Fecha de encargo</h4>
+          <p class="m-body" id="memOrderDate">—</p>
+          <p class="m-blurb" id="memOrderBlurb">—</p>
+        </div>
+
+        <div class="memory-section">
+          <h4 data-es="Clima en Lima ese día" data-en="Lima weather that day">Clima en Lima ese día</h4>
+          <div class="memory-wx-grid">
+            <div><span data-es="Condición" data-en="Condition">Condición</span><span class="v" id="memWxCond">—</span></div>
+            <div><span data-es="Temp." data-en="Temp.">Temp.</span><span class="v" id="memWxTemp">—</span></div>
+            <div><span data-es="Humedad" data-en="Humidity">Humedad</span><span class="v" id="memWxHum">—</span></div>
+            <div><span data-es="Viento" data-en="Wind">Viento</span><span class="v" id="memWxWind">—</span></div>
+          </div>
+        </div>
+
+        <div class="memory-section">
+          <h4 data-es="Tipografía del manifiesto esa tarde" data-en="Manifesto typography that afternoon">Tipografía del manifiesto esa tarde</h4>
+          <p class="memory-type-echo" id="memTypeEcho">
+            <span data-es="Rainey Laguna Studios hace cosas. Cosas que se miran, que se tocan, que duran. El manifiesto se leyó así el día que tu objeto fue fabricado." data-en="Rainey Laguna Studios makes things. Things you look at, things you hold, things that last. The manifesto read like this on the day your object was fabricated.">Rainey Laguna Studios hace cosas. Cosas que se miran, que se tocan, que duran. El manifiesto se leyó así el día que tu objeto fue fabricado.</span>
+            <small><span id="memTypeWght">wght · —</span> · <span id="memTypeOpsz">opsz · —</span></small>
+          </p>
+          <p class="m-blurb" id="memTypeNote">—</p>
+        </div>
+
+        <div class="memory-section">
+          <h4 data-es="Fabricación" data-en="Fabrication">Fabricación</h4>
+          <div class="memory-fab-list">
+            <span data-es="Impreso" data-en="Printed">Impreso</span>          <span class="v" id="memFabDate">—</span>
+            <span data-es="Duración" data-en="Duration">Duración</span>      <span class="v" id="memFabDuration">—</span>
+            <span data-es="Archivo" data-en="File">Archivo</span>            <span class="v" id="memFabFile">—</span>
+            <span data-es="Operador" data-en="Operator">Operador</span>      <span class="v" id="memFabOperator">—</span>
+            <span data-es="Envío" data-en="Shipped">Envío</span>             <span class="v" id="memShipDate">—</span>
+          </div>
+        </div>
+
+        <button type="button" class="memory-reset" id="memoryReset">
+          ← <span data-es="Cerrar memoria" data-en="Close memory">Cerrar memoria</span>
+        </button>
+      </div>
+    </div>
+
+    <p class="lab-note" data-es="Cada Studios NFC cuesta ≈ $1 por objeto en producción. La página de memoria se genera automáticamente desde los logs del taller. Esta demo usa un objeto simulado; los objetos reales empiezan a despacharse con chip desde el lote N.º 001 (agosto 2026)." data-en="Every Studios NFC costs ≈ $1 per object in production. The memory page is auto-generated from the workshop logs. This demo uses a simulated object; real pieces ship with chips from batch No. 001 onward (August 2026).">
+      Cada Studios NFC cuesta ≈ $1 por objeto en producción. La página de memoria se genera automáticamente desde los logs del taller. Esta demo usa un objeto simulado; los objetos reales empiezan a despacharse con chip desde el lote N.º 001 (agosto 2026).
+    </p>
+
+    <!-- Proof of Fabrication · public companion to the private NFC page -->
+    <div class="proof-panel">
+      <div class="proof-panel-text">
+        <span class="proof-panel-eyebrow mono" data-es="LA PRUEBA PÚBLICA · FIRMA ED25519" data-en="PUBLIC PROOF · ED25519 SIGNATURE">LA PRUEBA PÚBLICA · FIRMA ED25519</span>
+        <h3 class="proof-panel-title" data-es="Cada objeto lleva también un certificado <em>verificable para siempre</em>." data-en="Every object also carries a certificate that is <em>verifiable forever</em>." data-html="true">Cada objeto lleva también un certificado <em>verificable para siempre</em>.</h3>
+        <p class="proof-panel-body" data-es="Debajo de cada pieza que Studios fabrica hay un QR impreso. Apunta el teléfono y llega a una página pública que demuestra, con firma criptográfica, que este objeto específico salió de este taller, en esta fecha, desde el archivo que nosotros firmamos. No hay falsificaciones. No hay copias indistinguibles. Ningún otro estudio de diseño en Perú firma sus objetos." data-en="Under every piece Studios fabricates, a QR is printed. Point your phone at it and you land on a public page that proves, with a cryptographic signature, that this specific object came from this workshop, on this date, from the exact file we signed. No forgeries. No indistinguishable copies. No other design studio in Peru signs its objects.">Debajo de cada pieza que Studios fabrica hay un QR impreso. Apunta el teléfono y llega a una página pública que demuestra, con firma criptográfica, que este objeto específico salió de este taller, en esta fecha, desde el archivo que nosotros firmamos. No hay falsificaciones. No hay copias indistinguibles. Ningún otro estudio de diseño en Perú firma sus objetos.</p>
+      </div>
+      <!-- Mini preview auto-rendered from data/proofs/DEMO-0001.json -->
+      <div class="proof-panel-preview" data-proof-preview="DEMO-0001"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WORK
+     ============================================================ -->
+<section class="chapter" id="work" aria-labelledby="workH">
+  <div class="chapter-label">
+    <span><span class="num">06 /</span> <span data-es="Trabajo" data-en="Work">Trabajo</span></span>
+    <span class="note" data-es="El estudio es nuevo. El trabajo está creciendo. Lo que sí entregamos ya se puede ver." data-en="The studio is new. The work is growing. What we have delivered, you can already see.">El estudio es nuevo. El trabajo está creciendo. Lo que sí entregamos ya se puede ver.</span>
+  </div>
+  <div class="chapter-body">
+    <div id="workH" class="mono" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bone-45);margin-bottom:28px">
+      <span data-es="TRABAJO · 2026 →" data-en="WORK · 2026 →">TRABAJO · 2026 →</span>
+    </div>
+
+    <!-- ======= The Twin Wall · live mosaic of every twin fabricated ======= -->
+    <div class="twin-intro">
+      <span class="mono twin-intro-eyebrow" data-es="MUSEO DEL GEMELO · EN CURSO" data-en="THE TWIN WALL · IN PROGRESS">MUSEO DEL GEMELO · EN CURSO</span>
+      <h3 class="twin-intro-title" data-es="Cada objeto se fabrica <em>dos veces</em>. Uno viaja. El otro se queda en este muro." data-en="Every object is made <em>twice</em>. One travels. The other stays on this wall." data-html="true">Cada objeto se fabrica <em>dos veces</em>. Uno viaja. El otro se queda en este muro.</h3>
+    </div>
+    <div id="twinWall" class="twin-wall"></div>
+
+    <div class="twin-sep" aria-hidden="true"></div>
+
+    <a class="work-row" href="https://raineylaguna.com" target="_blank" rel="noopener">
+      <span class="work-idx">01</span>
+      <span class="work-name">Rainey <em>Laguna</em> .com</span>
+      <span class="work-meta">
+        <span class="cat" data-es="Sitio web · Marca · Sistema bilingüe" data-en="Website · Brand · Bilingual system">Sitio web · Marca · Sistema bilingüe</span>
+        <span class="year">2026</span>
+      </span>
+    </a>
+
+    <a class="work-row" href="#contact">
+      <span class="work-idx">02</span>
+      <span class="work-name" data-es="<em>Próximamente</em>" data-en="<em>Coming soon</em>" data-html="true"><em>Próximamente</em></span>
+      <span class="work-meta">
+        <span class="cat" data-es="Objeto · Impresión 3D + hidrografía" data-en="Object · 3D print + hydroprint">Objeto · Impresión 3D + hidrografía</span>
+        <span class="year">Q3 2026</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================
+     MAKE · services
+     ============================================================ -->
+<section class="chapter" id="make" aria-labelledby="makeH">
+  <div class="chapter-label">
+    <span><span class="num">07 /</span> <span data-es="Hacemos" data-en="We Make">Hacemos</span></span>
+    <span class="note" data-es="Siete campos. Un estudio. Toda obra que un lugar necesita — desde el logo hasta el objeto físico." data-en="Seven fields. One studio. Everything a place needs — from the mark to the physical object.">Siete campos. Un estudio. Toda obra que un lugar necesita — desde el logo hasta el objeto físico.</span>
+  </div>
+  <div class="chapter-body">
+    <div id="makeH" class="mono" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bone-45);margin-bottom:28px">
+      <span data-es="HACEMOS · 07 CAMPOS" data-en="WE MAKE · 07 FIELDS">HACEMOS · 07 CAMPOS</span>
+    </div>
+
+    <div class="make-grid">
+      <div class="make-cell">
+        <span class="m-num">→ 01 / <span data-es="Identidad" data-en="Identity">Identidad</span></span>
+        <h3 class="m-name" data-es="<em>Marca</em> de raíz." data-en="<em>Brand</em> from the root." data-html="true"><em>Marca</em> de raíz.</h3>
+        <p class="m-desc" data-es="Logo, sistema tipográfico, paleta, voz, y las reglas que mantienen la marca viva mientras el lugar crece. Diseñada una vez, resiste diez años." data-en="Logo, type system, palette, voice, and the rules that keep the brand alive as the place grows. Designed once, holds for ten years.">Logo, sistema tipográfico, paleta, voz, y las reglas que mantienen la marca viva mientras el lugar crece. Diseñada una vez, resiste diez años.</p>
+        <div class="m-foot"><span data-es="Desde" data-en="From">Desde</span><span class="price">S/ 2,500</span></div>
+      </div>
+
+      <div class="make-cell">
+        <span class="m-num">→ 02 / <span data-es="Impresos" data-en="Print">Impresos</span></span>
+        <h3 class="m-name" data-es="<em>Papel</em> con peso." data-en="<em>Paper</em> with weight." data-html="true"><em>Papel</em> con peso.</h3>
+        <p class="m-desc" data-es="Cartas, menús, posters, flyers, packaging, señalética. Diseño y producción — imprenta incluida, papeles reales, sin PDF genérico." data-en="Menus, posters, flyers, packaging, signage. Design and production — printing included, real papers, no generic PDF.">Cartas, menús, posters, flyers, packaging, señalética. Diseño y producción — imprenta incluida, papeles reales, sin PDF genérico.</p>
+        <div class="m-foot"><span data-es="Por tirada" data-en="Per run">Por tirada</span><span class="price" data-es="S/ 600 +" data-en="S/ 600 +">S/ 600 +</span></div>
+      </div>
+
+      <div class="make-cell">
+        <span class="m-num">→ 03 / <span data-es="Grabado láser" data-en="Laser">Grabado láser</span></span>
+        <h3 class="m-name" data-es="<em>Corte</em> y marca con láser." data-en="<em>Cut</em> and mark with laser." data-html="true"><em>Corte</em> y marca con láser.</h3>
+        <p class="m-desc" data-es="Corte y grabado sobre madera, acrílico, cuero, papel, card, MDF, corcho, y marca sobre metal anodizado y vidrio. Para señalética, posavasos, tarjetas, sellos, regalos corporativos, rotulación de menaje. Precisión de 0.1 mm, quemado limpio, sin intermediarios." data-en="Cutting and engraving on wood, acrylic, leather, paper, card, MDF, cork; marking on anodised metal and glass. For signage, coasters, cards, stamps, corporate gifts, engraving on tableware. 0.1 mm precision, clean burn, no middlemen.">Corte y grabado sobre madera, acrílico, cuero, papel, card, MDF, corcho, y marca sobre metal anodizado y vidrio. Para señalética, posavasos, tarjetas, sellos, regalos corporativos, rotulación de menaje. Precisión de 0.1 mm, quemado limpio, sin intermediarios.</p>
+        <div class="m-foot"><span data-es="Por pieza" data-en="Per piece">Por pieza</span><span class="price" data-es="S/ 25 +" data-en="S/ 25 +">S/ 25 +</span></div>
+      </div>
+
+      <div class="make-cell">
+        <span class="m-num">→ 04 / <span data-es="Impresión 3D" data-en="3D Printing">Impresión 3D</span></span>
+        <h3 class="m-name" data-es="<em>Objetos</em> desde el archivo." data-en="<em>Objects</em> from the file." data-html="true"><em>Objetos</em> desde el archivo.</h3>
+        <p class="m-desc" data-es="Modelado y fabricación en FDM y SLA. Prototipos, señalética, piezas cortas de serie, objetos de mesa. Desde el archivo hasta el objeto, sin intermediarios." data-en="Modelling and fabrication in FDM and SLA. Prototypes, signage, short-run pieces, table objects. From file to object, no middlemen.">Modelado y fabricación en FDM y SLA. Prototipos, señalética, piezas cortas de serie, objetos de mesa. Desde el archivo hasta el objeto, sin intermediarios.</p>
+        <div class="m-foot"><span data-es="Por pieza" data-en="Per piece">Por pieza</span><span class="price" data-es="S/ 80 +" data-en="S/ 80 +">S/ 80 +</span></div>
+      </div>
+
+      <div class="make-cell">
+        <span class="m-num">→ 05 / <span data-es="Hidrografía" data-en="Hydroprint">Hidrografía</span></span>
+        <h3 class="m-name" data-es="<em>Patrones</em> sobre objeto." data-en="<em>Patterns</em> onto object." data-html="true"><em>Patrones</em> sobre objeto.</h3>
+        <p class="m-desc" data-es="Transferencia de patrón por película de agua sobre tazas, objetos, partes y utilería. Acabados que no existen en la serigrafía ni en el vinilo — superficie real, tacto real." data-en="Water-transfer pattern printing onto mugs, objects, parts, props. Finishes that screenprint and vinyl cannot reach — real surface, real touch.">Transferencia de patrón por película de agua sobre tazas, objetos, partes y utilería. Acabados que no existen en la serigrafía ni en el vinilo — superficie real, tacto real.</p>
+        <div class="m-foot"><span data-es="Por objeto" data-en="Per object">Por objeto</span><span class="price" data-es="S/ 45 +" data-en="S/ 45 +">S/ 45 +</span></div>
+      </div>
+
+      <div class="make-cell">
+        <span class="m-num">→ 06 / <span data-es="Consultoría de marca" data-en="Brand consulting">Consultoría de marca</span></span>
+        <h3 class="m-name" data-es="<em>Dirección</em> que se queda." data-en="<em>Direction</em> that sticks." data-html="true"><em>Dirección</em> que se queda.</h3>
+        <p class="m-desc" data-es="Gestión de marca en curso — auditoría, dirección creativa, supervisión de proveedores, reuniones mensuales. Para lugares que tienen marca pero necesitan mano firme que la mantenga alineada." data-en="Ongoing brand management — audits, creative direction, vendor supervision, monthly working sessions. For places that have a brand and need a steady hand to keep it aligned.">Gestión de marca en curso — auditoría, dirección creativa, supervisión de proveedores, reuniones mensuales. Para lugares que tienen marca pero necesitan mano firme que la mantenga alineada.</p>
+        <div class="m-foot"><span data-es="Por mes" data-en="Per month">Por mes</span><span class="price" data-es="S/ 1,200 +" data-en="S/ 1,200 +">S/ 1,200 +</span></div>
+      </div>
+
+      <div class="make-cell" style="grid-column:1/-1">
+        <span class="m-num">→ 07 / <span data-es="Web" data-en="Web">Web</span></span>
+        <h3 class="m-name" data-es="<em>Pantalla</em> que trabaja." data-en="<em>Screens</em> that work." data-html="true"><em>Pantalla</em> que trabaja.</h3>
+        <p class="m-desc" data-es="La web está en manos de nuestra rama especializada, Rainey Laguna, en raineylaguna.com — sitios bilingües, Vigía, Garúa, Espejo. El mismo estudio, el mismo equipo, otra puerta." data-en="Web lives in our specialist arm, Rainey Laguna, at raineylaguna.com — bilingual sites, Vigía, Garúa, Espejo. Same studio, same team, different door.">La web está en manos de nuestra rama especializada, Rainey Laguna, en <a href="https://raineylaguna.com" target="_blank" rel="noopener">raineylaguna.com</a> — sitios bilingües, Vigía, Garúa, Espejo. El mismo estudio, el mismo equipo, otra puerta.</p>
+        <div class="m-foot"><span data-es="Ver" data-en="See">Ver</span><span class="price">raineylaguna.com →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section class="chapter" id="contact" aria-labelledby="contactH">
+  <div class="chapter-label">
+    <span><span class="num">08 /</span> <span data-es="Contacto" data-en="Contact">Contacto</span></span>
+    <span class="note" data-es="El estudio contesta el mismo día. WhatsApp se lee primero." data-en="The studio answers same-day. WhatsApp is read first.">El estudio contesta el mismo día. WhatsApp se lee primero.</span>
+  </div>
+  <div class="chapter-body">
+    <div id="contactH" class="mono" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bone-45);margin-bottom:40px">
+      <span data-es="CONTACTO · RESPUESTA EN EL DÍA" data-en="CONTACT · SAME-DAY REPLY">CONTACTO · RESPUESTA EN EL DÍA</span>
+    </div>
+
+    <div class="contact-row">
+      <div class="contact-cell">
+        <h4>WhatsApp</h4>
+        <a id="waLink" href="https://wa.me/51912418482?text=Hola%20Stuart%20%E2%80%94%20vi%20raineylagunastudios.com%20y%20quiero%20conversar." target="_blank" rel="noopener">+51 912 418 482</a>
+        <p data-es="El canal preferido." data-en="The preferred channel.">El canal preferido.</p>
+      </div>
+      <div class="contact-cell">
+        <h4>Email</h4>
+        <a href="mailto:hola@raineylaguna.com">hola@raineylaguna.com</a>
+        <p data-es="Para archivos grandes y propuestas formales." data-en="For large files and formal proposals.">Para archivos grandes y propuestas formales.</p>
+      </div>
+      <div class="contact-cell">
+        <h4 data-es="Estudio" data-en="Studio">Estudio</h4>
+        <span class="contact-address" data-es="Av. Conquistadores, San Isidro, Lima" data-en="Av. Conquistadores, San Isidro, Lima">Av. Conquistadores, San Isidro, Lima</span>
+        <p data-es="Con cita — pasa a ver el taller." data-en="By appointment — come see the workshop.">Con cita — pasa a ver el taller.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon" aria-label="Colophon">
+  <div class="col">
+    <h5>Rainey Laguna Studios</h5>
+    <p data-es="Un estudio de trabajo en Lima · Fundado 2026" data-en="A working studio in Lima · Est. 2026">Un estudio de trabajo en Lima · Fundado 2026</p>
+  </div>
+  <div class="col">
+    <h5 data-es="Familia" data-en="Family">Familia</h5>
+    <a href="https://raineylaguna.com" target="_blank" rel="noopener">raineylaguna.com</a><br>
+    <span style="color:var(--bone-45)" data-es="Rama web · negocios locales" data-en="Web arm · local businesses">Rama web · negocios locales</span>
+  </div>
+  <div class="col">
+    <h5 data-es="Código fuente" data-en="Source">Código fuente</h5>
+    <a href="https://github.com/raineylaguna-commons" target="_blank" rel="noopener">github.com/raineylaguna-commons</a><br>
+    <span style="color:var(--bone-45)" data-es="Cada sitio cliente · abierto desde el día uno" data-en="Every client site · open from day one">Cada sitio cliente · abierto desde el día uno</span>
+  </div>
+  <div class="col">
+    <h5 data-es="Mapa" data-en="Map">Mapa</h5>
+    <a href="/about/" data-es="Sobre el estudio" data-en="About the studio">Sobre el estudio</a><br>
+    <a href="/servicios/" data-es="Servicios · 7 campos" data-en="Services · 7 fields">Servicios · 7 campos</a><br>
+    <a href="/marca/" data-es="Marca · 8 mecánicas" data-en="Brand · 8 mechanics">Marca · 8 mecánicas</a><br>
+    <a href="/work/" data-es="Trabajo" data-en="Work">Trabajo</a><br>
+    <a href="/journal/" data-es="Diario" data-en="Journal">Diario</a><br>
+    <a href="/verify.html" data-es="Verificar →" data-en="Verify →">Verificar →</a>
+  </div>
+  <div class="col">
+    <h5 data-es="Legal" data-en="Legal">Legal</h5>
+    <a href="/privacy/" data-es="Privacidad" data-en="Privacy">Privacidad</a> ·
+    <a href="/terms/" data-es="Términos" data-en="Terms">Términos</a><br>
+    <span style="color:var(--bone-45)" data-es="Ley 29733 · Perú" data-en="Peru · Law 29733">Ley 29733 · Perú</span><br>
+    <span style="color:var(--bone-45)">RUC <span id="ruc">—</span></span>
+  </div>
+  <div class="col">
+    <h5 data-es="Colofón" data-en="Colophon">Colofón</h5>
+    <p data-es="Fraunces + JetBrains Mono. Diseñado y fabricado en casa. Esta página es parte del inventario del estudio." data-en="Fraunces + JetBrains Mono. Designed and fabricated in-house. This page is part of the studio's inventory.">Fraunces + JetBrains Mono. Diseñado y fabricado en casa. Esta página es parte del inventario del estudio.</p>
+  </div>
+</footer>
+
+<!-- =====================================================================
+     RUNTIME
+     ===================================================================== -->
+<script>
+// ---------- i18n -----------------------------------------------------------
+let LANG = (function detectLang() {
+  try {
+    const qs = new URLSearchParams(location.search).get('lang');
+    if (qs === 'en' || qs === 'es') return qs;
+    const saved = localStorage.getItem('rls-lang');
+    if (saved === 'en' || saved === 'es') return saved;
+  } catch(e){}
+  return (navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en';
+})();
+
+function applyI18n() {
+  document.documentElement.lang = LANG === 'es' ? 'es-PE' : 'en-US';
+
+  document.querySelectorAll('[data-es]').forEach(el => {
+    const es = el.getAttribute('data-es');
+    const en = el.getAttribute('data-en');
+    if (!es || !en) return;
+    const html = el.getAttribute('data-html') === 'true';
+    const txt = LANG === 'es' ? es : en;
+    if (html) el.innerHTML = txt; else el.textContent = txt;
+  });
+
+  // Title + description
+  const t = document.querySelector('title');
+  if (t) t.textContent = LANG === 'es' ? t.getAttribute('data-title-es') : t.getAttribute('data-title-en');
+  const d = document.querySelector('meta[name="description"]');
+  if (d) d.setAttribute('content', LANG === 'es' ? d.getAttribute('data-desc-es') : d.getAttribute('data-desc-en'));
+
+  // Toggle button state
+  document.getElementById('langEs').classList.toggle('active', LANG === 'es');
+  document.getElementById('langEn').classList.toggle('active', LANG === 'en');
+  document.getElementById('langEs').setAttribute('aria-pressed', LANG === 'es');
+  document.getElementById('langEn').setAttribute('aria-pressed', LANG === 'en');
+}
+
+function setLang(l) {
+  if (l === LANG) return;
+  LANG = l;
+  try { localStorage.setItem('rls-lang', l); } catch(e){}
+  applyI18n();
+  renderMastheadDate();
+  // Propagate language to input placeholders (Reverse Commissioning form)
+  document.querySelectorAll('[data-placeholder-es]').forEach(el => {
+    el.placeholder = LANG === 'es' ? el.getAttribute('data-placeholder-es') : el.getAttribute('data-placeholder-en');
+  });
+}
+document.getElementById('langEs').addEventListener('click', () => setLang('es'));
+document.getElementById('langEn').addEventListener('click', () => setLang('en'));
+
+// ---------- Masthead date -------------------------------------------------
+function renderMastheadDate() {
+  const now = new Date();
+  const opts = { timeZone: 'America/Lima', day: '2-digit', month: 'short', year: 'numeric' };
+  const locale = LANG === 'es' ? 'es-PE' : 'en-GB';
+  document.getElementById('mhDate').textContent =
+    new Intl.DateTimeFormat(locale, opts).format(now).replace(/\./g, '').toUpperCase();
+}
+
+// ---------- SIGNATURE 01 · THE LIVING MANIFESTO ---------------------------
+// Fetches current Lima weather from Open-Meteo and modulates the type.
+// Maps conditions to Fraunces axes:
+//   weight (wght):   240 (clear, dry)    → 520 (heavy garúa, humid)
+//   slant  (via ital): 0 (calm)          → slight italic when windy
+//   optical size (opsz): 10 (humid/dense) → 24 (clear/airy)
+//   letter-spacing: tighter in humid weather, opener when dry
+async function fetchLimaWeather() {
+  const URL = 'https://api.open-meteo.com/v1/forecast' +
+    '?latitude=-12.0464&longitude=-77.0428' +
+    '&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,cloud_cover,wind_speed_10m' +
+    '&timezone=America%2FLima';
+  try {
+    const r = await fetch(URL);
+    if (!r.ok) throw new Error('weather fetch failed');
+    const data = await r.json();
+    applyWeather(data.current);
+  } catch (e) {
+    // Silent failure — keep the baseline tokens. No user-facing error.
+    applyWeather({ temperature_2m: 18, relative_humidity_2m: 82, cloud_cover: 90, wind_speed_10m: 6, weather_code: 51 });
+  }
+}
+
+// WMO weather codes: https://open-meteo.com/en/docs
+// 0 clear, 1-3 cloud variants, 45-48 fog, 51-57 drizzle (garúa), 61-67 rain, 80-82 showers
+function weatherSummary(c) {
+  const code = c.weather_code;
+  const T = Math.round(c.temperature_2m);
+  const es = {
+    0:   'despejado', 1:  'despejado', 2:  'parcialmente nublado', 3:  'nublado',
+    45:  'neblina',   48: 'neblina',
+    51:  'garúa ligera', 53: 'garúa', 55: 'garúa fuerte',
+    61:  'lluvia ligera', 63: 'lluvia', 65: 'lluvia fuerte',
+    80:  'chubascos', 81: 'chubascos', 82: 'chubascos fuertes'
+  };
+  const en = {
+    0:   'clear', 1:  'clear', 2:  'partly cloudy', 3:  'overcast',
+    45:  'fog',   48: 'fog',
+    51:  'light drizzle', 53: 'drizzle', 55: 'heavy drizzle',
+    61:  'light rain', 63: 'rain', 65: 'heavy rain',
+    80:  'showers', 81: 'showers', 82: 'heavy showers'
+  };
+  const desc = (LANG === 'es' ? es : en)[code] || (LANG === 'es' ? 'nublado' : 'overcast');
+  return { desc, temp: T, code };
+}
+
+function applyWeather(c) {
+  const { desc, temp, code } = weatherSummary(c);
+  const humidity = c.relative_humidity_2m ?? 80;
+  const cloud    = c.cloud_cover ?? 80;
+  const wind     = c.wind_speed_10m ?? 5;
+
+  // ----- Map conditions to variable-font axes -----
+  // Humidity drives weight: drier Lima (rare) = lighter type; humid garúa = heavier.
+  const wght = Math.round(240 + ((humidity - 50) / 50) * 280);   // 240–520 range
+  // Cloud cover drives optical size: clearer = bigger opsz (more airy), heavier cloud = smaller opsz (denser).
+  const opsz = Math.round(24 - (cloud / 100) * 14);              // 10–24 range
+  // Wind drives a subtle tracking shift: windier = tighter.
+  const tracking = ((5 - Math.min(wind, 20)) / 300).toFixed(4);  // ~+0.016 to -0.05 em
+
+  const root = document.documentElement;
+  root.style.setProperty('--type-wght', Math.max(200, Math.min(600, wght)));
+  root.style.setProperty('--type-opsz', Math.max(9, Math.min(48, opsz)));
+  root.style.setProperty('--type-tracking', tracking + 'em');
+
+  // ----- Readouts -----
+  const wrSummary = document.getElementById('wrSummary');
+  const wrType    = document.getElementById('wrType');
+  if (wrSummary) wrSummary.textContent = `${desc} · ${temp}°`;
+  if (wrType)    wrType.textContent    = `wght · ${Math.max(200, Math.min(600, wght))} · opsz · ${Math.max(9, Math.min(48, opsz))}`;
+
+  // Nav chip
+  const navLive = document.getElementById('navLiveTxt');
+  if (navLive) navLive.textContent = `Lima · ${desc} · ${temp}°`;
+
+  // Masthead weather line
+  const mhWx = document.getElementById('mhWeather');
+  if (mhWx) {
+    const label = LANG === 'es' ? 'Lima ahora' : 'Lima now';
+    mhWx.textContent = `${label} · ${desc} · ${temp}°`;
+  }
+
+  window.__rls_weather = { desc, temp, code };
+}
+
+// =========================================================================
+// SIGNATURE 02 · HYDROPRINT LAB · CONTROLS WIRING
+// The Three.js scene is booted in scripts/hydroprint-lab.js, which exposes
+// window.__hydroprintLab. This block wires the DOM controls to that API.
+// =========================================================================
+function wireLabControls() {
+  const lab = () => window.__hydroprintLab;
+
+  // ------- pricing model ----------------------------------------------------
+  const FORMS = {
+    mug:     { es: 'Taza Conquistadores',          en: 'Conquistadores mug',         shortEs: 'Taza',     shortEn: 'Mug',      base: 120 },
+    plate:   { es: 'Plato Garúa · 24 cm',          en: 'Garúa plate · 24 cm',        shortEs: 'Plato',    shortEn: 'Plate',    base:  95 },
+    vase:    { es: 'Florero Atalaya · 22 cm',      en: 'Atalaya vase · 22 cm',       shortEs: 'Florero',  shortEn: 'Vase',     base: 240 },
+    coaster: { es: 'Posavasos · juego de 4',       en: 'Coasters · set of 4',        shortEs: 'Posavasos',shortEn: 'Coasters', base: 180 },
+    panel:   { es: 'Panel decorativo · 30 × 40 cm',en: 'Decorative panel · 30 × 40 cm',shortEs: 'Panel',  shortEn: 'Panel',    base: 380 }
+  };
+  const FINISH_MULT = { matte: 1.0, satin: 1.05, gloss: 1.15 };
+  const FINISH_LABEL = {
+    matte: { es: 'Mate',  en: 'Matte' },
+    satin: { es: 'Satín', en: 'Satin' },
+    gloss: { es: 'Brillo',en: 'Gloss' }
+  };
+  const COLOR_LABEL = {
+    'f6f2e8': { es: 'Hueso (#F6F2E8)',     en: 'Bone (#F6F2E8)' },
+    '0e0d0b': { es: 'Hierro (#0E0D0B)',    en: 'Iron (#0E0D0B)' },
+    '8aa9a0': { es: 'Cobre oxidado (#8AA9A0)', en: 'Oxide copper (#8AA9A0)' },
+    'e83c1e': { es: 'Vermellón (#E83C1E)', en: 'Vermilion (#E83C1E)' },
+    'c8b78a': { es: 'Arcilla cruda (#C8B78A)', en: 'Raw clay (#C8B78A)' }
+  };
+  const PATTERN_LABEL = {
+    p1: { es: 'Cuadrícula casa', en: 'House grid' },
+    p2: { es: 'Onda cobre',      en: 'Copper wave' },
+    p3: { es: 'Puntos vermellón',en: 'Vermilion dots' },
+    p4: { es: 'Mosaico hierro',  en: 'Iron mosaic' },
+    p5: { es: 'Confeti urbano',  en: 'Urban confetti' }
+  };
+  const QTY_TIERS = [
+    { min: 20, mult: 0.78, es: 'tirada · plazo a confirmar', en: 'production run · timeline TBC' },
+    { min: 6,  mult: 0.85, es: '6 + unidades · −15 %',       en: '6+ units · −15%' },
+    { min: 2,  mult: 0.92, es: '2 a 5 unidades · −8 %',      en: '2–5 units · −8%' },
+    { min: 1,  mult: 1.00, es: 'una pieza',                  en: 'single piece' }
+  ];
+  const CUSTOM_PATTERN_FEE = 30;
+
+  // ------- state -----------------------------------------------------------
+  const state = {
+    form: 'mug',
+    pattern: null,            // 'p1'..'p5' or 'custom'
+    customName: null,
+    color: 'f6f2e8',
+    finish: 'satin',
+    qty: 1
+  };
+
+  const setPressed = (group, el) => {
+    group.querySelectorAll('[aria-pressed]').forEach(n => n.setAttribute('aria-pressed', 'false'));
+    if (el) el.setAttribute('aria-pressed', 'true');
+  };
+  const lang = () => document.body.getAttribute('data-lang') === 'en' ? 'en' : 'es';
+
+  // ------- compute & render ------------------------------------------------
+  function compute() {
+    const form    = FORMS[state.form];
+    const fmult   = FINISH_MULT[state.finish] || 1;
+    const qty     = Math.max(1, Math.min(500, state.qty || 1));
+    const tier    = QTY_TIERS.find(t => qty >= t.min);
+    const custom  = state.pattern === 'custom' ? CUSTOM_PATTERN_FEE : 0;
+    const perPiece = (form.base + custom) * fmult;
+    const subtotal = perPiece * qty;
+    const total   = Math.round(subtotal * tier.mult);
+    return { form, fmult, qty, tier, custom, perPiece, total };
+  }
+
+  function fmtPEN(n) {
+    return 'S/ ' + Math.round(n).toLocaleString('es-PE');
+  }
+
+  function render() {
+    const L = lang();
+    const c = compute();
+
+    // Price + label
+    const priceEl  = document.getElementById('labPrice');
+    const labelEl  = document.getElementById('labPriceLabel');
+    const metaEl   = document.getElementById('labPriceMeta');
+    const tierEl   = document.getElementById('labQtyTier');
+    if (priceEl) priceEl.textContent = fmtPEN(c.total);
+    if (labelEl) labelEl.textContent = (L === 'en' ? c.form.shortEn : c.form.shortEs)
+      + ' · ' + (L === 'en' ? 'made to order' : 'pedido a medida');
+    if (metaEl) {
+      const perPieceTxt = L === 'en'
+        ? `${fmtPEN(c.perPiece)} per piece · ${c.qty} ${c.qty === 1 ? 'unit' : 'units'} · ${c.tier.en}`
+        : `${fmtPEN(c.perPiece)} por pieza · ${c.qty} ${c.qty === 1 ? 'unidad' : 'unidades'} · ${c.tier.es}`;
+      metaEl.textContent = perPieceTxt;
+    }
+    if (tierEl) tierEl.textContent = L === 'en' ? c.tier.en : c.tier.es;
+
+    // Spec list
+    const list = document.getElementById('labSpecList');
+    if (list) {
+      const patName = state.pattern === 'custom'
+        ? (state.customName || (L === 'en' ? 'custom upload' : 'archivo subido'))
+        : state.pattern && PATTERN_LABEL[state.pattern]
+          ? (L === 'en' ? PATTERN_LABEL[state.pattern].en : PATTERN_LABEL[state.pattern].es)
+          : (L === 'en' ? '— pick one —' : '— elegir —');
+      const colorLab  = COLOR_LABEL[state.color] || { es: state.color, en: state.color };
+      const finishLab = FINISH_LABEL[state.finish] || { es: state.finish, en: state.finish };
+      list.innerHTML = [
+        ['form',    L === 'en' ? c.form.en : c.form.es],
+        ['pattern', patName],
+        ['color',   L === 'en' ? colorLab.en : colorLab.es],
+        ['finish',  L === 'en' ? finishLab.en : finishLab.es],
+        ['qty',     c.qty + (L === 'en' ? (c.qty === 1 ? ' unit' : ' units') : (c.qty === 1 ? ' unidad' : ' unidades'))]
+      ].map(([k, v]) => `<li><span class="label">${k}</span><span class="val">${escapeHtml(v)}</span></li>`).join('');
+    }
+
+    // WhatsApp deep link with full spec
+    const wa = document.getElementById('labWaLink');
+    if (wa) {
+      const lines = L === 'en'
+        ? [
+            `Hi Stuart — I want to order this from the Lab:`,
+            ``,
+            `· Object: ${c.form.en}`,
+            `· Pattern: ${state.pattern === 'custom' ? (state.customName || 'custom upload') : (state.pattern ? PATTERN_LABEL[state.pattern].en : '(undecided)')}`,
+            `· Base color: ${COLOR_LABEL[state.color] ? COLOR_LABEL[state.color].en : state.color}`,
+            `· Finish: ${FINISH_LABEL[state.finish].en}`,
+            `· Quantity: ${c.qty}`,
+            `· Estimated total: ${fmtPEN(c.total)} (${c.tier.en})`,
+            ``,
+            `Lead time and deposit?`
+          ]
+        : [
+            `Hola Stuart — quiero hacer este pedido del Laboratorio:`,
+            ``,
+            `· Objeto: ${c.form.es}`,
+            `· Patrón: ${state.pattern === 'custom' ? (state.customName || 'archivo subido') : (state.pattern ? PATTERN_LABEL[state.pattern].es : '(por definir)')}`,
+            `· Color base: ${COLOR_LABEL[state.color] ? COLOR_LABEL[state.color].es : state.color}`,
+            `· Acabado: ${FINISH_LABEL[state.finish].es}`,
+            `· Cantidad: ${c.qty}`,
+            `· Total estimado: ${fmtPEN(c.total)} (${c.tier.es})`,
+            ``,
+            `¿Plazo de entrega y depósito?`
+          ];
+      wa.setAttribute('href', 'https://wa.me/51912418482?text=' + encodeURIComponent(lines.join('\n')));
+    }
+  }
+  function escapeHtml(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  // ------- wire controls --------------------------------------------------
+
+  // Object form selector
+  const formGroup = document.querySelector('.lab-forms');
+  if (formGroup) {
+    formGroup.querySelectorAll('.lab-form').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.form = btn.getAttribute('data-form');
+        setPressed(formGroup, btn);
+        // Update 3D readout label since the model itself stays the mug
+        const readout = document.querySelector('.lab-3d-readout .accent');
+        if (readout && state.form !== 'mug') {
+          readout.textContent = lang() === 'en' ? 'PREVIEW · MUG' : 'VISTA · TAZA';
+        } else if (readout) {
+          readout.textContent = lang() === 'en' ? 'WebGL VIEWER' : 'VISOR WebGL';
+        }
+        render();
+      });
+    });
+  }
+
+  // Patterns
+  const patternGroup = document.querySelector('.lab-patterns');
+  if (patternGroup) {
+    patternGroup.querySelectorAll('.lab-pattern').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = btn.getAttribute('data-pattern-url');
+        const id  = btn.getAttribute('data-pattern-id');
+        setPressed(patternGroup, btn);
+        state.pattern = id;
+        state.customName = null;
+        const fname = document.getElementById('labUploadName');
+        if (fname) fname.textContent = lang() === 'en' ? 'none' : 'ninguno';
+        if (lab()) lab().setPattern(url);
+        render();
+      });
+    });
+  }
+
+  // Upload
+  const upload = document.getElementById('labUpload');
+  const fnameEl = document.getElementById('labUploadName');
+  if (upload) {
+    upload.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      if (fnameEl) fnameEl.textContent = file.name;
+      state.pattern = 'custom';
+      state.customName = file.name;
+      const url = URL.createObjectURL(file);
+      if (patternGroup) setPressed(patternGroup, null);
+      if (lab()) lab().setPattern(url);
+      render();
+    });
+  }
+
+  // Swatches
+  const swatchGroup = document.querySelector('.lab-swatches');
+  if (swatchGroup) {
+    swatchGroup.querySelectorAll('.lab-swatch').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const hexAttr = btn.getAttribute('data-color') || '0xf6f2e8';
+        const hexHex  = hexAttr.replace(/^0x/i, '').toLowerCase();
+        const hexInt  = parseInt(hexAttr, 16);
+        setPressed(swatchGroup, btn);
+        state.color = hexHex;
+        if (lab()) lab().setBaseColor(hexInt);
+        render();
+      });
+    });
+  }
+
+  // Finish
+  const finishGroup = document.querySelector('.lab-finishes');
+  if (finishGroup) {
+    finishGroup.querySelectorAll('.lab-finish').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const finish = btn.getAttribute('data-finish');
+        setPressed(finishGroup, btn);
+        state.finish = finish;
+        if (lab()) lab().setFinish(finish);
+        render();
+      });
+    });
+  }
+
+  // Quantity stepper
+  const qtyInput = document.getElementById('labQty');
+  if (qtyInput) {
+    qtyInput.addEventListener('input', () => {
+      const v = parseInt(qtyInput.value, 10);
+      state.qty = isNaN(v) ? 1 : Math.max(1, Math.min(500, v));
+      render();
+    });
+    document.querySelectorAll('.lab-qty-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const step = parseInt(btn.getAttribute('data-qty-step'), 10) || 0;
+        const next = Math.max(1, Math.min(500, (state.qty || 1) + step));
+        state.qty = next;
+        qtyInput.value = next;
+        render();
+      });
+    });
+  }
+
+  // Re-render on language change
+  const mo = new MutationObserver(() => render());
+  mo.observe(document.body, { attributes: true, attributeFilter: ['data-lang'] });
+
+  // Initial finish + first render
+  document.getElementById('lab3d')?.addEventListener('lab:ready', () => {
+    if (lab()) lab().setFinish('satin');
+  });
+  render();
+}
+
+// ---------- Init ----------------------------------------------------------
+applyI18n();
+renderMastheadDate();
+wireLabControls();
+fetchLimaWeather();
+setInterval(fetchLimaWeather, 10 * 60 * 1000); // Refresh every 10 minutes
+</script>
+
+<!-- =====================================================================
+     SIGNATURE MODULES · loaded as ES modules (deferred after DOM parse)
+     ===================================================================== -->
+<script type="module" src="scripts/hydroprint-lab.js"></script>
+<script type="module" src="scripts/reverse-commissioning.js"></script>
+<script src="scripts/reverse-drops.js" defer></script>
+<script type="module" src="scripts/memory-object.js"></script>
+<script type="module" src="scripts/proof-of-fabrication.js"></script>
+<script type="module" src="scripts/twin-wall.js"></script>
+</body>
+</html>

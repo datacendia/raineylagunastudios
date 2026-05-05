@@ -1,0 +1,225 @@
+RAINEY LAGUNA STUDIOS · raineylagunastudios.com
+================================================
+Parent / main brand. raineylaguna.com is the web-dev vertical underneath it.
+Started May 2, 2026. Directory: c:\Users\Stu\raineylagunastudios
+
+THESIS
+------
+Studios makes things. Every interaction on the website leaves a physical
+trace in the real world. The site is an extension of the workshop, not a
+portfolio.
+
+6 SIGNATURE MECHANICS (v0.3 · May 2, 2026 · shipped)
+-----------------------------------------------------
+01 · THE LIVING MANIFESTO
+     Fraunces variable font modulated live by Lima weather via Open-Meteo.
+     Humidity → wght (240-520). Cloud cover → opsz (10-24).
+     Wind → letter-spacing. Same paragraph, different reading per weather.
+     STATUS: working end-to-end. Fetches real weather every 10 minutes.
+
+02 · THE HYDROPRINT LAB    (scripts/hydroprint-lab.js)
+     Live WebGL 3D viewer of a ceramic mug. Drop a photo OR pick a
+     house-pattern preset. Swap base colour (5 ceramics). Swap finish
+     (matte/satin/gloss). Orbit to inspect. "Make this object" → WhatsApp.
+     Uses Three.js ES module from CDN, PBR lighting, shadow-catcher ground.
+     STATUS: working. World-first mechanic on a design studio homepage.
+     Next iterations:
+       [ ] More geometries beyond the mug (coaster, planter, tray)
+       [ ] Pattern-on-water distortion shader for true hydro realism
+       [ ] Server-side render-to-PNG so orders include a preview image
+
+03 · REVERSE COMMISSIONING (scripts/reverse-commissioning.js)
+     Visitor types their business name + category, receives an
+     unsolicited 1-page brief in the studio's house template:
+     observation → diagnosis → 3-phase program → investment → timeline.
+     Currently deterministic templating over 6 categories (café,
+     restaurant, fitness, wellness, boutique, school).
+     STATUS: working. Output renders on an ivory "document" surface
+     to signal it's a deliverable, not UI chrome.
+     Next iterations:
+       [ ] Wire to an LLM (Claude or GPT-4o) for genuinely unique copy
+       [ ] Read Vigía competitive signals to make the observation specific
+       [ ] Save generated briefs server-side for Stuart's review queue
+
+05 · PROOF OF FABRICATION         (scripts/proof-of-fabrication.js · verify.html)
+     Every Studios object ships with a QR printed underneath leading to
+     a public /verify.html?serial=XXXX page. That page shows an Ed25519-
+     signed certificate: CAD hash, print params, operator, start/finish
+     timestamps, workshop climate, and the manifesto's typography state
+     the day of fabrication. World-first for a design studio.
+     STATUS: UI shipped (homepage panel + standalone verify page).
+     DEMO-0001 lives at data/proofs/DEMO-0001.json.
+     Next iterations:
+       [ ] Hardware-held Ed25519 signing key (Stuart's USB)
+       [ ] scripts/fab-sign.mjs CLI for one-command signing per object
+       [ ] Real signature verification in verify.html using @noble/ed25519
+       [ ] Printable A6 cert companion PDF
+
+06 · THE FABRICATION TWIN          (scripts/twin-wall.js · data/twins.json)
+     Every object Studios makes is fabricated twice. One ships to the
+     client. The other hangs on a physical wall in the workshop. The
+     homepage renders a 12x4 grid (48 cells) that fills as the wall
+     fills. Hover reveals client, object, date. Click jumps to the
+     proof-of-fabrication record.
+     STATUS: UI shipped. Wall is currently empty (1 demo twin).
+     Monthly ritual starting May 2026: photograph the wall, replace
+     data/twins.json with fresh entries.
+     Next iterations:
+       [ ] Physical wall built in the workshop (48-cell pegboard)
+       [ ] Monthly photo pipeline (iPhone → Lightroom preset → crop → JSON)
+       [ ] Scale: 48 fills in ~year one; rebuild to 192 cells once full
+       [ ] "Visit your twin" CTA on 1-year anniversary of any shipment
+
+---
+
+SOURCE-CODE COMMONS
+-------------------
+     Every client website Studios (or raineylaguna.com) ships goes public
+     on github.com/raineylaguna-commons from day one, with the client's
+     signed consent. Policy lives in COMMONS.md. Footer link live on
+     homepage. Forces us to compete on strategy, not code.
+     STATUS: policy shipped. GitHub org not yet created.
+     Next iterations:
+       [ ] Create github.com/raineylaguna-commons (free plan fine)
+       [ ] Draft Commons Clause for client contracts (ES/EN, 2 paragraphs)
+       [ ] Port raineylaguna.com as first commons repo
+       [ ] Write per-repo README template with "what this teaches"
+
+---
+
+SPRINT 2 / 3 · pending products (paperwork flow started)
+--------------------------------------------------------
+GARÚA AI (.com hospitality add-on · S/ 750/mo + S/ 800 setup)
+     Weather-triggered marketing stack. Drafts IG + WhatsApp + site hero
+     when Lima's atmosphere shifts. 90 days human-in-loop, then autopilot.
+     Blocked on: Meta Business verification, WA Business Platform, IG
+     Graph API app review. Paperwork drafts in
+     docs/meta-whatsapp-instagram-submission.md.
+
+LIVE AUDIT (.com homepage · free lead magnet)
+     Type business URL → 90-second competitive audit + 6-week roadmap +
+     one-click WhatsApp with signed PDF. Extends Reverse Commissioning.
+     Needs Vigía /api/audit endpoint, Lighthouse, Google Places, SerpAPI,
+     Claude.
+
+CARE VIVO / SELF-OPTIMISING SITE (.com · S/ 1,400/mo)
+     Claude loop ships weekly A/B-tested microchange per client site.
+     Use Thompson sampling for low-traffic cafés (14-21 day windows).
+     Scope v1: copy, button colour, section order.
+
+SOCIO / AI CO-FOUNDER (.com x Studios · S/ 1,200/mo + S/ 2,000 setup)
+     Per-client Claude trained on brand voice + menu + GA4 + 2-year
+     email/WA archive. Answers via WA Business in their voice. Retrieval
+     for factual queries, generative for strategy. 3-4 weeks to v1.
+
+---
+
+PRICING anchors (Lima independent-business market, set 2 May 2026)
+------------------------------------------------------------------
+Studios services         (one-time)       (recurring)
+  Identidad (brand)      S/ 2,500+
+  Impresos / run         S/ 600+
+  Láser / pieza          S/ 25+
+  Impresión 3D / pieza   S/ 80+
+  Hidrografía / objeto   S/ 45+
+  Consultoría de marca                    S/ 1,200/mo
+
+Studios add-ons
+  Proof of Fabrication   S/ 35/obj (free on commissions ≥ S/ 1,500)
+  Fabrication Twin       free on commissions ≥ S/ 500, else +40%
+
+.com products
+  Live Audit             free (lead magnet)
+  Garúa AI               S/ 800 setup   + S/ 750/mo
+  Care Vivo              -              + S/ 1,400/mo
+  Socio (AI Co-founder)  S/ 2,000 setup + S/ 1,200/mo
+  Vigía                  -              + S/ 1,200/mo
+  Espejo                 -              + S/ 800/mo (existing)
+
+Independiente Lima stack (hospitality)
+  One-time    S/ 11,500 + S/ 2,800 setup
+  Monthly     S/ 4,550  (Care Vivo + Vigía + Garúa + Socio)
+
+---
+
+04 · THE OBJECT THAT REMEMBERS YOU (scripts/memory-object.js)
+     Every Studios object ships with an embedded NFC chip. Tap with a
+     phone → private page with: order date, Lima weather that day,
+     manifesto's typography that day (applied live via Fraunces axes),
+     fabrication details, operator, ship date. v0.2 is a clickable demo
+     with one sample record. Real implementation needs the NFC provisioning
+     pipeline in the workshop.
+     STATUS: demo working, reveal animated, typography-echo correct.
+     Next iterations:
+       [ ] NFC chip provisioning script (writes URL + serial on fabrication)
+       [ ] Backend to store per-object records (Supabase or similar)
+       [ ] "My object" dashboard — owner re-taps to see archive
+
+VISUAL SYSTEM · iron mirror of .com
+------------------------------------
+- Background  #0E0D0B  (graphite · "iron")
+- Paper/ink   #F6F2E8  (ivory · "bone")
+- Accent      #E83C1E  (vermilion / industrial orange)
+- Secondary   #8AA9A0  (oxidised copper)
+- Fraunces (display, variable wght/opsz/slnt axes) + JetBrains Mono (UI)
+- Subtle SVG fractal noise grain overlay (28% opacity, mix-blend overlay)
+
+STRUCTURE (v0.1)
+----------------
+Single-file site at index.html (~1400 lines, bilingual via data-es/data-en)
+
+Sections:
+  Masthead      edition + date + status + lima-glasgow weather
+  Hero          Cosas que / se tocan. — weather-modulated type
+  01 Manifesto  living manifesto with live weather readout
+  02 Kiln       live-feed frame + queue + CTAs
+  03 Postcard   generated per visit with barcode
+  04 Work       raineylaguna.com as entry #01; coming-soon #02
+  05 Hacemos    6 services grid (Identidad, Impresos, 3D, Hidrografía,
+                Consultoría de marca, Web → .com)
+  06 Contacto   WhatsApp, email, studio address
+
+NEXT STEPS · priority order
+----------------------------
+User actions:
+  [ ] Register raineylagunastudios.com ($10-15/yr, any registrar)
+  [ ] Decide on tier pricing — current prices are placeholder drafts
+      (Identidad S/ 2,500+, Impresos S/ 600+, 3D S/ 80+, Hidro S/ 45+,
+       Consultoría S/ 1,200+/mo)
+  [ ] Acquire/identify a 3D printer that can be the Kiln (Prusa MK4 or
+      Bambu Lab A1 are both good fits)
+  [ ] Commission half-day photography of the workshop and first object
+
+Build work (I can own):
+  [ ] Wire the wrap-page + build-en pattern from .com once there are
+      multiple pages to justify the tooling
+  [ ] /en/ mirror when Spanish copy is locked
+  [ ] Deployment config (Netlify or Cloudflare Pages)
+  [ ] Favicon + OG image (same Playwright renderer pattern as .com)
+  [ ] Accessibility audit — port check-contrast.mjs, run against the
+      iron-and-bone palette
+  [ ] JSON-LD structured data (Organization, CreativeWork, FAQPage)
+  [ ] llms.txt for Studios
+  [ ] Plausible analytics is already wired (hostname-guarded for prod)
+
+THESIS EXTENSIONS · Phase 2 ideas
+----------------------------------
+- Workshop live cam (always-on, not just the Kiln — ambient studio view)
+- Object shop — limited-edition hydroprinted pieces for sale
+- "The Monday Bulletin" — A4 broadsheet produced weekly, PDF archive grows
+- Open-source: publish the variable-font weather-modulation code as a
+  tiny library others can use. Signal: the studio gives things away.
+- Hire a photographer in residence for a month to document the whole
+  studio in motion — the resulting film becomes the real hero video later
+
+DECISIONS STILL OPEN
+---------------------
+  [ ] Audience: Lima SMB end-to-end / higher-tier LATAM / Glasgow-Lima
+      dual / B2B agency fabrication — affects register of copy and prices
+  [ ] Thesis sentence lock — current is "Cosas que se tocan / Things you
+      hold"; candidates for the hero line also include:
+        - "Pantalla · mesa · taller" / "Screen · table · workshop"
+        - "De archivo a objeto" / "From file to object"
+        - "Un estudio que fabrica" / "A studio that fabricates"
+  [ ] Price ceiling and positioning tier (affects the visual direction
+      subtly — more craft-expensive feel vs more machine-accessible feel)

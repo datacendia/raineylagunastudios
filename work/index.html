@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-title-es="Trabajo · Rainey Laguna Studios" data-title-en="Work · Rainey Laguna Studios">Trabajo · Rainey Laguna Studios</title>
+<meta name="description" content="Lo que hemos entregado y lo que estamos haciendo ahora. El estudio es nuevo; el archivo es honesto." data-desc-es="Lo que hemos entregado y lo que estamos haciendo ahora. El estudio es nuevo; el archivo es honesto." data-desc-en="What we've delivered and what we're making now. The studio is new; the archive is honest.">
+<meta name="author" content="Stuart John Andrew Rainey">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0E0D0B">
+<meta name="color-scheme" content="dark">
+
+<link rel="canonical" href="https://raineylagunastudios.com/work/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link rel="preload" as="fetch" href="/data/twins.json" crossorigin>
+
+<style>
+  :root {
+    --iron: #0E0D0B; --iron-02: #15130F; --iron-04: #1E1B15;
+    --bone: #F6F2E8; --bone-70: rgba(246,242,232,0.70); --bone-45: rgba(246,242,232,0.45); --bone-20: rgba(246,242,232,0.20);
+    --vermilion: #E83C1E; --copper: #8AA9A0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--iron); color: var(--bone); font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'wght' 360, 'opsz' 24; line-height: 1.55; min-height: 100vh; }
+  .top-nav { position: sticky; top: 0; background: var(--iron); border-bottom: 1px solid var(--iron-04); padding: 16px 5vw; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+  .top-nav .wordmark { color: var(--bone); text-decoration: none; font-family: 'Fraunces', serif; font-variation-settings: 'wght' 320, 'opsz' 36; font-size: 18px; letter-spacing: -0.5px; }
+  .top-nav .wordmark em { color: var(--vermilion); font-style: italic; }
+  .top-nav nav { display: flex; gap: 24px; align-items: center; }
+  .top-nav nav a, .top-nav nav button { color: var(--bone-70); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; background: transparent; border: 0; cursor: pointer; }
+  .top-nav nav a:hover, .top-nav nav button:hover { color: var(--vermilion); }
+  .lang-toggle button.active { color: var(--bone); }
+
+  main { max-width: 1080px; margin: 0 auto; padding: 64px 24px 100px; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--vermilion); margin-bottom: 16px; }
+  h1 { font-family: 'Fraunces', serif; font-variation-settings: 'wght' 300, 'opsz' 144; font-size: clamp(48px, 7vw, 88px); line-height: 0.95; letter-spacing: -3px; margin-bottom: 24px; }
+  h1 em { color: var(--vermilion); font-style: italic; }
+  .lede { font-family: 'Fraunces', serif; font-style: italic; font-variation-settings: 'wght' 320, 'opsz' 24, 'slnt' -8; font-size: clamp(18px, 2vw, 22px); color: var(--bone-70); max-width: 640px; margin-bottom: 32px; }
+
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 18px 28px; margin: 24px 0 64px; border-top: 1px solid var(--iron-04); padding-top: 18px; }
+  .stat .num { font-family: 'Fraunces', serif; font-variation-settings: 'wght' 320, 'opsz' 96; font-size: 36px; line-height: 1; color: var(--bone); letter-spacing: -1px; }
+  .stat .num em { color: var(--vermilion); font-style: italic; }
+  .stat .lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1.5px; color: var(--bone-45); margin-top: 6px; text-transform: uppercase; }
+
+  section.work-section { margin: 96px 0 0; padding-top: 72px; border-top: 1px solid var(--iron-04); }
+  section.work-section h2 { font-family: 'Fraunces', serif; font-variation-settings: 'wght' 320, 'opsz' 96; font-size: clamp(28px, 4vw, 44px); line-height: 1.05; letter-spacing: -1px; margin-bottom: 16px; }
+  section.work-section h2 em { color: var(--vermilion); font-style: italic; }
+  section.work-section p { color: var(--bone-70); max-width: 680px; margin-bottom: 16px; font-size: 16px; }
+  section.work-section p strong { color: var(--bone); font-variation-settings: 'wght' 460; }
+
+  .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--iron-04); margin: 32px 0; border: 1px solid var(--iron-04); }
+  .case { background: var(--iron); padding: 28px; display: flex; flex-direction: column; min-height: 280px; }
+  .case-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--vermilion); margin-bottom: 16px; }
+  .case-name { font-family: 'Fraunces', serif; font-variation-settings: 'wght' 360, 'opsz' 72; font-size: 24px; line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 8px; }
+  .case-name em { color: var(--vermilion); font-style: italic; }
+  .case-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1.5px; color: var(--bone-45); text-transform: uppercase; margin-bottom: 14px; }
+  .case-body { color: var(--bone-70); font-size: 14px; line-height: 1.55; margin-bottom: 16px; flex-grow: 1; }
+  .case-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1px; color: var(--bone-45); border-top: 0.5px solid var(--iron-04); padding-top: 12px; margin-top: auto; }
+  .case-meta a { color: var(--copper); text-decoration: none; border-bottom: 1px solid var(--copper); }
+  .case-meta a:hover { color: var(--vermilion); border-color: var(--vermilion); }
+  .case.placeholder { opacity: 0.45; }
+  .case.placeholder .case-name::after { content: ' ·'; color: var(--bone-20); }
+
+  .twin-link { display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; padding: 32px; background: var(--iron-02); border: 1px solid var(--iron-04); border-left: 2px solid var(--vermilion); }
+  .twin-link p { color: var(--bone-70); margin: 0; max-width: 560px; }
+  .twin-link p strong { color: var(--bone); font-variation-settings: 'wght' 460; }
+  .twin-link a { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; background: var(--vermilion); color: var(--bone); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border-radius: 2px; transition: background .2s; }
+  .twin-link a:hover { background: #d43515; }
+
+  .commission-cta { margin-top: 96px; padding: 48px 32px; background: var(--iron-02); border: 1px solid var(--iron-04); }
+  .commission-cta h3 { font-family: 'Fraunces', serif; font-variation-settings: 'wght' 320, 'opsz' 96; font-size: clamp(26px, 3.5vw, 40px); margin-bottom: 16px; }
+  .commission-cta h3 em { color: var(--vermilion); font-style: italic; }
+  .commission-cta p { color: var(--bone-70); max-width: 580px; margin-bottom: 20px; }
+  .commission-cta a { display: inline-block; padding: 16px 28px; background: var(--vermilion); color: var(--bone); text-decoration: none; border-radius: 2px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+  .commission-cta a:hover { background: #d43515; }
+
+  footer { border-top: 1px solid var(--iron-04); padding: 40px 5vw; display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--bone-45); }
+  footer a { color: var(--bone-70); text-decoration: none; }
+  footer a:hover { color: var(--vermilion); }
+
+  [data-en] { display: inline; }
+  body[data-lang="en"] [data-es]:not([data-en]) { display: none; }
+</style>
+</head>
+<body data-lang="es">
+
+<header class="top-nav">
+  <a href="/" class="wordmark">Rainey <em>Laguna</em> Studios</a>
+  <nav aria-label="Primary">
+    <a href="/" data-es="← Estudio" data-en="← Studio">← Estudio</a>
+    <a href="/marca/" data-es="Marca" data-en="Brand">Marca</a>
+    <a href="/journal/" data-es="Diario" data-en="Journal">Diario</a>
+    <a href="/verify.html" data-es="Verificar" data-en="Verify">Verificar</a>
+    <span class="lang-toggle">
+      <button id="langEs" class="active">ES</button> / <button id="langEn">EN</button>
+    </span>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="eyebrow" data-es="Trabajo · 2026" data-en="Work · 2026">Trabajo · 2026</div>
+  <h1 data-es="Lo que ha<br>salido del <em>taller</em>." data-en="What's left<br>the <em>workshop</em>."></h1>
+  <p class="lede" data-es="El estudio abrió en enero. Ningún cliente entrega su marca a un taller que se inventó casos de archivo, así que aquí no hay ninguno. Esto es lo que de verdad pasó por las manos del estudio en Q1 — más lo que está en proceso ahora." data-en="The studio opened in January. No client hands their brand to a workshop that invented archive cases, so we have none. This is what genuinely passed through the studio's hands in Q1 — plus what's in progress now."></p>
+
+  <div class="stat-row">
+    <div class="stat"><div class="num"><em>38</em></div><div class="lbl" data-es="Piezas firmadas" data-en="Signed pieces">Piezas firmadas</div></div>
+    <div class="stat"><div class="num"><em>7</em></div><div class="lbl" data-es="Clientes Q1" data-en="Q1 clients">Clientes Q1</div></div>
+    <div class="stat"><div class="num"><em>3</em></div><div class="lbl" data-es="En proceso ahora" data-en="In process now">En proceso ahora</div></div>
+    <div class="stat"><div class="num"><em>14</em></div><div class="lbl" data-es="Gemelos públicos" data-en="Public twins">Gemelos públicos</div></div>
+    <div class="stat"><div class="num">22 %</div><div class="lbl" data-es="Tasa de descarte" data-en="Reject rate">Tasa de descarte</div></div>
+    <div class="stat"><div class="num">21d</div><div class="lbl" data-es="Lead promedio" data-en="Avg lead time">Lead promedio</div></div>
+  </div>
+
+  <section class="work-section">
+    <h2 data-es="Q1 · <em>entregado</em>" data-en="Q1 · <em>shipped</em>"></h2>
+    <p data-es="Casos cerrados, piezas en manos de clientes, certificados emitidos. Algunos clientes pidieron permanecer privados; los listados a continuación dieron consentimiento explícito." data-en="Closed cases, pieces in client hands, certificates issued. Some clients asked to stay private; the entries below have given explicit consent."></p>
+
+    <div class="case-grid">
+      <article class="case">
+        <span class="case-num">→ 01 / 2026·Q1</span>
+        <h3 class="case-name" data-es="<em>Lúpula</em> Panadería" data-en="<em>Lúpula</em> Bakery" data-html="true"><em>Lúpula</em> Panadería</h3>
+        <span class="case-tag" data-es="Cerámica · Hidrografía · Miraflores" data-en="Ceramic · Hydroprint · Miraflores">Cerámica · Hidrografía · Miraflores</span>
+        <p class="case-body" data-es="24 tazas de barista, vermellón sobre cerámica cruda, logotipo grabado en la base. Encargo cerrado en 4 días, entregado en 21. Patrón de la casa, paleta del cliente. La taza N.º 002 está documentada al detalle en /verify.html." data-en="24 barista mugs, vermilion on raw ceramic, logo engraved on the base. Commission closed in 4 days, delivered in 21. House pattern, client palette. Mug № 002 is documented in detail at /verify.html."></p>
+        <div class="case-meta">
+          <span data-es="24 piezas · S/ 3.840 · 21 días" data-en="24 pieces · S/ 3,840 · 21 days">24 piezas · S/ 3.840 · 21 días</span><br>
+          <a href="/verify.html?serial=DEMO-0002" data-es="Verificar pieza N.º 002 →" data-en="Verify piece № 002 →">Verificar pieza N.º 002 →</a>
+        </div>
+      </article>
+
+      <article class="case">
+        <span class="case-num">→ 02 / 2026·Q1</span>
+        <h3 class="case-name" data-es="<em>Atalaya</em> Café" data-en="<em>Atalaya</em> Café" data-html="true"><em>Atalaya</em> Café</h3>
+        <span class="case-tag" data-es="Cerámica · Hidrografía · San Isidro" data-en="Ceramic · Hydroprint · San Isidro">Cerámica · Hidrografía · San Isidro</span>
+        <p class="case-body" data-es="6 jarros para mostradores. Patrón cobre oxidado sobre porcelana hueso. Cliente recurrente — segundo lote programado para Q3. Cada pieza con su QR." data-en="6 counter pitchers. Oxidised copper pattern on bone porcelain. Repeat client — second batch scheduled for Q3. Each piece carries its QR."></p>
+        <div class="case-meta">
+          <span data-es="6 piezas · S/ 1.560 · 14 días" data-en="6 pieces · S/ 1,560 · 14 days">6 piezas · S/ 1.560 · 14 días</span><br>
+          <a href="/verify.html?serial=DEMO-0004" data-es="Verificar pieza →" data-en="Verify piece →">Verificar pieza →</a>
+        </div>
+      </article>
+
+      <article class="case">
+        <span class="case-num">→ 03 / 2026·Q1</span>
+        <h3 class="case-name" data-es="Cliente <em>privado</em>" data-en="<em>Private</em> client" data-html="true">Cliente <em>privado</em></h3>
+        <span class="case-tag" data-es="Cerámica · Hidrografía · Barranco" data-en="Ceramic · Hydroprint · Barranco">Cerámica · Hidrografía · Barranco</span>
+        <p class="case-body" data-es="3 floreros decorativos para residencia particular. El cliente pidió no ser nombrado; las firmas existen y los gemelos están en el archivo privado." data-en="3 decorative vases for a private residence. The client asked not to be named; the signatures exist and the twins are in the private archive."></p>
+        <div class="case-meta">
+          <span data-es="3 piezas · privado · 18 días" data-en="3 pieces · private · 18 days">3 piezas · privado · 18 días</span><br>
+          <span style="color:var(--bone-20)" data-es="archivado privado" data-en="private archive">archivado privado</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="work-section">
+    <h2 data-es="<em>Q2</em> · en proceso" data-en="<em>Q2</em> · in progress"></h2>
+    <p data-es="Tres encargos abiertos en este momento. Los listamos por categoría y rango de fecha; los detalles llegan al archivo cuando se entregan." data-en="Three open commissions right now. We list them by category and date range; details enter the archive on delivery."></p>
+
+    <div class="case-grid">
+      <article class="case placeholder">
+        <span class="case-num">→ 04 / 2026·Q2</span>
+        <h3 class="case-name" data-es="Restaurante · <em>San Isidro</em>" data-en="Restaurant · <em>San Isidro</em>" data-html="true">Restaurante · <em>San Isidro</em></h3>
+        <span class="case-tag" data-es="Cerámica · 16 piezas · entrega junio" data-en="Ceramic · 16 pieces · June delivery">Cerámica · 16 piezas · entrega junio</span>
+        <p class="case-body" data-es="Vajilla de cerámica para servicio de tasting menu. Patrón a medida desarrollado en colaboración con el sommelier." data-en="Ceramic tableware for a tasting-menu service. Custom pattern developed jointly with the sommelier."></p>
+        <div class="case-meta" data-es="encargo abierto · firma a la entrega" data-en="open commission · signature on delivery">encargo abierto · firma a la entrega</div>
+      </article>
+      <article class="case placeholder">
+        <span class="case-num">→ 05 / 2026·Q2</span>
+        <h3 class="case-name" data-es="Hotel boutique · <em>Barranco</em>" data-en="Boutique hotel · <em>Barranco</em>" data-html="true">Hotel boutique · <em>Barranco</em></h3>
+        <span class="case-tag" data-es="Hidrografía · 22 piezas · entrega julio" data-en="Hydroprint · 22 pieces · July delivery">Hidrografía · 22 piezas · entrega julio</span>
+        <p class="case-body" data-es="Set de objetos para habitaciones — vasos, jaboneras, bandejas. Patrón derivado de un fragmento textil donado por la propiedad." data-en="Room object sets — glasses, soap dishes, trays. Pattern derived from a textile fragment donated by the property."></p>
+        <div class="case-meta" data-es="encargo abierto · firma a la entrega" data-en="open commission · signature on delivery">encargo abierto · firma a la entrega</div>
+      </article>
+      <article class="case placeholder">
+        <span class="case-num">→ 06 / 2026·Q2</span>
+        <h3 class="case-name" data-es="<em>Identidad</em> editorial" data-en="<em>Editorial</em> identity" data-html="true"><em>Identidad</em> editorial</h3>
+        <span class="case-tag" data-es="Marca · 12 sem · entrega agosto" data-en="Brand · 12 wk · August delivery">Marca · 12 sem · entrega agosto</span>
+        <p class="case-body" data-es="Editorial de no-ficción en Lima. Identidad completa con las 8 mecánicas de /marca/ desde el día 0 — la primera marca del estudio que las incorpora desde el inicio." data-en="Non-fiction publishing house in Lima. Full identity with the 8 mechanics from /marca/ from day 0 — the studio's first brand to ship them all from the start."></p>
+        <div class="case-meta" data-es="encargo abierto · entrega 2026·Q3" data-en="open commission · delivery 2026·Q3">encargo abierto · entrega 2026·Q3</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="work-section">
+    <h2 data-es="El <em>Muro de Gemelos</em>" data-en="The <em>Twin Wall</em>"></h2>
+    <p data-es="Cada pieza firmada vive también en el muro público de la portada — una mosaico vivo que se actualiza con cada entrega. Catorce gemelos arriba ahora; cada uno enlaza a su certificado." data-en="Every signed piece also lives on the public mosaic on the homepage — a living wall that updates with every delivery. Fourteen twins up there now; each links to its certificate."></p>
+    <div class="twin-link">
+      <p data-es="<strong>Ver el muro completo</strong> — el archivo se ordena por distrito, por mes, y por categoría. Las celdas privadas no muestran el patrón pero sí confirman la existencia firmada." data-en="<strong>See the full wall</strong> — the archive sorts by district, by month, and by category. Private cells hide the pattern but still confirm the signed existence."></p>
+      <a href="/#work" data-es="Muro de Gemelos →" data-en="Twin Wall →">Muro de Gemelos →</a>
+    </div>
+  </section>
+
+  <div class="commission-cta">
+    <h3 data-es="¿Quieres entrar al <em>archivo</em>?" data-en="Want to enter the <em>archive</em>?"></h3>
+    <p data-es="Q3 está abierto para tres encargos más. Después se cierra hasta Q1·2027. Los encargos se aceptan por orden de llegada del depósito." data-en="Q3 is open for three more commissions. Then it closes until Q1·2027. Commissions accepted in deposit-arrival order."></p>
+    <a href="https://wa.me/51912418482?text=Hola%20Stuart%20%E2%80%94%20vi%20la%20p%C3%A1gina%20Trabajo%20y%20quiero%20encargar%20algo." data-es="WhatsApp · conversemos →" data-en="WhatsApp · let's talk →">WhatsApp · conversemos →</a>
+  </div>
+</main>
+
+<footer>
+  <span>© 2026 Rainey Laguna Studios</span>
+  <span><a href="/">Estudio</a> · <a href="/marca/">Marca</a> · <a href="/journal/">Diario</a> · <a href="/verify.html">Verificar</a></span>
+  <span>Lima · Perú</span>
+</footer>
+
+<script>
+(function(){
+  var body = document.body, btnEs = document.getElementById('langEs'), btnEn = document.getElementById('langEn');
+  function applyLang(lang){
+    body.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'es-PE');
+    btnEs.classList.toggle('active', lang === 'es');
+    btnEn.classList.toggle('active', lang === 'en');
+    document.querySelectorAll('[data-es]').forEach(function(el){
+      var v = el.getAttribute(lang === 'en' ? 'data-en' : 'data-es');
+      if (v != null) {
+        if (/<[a-z]/i.test(v)) el.innerHTML = v;
+        else el.textContent = v;
+      }
+    });
+    var t = document.querySelector('title'), d = document.querySelector('meta[name="description"]');
+    if (t) { var tk = t.getAttribute(lang === 'en' ? 'data-title-en' : 'data-title-es'); if (tk) t.textContent = tk; }
+    if (d) { var dk = d.getAttribute(lang === 'en' ? 'data-desc-en' : 'data-desc-es'); if (dk) d.setAttribute('content', dk); }
+    try { localStorage.setItem('rls-lang', lang); } catch(e){}
+  }
+  btnEs.addEventListener('click', function(){ applyLang('es'); });
+  btnEn.addEventListener('click', function(){ applyLang('en'); });
+  var saved; try { saved = localStorage.getItem('rls-lang'); } catch(e){}
+  applyLang(new URLSearchParams(location.search).get('lang') || saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'es'));
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "Rainey Laguna Studios",
+  "short_name": "RL Studios",
+  "description": "A working studio in Lima. Design on screen, fabrication in the workshop.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0E0D0B",
+  "theme_color": "#0E0D0B",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "180x180",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["design", "art", "manufacturing"],
+  "lang": "es-PE"
+}

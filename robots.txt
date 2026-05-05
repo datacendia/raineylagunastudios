@@ -1,0 +1,59 @@
+# robots.txt — Rainey Laguna Studios
+# https://raineylagunastudios.com/robots.txt
+#
+# v0.1 — site is currently noindex,nofollow at the meta level.
+# When launching: remove the meta robots tag in index.html and
+# the launch line below will already permit crawling.
+
+# Standard search engines: full access
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# AI / generative crawlers: explicitly allowed (we want to be cited)
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI / Gemini
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Common Crawl
+User-agent: CCBot
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+# Bing / Microsoft
+User-agent: bingbot
+Allow: /
+User-agent: msnbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://raineylagunastudios.com/sitemap.xml
+
+# Host hint
+Host: https://raineylagunastudios.com

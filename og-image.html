@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<title>OG Image — Rainey Laguna Studios (1200×630)</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* HOW TO USE
+     Render to PNG via the .com Playwright script (works on either project):
+       node scripts/render-og.mjs                  (from c:/Users/Stu/raineylagunastudios)
+     or open this file and screenshot the .og-card at exactly 1200×630.
+     Save as og-image.png and switch og:image / twitter:image meta tags from .svg to .png. */
+
+  body { margin: 0; background: #1a1a1a; display: grid; place-items: center; min-height: 100vh; padding: 40px; font-family: 'Fraunces', Georgia, serif; }
+  .og-card {
+    width: 1200px;
+    height: 630px;
+    position: relative;
+    overflow: hidden;
+    background: #0E0D0B;
+    color: #F6F2E8;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(246,242,232,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(246,242,232,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 78%);
+            mask-image: radial-gradient(ellipse at center, black 35%, transparent 78%);
+  }
+  .frame {
+    position: relative; z-index: 2;
+    padding: 80px;
+    height: 100%;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .top-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(246,242,232,0.55);
+  }
+  .mark { width: 140px; height: 140px; }
+  h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: 'wght' 320, 'opsz' 144;
+    font-weight: 320;
+    font-size: 116px;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    margin: 0;
+  }
+  h1 em {
+    font-style: italic;
+    color: #E83C1E;
+    font-variation-settings: 'wght' 320, 'opsz' 144, 'slnt' -10;
+  }
+  .footer-row {
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: rgba(246,242,232,0.78);
+  }
+  .corner-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(246,242,232,0.35);
+  }
+  .vermilion-rule {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    height: 4px;
+    background: #E83C1E;
+  }
+</style>
+</head>
+<body>
+  <div class="og-card">
+    <div class="grid"></div>
+    <div class="frame">
+      <div class="top-row">
+        <div class="eyebrow">Rainey Laguna Studios · Lima · Est. 2026</div>
+        <svg class="mark" viewBox="0 0 80 80" aria-hidden="true">
+          <circle cx="40" cy="40" r="36" fill="none" stroke="#F6F2E8" stroke-width="2"/>
+          <line x1="40" y1="6"  x2="40" y2="74" stroke="#F6F2E8" stroke-width="2"/>
+          <line x1="6"  y1="40" x2="74" y2="40" stroke="#F6F2E8" stroke-width="2"/>
+          <circle cx="40" cy="40" r="4" fill="#E83C1E"/>
+        </svg>
+      </div>
+      <h1>Cosas que se miran,<br>que se tocan,<br><em>que duran.</em></h1>
+      <div class="footer-row">
+        <span class="corner-meta">v.2026.05 · IRON · BONE · VERMILION</span>
+        <span class="url">RAINEYLAGUNASTUDIOS.COM</span>
+      </div>
+    </div>
+    <div class="vermilion-rule"></div>
+  </div>
+</body>
+</html>

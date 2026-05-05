@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title data-title-es="Privacidad · Rainey Laguna Studios" data-title-en="Privacy · Rainey Laguna Studios">Privacidad · Rainey Laguna Studios</title>
+<meta name="description" content="Política de privacidad de Rainey Laguna Studios. Cumple con la Ley 29733 de Perú." data-desc-es="Política de privacidad de Rainey Laguna Studios. Cumple con la Ley 29733 de Perú." data-desc-en="Privacy policy for Rainey Laguna Studios. Compliant with Peru's Law 29733.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0E0D0B">
+<meta name="color-scheme" content="dark">
+
+<link rel="canonical" href="https://raineylagunastudios.com/privacy/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --iron: #0E0D0B; --iron-04: #1E1B15;
+    --bone: #F6F2E8; --bone-70: rgba(246,242,232,0.70); --bone-45: rgba(246,242,232,0.45);
+    --vermilion: #E83C1E;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--iron); color: var(--bone);
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: 'wght' 360, 'opsz' 24;
+    line-height: 1.6; min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .skip-link {
+    position: absolute; top: -40px; left: 0;
+    background: var(--bone); color: var(--iron);
+    padding: 8px 12px; font-family: 'JetBrains Mono',monospace;
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .skip-link:focus { top: 0; }
+  .top-nav {
+    position: sticky; top: 0; background: var(--iron);
+    border-bottom: 1px solid var(--iron-04);
+    padding: 16px 5vw;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100;
+  }
+  .top-nav .wordmark {
+    color: var(--bone); text-decoration: none;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 320, 'opsz' 36;
+    font-size: 18px; letter-spacing: -0.5px;
+  }
+  .top-nav .wordmark em { color: var(--vermilion); font-style: italic; }
+  .top-nav nav { display: flex; gap: 24px; align-items: center; }
+  .top-nav nav a, .top-nav nav button {
+    color: var(--bone-70); text-decoration: none;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    background: transparent; border: 0; cursor: pointer; transition: color .2s;
+  }
+  .top-nav nav a:hover, .top-nav nav button:hover { color: var(--vermilion); }
+  .lang-toggle button.active { color: var(--bone); }
+
+  main { max-width: 720px; margin: 0 auto; padding: 80px 24px 120px; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--bone-45); margin-bottom: 24px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 320, 'opsz' 144;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1; letter-spacing: -2px;
+    margin-bottom: 28px;
+  }
+  h1 em { color: var(--vermilion); font-style: italic; }
+  .updated {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 1.5px; color: var(--bone-45);
+    margin-bottom: 56px; text-transform: uppercase;
+  }
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 320, 'opsz' 96;
+    font-size: clamp(22px, 2.6vw, 28px);
+    line-height: 1.2; letter-spacing: -0.5px;
+    margin: 40px 0 16px;
+  }
+  p { margin-bottom: 16px; color: var(--bone-70); max-width: 640px; }
+  p strong, ul strong { color: var(--bone); font-variation-settings: 'wght' 500; }
+  ul { margin: 0 0 16px 22px; color: var(--bone-70); }
+  ul li { margin-bottom: 8px; }
+  a { color: var(--bone); text-decoration: underline; text-decoration-color: var(--bone-45); text-underline-offset: 3px; transition: color .2s; }
+  a:hover { color: var(--vermilion); }
+  hr { border: 0; border-top: 1px solid var(--iron-04); margin: 48px 0; }
+
+  footer {
+    border-top: 1px solid var(--iron-04);
+    padding: 40px 5vw;
+    display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--bone-45);
+  }
+  footer a { color: var(--bone-70); text-decoration: none; }
+  footer a:hover { color: var(--vermilion); }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body data-lang="es">
+
+<a href="#main" class="skip-link" data-es="Ir al contenido" data-en="Skip to content">Ir al contenido</a>
+
+<header class="top-nav">
+  <a href="/" class="wordmark">Rainey <em>Laguna</em> Studios</a>
+  <nav aria-label="Primary">
+    <a href="/" data-es="← Estudio" data-en="← Studio">← Estudio</a>
+    <span class="lang-toggle">
+      <button id="langEs" class="active">ES</button>
+      /
+      <button id="langEn">EN</button>
+    </span>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="eyebrow" data-es="Legal · 01" data-en="Legal · 01">Legal · 01</div>
+  <h1 data-es="Privacidad,<br>en <em>claro.</em>" data-en="Privacy,<br>in <em>plain</em> terms."></h1>
+  <p class="updated" data-es="Vigente desde · 03 mayo 2026 · v0.1" data-en="Effective · 03 May 2026 · v0.1">Vigente desde · 03 mayo 2026 · v0.1</p>
+
+  <p data-es="Esta política describe cómo Rainey Laguna Studios (en adelante <strong>“el Estudio”</strong>) recoge, usa y protege tus datos personales. Cumple con la <strong>Ley 29733</strong> (Ley de Protección de Datos Personales del Perú) y su reglamento." data-en="This policy describes how Rainey Laguna Studios (hereafter <strong>“the Studio”</strong>) collects, uses, and protects your personal data. It complies with Peru's <strong>Law 29733</strong> (Personal Data Protection Law) and its regulation."></p>
+
+  <h2 data-es="01 · Responsable" data-en="01 · Data controller">01 · Responsable</h2>
+  <p data-es="<strong>Rainey Laguna Studios</strong> · operado por Stuart John Andrew Rainey · Av. Conquistadores, San Isidro, Lima, Perú · RUC en proceso · contacto: <a href=\"mailto:hola@raineylaguna.com\">hola@raineylaguna.com</a>." data-en="<strong>Rainey Laguna Studios</strong> · operated by Stuart John Andrew Rainey · Av. Conquistadores, San Isidro, Lima, Peru · RUC pending · contact: <a href=\"mailto:hola@raineylaguna.com\">hola@raineylaguna.com</a>."></p>
+
+  <h2 data-es="02 · Qué datos recogemos" data-en="02 · What we collect">02 · Qué datos recogemos</h2>
+  <ul>
+    <li data-es="<strong>Analítica anónima:</strong> usamos Plausible, que no instala cookies y no recoge ninguna información personal identificable. Sólo medimos páginas vistas y referencias agregadas." data-en="<strong>Anonymous analytics:</strong> we use Plausible, which sets no cookies and collects no personally identifiable information. We only measure aggregate page views and referrers."></li>
+    <li data-es="<strong>Mensajes que tú envías:</strong> si nos escribes por email, WhatsApp o un formulario, guardamos lo que escribes para poder responderte." data-en="<strong>Messages you send:</strong> if you contact us by email, WhatsApp, or a form, we store what you write so that we can reply."></li>
+    <li data-es="<strong>Encargos y comisiones:</strong> nombre, teléfono, dirección de envío, especificaciones del objeto. Sólo lo necesario para fabricar y entregar." data-en="<strong>Orders and commissions:</strong> name, phone, shipping address, object specifications. Only what is needed to fabricate and deliver."></li>
+  </ul>
+  <p data-es="No vendemos datos. No hacemos perfilado publicitario. No usamos cookies de seguimiento." data-en="We do not sell data. We do not do advertising profiling. We do not use tracking cookies."></p>
+
+  <h2 data-es="03 · Para qué los usamos" data-en="03 · How we use them">03 · Para qué los usamos</h2>
+  <ul>
+    <li data-es="Responder a tus mensajes." data-en="Reply to your messages."></li>
+    <li data-es="Producir y entregar piezas que nos encargas." data-en="Produce and deliver pieces you commission."></li>
+    <li data-es="Emitir comprobantes (boleta, factura) según la ley peruana." data-en="Issue payment receipts (boleta, factura) under Peruvian law."></li>
+    <li data-es="Mejorar el sitio en base a métricas agregadas." data-en="Improve the site based on aggregate metrics."></li>
+  </ul>
+
+  <h2 data-es="04 · Con quién los compartimos" data-en="04 · Who we share with">04 · Con quién los compartimos</h2>
+  <p data-es="Sólo con quien sea necesario para cumplir lo que nos pediste — proveedor de hosting, mensajería, pasarela de pago, courier de envío. Nunca para fines publicitarios. Nunca a empresas fuera del proyecto." data-en="Only with parties needed to fulfil what you asked — hosting provider, messaging, payment gateway, shipping courier. Never for advertising. Never to companies outside the project."></p>
+
+  <h2 data-es="05 · Cuánto tiempo los guardamos" data-en="05 · How long we keep them">05 · Cuánto tiempo los guardamos</h2>
+  <ul>
+    <li data-es="<strong>Mensajes:</strong> hasta 24 meses, luego se eliminan." data-en="<strong>Messages:</strong> up to 24 months, then deleted."></li>
+    <li data-es="<strong>Datos contables:</strong> 5 años, según exige SUNAT." data-en="<strong>Accounting data:</strong> 5 years, as required by SUNAT."></li>
+    <li data-es="<strong>Analítica agregada:</strong> indefinida, sin datos personales." data-en="<strong>Aggregate analytics:</strong> indefinitely, no personal data."></li>
+  </ul>
+
+  <h2 data-es="06 · Tus derechos" data-en="06 · Your rights">06 · Tus derechos</h2>
+  <p data-es="Bajo la Ley 29733 puedes pedir, en cualquier momento y gratis: acceso a tus datos, rectificación, cancelación, oposición al tratamiento, y portabilidad. Escríbenos a <a href=\"mailto:hola@raineylaguna.com\">hola@raineylaguna.com</a> y respondemos en menos de 30 días. Si no quedas satisfecho puedes presentar reclamo a la <strong>Autoridad Nacional de Protección de Datos Personales</strong> en <a href=\"https://www.gob.pe/anpd\" target=\"_blank\" rel=\"noopener\">gob.pe/anpd</a>." data-en="Under Law 29733 you can request, at any time and at no cost: access to your data, rectification, cancellation, objection to processing, and portability. Write to <a href=\"mailto:hola@raineylaguna.com\">hola@raineylaguna.com</a> and we respond in under 30 days. If unsatisfied you may file a complaint with Peru's <strong>National Personal Data Protection Authority</strong> at <a href=\"https://www.gob.pe/anpd\" target=\"_blank\" rel=\"noopener\">gob.pe/anpd</a>."></p>
+
+  <h2 data-es="07 · Cookies" data-en="07 · Cookies">07 · Cookies</h2>
+  <p data-es="Este sitio no instala cookies de seguimiento. Sólo guarda en tu navegador la preferencia de idioma (ES/EN) y un indicador para no mostrarte la pantalla de carga dos veces en la misma sesión. Esa información nunca sale de tu dispositivo." data-en="This site sets no tracking cookies. It only stores in your browser your language preference (ES/EN) and a flag to avoid replaying the loading screen twice in one session. That information never leaves your device."></p>
+
+  <h2 data-es="08 · Cambios" data-en="08 · Changes">08 · Cambios</h2>
+  <p data-es="Si actualizamos esta política, cambiamos la fecha al inicio del documento y, si los cambios son importantes, te avisamos por el último canal por el que nos hablaste." data-en="If we update this policy we change the date at the top of this document and, where the changes are material, notify you via the most recent channel through which you contacted us."></p>
+
+  <hr>
+
+  <p data-es="Preguntas: <a href=\"mailto:hola@raineylaguna.com\">hola@raineylaguna.com</a> · <a href=\"https://wa.me/51912418482\">WhatsApp</a>." data-en="Questions: <a href=\"mailto:hola@raineylaguna.com\">hola@raineylaguna.com</a> · <a href=\"https://wa.me/51912418482\">WhatsApp</a>."></p>
+</main>
+
+<footer>
+  <span>© 2026 Rainey Laguna Studios</span>
+  <span><a href="/">Estudio</a> · <a href="/about/">Sobre</a> · <a href="/terms/">Términos</a> · <a href="/verify.html">Verificar</a></span>
+  <span>Lima · Perú</span>
+</footer>
+
+<script>
+(function(){
+  var body = document.body;
+  var btnEs = document.getElementById('langEs');
+  var btnEn = document.getElementById('langEn');
+  function applyLang(lang){
+    body.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'es-PE');
+    btnEs.classList.toggle('active', lang === 'es');
+    btnEn.classList.toggle('active', lang === 'en');
+    document.querySelectorAll('[data-es]').forEach(function(el){
+      var v = el.getAttribute(lang === 'en' ? 'data-en' : 'data-es');
+      if (v != null) {
+        if (/<[a-z]/i.test(v)) el.innerHTML = v; else el.textContent = v;
+      }
+    });
+    var t = document.querySelector('title');
+    var d = document.querySelector('meta[name="description"]');
+    if (t) { var tk = t.getAttribute(lang === 'en' ? 'data-title-en' : 'data-title-es'); if (tk) t.textContent = tk; }
+    if (d) { var dk = d.getAttribute(lang === 'en' ? 'data-desc-en' : 'data-desc-es'); if (dk) d.setAttribute('content', dk); }
+    try { localStorage.setItem('rls-lang', lang); } catch(e){}
+  }
+  btnEs.addEventListener('click', function(){ applyLang('es'); });
+  btnEn.addEventListener('click', function(){ applyLang('en'); });
+  var saved; try { saved = localStorage.getItem('rls-lang'); } catch(e){}
+  var url = new URLSearchParams(location.search).get('lang');
+  applyLang(url || saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'es'));
+})();
+</script>
+
+</body>
+</html>
