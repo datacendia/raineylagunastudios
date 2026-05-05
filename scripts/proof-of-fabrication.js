@@ -19,6 +19,17 @@ import QRCode from 'https://esm.sh/qrcode@1.5.3';
 
 const LANG_FALLBACK = () => (document.documentElement.lang || 'es').startsWith('es') ? 'es' : 'en';
 
+// Escape values that land inside HTML produced via innerHTML. Proof JSON
+// files are studio-authored today, but the serial query param is visitor-
+// supplied (verify.html?serial=...) and could be reflected into the error
+// path; treating every interpolation as untrusted is the durable posture.
+function escapeHtml(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+const _e = escapeHtml;
+
 const pickLang = (obj, key) => {
   const lang = LANG_FALLBACK();
   return obj[`${key}_${lang}`] || obj[`${key}_es`] || obj[key] || '';
@@ -70,25 +81,25 @@ async function renderMiniPreview(mountEl, proof) {
       <div class="proof-mini-head">
         <div>
           <div class="proof-mini-mark">RLS · ${lang === 'es' ? 'PRUEBA DE FABRICACIÓN' : 'PROOF OF FABRICATION'}</div>
-          <div class="proof-mini-serial">${proof.serial}</div>
+          <div class="proof-mini-serial">${_e(proof.serial)}</div>
         </div>
-        ${qrDataUrl ? `<img class="proof-mini-qr" src="${qrDataUrl}" alt="QR · ${verifyUrl}" />` : ''}
+        ${qrDataUrl ? `<img class="proof-mini-qr" src="${qrDataUrl}" alt="QR · ${_e(verifyUrl)}" />` : ''}
       </div>
 
-      <h4 class="proof-mini-name">${name}</h4>
-      <p class="proof-mini-sub">${material} · ${proof.object.edition}</p>
+      <h4 class="proof-mini-name">${_e(name)}</h4>
+      <p class="proof-mini-sub">${_e(material)} · ${_e(proof.object.edition)}</p>
 
       <dl class="proof-mini-meta">
         <dt>${lang === 'es' ? 'Fabricado' : 'Fabricated'}</dt>
         <dd>${formatDate(proof.fabrication.finished_at)}</dd>
         <dt>${lang === 'es' ? 'Operador' : 'Operator'}</dt>
-        <dd>${proof.fabrication.operator}</dd>
+        <dd>${_e(proof.fabrication.operator)}</dd>
         <dt>${lang === 'es' ? 'Clima ese día' : 'Weather that day'}</dt>
-        <dd>${climateText} · ${climate.temperature_c}° · ${climate.humidity_percent}%</dd>
+        <dd>${_e(climateText)} · ${_e(climate.temperature_c)}° · ${_e(climate.humidity_percent)}%</dd>
         <dt>${lang === 'es' ? 'Hash del archivo' : 'File hash'}</dt>
-        <dd class="mono">${shortHash(proof.fabrication.cad_file_hash)}</dd>
+        <dd class="mono">${_e(shortHash(proof.fabrication.cad_file_hash))}</dd>
         <dt>${lang === 'es' ? 'Firma Ed25519' : 'Ed25519 signature'}</dt>
-        <dd class="mono">${shortSig(proof.cryptography.signature)}</dd>
+        <dd class="mono">${_e(shortSig(proof.cryptography.signature))}</dd>
       </dl>
 
       <div class="proof-mini-foot">
@@ -126,8 +137,8 @@ async function renderFullVerification(mountEl, proof) {
       </div>
       <p class="verify-intro">
         ${lang === 'es'
-          ? `El objeto <strong>${proof.serial}</strong> fue fabricado por Rainey Laguna Studios el ${formatDate(proof.fabrication.finished_at)} y firmado criptográficamente. La firma corresponde a la clave pública del estudio.`
-          : `Object <strong>${proof.serial}</strong> was fabricated by Rainey Laguna Studios on ${formatDate(proof.fabrication.finished_at)} and cryptographically signed. The signature matches the studio's public key.`}
+          ? `El objeto <strong>${_e(proof.serial)}</strong> fue fabricado por Rainey Laguna Studios el ${_e(formatDate(proof.fabrication.finished_at))} y firmado criptográficamente. La firma corresponde a la clave pública del estudio.`
+          : `Object <strong>${_e(proof.serial)}</strong> was fabricated by Rainey Laguna Studios on ${_e(formatDate(proof.fabrication.finished_at))} and cryptographically signed. The signature matches the studio's public key.`}
       </p>
     </section>
 
@@ -139,32 +150,32 @@ async function renderFullVerification(mountEl, proof) {
         </div>
         <div class="verify-serial-box">
           <div class="verify-serial-label">${lang === 'es' ? 'N.º DE SERIE' : 'SERIAL'}</div>
-          <div class="verify-serial">${proof.serial}</div>
-          <div class="verify-edition">${proof.object.edition}</div>
+          <div class="verify-serial">${_e(proof.serial)}</div>
+          <div class="verify-edition">${_e(proof.object.edition)}</div>
         </div>
       </header>
 
       <div class="verify-body">
         <div class="verify-body-main">
-          <h1 class="verify-name">${name}</h1>
-          <p class="verify-type">${type} · ${material}</p>
+          <h1 class="verify-name">${_e(name)}</h1>
+          <p class="verify-type">${_e(type)} · ${_e(material)}</p>
 
           <div class="verify-grid">
             <div class="verify-field">
               <dt>${lang === 'es' ? 'Cliente' : 'Client'}</dt>
-              <dd>${proof.client.consented_public ? proof.client.name : (lang === 'es' ? 'Reservado' : 'Private')}</dd>
+              <dd>${_e(proof.client.consented_public ? proof.client.name : (lang === 'es' ? 'Reservado' : 'Private'))}</dd>
             </div>
             <div class="verify-field">
               <dt>${lang === 'es' ? 'Ubicación' : 'Location'}</dt>
-              <dd>${pickLang(proof.client, 'location')}</dd>
+              <dd>${_e(pickLang(proof.client, 'location'))}</dd>
             </div>
             <div class="verify-field">
               <dt>${lang === 'es' ? 'Operador' : 'Operator'}</dt>
-              <dd>${proof.fabrication.operator}</dd>
+              <dd>${_e(proof.fabrication.operator)}</dd>
             </div>
             <div class="verify-field">
               <dt>${lang === 'es' ? 'Taller' : 'Workshop'}</dt>
-              <dd>${workshop}</dd>
+              <dd>${_e(workshop)}</dd>
             </div>
             <div class="verify-field">
               <dt>${lang === 'es' ? 'Inicio' : 'Started'}</dt>
@@ -192,22 +203,22 @@ async function renderFullVerification(mountEl, proof) {
             </div>
             <div class="verify-field">
               <dt>${lang === 'es' ? 'Lote de material' : 'Material batch'}</dt>
-              <dd>${proof.fabrication.print_parameters.material_batch}</dd>
+              <dd>${_e(proof.fabrication.print_parameters.material_batch)}</dd>
             </div>
             <div class="verify-field">
               <dt>${lang === 'es' ? 'Patrón hidrográfico' : 'Hydroprint pattern'}</dt>
-              <dd>${patternText}</dd>
+              <dd>${_e(patternText)}</dd>
             </div>
             <div class="verify-field">
               <dt>${lang === 'es' ? 'Película' : 'Film batch'}</dt>
-              <dd>${proof.fabrication.hydroprint.film_supplier}</dd>
+              <dd>${_e(proof.fabrication.hydroprint.film_supplier)}</dd>
             </div>
           </div>
 
           <h3 class="verify-sub">${lang === 'es' ? 'Clima en el taller ese día' : 'Workshop climate that day'}</h3>
           <p class="verify-climate">
-            ${climateText} · ${climate.temperature_c}° · ${climate.humidity_percent}% ${lang === 'es' ? 'humedad' : 'humidity'} · ${climate.atmospheric_pressure_hpa} hPa
-            <br><small>${climate.source}</small>
+            ${_e(climateText)} · ${_e(climate.temperature_c)}° · ${_e(climate.humidity_percent)}% ${lang === 'es' ? 'humedad' : 'humidity'} · ${_e(climate.atmospheric_pressure_hpa)} hPa
+            <br><small>${_e(climate.source)}</small>
           </p>
 
           <h3 class="verify-sub">${lang === 'es' ? 'Estado del manifiesto ese día' : 'Manifesto state that day'}</h3>
@@ -218,17 +229,17 @@ async function renderFullVerification(mountEl, proof) {
         </div>
 
         <aside class="verify-body-aside">
-          ${qrDataUrl ? `<img class="verify-qr" src="${qrDataUrl}" alt="QR · ${proof.cryptography.verification_url}" />` : ''}
+          ${qrDataUrl ? `<img class="verify-qr" src="${qrDataUrl}" alt="QR · ${_e(proof.cryptography.verification_url)}" />` : ''}
           <p class="verify-qr-caption">${lang === 'es' ? 'El QR impreso en el objeto lleva a esta página.' : 'The QR printed on the object points here.'}</p>
         </aside>
       </div>
 
       <footer class="verify-crypto">
-        <div class="verify-crypto-row"><dt>${lang === 'es' ? 'Algoritmo' : 'Algorithm'}</dt><dd class="mono">${proof.cryptography.algorithm}</dd></div>
-        <div class="verify-crypto-row"><dt>${lang === 'es' ? 'Clave pública' : 'Public key'}</dt><dd class="mono verify-pubkey">${proof.cryptography.public_key}</dd></div>
-        <div class="verify-crypto-row"><dt>${lang === 'es' ? 'Payload firmado' : 'Signed payload'}</dt><dd class="mono">${proof.cryptography.signed_payload}</dd></div>
-        <div class="verify-crypto-row"><dt>${lang === 'es' ? 'Firma' : 'Signature'}</dt><dd class="mono verify-sig">${proof.cryptography.signature}</dd></div>
-        <div class="verify-crypto-row"><dt>${lang === 'es' ? 'Hash del archivo CAD' : 'CAD file hash'}</dt><dd class="mono">${proof.fabrication.cad_file_hash}</dd></div>
+        <div class="verify-crypto-row"><dt>${lang === 'es' ? 'Algoritmo' : 'Algorithm'}</dt><dd class="mono">${_e(proof.cryptography.algorithm)}</dd></div>
+        <div class="verify-crypto-row"><dt>${lang === 'es' ? 'Clave pública' : 'Public key'}</dt><dd class="mono verify-pubkey">${_e(proof.cryptography.public_key)}</dd></div>
+        <div class="verify-crypto-row"><dt>${lang === 'es' ? 'Payload firmado' : 'Signed payload'}</dt><dd class="mono">${_e(proof.cryptography.signed_payload)}</dd></div>
+        <div class="verify-crypto-row"><dt>${lang === 'es' ? 'Firma' : 'Signature'}</dt><dd class="mono verify-sig">${_e(proof.cryptography.signature)}</dd></div>
+        <div class="verify-crypto-row"><dt>${lang === 'es' ? 'Hash del archivo CAD' : 'CAD file hash'}</dt><dd class="mono">${_e(proof.fabrication.cad_file_hash)}</dd></div>
         <div class="verify-crypto-row"><dt>${lang === 'es' ? 'Firmado' : 'Signed at'}</dt><dd>${formatDate(proof.cryptography.signed_at, { hour: '2-digit', minute: '2-digit' })}</dd></div>
       </footer>
     </article>
@@ -277,10 +288,15 @@ async function initMiniPreviews() {
 async function initFullVerify() {
   const root = document.getElementById('verify-root');
   if (!root) return;
-  const serial = new URLSearchParams(location.search).get('serial') || 'DEMO-0001';
+  const rawSerial = new URLSearchParams(location.search).get('serial') || 'DEMO-0001';
+  // Sanitize the serial we display before any successful loadProof so the
+  // catch-path message can't reflect arbitrary characters.
+  const serial = rawSerial.replace(/[^A-Z0-9\-]/gi, '').slice(0, 64).toUpperCase() || 'DEMO-0001';
   try {
     const proof = await loadProof(serial);
     await renderFullVerification(root, proof);
+    // document.title is text content (no HTML parsing) but we keep the
+    // sanitized form for consistency.
     document.title = `Verificado · ${serial} · Rainey Laguna Studios`;
   } catch (e) {
     root.innerHTML = `
@@ -290,8 +306,8 @@ async function initFullVerify() {
           <span>${LANG_FALLBACK() === 'es' ? 'NO SE PUDO VERIFICAR' : 'UNABLE TO VERIFY'}</span>
         </div>
         <p class="verify-intro">${LANG_FALLBACK() === 'es'
-          ? `No encontramos un certificado con el serial <strong>${serial}</strong>. Si este objeto lleva nuestra marca, escríbenos a hola@raineylaguna.com.`
-          : `We could not find a certificate with serial <strong>${serial}</strong>. If this object bears our mark, write to hola@raineylaguna.com.`}</p>
+          ? `No encontramos un certificado con el serial <strong>${_e(serial)}</strong>. Si este objeto lleva nuestra marca, escríbenos a hola@raineylaguna.com.`
+          : `We could not find a certificate with serial <strong>${_e(serial)}</strong>. If this object bears our mark, write to hola@raineylaguna.com.`}</p>
       </section>`;
   }
 }

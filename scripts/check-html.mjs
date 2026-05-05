@@ -130,4 +130,3 @@ for (const rel of DATA_FILES) {
 console.log(`\n========================================`);
 console.log(`${total - fail} / ${total} checks passed${fail ? ` · ${fail} failed` : ''}`);
 process.exit(fail ? 1 : 0);
-process.exit(fail ? 1 : 0);

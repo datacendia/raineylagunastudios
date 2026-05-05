@@ -8,6 +8,29 @@
 
 const LANG = () => (document.documentElement.lang || 'es').startsWith('es') ? 'es' : 'en';
 
+// Escape any text that lands inside HTML produced via innerHTML. The wall
+// reads from data/twins.json which is a controlled artefact today, but the
+// pipeline is open to client-supplied photo URLs and names; treating every
+// JSON field as untrusted is the only durable posture.
+function escapeHtml(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+// Validate an image URL before letting it land inside a CSS url(). Only
+// allow http(s) absolute URLs and root-relative paths; reject javascript:,
+// data: (with the lone exception of data:image/* if you ever need it),
+// quotes, parentheses, semicolons, or anything that could break out of the
+// CSS string. Returns "" on rejection so the caller falls back to color.
+function safeImageUrl(raw) {
+  if (typeof raw !== 'string' || !raw) return '';
+  if (/[\s'"();\\]/.test(raw)) return '';
+  if (/^https?:\/\//i.test(raw)) return raw;
+  if (raw.startsWith('/') || raw.startsWith('./') || raw.startsWith('../')) return raw;
+  return '';
+}
+
 function formatDate(iso) {
   try {
     const locale = LANG() === 'es' ? 'es-PE' : 'en-GB';
@@ -42,21 +65,25 @@ function renderWall(mount, manifest) {
     const mat  = lang === 'es' ? t.material_es : t.material_en;
     const date = formatDate(t.fabricated_on);
     const href = t.proof_serial ? `verify.html?serial=${encodeURIComponent(t.proof_serial)}` : null;
-    const bg = t.image_url
-      ? `background-image:url('${t.image_url}');background-size:cover;background-position:center;`
-      : `background:${t.fallback_color || '#3a3631'};`;
+    const safeImg = safeImageUrl(t.image_url);
+    // Restrict fallback_color to a hex literal so it cannot break out of the
+    // style attribute via "}; expression(..." or stray quotes.
+    const fallback = /^#[0-9a-fA-F]{3,8}$/.test(t.fallback_color || '') ? t.fallback_color : '#3a3631';
+    const bg = safeImg
+      ? `background-image:url('${safeImg}');background-size:cover;background-position:center;`
+      : `background:${fallback};`;
 
     const inner = `
       <span class="twin-fill" style="${bg}"></span>
       <span class="twin-meta">
-        <span class="twin-client">${name}</span>
-        <span class="twin-obj">${obj}</span>
-        <span class="twin-date">${date} · ${mat}</span>
+        <span class="twin-client">${escapeHtml(name)}</span>
+        <span class="twin-obj">${escapeHtml(obj)}</span>
+        <span class="twin-date">${escapeHtml(date)} · ${escapeHtml(mat)}</span>
       </span>
-      <span class="twin-serial mono">${t.serial || ''}</span>
+      <span class="twin-serial mono">${escapeHtml(t.serial || '')}</span>
     `;
     cellMarkup.push(href
-      ? `<a class="twin-cell twin-cell--filled" href="${href}">${inner}</a>`
+      ? `<a class="twin-cell twin-cell--filled" href="${escapeHtml(href)}">${inner}</a>`
       : `<div class="twin-cell twin-cell--filled">${inner}</div>`);
   }
   for (let i = 0; i < remaining; i++) {
@@ -65,7 +92,7 @@ function renderWall(mount, manifest) {
 
   mount.innerHTML = `
     <div class="twin-statement">
-      <p class="twin-quote">${statement}</p>
+      <p class="twin-quote">${escapeHtml(statement)}</p>
       <div class="twin-stat">
         <span class="twin-stat-num">${String(occupied).padStart(3, '0')}</span>
         <span class="twin-stat-cap"> / ${String(capacity).padStart(3, '0')}</span>
@@ -76,7 +103,7 @@ function renderWall(mount, manifest) {
       ${cellMarkup.join('')}
     </div>
     <p class="twin-foot mono">
-      ${lang === 'es' ? 'Última fotografía del muro' : 'Wall last photographed'}: ${formatDate(manifest.wall_meta.last_photographed)} · ${workshop}
+      ${lang === 'es' ? 'Última fotografía del muro' : 'Wall last photographed'}: ${escapeHtml(formatDate(manifest.wall_meta.last_photographed))} · ${escapeHtml(workshop)}
     </p>
   `;
 }
