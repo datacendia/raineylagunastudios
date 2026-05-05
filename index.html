@@ -848,7 +848,11 @@
     min-height: 540px;
     overflow: hidden;
   }
-  .lab-3d canvas { display: block; width: 100% !important; height: 100% !important; }
+  .lab-3d canvas { display: block; width: 100% !important; height: 100% !important; outline: none; }
+  .lab-3d canvas:focus-visible {
+    outline: 2px solid var(--vermilion);
+    outline-offset: 2px;
+  }
   .lab-3d::after {
     /* Subtle corner tick marks — technical drawing feel */
     content: '';
@@ -1734,6 +1738,9 @@
     font-size: 10px;
     word-break: break-all;
   }
+  .proof-valid { color: var(--verdigris); }
+  .proof-invalid { color: var(--vermilion); }
+  .proof-demo { color: var(--sand); }
   .proof-mini-foot {
     margin-top: 18px;
     padding-top: 12px;

@@ -81,9 +81,80 @@ function boot(container) {
   controls.autoRotateSpeed = 0.45;
   controls.target.set(0, 0, 0);
 
+  // OrbitControls' built-in keyboard support only pans (which we disable
+  // above) and requires the canvas to hold focus via a tabindex. Mouse and
+  // touch are fully wired, but a sighted keyboard-only visitor cannot
+  // rotate or zoom. Wire arrow keys + plus/minus directly onto the canvas
+  // so the viewer is operable without a pointer. We also make the canvas
+  // focusable with a visible focus outline (CSS-side).
+  const canvas = renderer.domElement;
+  canvas.tabIndex = 0;
+  canvas.setAttribute('role', 'application');
+  canvas.setAttribute(
+    'aria-label',
+    'Vista previa 3D · flechas para rotar, más/menos para acercar'
+  );
+
+  const KEY_ROT = 0.09;   // radians per keystroke
+  const KEY_ZOOM = 0.92;  // multiplicative factor per keystroke (<1 = closer)
+
+  function orbitAzimuth(delta) {
+    // Rotate camera around target on the Y axis.
+    const offset = camera.position.clone().sub(controls.target);
+    const s = Math.sin(delta), c = Math.cos(delta);
+    const x = offset.x * c - offset.z * s;
+    const z = offset.x * s + offset.z * c;
+    camera.position.set(x, offset.y, z).add(controls.target);
+    camera.lookAt(controls.target);
+  }
+  function orbitPolar(delta) {
+    // Tilt up/down within configured polar limits.
+    const offset = camera.position.clone().sub(controls.target);
+    const r = offset.length();
+    let polar = Math.acos(Math.max(-1, Math.min(1, offset.y / r)));
+    polar = Math.max(controls.minPolarAngle + 0.001,
+                     Math.min(controls.maxPolarAngle - 0.001, polar + delta));
+    const azimuth = Math.atan2(offset.x, offset.z);
+    camera.position.set(
+      r * Math.sin(polar) * Math.sin(azimuth),
+      r * Math.cos(polar),
+      r * Math.sin(polar) * Math.cos(azimuth),
+    ).add(controls.target);
+    camera.lookAt(controls.target);
+  }
+  function zoom(factor) {
+    const offset = camera.position.clone().sub(controls.target);
+    const r = Math.max(controls.minDistance,
+                       Math.min(controls.maxDistance, offset.length() * factor));
+    offset.setLength(r);
+    camera.position.copy(controls.target).add(offset);
+  }
+
+  canvas.addEventListener('keydown', (e) => {
+    let handled = true;
+    switch (e.key) {
+      case 'ArrowLeft':  orbitAzimuth(-KEY_ROT); break;
+      case 'ArrowRight': orbitAzimuth(+KEY_ROT); break;
+      case 'ArrowUp':    orbitPolar(-KEY_ROT); break;
+      case 'ArrowDown':  orbitPolar(+KEY_ROT); break;
+      case '+': case '=': zoom(KEY_ZOOM); break;
+      case '-': case '_': zoom(1 / KEY_ZOOM); break;
+      default: handled = false;
+    }
+    if (handled) {
+      controls.autoRotate = false;
+      e.preventDefault();
+      // Let the animation loop render the change.
+    }
+  });
+
   let userInteracting = false;
   controls.addEventListener('start', () => { userInteracting = true; controls.autoRotate = false; });
   controls.addEventListener('end', () => { userInteracting = false; setTimeout(() => { if (!userInteracting) controls.autoRotate = true; }, 4000); });
+  // Re-enable autoRotate a few seconds after the last keystroke too.
+  canvas.addEventListener('keyup', () => {
+    setTimeout(() => { if (!document.activeElement || document.activeElement !== canvas) controls.autoRotate = true; }, 4000);
+  });
 
   // ---- animate ----
   function animate() {

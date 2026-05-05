@@ -45,6 +45,39 @@ for (const rel of PAGES) {
     catch (e) { fail++; console.log(`  jsonld ${i}: FAIL — ${e.message}`); }
   }
 
+  // 2a. data-html="true" strings are interpolated into innerHTML by the
+  //     i18n layer (see the apply() loop at end of index.html). The adjacent
+  //     data-es / data-en values on the SAME element are therefore trusted
+  //     as HTML at render time. Refuse any value that contains <script>,
+  //     <iframe>, <object>, <embed>, <style>, javascript:, or an inline
+  //     event-handler attribute (on*=). Benign inline tags (<em>, <strong>,
+  //     <a href="https://...">, <br>) are allowed.
+  //
+  //     We match whole opening tags (from '<' through the next unescaped
+  //     '>') via a regex that understands double-quoted attribute values,
+  //     then inspect only tags whose text contains data-html="true".
+  const tagRe = /<[a-zA-Z][^>"]*(?:"[^"]*"[^>"]*)*>/g;
+  const DANGEROUS_RE = /<\s*(script|iframe|object|embed|style)\b|javascript:|\son[a-z]+\s*=/i;
+  const attrRe = /data-(?:es|en|title-es|title-en|desc-es|desc-en|placeholder-es|placeholder-en)="([^"]*)"/g;
+  let dhIdx = 0;
+  for (const tagMatch of html.matchAll(tagRe)) {
+    const tag = tagMatch[0];
+    if (!tag.includes('data-html="true"')) continue;
+    dhIdx++;
+    let checked = 0, bad = 0;
+    for (const a of tag.matchAll(attrRe)) {
+      checked++; total++;
+      if (DANGEROUS_RE.test(a[1])) {
+        fail++; bad++;
+        console.log(`  data-html ${dhIdx}: FAIL — dangerous token in ${a[0].slice(0, 60)}…`);
+      }
+    }
+    if (checked > 0 && bad === 0) {
+      // keep noise down — one compact OK per tag
+      console.log(`  data-html ${dhIdx}: OK (${checked} i18n attrs clean)`);
+    }
+  }
+
   // 2. Inline JS blocks — parse-check only (no exec; DOM APIs unavailable)
   const jsRe = /<script(?![^>]*type="application\/ld\+json")(?![^>]*src=)(?:[^>]*)>([\s\S]*?)<\/script>/g;
   let j = 0;

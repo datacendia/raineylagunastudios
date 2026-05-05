@@ -6,16 +6,16 @@
 //       "Memory Object" section, so visitors grasp the mechanic at a glance.
 //   (b) Is reused on verify.html for full-size public verification.
 //
-// Cryptography note for reviewers:
-//   Real fabrication signatures are produced OFFLINE in the workshop using
-//   a hardware-held Ed25519 keypair. The signature in DEMO-0001.json is
-//   cosmetic — real objects sign over a canonical payload:
+// Cryptography implementation:
+//   Fabrication signatures are produced OFFLINE in the workshop using
+//   a hardware-held Ed25519 keypair. This module verifies signatures
+//   using the pinned studio public key and @noble/ed25519.
+//   The canonical signed payload format is:
 //     serial | cad_file_hash | finished_at | public_key
-//   and verification (v2) will use window.crypto.subtle Ed25519 or
-//   @noble/ed25519 — both are supported in current Chromium/Firefox/Safari.
 // =====================================================================
 
 import QRCode from 'https://esm.sh/qrcode@1.5.3';
+import { verify } from 'https://esm.sh/@noble/ed25519@2.1.0';
 
 const LANG_FALLBACK = () => (document.documentElement.lang || 'es').startsWith('es') ? 'es' : 'en';
 
@@ -59,6 +59,58 @@ function shortSig(sig) {
   return sig.slice(0, 12) + '…' + sig.slice(-12);
 }
 
+// ----- Cryptographic verification -------------------------------------------
+// Pinned public key for Rainey Laguna Studios Ed25519 signing key.
+// This key must match the one used offline to sign fabrication proofs.
+// NOTE: This is a placeholder for demonstration. The real studio public key
+// will be deployed when production objects are signed.
+const STUDIOS_PUBLIC_KEY = '3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29';
+
+// Demo serials that use placeholder signatures (not cryptographically verified)
+const DEMO_SERIALS = ['DEMO-0001', 'DEMO-0002', 'DEMO-0003', 'DEMO-0006', 'DEMO-0007', 'DEMO-0011'];
+
+// Construct the canonical payload that was signed.
+// The signing process concatenates: serial | cad_file_hash | finished_at | public_key
+function constructSignedPayload(proof) {
+  return [
+    proof.serial,
+    proof.fabrication.cad_file_hash,
+    proof.fabrication.finished_at,
+    proof.cryptography.public_key
+  ].join('|');
+}
+
+// Verify the Ed25519 signature using the pinned public key.
+// Returns: 'valid' if signature verifies, 'invalid' if verification fails,
+//          'demo' if the serial is a demo placeholder, 'error' on exception.
+async function verifySignature(proof) {
+  // Demo signatures are placeholders - skip cryptographic verification
+  if (DEMO_SERIALS.includes(proof.serial)) {
+    return 'demo';
+  }
+
+  try {
+    const payload = constructSignedPayload(proof);
+    const message = new TextEncoder().encode(payload);
+    const signature = hexToBytes(proof.cryptography.signature);
+    const publicKey = hexToBytes(STUDIOS_PUBLIC_KEY);
+    const isValid = await verify(signature, message, publicKey);
+    return isValid ? 'valid' : 'invalid';
+  } catch (e) {
+    console.warn('[proof-of-fabrication] Signature verification failed:', e);
+    return 'error';
+  }
+}
+
+// Convert hex string to Uint8Array
+function hexToBytes(hex) {
+  const bytes = new Uint8Array(hex.length / 2);
+  for (let i = 0; i < bytes.length; i++) {
+    bytes[i] = parseInt(hex.slice(i * 2, i * 2 + 2), 16);
+  }
+  return bytes;
+}
+
 // ----- Render: mini preview on homepage ---------------------------------
 async function renderMiniPreview(mountEl, proof) {
   const lang = LANG_FALLBACK();
@@ -68,6 +120,9 @@ async function renderMiniPreview(mountEl, proof) {
   const climateText = pickLang(climate, 'lima_weather');
   const verifyUrl = proof.cryptography.verification_url;
 
+  // Verify the Ed25519 signature
+  const sigStatus = await verifySignature(proof);
+
   // Generate QR for the verification URL
   let qrDataUrl = '';
   try {
@@ -75,6 +130,20 @@ async function renderMiniPreview(mountEl, proof) {
       margin: 0, scale: 4, color: { dark: '#0E0D0B', light: '#F6F2E8' }
     });
   } catch (e) { /* silent */ }
+
+  // Determine verification display
+  let verificationClass = 'proof-demo';
+  let verificationText = lang === 'es' ? 'Demo (firma placeholder)' : 'Demo (placeholder signature)';
+  if (sigStatus === 'valid') {
+    verificationClass = 'proof-valid';
+    verificationText = lang === 'es' ? '✓ Válido' : '✓ Valid';
+  } else if (sigStatus === 'invalid') {
+    verificationClass = 'proof-invalid';
+    verificationText = lang === 'es' ? '✗ Inválido' : '✗ Invalid';
+  } else if (sigStatus === 'error') {
+    verificationClass = 'proof-invalid';
+    verificationText = lang === 'es' ? 'Error de verificación' : 'Verification error';
+  }
 
   mountEl.innerHTML = `
     <article class="proof-mini" aria-label="${lang === 'es' ? 'Certificado de ejemplo' : 'Example certificate'}">
@@ -100,6 +169,8 @@ async function renderMiniPreview(mountEl, proof) {
         <dd class="mono">${_e(shortHash(proof.fabrication.cad_file_hash))}</dd>
         <dt>${lang === 'es' ? 'Firma Ed25519' : 'Ed25519 signature'}</dt>
         <dd class="mono">${_e(shortSig(proof.cryptography.signature))}</dd>
+        <dt>${lang === 'es' ? 'Verificación' : 'Verification'}</dt>
+        <dd class="${verificationClass}">${verificationText}</dd>
       </dl>
 
       <div class="proof-mini-foot">
@@ -122,6 +193,9 @@ async function renderFullVerification(mountEl, proof) {
   const climateText = pickLang(climate, 'lima_weather');
   const patternText = pickLang(proof.fabrication.hydroprint, 'pattern_name');
 
+  // Verify the Ed25519 signature
+  const sigStatus = await verifySignature(proof);
+
   let qrDataUrl = '';
   try {
     qrDataUrl = await QRCode.toDataURL(proof.cryptography.verification_url, {
@@ -129,17 +203,40 @@ async function renderFullVerification(mountEl, proof) {
     });
   } catch (e) { /* silent */ }
 
+  // Determine verification badge and message
+  let badgeClass = '';
+  let badgeText = lang === 'es' ? 'CERTIFICADO VERIFICADO' : 'CERTIFICATE VERIFIED';
+  let introText = lang === 'es'
+    ? `El objeto <strong>${_e(proof.serial)}</strong> fue fabricado por Rainey Laguna Studios el ${_e(formatDate(proof.fabrication.finished_at))} y firmado criptográficamente. La firma corresponde a la clave pública del estudio.`
+    : `Object <strong>${_e(proof.serial)}</strong> was fabricated by Rainey Laguna Studios on ${_e(formatDate(proof.fabrication.finished_at))} and cryptographically signed. The signature matches the studio's public key.`;
+
+  if (sigStatus === 'demo') {
+    badgeClass = 'verify-badge-demo';
+    badgeText = lang === 'es' ? 'DEMOSTRACIÓN' : 'DEMONSTRATION';
+    introText = lang === 'es'
+      ? `Este es un certificado de demostración. La firma criptográfica en objetos de producción será verificada con la clave pública del estudio.`
+      : `This is a demonstration certificate. The cryptographic signature on production objects will be verified against the studio's public key.`;
+  } else if (sigStatus === 'invalid') {
+    badgeClass = 'verify-badge-fail';
+    badgeText = lang === 'es' ? 'FIRMA INVÁLIDA' : 'INVALID SIGNATURE';
+    introText = lang === 'es'
+      ? `La firma criptográfica del objeto <strong>${_e(proof.serial)}</strong> no pudo verificarse contra la clave pública del estudio. Este certificado puede no ser auténtico.`
+      : `The cryptographic signature for object <strong>${_e(proof.serial)}</strong> could not be verified against the studio's public key. This certificate may not be authentic.`;
+  } else if (sigStatus === 'error') {
+    badgeClass = 'verify-badge-fail';
+    badgeText = lang === 'es' ? 'ERROR DE VERIFICACIÓN' : 'VERIFICATION ERROR';
+    introText = lang === 'es'
+      ? `Ocurrió un error al verificar la firma del objeto <strong>${_e(proof.serial)}</strong>.`
+      : `An error occurred while verifying the signature for object <strong>${_e(proof.serial)}</strong>.`;
+  }
+
   mountEl.innerHTML = `
     <section class="verify-hero">
-      <div class="verify-badge" role="status" aria-live="polite">
+      <div class="verify-badge ${badgeClass}" role="status" aria-live="polite">
         <span class="verify-dot" aria-hidden="true"></span>
-        <span>${lang === 'es' ? 'CERTIFICADO VERIFICADO' : 'CERTIFICATE VERIFIED'}</span>
+        <span>${badgeText}</span>
       </div>
-      <p class="verify-intro">
-        ${lang === 'es'
-          ? `El objeto <strong>${_e(proof.serial)}</strong> fue fabricado por Rainey Laguna Studios el ${_e(formatDate(proof.fabrication.finished_at))} y firmado criptográficamente. La firma corresponde a la clave pública del estudio.`
-          : `Object <strong>${_e(proof.serial)}</strong> was fabricated by Rainey Laguna Studios on ${_e(formatDate(proof.fabrication.finished_at))} and cryptographically signed. The signature matches the studio's public key.`}
-      </p>
+      <p class="verify-intro">${introText}</p>
     </section>
 
     <article class="verify-cert">
