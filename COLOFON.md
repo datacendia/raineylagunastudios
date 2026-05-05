@@ -106,7 +106,7 @@ Shared traits:
 
 Studios clients can bolt on any `.com` recurring product:
 - **Care / Care Vivo** _(S/ 600 – 1,400 / mo)_
-- **Vigía** _(S/ 250 / mo · entry pricing; S/ 1,200 / mo in full stack)_
+- **Vigía** _(S/ 600 / mo · entry pricing; S/ 1,200 / mo in full stack)_
 - **Espejo** _(S/ 900 / quarter · repriced 3 May 2026)_
 - **Garúa AI** _(hospitality-only, S/ 800 setup + S/ 750 / mo)_
 - **Socio / AI Co-Founder** _(S/ 1,500 setup + S/ 800 / mo · repriced 3 May 2026)_
