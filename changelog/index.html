@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- =============================================================
+     /changelog · ROADMAP item 5
+     Public Manifesto changelog. Renders every revision from
+     /data/manifesto.json with (a) timestamp, (b) Lima-weather
+     snapshot at publish time, and (c) paragraph-level diff vs the
+     previous revision.
+
+     Why paragraph-level instead of word-level? The manifesto is
+     short; authors rewrite whole sentences. Word-diff produces
+     unreadable noise. Paragraph-level is legible and honest.
+     ================================================================ -->
+
+<title data-title-es="Cambios · Manifiesto · Rainey Laguna Studios" data-title-en="Changelog · Manifesto · Rainey Laguna Studios">Cambios · Manifiesto · Rainey Laguna Studios</title>
+<meta name="description" content="Historial público del Manifiesto del estudio. Cada revisión con su fecha y el clima de Lima que la acompañó — porque la tipografía del manifiesto vive respondiendo al tiempo." data-desc-es="Historial público del Manifiesto del estudio. Cada revisión con su fecha y el clima de Lima que la acompañó — porque la tipografía del manifiesto vive respondiendo al tiempo." data-desc-en="Public history of the studio Manifesto. Every revision with its date and the Lima weather it was published under — because the manifesto's type lives by responding to the weather.">
+<meta name="author" content="Stuart John Andrew Rainey">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0E0D0B">
+<meta name="color-scheme" content="dark">
+
+<link rel="canonical" href="https://raineylagunastudios.com/changelog/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --iron:      #0E0D0B;
+    --iron-02:   #15130F;
+    --iron-04:   #1E1B15;
+    --bone:      #F6F2E8;
+    --bone-70:   rgba(246,242,232,0.70);
+    --bone-45:   rgba(246,242,232,0.45);
+    --bone-20:   rgba(246,242,232,0.20);
+    --vermilion: #E83C1E;
+    --copper:    #8AA9A0;
+    /* diff tokens · additive green-less (studio palette is ascetic), so we
+       use vermilion for additions and copper-dim for removals. */
+    --added:     rgba(232, 60, 30, 0.95);
+    --added-bg:  rgba(232, 60, 30, 0.06);
+    --removed:   rgba(138, 169, 160, 0.75);
+    --removed-bg: rgba(138, 169, 160, 0.05);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--iron);
+    color: var(--bone);
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: 'wght' 360, 'opsz' 24;
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .skip-link {
+    position: absolute; top: -40px; left: 0;
+    background: var(--bone); color: var(--iron);
+    padding: 8px 12px; font-family: 'JetBrains Mono',monospace;
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .skip-link:focus { top: 0; }
+
+  /* --- nav (mirrors /about/) --- */
+  .top-nav {
+    position: sticky; top: 0;
+    background: var(--iron);
+    border-bottom: 1px solid var(--iron-04);
+    padding: 16px 5vw;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100;
+  }
+  .top-nav .wordmark {
+    color: var(--bone);
+    text-decoration: none;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 320, 'opsz' 36;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+  }
+  .top-nav .wordmark em { color: var(--vermilion); font-style: italic; }
+  .top-nav nav { display: flex; gap: 24px; align-items: center; }
+  .top-nav nav a, .top-nav nav button {
+    color: var(--bone-70);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: transparent; border: 0; cursor: pointer;
+    transition: color .2s;
+  }
+  .top-nav nav a:hover, .top-nav nav button:hover { color: var(--vermilion); }
+  .lang-toggle button.active { color: var(--bone); }
+
+  /* --- main --- */
+  main { max-width: 780px; margin: 0 auto; padding: 80px 24px 120px; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--bone-45); margin-bottom: 24px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 320, 'opsz' 144;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1; letter-spacing: -1.5px;
+    margin-bottom: 32px;
+  }
+  h1 em { color: var(--vermilion); font-style: italic; }
+  .lede {
+    font-size: clamp(17px, 2vw, 20px);
+    line-height: 1.55;
+    color: var(--bone-70);
+    font-style: italic;
+    font-variation-settings: 'wght' 320, 'opsz' 20, 'slnt' -6;
+    margin-bottom: 48px;
+    max-width: 640px;
+  }
+
+  /* --- revision block --- */
+  .rev {
+    border-top: 1px solid var(--iron-04);
+    padding: 40px 0;
+  }
+  .rev-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 24px;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+  .rev-v {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 360, 'opsz' 72;
+    font-size: 32px;
+    letter-spacing: -0.5px;
+    color: var(--bone);
+  }
+  .rev-v em { color: var(--vermilion); font-style: italic; }
+  .rev-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--bone-45);
+    text-align: right;
+  }
+  .rev-note {
+    grid-column: 1 / -1;
+    color: var(--bone-70);
+    font-style: italic;
+    font-size: 16px;
+    font-variation-settings: 'wght' 340, 'opsz' 20, 'slnt' -6;
+    margin-top: 4px;
+  }
+  .rev-weather {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 0.5px dashed var(--iron-04);
+    display: flex; flex-wrap: wrap; gap: 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--bone-45);
+  }
+  .rev-weather .wx-dot {
+    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--copper); margin-right: 8px; vertical-align: middle;
+  }
+
+  /* --- diff body --- */
+  .rev-body {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .rev-body p {
+    margin: 0;
+    padding: 10px 14px;
+    border-left: 2px solid transparent;
+    border-radius: 2px;
+    color: var(--bone);
+    transition: background .2s;
+  }
+  .rev-body p em { color: var(--vermilion); font-style: italic; }
+  .rev-body p.unchanged {
+    color: var(--bone-45);
+    border-left-color: var(--iron-04);
+  }
+  .rev-body p.added {
+    background: var(--added-bg);
+    border-left-color: var(--added);
+  }
+  .rev-body p.added::before {
+    content: '+';
+    display: inline-block;
+    margin-right: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--added); font-weight: 500;
+  }
+  .rev-body p.removed {
+    background: var(--removed-bg);
+    border-left-color: var(--removed);
+    color: var(--bone-45);
+    text-decoration: line-through;
+    text-decoration-thickness: 0.5px;
+    text-decoration-color: var(--removed);
+  }
+  .rev-body p.removed::before {
+    content: '−';
+    display: inline-block;
+    margin-right: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--removed);
+    text-decoration: none;
+  }
+
+  .legend {
+    margin-top: 64px;
+    padding: 16px 20px;
+    border: 0.5px dashed var(--iron-04);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--bone-45);
+    display: flex; flex-wrap: wrap; gap: 18px;
+  }
+  .legend .sw { display: inline-block; width: 10px; height: 2px; vertical-align: middle; margin-right: 8px; }
+  .legend .sw.a { background: var(--added); }
+  .legend .sw.r { background: var(--removed); }
+  .legend .sw.u { background: var(--iron-04); }
+
+  .empty {
+    padding: 64px 0;
+    text-align: center;
+    color: var(--bone-45);
+    font-style: italic;
+  }
+
+  /* --- footer --- */
+  footer {
+    border-top: 1px solid var(--iron-04);
+    padding: 40px 5vw;
+    display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--bone-45);
+  }
+  footer a { color: var(--bone-70); text-decoration: none; transition: color .2s; }
+  footer a:hover { color: var(--vermilion); }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body data-lang="es">
+
+<a href="#main" class="skip-link" data-es="Ir al contenido" data-en="Skip to content">Ir al contenido</a>
+
+<header class="top-nav">
+  <a href="/" class="wordmark">Rainey <em>Laguna</em> Studios</a>
+  <nav aria-label="Primary">
+    <a href="/#manifesto" data-es="← Manifiesto" data-en="← Manifesto">← Manifiesto</a>
+    <a href="/" data-es="Estudio" data-en="Studio">Estudio</a>
+    <span class="lang-toggle">
+      <button id="langEs" class="active">ES</button>
+      /
+      <button id="langEn">EN</button>
+    </span>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="eyebrow" data-es="Historial público" data-en="Public history">Historial público</div>
+  <h1 data-es="Cambios del<br><em>Manifiesto</em>." data-en="Manifesto<br><em>changes</em>."></h1>
+  <p class="lede" data-es="Cada revisión pública del Manifiesto del estudio, con la fecha y el tiempo que tenía Lima cuando se escribió. La tipografía del original vive respondiendo al clima; este registro guarda la versión y el clima juntos." data-en="Every public revision of the studio Manifesto, with the date and the weather Lima had when it was written. The original's type lives by responding to the weather; this log keeps the version and the weather together."></p>
+
+  <div id="revs" aria-live="polite">
+    <p class="empty" data-es="Cargando…" data-en="Loading…">Cargando…</p>
+  </div>
+
+  <div class="legend" aria-label="Diff legend">
+    <span><span class="sw a"></span><span data-es="Añadido en esta revisión" data-en="Added this revision">Añadido en esta revisión</span></span>
+    <span><span class="sw r"></span><span data-es="Eliminado de la anterior" data-en="Removed from previous">Eliminado de la anterior</span></span>
+    <span><span class="sw u"></span><span data-es="Sin cambios" data-en="Unchanged">Sin cambios</span></span>
+  </div>
+</main>
+
+<footer>
+  <span>© 2026 Rainey Laguna Studios</span>
+  <span><a href="/">Estudio</a> · <a href="/about/">Sobre</a> · <a href="/who-we-serve/">A quién servimos</a> · <a href="/privacy/">Privacidad</a> · <a href="/terms/">Términos</a></span>
+  <span>Lima · Perú</span>
+</footer>
+
+<script>
+(function () {
+  // ---- i18n -------------------------------------------------------------
+  var LANG = 'es';
+  var btnEs = document.getElementById('langEs');
+  var btnEn = document.getElementById('langEn');
+
+  function applyLang(lang){
+    LANG = lang;
+    document.body.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'es-PE');
+    btnEs.classList.toggle('active', lang === 'es');
+    btnEn.classList.toggle('active', lang === 'en');
+
+    document.querySelectorAll('[data-es]').forEach(function(el){
+      var v = el.getAttribute(lang === 'en' ? 'data-en' : 'data-es');
+      if (v != null) {
+        if (/<[a-z]/i.test(v)) el.innerHTML = v;
+        else el.textContent = v;
+      }
+    });
+    var t = document.querySelector('title');
+    var d = document.querySelector('meta[name="description"]');
+    if (t) { var tk = t.getAttribute(lang === 'en' ? 'data-title-en' : 'data-title-es'); if (tk) t.textContent = tk; }
+    if (d) { var dk = d.getAttribute(lang === 'en' ? 'data-desc-en' : 'data-desc-es'); if (dk) d.setAttribute('content', dk); }
+
+    try { localStorage.setItem('rls-lang', lang); } catch(e){}
+    renderRevs(); // re-render the diff log with the new language
+  }
+  btnEs.addEventListener('click', function(){ applyLang('es'); });
+  btnEn.addEventListener('click', function(){ applyLang('en'); });
+
+  // ---- data -------------------------------------------------------------
+  var DATA = null;
+
+  // Normalise a paragraph for equality comparisons: trim, collapse runs of
+  // whitespace, strip trailing punctuation that doesn't change meaning.
+  // We keep full-text equality strict; minor whitespace drift shouldn't count
+  // as "changed."
+  function norm(p) {
+    return (p || '').replace(/\s+/g, ' ').trim();
+  }
+
+  /**
+   * Paragraph-level diff between two revisions.
+   * Returns an ordered list: { text, status: 'added' | 'removed' | 'unchanged' }.
+   * Algorithm: LCS (Longest Common Subsequence) over paragraphs → walk back
+   * through the LCS table to build the add/remove/keep sequence.
+   */
+  function diff(prev, curr) {
+    var P = (prev || []).map(norm);
+    var C = (curr || []).map(norm);
+    var m = P.length, n = C.length;
+
+    // LCS table · dp[i][j] = length of LCS of P[0..i) and C[0..j)
+    var dp = [];
+    for (var i = 0; i <= m; i++) { dp.push(new Array(n + 1).fill(0)); }
+    for (var i = 1; i <= m; i++) {
+      for (var j = 1; j <= n; j++) {
+        if (P[i-1] === C[j-1]) dp[i][j] = dp[i-1][j-1] + 1;
+        else dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
+      }
+    }
+    // Walk back
+    var out = [];
+    var i = m, j = n;
+    while (i > 0 && j > 0) {
+      if (P[i-1] === C[j-1]) {
+        out.unshift({ text: curr[j-1], status: 'unchanged' });
+        i--; j--;
+      } else if (dp[i-1][j] >= dp[i][j-1]) {
+        out.unshift({ text: prev[i-1], status: 'removed' });
+        i--;
+      } else {
+        out.unshift({ text: curr[j-1], status: 'added' });
+        j--;
+      }
+    }
+    while (i > 0) { out.unshift({ text: prev[i-1], status: 'removed' }); i--; }
+    while (j > 0) { out.unshift({ text: curr[j-1], status: 'added' }); j--; }
+    return out;
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"]/g, function(c){
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  function fmtDate(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return iso;
+    var locale = LANG === 'es' ? 'es-PE' : 'en-GB';
+    return new Intl.DateTimeFormat(locale, {
+      day: '2-digit', month: 'long', year: 'numeric',
+      timeZone: 'America/Lima',
+    }).format(d).toUpperCase();
+  }
+
+  function paraKey()      { return LANG === 'es' ? 'paragraphs_es' : 'paragraphs_en'; }
+  function noteKey()      { return LANG === 'es' ? 'note_es' : 'note_en'; }
+  function weatherKey()   { return LANG === 'es' ? 'summary_es' : 'summary_en'; }
+
+  function renderRevs() {
+    var host = document.getElementById('revs');
+    if (!host) return;
+    if (!DATA || !DATA.revisions || !DATA.revisions.length) {
+      host.innerHTML = '<p class="empty">' +
+        (LANG === 'es' ? 'Aún no hay revisiones publicadas.' : 'No revisions published yet.') + '</p>';
+      return;
+    }
+
+    // Revisions are stored newest-first. For each, diff against the NEXT one
+    // (the chronologically previous) so the diff shows "what changed to get
+    // to this revision." The oldest revision has no predecessor → all 'added'.
+    var revs = DATA.revisions;
+    var html = '';
+    for (var i = 0; i < revs.length; i++) {
+      var rev = revs[i];
+      var prev = revs[i + 1]; // may be undefined for the oldest
+      var curPars = rev[paraKey()] || [];
+      var prevPars = prev ? (prev[paraKey()] || []) : [];
+      var entries = prev ? diff(prevPars, curPars)
+                         : curPars.map(function(t){ return { text: t, status: 'unchanged' }; });
+
+      var wx = rev.weather || {};
+      var wxSummary = wx[weatherKey()] || wx.summary_es || '';
+      var wxType = (wx.type_weight ? 'wght ' + wx.type_weight : '') +
+                   (wx.type_slant ? ' · slnt ' + wx.type_slant : '');
+
+      html += '<article class="rev">';
+      html += '<div class="rev-head">';
+      html += '  <span class="rev-v">v<em>' + escapeHtml(rev.v || '?') + '</em></span>';
+      html += '  <span class="rev-date">' + escapeHtml(fmtDate(rev.published_at || rev.date)) + '</span>';
+      if (rev[noteKey()]) {
+        html += '  <span class="rev-note">' + escapeHtml(rev[noteKey()]) + '</span>';
+      }
+      if (wxSummary || wxType) {
+        html += '  <span class="rev-weather">';
+        if (wxSummary) html += '<span><span class="wx-dot"></span>' + escapeHtml(wxSummary) + '</span>';
+        if (wxType)    html += '<span>' + (LANG === 'es' ? 'Tipografía · ' : 'Type · ') + escapeHtml(wxType) + '</span>';
+        html += '  </span>';
+      }
+      html += '</div>';
+
+      html += '<div class="rev-body">';
+      if (!entries.length) {
+        html += '<p class="unchanged">' +
+          (LANG === 'es' ? '(Manifiesto vacío en esta revisión.)' : '(Empty manifesto in this revision.)') + '</p>';
+      } else {
+        entries.forEach(function(e){
+          html += '<p class="' + e.status + '">' + escapeHtml(e.text) + '</p>';
+        });
+      }
+      html += '</div>';
+      html += '</article>';
+    }
+    host.innerHTML = html;
+  }
+
+  // ---- bootstrap --------------------------------------------------------
+  fetch('/data/manifesto.json', { cache: 'no-store' })
+    .then(function(r){ if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+    .then(function(json){ DATA = json; renderRevs(); })
+    .catch(function(err){
+      document.getElementById('revs').innerHTML = '<p class="empty">' +
+        (LANG === 'es' ? 'No se pudo cargar el historial.' : 'Could not load history.') + '</p>';
+    });
+
+  // Init language
+  var saved; try { saved = localStorage.getItem('rls-lang'); } catch(e){}
+  var url = new URLSearchParams(location.search).get('lang');
+  var initial = url || saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'es');
+  applyLang(initial);
+})();
+</script>
+
+</body>
+</html>

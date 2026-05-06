@@ -537,6 +537,77 @@
   }
   .btn-ghost:hover { border-color: var(--bone); gap: 14px; }
 
+  /* ===================================================================
+     KILN CAP · weekly firing scarcity (ROADMAP item 6, May 2026)
+     Sits inside `.lab-order`, above the WhatsApp CTA.
+     Driven by /data/kiln.json so the operator can edit from a phone.
+     =================================================================== */
+  .kiln-cap {
+    margin: 18px 0 16px;
+    padding: 14px 16px;
+    border: 0.5px solid var(--rule);
+    background: var(--iron-02);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 16px;
+    align-items: baseline;
+  }
+  .kiln-cap[hidden] { display: none; }
+  .kiln-cap[data-state="closed"]   { border-color: rgba(232, 60, 30, 0.35); }
+  .kiln-cap[data-state="cutoff"]   { border-color: rgba(232, 60, 30, 0.5); }
+  .kiln-cap[data-state="open"]     { border-color: var(--rule); }
+  .kiln-cap-eyebrow {
+    grid-column: 1 / -1;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--bone-45);
+  }
+  .kiln-cap-date {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "wght" 360, "opsz" 36;
+    font-size: 18px;
+    line-height: 1.2;
+    color: var(--bone);
+  }
+  .kiln-cap-date em { color: var(--vermilion); font-style: italic; }
+  .kiln-cap-slots {
+    text-align: right;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--bone-70);
+  }
+  .kiln-cap-slots strong {
+    color: var(--vermilion);
+    font-weight: 500;
+  }
+  .kiln-cap-bar {
+    grid-column: 1 / -1;
+    height: 2px;
+    background: var(--iron-04);
+    margin-top: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+  .kiln-cap-bar::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: var(--fill, 0%);
+    background: var(--vermilion);
+    transition: width 600ms cubic-bezier(.22,1,.36,1);
+  }
+  .kiln-cap-foot {
+    grid-column: 1 / -1;
+    margin-top: 6px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    color: var(--bone-45);
+  }
+
   .kiln-note {
     margin-top: 32px;
     font-family: 'Fraunces', serif;
@@ -2414,6 +2485,20 @@
             <span id="labPrice">S/ 120</span>
           </div>
           <div class="lab-price-meta mono" id="labPriceMeta" aria-live="polite"></div>
+
+          <!-- Kiln cap · weekly firing scarcity. Hidden until JS renders so it
+               degrades gracefully when /data/kiln.json is missing or fails. -->
+          <aside class="kiln-cap" id="kilnCap" data-state="open" hidden aria-live="polite">
+            <span class="kiln-cap-eyebrow" id="kilnCapEyebrow"
+                  data-es="Próxima cocción" data-en="Next firing">Próxima cocción</span>
+            <span class="kiln-cap-date"   id="kilnCapDate">—</span>
+            <span class="kiln-cap-slots"  id="kilnCapSlots">—</span>
+            <span class="kiln-cap-bar"    id="kilnCapBar" aria-hidden="true"></span>
+            <span class="kiln-cap-foot"   id="kilnCapFoot"
+                  data-es="Encendemos los lunes. Una sola tirada por semana."
+                  data-en="We fire on Mondays. One batch per week.">Encendemos los lunes. Una sola tirada por semana.</span>
+          </aside>
+
           <a class="btn-primary" id="labWaLink" href="https://wa.me/51912418482" target="_blank" rel="noopener">
             <span data-es="Hacer este objeto" data-en="Make this object">Hacer este objeto</span>
             <span aria-hidden="true">→</span>
@@ -3135,10 +3220,12 @@
   <div class="col">
     <h5 data-es="Mapa" data-en="Map">Mapa</h5>
     <a href="/about/" data-es="Sobre el estudio" data-en="About the studio">Sobre el estudio</a><br>
+    <a href="/who-we-serve/" data-es="A quién servimos" data-en="Who we serve">A quién servimos</a><br>
     <a href="/servicios/" data-es="Servicios · 7 campos" data-en="Services · 7 fields">Servicios · 7 campos</a><br>
     <a href="/marca/" data-es="Marca · 8 mecánicas" data-en="Brand · 8 mechanics">Marca · 8 mecánicas</a><br>
     <a href="/work/" data-es="Trabajo" data-en="Work">Trabajo</a><br>
     <a href="/journal/" data-es="Diario" data-en="Journal">Diario</a><br>
+    <a href="/changelog/" data-es="Cambios · manifiesto" data-en="Changelog · manifesto">Cambios · manifiesto</a><br>
     <a href="/verify.html" data-es="Verificar →" data-en="Verify →">Verificar →</a>
   </div>
   <div class="col">
@@ -3567,11 +3654,99 @@ function wireLabControls() {
   render();
 }
 
+// ---------- Kiln cap ------------------------------------------------------
+// Reads /data/kiln.json (operator-editable weekly), renders the "Next firing"
+// scarcity panel above the Lab CTA. Fails silent — the panel starts hidden,
+// so a missing/invalid JSON simply leaves the CTA as before.
+// ROADMAP item 6 · "Scarcity > availability for parent brand."
+let _kilnData = null;
+async function fetchKiln() {
+  try {
+    const res = await fetch('/data/kiln.json', { cache: 'no-store' });
+    if (!res.ok) return;
+    _kilnData = await res.json();
+    renderKiln();
+  } catch (_) { /* fail silent */ }
+}
+
+/** Render the panel from _kilnData and current LANG. Safe to call repeatedly. */
+function renderKiln() {
+  const el = document.getElementById('kilnCap');
+  if (!el || !_kilnData) return;
+  const { next_firing, total_slots, reserved, cutoff_offset_days = 1 } = _kilnData;
+  if (!next_firing || !total_slots) return;
+
+  // Parse as Lima-local midnight (America/Lima = UTC-05, no DST).
+  const firing = new Date(next_firing + 'T00:00:00-05:00');
+  if (isNaN(firing)) return;
+  const now = new Date();
+  const msPerDay = 86400000;
+  const daysUntil = Math.ceil((firing - now) / msPerDay);
+
+  const remaining = Math.max(0, total_slots - reserved);
+  const pct = Math.min(100, Math.round((reserved / total_slots) * 100));
+  const locale = LANG === 'es' ? 'es-PE' : 'en-GB';
+  const dateFmt = new Intl.DateTimeFormat(locale, {
+    weekday: 'long', day: 'numeric', month: 'long', timeZone: 'America/Lima',
+  });
+  const prettyDate = dateFmt.format(firing)
+    .replace(/,/g, '').toUpperCase();
+
+  // State machine: closed > cutoff > open. Closed = batch full OR past firing.
+  // Cutoff = within `cutoff_offset_days` of firing → "last call".
+  let state = 'open';
+  if (remaining <= 0 || daysUntil < 0) state = 'closed';
+  else if (daysUntil <= cutoff_offset_days) state = 'cutoff';
+  el.dataset.state = state;
+
+  const dateEl = document.getElementById('kilnCapDate');
+  const slotsEl = document.getElementById('kilnCapSlots');
+  const eyebrowEl = document.getElementById('kilnCapEyebrow');
+  const barEl = document.getElementById('kilnCapBar');
+  const footEl = document.getElementById('kilnCapFoot');
+
+  dateEl.innerHTML = `<em>${prettyDate}</em>`;
+
+  if (state === 'closed') {
+    eyebrowEl.textContent = LANG === 'es' ? 'Tirada cerrada' : 'Batch closed';
+    slotsEl.innerHTML = LANG === 'es'
+      ? '<strong>0</strong> / ' + total_slots + ' piezas'
+      : '<strong>0</strong> / ' + total_slots + ' pieces';
+    footEl.textContent = LANG === 'es'
+      ? 'Siguiente cocción: el próximo lunes. Escríbenos para reservar.'
+      : 'Next firing: next Monday. Message us to reserve a slot.';
+  } else {
+    eyebrowEl.textContent = LANG === 'es' ? 'Próxima cocción' : 'Next firing';
+    slotsEl.innerHTML = LANG === 'es'
+      ? `<strong>${remaining}</strong> de ${total_slots} piezas libres`
+      : `<strong>${remaining}</strong> of ${total_slots} slots open`;
+    if (state === 'cutoff') {
+      footEl.textContent = LANG === 'es'
+        ? `Cierre en ${daysUntil === 0 ? 'horas' : daysUntil + ' día' + (daysUntil === 1 ? '' : 's')}. Encendemos los lunes.`
+        : `Closes in ${daysUntil === 0 ? 'hours' : daysUntil + ' day' + (daysUntil === 1 ? '' : 's')}. We fire on Mondays.`;
+    } else {
+      footEl.textContent = LANG === 'es'
+        ? 'Encendemos los lunes. Una sola tirada por semana.'
+        : 'We fire on Mondays. One batch per week.';
+    }
+  }
+
+  barEl.style.setProperty('--fill', pct + '%');
+  el.hidden = false;
+}
+
+// Re-render the Kiln cap when the operator flips locales so the labels switch.
+// Extra listeners alongside the existing setLang handlers — idempotent, and
+// avoids reassigning the function declaration (which can surprise hoisting).
+document.getElementById('langEs')?.addEventListener('click', renderKiln);
+document.getElementById('langEn')?.addEventListener('click', renderKiln);
+
 // ---------- Init ----------------------------------------------------------
 applyI18n();
 renderMastheadDate();
 wireLabControls();
 fetchLimaWeather();
+fetchKiln();
 setInterval(fetchLimaWeather, 10 * 60 * 1000); // Refresh every 10 minutes
 </script>
 

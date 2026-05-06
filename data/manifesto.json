@@ -1,0 +1,34 @@
+{
+  "_doc": "Append-only history of the Studios Manifesto. Newest revision first. Each revision is paragraph-split (es/en) so the /changelog page can diff paragraph-by-paragraph. Weather snapshot captures Lima conditions at publish time (so the Living Manifesto's typographic mood is legible retrospectively). Operator workflow: when editing the manifesto in index.html, also append an entry here BEFORE pushing. Keep the revision short and the `note` single-line.",
+  "version": 1,
+  "updated": "2026-05-06",
+  "source_section": "#manifesto (index.html)",
+  "revisions": [
+    {
+      "v": "0.1",
+      "date": "2026-05-02",
+      "published_at": "2026-05-02T09:30:00-05:00",
+      "note_es": "Primera versión pública. Una carilla. Cinco párrafos que separan el taller del feed.",
+      "note_en": "First public version. One page. Five paragraphs separating workshop from feed.",
+      "weather": {
+        "summary_es": "Lima · garúa · 17°",
+        "summary_en": "Lima · drizzle · 17°",
+        "type_weight": 400,
+        "type_slant": 0,
+        "code": 51
+      },
+      "paragraphs_es": [
+        "Rainey Laguna Studios hace cosas. Cosas que se miran, que se tocan, que duran.",
+        "Creemos que una marca que no puede llegar a la mesa no es una marca — es una teoría. Diseñamos en pantalla y fabricamos en taller. Tipografía, impresos, objetos en 3D, hidrografía, y todo lo que un lugar necesita tener para ser recordado fuera del teléfono.",
+        "Trabajamos desde Lima, con raíces en Glasgow. Pensamos despacio, respondemos rápido, y no entregamos nada que no pongamos primero sobre la mesa.",
+        "Si buscas web, te atendemos en raineylaguna.com — nuestra rama especializada para negocios locales en Lima. Si buscas cualquier otra cosa — aquí."
+      ],
+      "paragraphs_en": [
+        "Rainey Laguna Studios makes things. Things you look at, things you hold, things that last.",
+        "We believe a brand that can't reach the table isn't a brand — it's a theory. We design on screen and fabricate in the workshop. Typography, print, 3D-printed objects, hydroprinted finishes, and whatever else a place needs to be remembered off the phone.",
+        "We work from Lima, with roots in Glasgow. We think slowly, we answer quickly, and we don't ship anything we haven't first put on the table.",
+        "If you need web, we handle that at raineylaguna.com — our specialist arm for Lima local businesses. For anything else — here."
+      ]
+    }
+  ]
+}
