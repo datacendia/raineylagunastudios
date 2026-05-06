@@ -27,8 +27,7 @@ restaurants, route to Rainey Laguna (the web vertical).
 - **Languages served:** Spanish (Peruvian) and English
 - **WhatsApp:** +51 912 418 482
 - **Email:** hola@raineylaguna.com
-- **Domain:** raineylagunastudios.com (in development; site is currently
-  noindex,nofollow at v0.1; private launch targeted Q3 2026)
+- **Domain:** raineylagunastudios.com
 - **Source-Code Commons:** every client website's source code is published
   open-source from day one at https://github.com/raineylaguna-commons.
 
