@@ -1,0 +1,24 @@
+{
+  "edition": "MMXXVI",
+  "year": 2026,
+  "title": "El Almanaque de Lima",
+  "subtitle": "Edición primera · 200 copias numeradas",
+  "description": "Un almanaque impreso, anual, en papel hueso. Calendario de garúa, fechas de marea, fases lunares sobre el Pacífico, observaciones del taller, y un colofón al final. Tirada única de 200 copias numeradas y firmadas a mano.",
+  "price_pen": 180,
+  "price_display": "S/ 180",
+  "shipping_pen": 15,
+  "shipping_display": "S/ 15 envío Lima",
+  "copies_total": 200,
+  "copies_reserved": 0,
+  "ships": "Diciembre 2026",
+  "press_run_closes": "2026-11-15",
+  "specs": [
+    "Tirada: 200 copias numeradas",
+    "Formato: 14 × 21 cm, 96 páginas",
+    "Papel: Munken Pure 120 g, hueso",
+    "Encuadernación: cosida a hilo, lomo expuesto",
+    "Tipografía: Fraunces + JetBrains Mono",
+    "Imprenta: Lima",
+    "Firma: a mano por Stuart Rainey"
+  ]
+}
