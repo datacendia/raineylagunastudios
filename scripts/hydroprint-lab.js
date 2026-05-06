@@ -223,6 +223,28 @@ function boot(container) {
       renderer.render(scene, camera);
       return renderer.domElement.toDataURL('image/png');
     },
+    /**
+     * Capture a higher-resolution snapshot for sharing/printing on a quote.
+     * Renders at 2x device pixels to a fresh canvas without disturbing the
+     * live view. Returns a PNG dataURL.
+     */
+    snapshotHiRes(width = 1024, height = 1024) {
+      const prevSize = renderer.getSize(new THREE.Vector2());
+      const prevPR = renderer.getPixelRatio();
+      const prevAspect = camera.aspect;
+      renderer.setPixelRatio(1);
+      renderer.setSize(width, height, false);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.render(scene, camera);
+      const url = renderer.domElement.toDataURL('image/png');
+      // Restore live viewer state.
+      renderer.setSize(prevSize.x, prevSize.y, false);
+      renderer.setPixelRatio(prevPR);
+      camera.aspect = prevAspect;
+      camera.updateProjectionMatrix();
+      return url;
+    },
   };
 
   // Emit "ready" so the UI controls wiring can enable itself.
