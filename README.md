@@ -4,6 +4,15 @@ A working creative studio in Lima. Physical + digital. Graphic design, brand man
 
 `raineylagunastudios.com` is the **parent / main brand**. `raineylaguna.com` is the **web-development vertical** underneath it.
 
+> **Read first, every session:**
+> [`rainey-stack/CONVENTIONS.md`](https://github.com/datacendia/rainey-stack/blob/main/CONVENTIONS.md)
+> is the canonical conventions document for the whole stack. This repo is
+> intentionally **static HTML** — no build step — so most of the code-level
+> rules in that file apply elsewhere, but the §15 voice register
+> (*atmospheric, slow, poetic, Spanish-first*) is canon for every word
+> shipped here. Run `npm run wrap` before commit and verify SRI hashes on
+> any new CDN imports.
+
 ---
 
 ## The three signature mechanics
