@@ -1,0 +1,52 @@
+# CI for raineylagunastudios
+#
+# Per rainey-stack/CONVENTIONS.md §13.5 (Day 1 AM):
+#   "GitHub Actions: HTML validate + link-check on PR" for the static site.
+#
+# This repo is intentionally static HTML — no build step, no bundler. The
+# guard rails it needs are different from the Next.js apps:
+#
+#   1. check  — runs `scripts/check-html.mjs` to validate every shipped
+#               page's JSON-LD blocks, inline-JS syntax, standalone .js
+#               module syntax, dangerous tokens in i18n `data-es` /
+#               `data-en` strings used by the `data-html="true"`
+#               innerHTML interpolator, and the `data/*.json` +
+#               `sitemap.xml` + `site.webmanifest` shapes.
+#
+# Adding more checks later (markdown link-check, lychee for external
+# links, Lighthouse CI) is straightforward — keep them as separate jobs
+# so a single broken external link doesn't block deploys.
+
+name: ci
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: HTML / JS / JSON-LD validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 22 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Validate HTML / JS / JSON-LD / data
+        run: npm run check
