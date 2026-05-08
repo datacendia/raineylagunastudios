@@ -46,7 +46,15 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci --no-audit --no-fund
+        # Using `npm install` rather than `npm ci` because the static-site
+        # repo has only two devDependencies (playwright, vitest) and we do
+        # not gain reproducibility benefit worth the lockfile maintenance
+        # ceremony. If the dep surface grows, switch to `npm ci` and pin
+        # the lockfile in PRs that touch package.json.
+        run: npm install --no-audit --no-fund
 
       - name: Validate HTML / JS / JSON-LD / data
         run: npm run check
+
+      - name: Test (vitest run)
+        run: npm test
