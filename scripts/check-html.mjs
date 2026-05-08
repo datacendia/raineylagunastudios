@@ -7,6 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
+import { DANGEROUS_RE } from './lib/sanitize.mjs';
 
 const PAGES = [
   'index.html',
@@ -57,7 +58,8 @@ for (const rel of PAGES) {
   //     '>') via a regex that understands double-quoted attribute values,
   //     then inspect only tags whose text contains data-html="true".
   const tagRe = /<[a-zA-Z][^>"]*(?:"[^"]*"[^>"]*)*>/g;
-  const DANGEROUS_RE = /<\s*(script|iframe|object|embed|style)\b|javascript:|\son[a-z]+\s*=/i;
+  // DANGEROUS_RE imported from ./lib/sanitize.mjs - same source of truth
+  // as the unit tests in scripts/lib/sanitize.test.mjs.
   const attrRe = /data-(?:es|en|title-es|title-en|desc-es|desc-en|placeholder-es|placeholder-en)="([^"]*)"/g;
   let dhIdx = 0;
   for (const tagMatch of html.matchAll(tagRe)) {
