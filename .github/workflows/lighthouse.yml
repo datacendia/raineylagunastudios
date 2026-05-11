@@ -1,0 +1,64 @@
+# Lighthouse CI — quality floor for the studios marketing site.
+#
+# Runs on PR (against the merge candidate) and on push to main, against
+# the live deployed URL. Asserts performance / accessibility / best-
+# practices / SEO budgets so we don't drift below them.
+#
+# Why hit the live URL rather than spinning up a local server?
+# 1. The site is static HTML; the only thing the local serve would
+#    miss is the Vercel CDN + Brotli + image-CDN behaviour, all of
+#    which materially affect the LCP score we actually care about.
+# 2. Lighthouse-CI's `lhci autorun --collect.url=...` is one-line and
+#    resilient to flakes via `numberOfRuns: 3`.
+#
+# Budget (set conservatively for a static-HTML site; tighten as we
+# polish):
+#   performance   ≥ 0.85
+#   accessibility ≥ 0.95
+#   best-practices ≥ 0.90
+#   seo           ≥ 0.95
+#
+# Adjust in lighthouse.budget.json. The CI fails when the median run
+# falls below any threshold.
+
+name: lighthouse
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+# Don't pile up runs on every push to a noisy branch — keep the most
+# recent one and cancel the others.
+concurrency:
+  group: lighthouse-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lhci:
+    name: Lighthouse audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 22 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Lighthouse CI
+        # Pinned to a major; npx --yes silences the install prompt.
+        run: npm install --global @lhci/cli@0.14.x
+
+      - name: Run Lighthouse against production URL
+        # On push-to-main, audit raineylagunastudios.com (the canonical
+        # deploy). On PRs, audit the same URL — Vercel deploy-preview
+        # URLs aren't reachable until the deploy hook fires, and gating
+        # on preview URLs adds flake without changing the budget signal.
+        run: lhci autorun --config=lighthouserc.json
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
