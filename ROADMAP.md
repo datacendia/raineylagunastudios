@@ -242,6 +242,75 @@
 
 ---
 
+## PAID SERVICES — what's genuinely required
+
+> Test for inclusion here: *can this item ship at production quality
+> without the spend?* The studios site is intentionally static; the
+> *software* costs almost nothing. The *physical* studio costs
+> something — but that's materials and equipment, not infrastructure.
+
+### Required for production (non-negotiable, software-side)
+
+**None.** This site is genuinely free to run at production:
+
+- **Hosting:** Vercel free tier (100 GB bandwidth, sufficient for an
+  atmospheric studio site at any plausible traffic).
+- **Domain:** `raineylagunastudios.com` already owned.
+- **Analytics:** Cloudflare Analytics injection script (free).
+- **CDN imports** (esm.sh, cdn.jsdelivr.net for the few atmospheric
+  client-side libraries) are free public CDNs.
+
+**Floor cost: US$ 0 / month new spend.**
+
+### Required for production (non-negotiable, physical-side)
+
+This is what differentiates the studios brand: software is free but
+the physical-trace thesis is not. These are studio expenses you
+already incur; called out so the roadmap is honest.
+
+- **3D printing consumables (~S/ 50 – 150 / kg PLA / PETG / PLA-CF).**
+  Per Twin Wall / Proof of Fabrication shipment. Not infrastructure;
+  per-piece cost.
+- **Hydroprinting film + activator (~S/ 80 – 200 per drop).**
+  Per drop, not per month.
+- **Ceramic / glaze for fired pieces (~S/ 30 – 100 per tile).**
+  Per twin shipment.
+- **Shipping (~S/ 15 – 40 per twin).** Glovo / Olva domestic; DHL
+  if international.
+
+These are revenue-aligned: a twin only ships when a digital order
+ships, and the digital order pays for the twin many times over.
+
+### Strongly recommended (software, optional)
+
+- **Resend (shared via CRM).** If the newsletter (CRITICAL item 5)
+  grows past ~50 subscribers receiving monthly sends, the CRM's
+  Resend tier may need upgrading. Same envelope as vigia /
+  raineylaguna-crm. **Not required to launch the newsletter.**
+
+- **Owncast self-hosted on Railway (US$ 5 / mo) OR YouTube Live
+  (free).** For the "Open studio hours" livestream (STRATEGIC item
+  20). YouTube is free and reaches further; Owncast is brand-
+  aligned but requires another Railway service. **Not required to
+  launch the *page* — only when you start streaming.**
+
+- **A custom typeface license.** If the studio ever commissions a
+  custom display face (which would be on-brand), expect S/ 500 –
+  2 000 one-time. Until then, Google Fonts + system fonts cover the
+  register. **Not required at any point.**
+
+### Wouldn't pay for
+
+- **A headless CMS.** Files in `data/` *are* the CMS. The friction
+  is the point.
+- **An image CDN.** Vercel's edge cache + WebP/AVIF source
+  conversion handle this for free.
+- **A custom analytics tool.** Cloudflare Analytics suffices.
+- **A "studio management" SaaS (Houzz Pro, Studio Designer, etc.).**
+  This repo + the CRM cover the same ground.
+
+---
+
 ## EXPLICITLY NOT DOING
 
 - **Build step / React migration.** The intentional staticness is
