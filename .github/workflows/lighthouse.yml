@@ -59,6 +59,10 @@ jobs:
         # deploy). On PRs, audit the same URL — Vercel deploy-preview
         # URLs aren't reachable until the deploy hook fires, and gating
         # on preview URLs adds flake without changing the budget signal.
+        #
+        # No `env:` block: `lighthouserc.json` uploads to
+        # `temporary-public-storage`, so the optional
+        # `LHCI_GITHUB_APP_TOKEN` (used only when wiring the LHCI
+        # GitHub App to post status checks) would be a no-op. Add it
+        # back if/when we move uploads to a private LHCI Server.
         run: lhci autorun --config=lighthouserc.json
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
