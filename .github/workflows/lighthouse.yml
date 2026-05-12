@@ -61,8 +61,8 @@ jobs:
         # on preview URLs adds flake without changing the budget signal.
         #
         # No `env:` block: `lighthouserc.json` uploads to
-        # `temporary-public-storage`, so the optional
-        # `LHCI_GITHUB_APP_TOKEN` (used only when wiring the LHCI
-        # GitHub App to post status checks) would be a no-op. Add it
-        # back if/when we move uploads to a private LHCI Server.
+        # `temporary-public-storage`, so the optional LHCI GitHub App
+        # token (used only when wiring the GitHub App to post status
+        # checks) would be a no-op. Add the env wiring back if/when we
+        # move uploads to a private LHCI Server — see lhci docs.
         run: lhci autorun --config=lighthouserc.json
