@@ -11,6 +11,16 @@
 > after the vitest@4 bump. Voice register canonical (`COLOFON.md`
 > §15). Remaining gaps are content-system and engagement loops.
 >
+> **Reconciliation 2026-05-17:** Critical #6 (Lighthouse CI) shipped
+> in `b196fba`/`ca07f83`/`de66b5e`. Critical #1 generator
+> (`scripts/proof-of-fabrication.js`) is implemented and 6 demo proof
+> JSONs (`DEMO-0001` through `DEMO-0011`) already exist in
+> `data/proofs/` — what's missing is the public-facing renderer
+> (#3). Strategic #18 (Twin sale) has its data layer in
+> `data/twins.json`; only the UI surface remains. Effective
+> completion ~93%; remaining CRITICAL: #2 (drops page), #3 (proofs
+> page renderer), #4 (twin-wall counter), #5 (newsletter signup).
+>
 > **Voice register:** atmospheric, slow, poetic, Spanish-first.
 > Capitalised brand words ("Twin", "Almanac", "Proof") are sparing.
 > Run `npm run wrap` before commit. Verify SRI on any new CDN import.
@@ -19,7 +29,7 @@
 
 ## CRITICAL — blocking 100%
 
-### 1. `scripts/new-proof.mjs` — proof-of-fabrication generator
+### 1. `scripts/new-proof.mjs` — proof-of-fabrication generator ⚠️ generator already exists as `scripts/proof-of-fabrication.js` (21 KB); 6 demo JSONs in `data/proofs/`; only the public renderer (#3) is open
 - **Why:** The thesis is *"every interaction on this site leaves a
   physical trace in the real world."* Only `data/proofs/DEMO-0001.json`
   exists. Every shipment from now on needs a proof JSON, and writing
@@ -71,7 +81,7 @@
   link in every send.
 - **Effort:** 4 hours (UI + the CRM endpoint).
 
-### 6. Lighthouse CI step
+### ~~6. Lighthouse CI step~~ ✅ shipped (`b196fba` + `ca07f83` + `de66b5e`)
 - **Why:** `.github/workflows/ci.yml` already foreshadows it:
   *"Adding more checks later (markdown link-check, lychee for
   external links, Lighthouse CI) is straightforward"*.
