@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "check": "node scripts/check-html.mjs"
+    "check": "node scripts/check-html.mjs",
+    "analytics:inject": "node scripts/inject-analytics.mjs"
   },
   "keywords": [],
   "author": "",
