@@ -80,6 +80,33 @@ for (const rel of PAGES) {
     }
   }
 
+  // 1b. SRI guard. Today the site has 0 CDN <script src="https://..."> tags
+  //     and 0 CDN <link rel="stylesheet" href="https://..."> tags — every
+  //     script lives under /scripts/ and every stylesheet is inline. The
+  //     moment someone introduces an external CDN asset, this check makes
+  //     CI red until they add `integrity="sha384-..." crossorigin="anonymous"`.
+  //     Per rainey-stack/CONVENTIONS.md §13.5 (SRI rule).
+  const cdnScriptRe = /<script\b[^>]*\bsrc=["']https?:\/\/[^"']+["'][^>]*>/gi;
+  const cdnLinkRe = /<link\b[^>]*\brel=["']stylesheet["'][^>]*\bhref=["']https?:\/\/[^"']+["'][^>]*>/gi;
+  for (const m of html.matchAll(cdnScriptRe)) {
+    total++;
+    if (/\bintegrity=/i.test(m[0])) {
+      console.log(`  sri script: OK`);
+    } else {
+      fail++;
+      console.log(`  sri script: FAIL — CDN <script src=…> missing integrity= attribute: ${m[0].slice(0, 100)}`);
+    }
+  }
+  for (const m of html.matchAll(cdnLinkRe)) {
+    total++;
+    if (/\bintegrity=/i.test(m[0])) {
+      console.log(`  sri link: OK`);
+    } else {
+      fail++;
+      console.log(`  sri link: FAIL — CDN <link rel=stylesheet> missing integrity= attribute: ${m[0].slice(0, 100)}`);
+    }
+  }
+
   // 2. Inline JS blocks — parse-check only (no exec; DOM APIs unavailable)
   const jsRe = /<script(?![^>]*type="application\/ld\+json")(?![^>]*src=)(?:[^>]*)>([\s\S]*?)<\/script>/g;
   let j = 0;
