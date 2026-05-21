@@ -435,7 +435,7 @@ llms.txt                            AI-assistant onboarding doc
 - Validator (`scripts/check-html.mjs`) updated to cover all new pages, scripts, and data files. 26/26 green at time of bump.
 - Sitemap updated with `/marca/`, `/memory/`, `/work/`, `/servicios/`, `/journal/`, and the two journal posts.
 - `llms.txt` reorganised: "Six fabrication mechanics" + "Eight brand-management mechanics."
-- Hosting decision in companion doc `raineylaguna/SIGNUP-GUIDE.md` — Studios will deploy to Cloudflare Pages, sharing the same Vigía Vercel backend at `vigia.raineylaguna.com`.
+- Hosting decision in companion doc `raineylaguna/SIGNUP-GUIDE.md` — Studios deploys to Vercel, sharing the same Sereno (formerly Vigía) Railway backend at `app.serenowatch.com` *(domain wired May 2026; previous reference `vigia.raineylaguna.com` is retired)*.
 
 ### v1.0 · 2 May 2026
 - Initial colophon. Seven service fields, seven mechanics (Manifesto, Hydroprint, Reverse Commissioning, Memory, Proof, Twin, Commons).
