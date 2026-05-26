@@ -1,9 +1,8 @@
 # robots.txt — Rainey Laguna Studios
 # https://raineylagunastudios.com/robots.txt
 #
-# v0.1 — site is currently noindex,nofollow at the meta level.
-# When launching: remove the meta robots tag in index.html and
-# the launch line below will already permit crawling.
+# Site is live and indexable. The corresponding <meta name="robots">
+# directive in index.html is "index, follow".
 
 # Standard search engines: full access
 User-agent: *

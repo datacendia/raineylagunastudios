@@ -38,7 +38,7 @@ portfolio.
      to signal it's a deliverable, not UI chrome.
      Next iterations:
        [ ] Wire to an LLM (Claude or GPT-4o) for genuinely unique copy
-       [ ] Read Vigía competitive signals to make the observation specific
+       [ ] Read Sereno competitive signals to make the observation specific
        [ ] Save generated briefs server-side for Stuart's review queue
 
 05 · PROOF OF FABRICATION         (scripts/proof-of-fabrication.js · verify.html)
@@ -99,7 +99,7 @@ GARÚA AI (.com hospitality add-on · S/ 750/mo + S/ 800 setup)
 LIVE AUDIT (.com homepage · free lead magnet)
      Type business URL → 90-second competitive audit + 6-week roadmap +
      one-click WhatsApp with signed PDF. Extends Reverse Commissioning.
-     Needs Vigía /api/audit endpoint, Lighthouse, Google Places, SerpAPI,
+     Needs Sereno /api/audit endpoint, Lighthouse, Google Places, SerpAPI,
      Claude.
 
 CARE VIVO / SELF-OPTIMISING SITE (.com · S/ 1,400/mo)
@@ -133,12 +133,12 @@ Studios add-ons
   Garúa AI               S/ 800 setup   + S/ 750/mo
   Care Vivo              -              + S/ 1,400/mo
   Socio (AI Co-founder)  S/ 2,000 setup + S/ 1,200/mo
-  Vigía                  -              + S/ 1,200/mo
+  Sereno                  -              + S/ 1,200/mo
   Espejo                 -              + S/ 800/mo (existing)
 
 Independiente Lima stack (hospitality)
   One-time    S/ 11,500 + S/ 2,800 setup
-  Monthly     S/ 4,550  (Care Vivo + Vigía + Garúa + Socio)
+  Monthly     S/ 4,550  (Care Vivo + Sereno + Garúa + Socio)
 
 ---
 

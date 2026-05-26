@@ -33,7 +33,7 @@ The same paragraph reads differently at different times of day. A live readout p
 ### 02 · The Kiln
 A 3D printer in the Lima studio, wired to this homepage. Every visit adds a small token to the print queue. A live webcam feed shows the printer working. Objects accumulate into a physical mosaic wall, photographed monthly. 1-in-100 visitors gets theirs mailed home.
 
-**Status:** demo skeleton in place (animated job counter + sweep effect). Real implementation requires wiring a Prusa printer to OctoPrint or Moonraker and exposing a JSON endpoint via Vigía.
+**Status:** demo skeleton in place (animated job counter + sweep effect). Real implementation requires wiring a Prusa printer to OctoPrint or Moonraker and exposing a JSON endpoint via Sereno.
 
 ### 03 · The Postcard
 Every visit generates a one-of-one postcard with: today's date, Lima sky, your arrival time, a unique serial number, a deterministically-generated barcode from your visit signature. Download as PDF. 1-in-100 is physically printed, hand-signed by Stuart, and mailed.

@@ -106,7 +106,7 @@ Shared traits:
 
 Studios clients can bolt on any `.com` recurring product:
 - **Care / Care Vivo** _(S/ 600 – 1,400 / mo)_
-- **Vigía** _(S/ 600 / mo · entry pricing; S/ 1,200 / mo in full stack)_
+- **Sereno** _(S/ 600 / mo · entry pricing; S/ 1,200 / mo in full stack)_
 - **Espejo** _(S/ 900 / quarter · repriced 3 May 2026)_
 - **Garúa AI** _(hospitality-only, S/ 800 setup + S/ 750 / mo)_
 - **Socio / AI Co-Founder** _(S/ 1,500 setup + S/ 800 / mo · repriced 3 May 2026)_
@@ -141,7 +141,7 @@ These are running software. Each one is a world-first, or close to it, for a des
 - File: `scripts/reverse-commissioning.js`.
 - Visitor types business name + category. Receives a typeset one-page brief on ivory paper: observation → diagnosis → three-phase program → investment → timeline.
 - v0.2 is deterministic templating over six categories (café, restaurant, fitness, wellness, boutique, school).
-- v0.3 plan: wire to Claude + read Vigía signals for specific observations.
+- v0.3 plan: wire to Claude + read Sereno signals for specific observations.
 
 ### 04.4 The Object That Remembers You (NFC)
 - File: `scripts/memory-object.js`.
@@ -283,7 +283,7 @@ Studios is the **inverted** palette of Rainey Laguna.com. Same fonts, opposite l
 - **Dependencies:** Three.js (CDN), QRCode (esm.sh), Fraunces + JetBrains Mono (Google Fonts).
 - **Data:** static JSON files in `data/` (proofs, twins, patterns manifest).
 - **Deploy:** Netlify (planned). Same pipeline as `.com`.
-- **No back-end in v1.** Forms link to WhatsApp. AI mechanics (Sprint 2+) call the shared Vigía Next.js backend at `c:\Users\Stu\vigia`.
+- **No back-end in v1.** Forms link to WhatsApp. AI mechanics (Sprint 2+) call the shared Sereno Next.js backend at `c:\Users\Stu\vigia`.
 
 ### 07.3 Repository layout (at root of `c:\Users\Stu\raineylagunastudios`)
 

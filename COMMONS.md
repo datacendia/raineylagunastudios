@@ -20,7 +20,7 @@ By open-sourcing every client site, we commit to competing only on the things th
 
 - Client reservation/order data and anything covered under Ley 29733.
 - Email archives ingested into Socio (AI Co-Founder) remain in an encrypted Supabase bucket with per-client isolation.
-- Vigía's competitor-scrape cache (it is ours, licensed by us, not for redistribution).
+- Sereno's competitor-scrape cache (it is ours, licensed by us, not for redistribution).
 - Client-owned photography and copy before launch. After launch: optional, up to the client.
 
 ## What this is not

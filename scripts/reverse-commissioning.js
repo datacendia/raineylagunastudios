@@ -5,7 +5,7 @@
 // Type your business name + category and the studio returns a formatted,
 // unsolicited critique-and-proposal in the house brief template.
 // In v0.2 this is deterministic templating with rich category libraries;
-// v0.3 will replace the templater with a real LLM wired to Vigía data.
+// v0.3 will replace the templater with a real LLM wired to Sereno data.
 // =====================================================================
 
 // ----- Category knowledge base ----------------------------------------------

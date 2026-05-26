@@ -12,7 +12,7 @@
 <title data-title-es="Rainey Laguna Studios · Un estudio de trabajo en Lima" data-title-en="Rainey Laguna Studios · A working studio in Lima">Rainey Laguna Studios · Un estudio de trabajo en Lima</title>
 <meta name="description" content="Rainey Laguna Studios — diseño gráfico, gestión de marca, impresión 3D, hidrografía. Desde Lima, con raíces en Glasgow. Cosas que se miran, que se tocan, que duran." data-desc-es="Rainey Laguna Studios — diseño gráfico, gestión de marca, impresión 3D, hidrografía. Desde Lima, con raíces en Glasgow. Cosas que se miran, que se tocan, que duran." data-desc-en="Rainey Laguna Studios — graphic design, brand management, 3D printing, hydroprinting. From Lima, with roots in Glasgow. Things you look at, things you hold, things that last.">
 <meta name="author" content="Stuart John Andrew Rainey">
-<meta name="robots" content="noindex,nofollow"><!-- v0.1 · not yet live · remove when ready to launch -->
+<meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0E0D0B">
 <meta name="color-scheme" content="dark">
 
@@ -2009,6 +2009,168 @@
     }
   })();
 </script>
+
+<!-- =====================================================================
+     STRUCTURED DATA · schema.org @graph
+     One Organization (the studio), one Person (founder), and a list of
+     Services for the six things we make. Designed for both Google rich
+     results and AI engine citations (Perplexity, ChatGPT, Claude).
+     Validate with: node scripts/check-html.mjs
+     ===================================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://raineylagunastudios.com/#org",
+      "name": "Rainey Laguna Studios",
+      "alternateName": ["Rainey Laguna", "RL Studios"],
+      "url": "https://raineylagunastudios.com/",
+      "logo": "https://raineylagunastudios.com/apple-touch-icon.svg",
+      "image": "https://raineylagunastudios.com/og-image.png",
+      "description": "A working studio in Lima. Physical and digital — graphic design, brand management, 3D printing, hydroprinting, brand consultancy. Things you look at, things you hold, things that last.",
+      "founder": { "@id": "https://raineylagunastudios.com/#founder" },
+      "knowsLanguage": ["es-PE", "es", "en", "en-GB"],
+      "areaServed": [
+        { "@type": "City", "name": "Lima" },
+        { "@type": "Country", "name": "Peru" },
+        { "@type": "City", "name": "Glasgow" }
+      ],
+      "sameAs": [
+        "https://raineylaguna.com/",
+        "https://wa.me/51912418482"
+      ],
+      "subOrganization": {
+        "@type": "Organization",
+        "name": "Rainey Laguna",
+        "url": "https://raineylaguna.com/",
+        "description": "Web studio vertical of Rainey Laguna Studios — sites and competitive intelligence for independent local businesses in Lima."
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://raineylagunastudios.com/#studio",
+      "name": "Rainey Laguna Studios",
+      "parentOrganization": { "@id": "https://raineylagunastudios.com/#org" },
+      "url": "https://raineylagunastudios.com/",
+      "image": "https://raineylagunastudios.com/og-image.png",
+      "telephone": "+51-912-418-482",
+      "email": "hola@raineylagunastudios.com",
+      "priceRange": "S/ 25 – S/ 11,500+",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lima",
+        "addressRegion": "Lima",
+        "addressCountry": "PE"
+      },
+      "areaServed": { "@type": "City", "name": "Lima" },
+      "currenciesAccepted": "PEN",
+      "paymentAccepted": "Cash, Bank transfer, Yape, Plin, Card",
+      "slogan": "Cosas que se miran, que se tocan, que duran."
+    },
+    {
+      "@type": "Person",
+      "@id": "https://raineylagunastudios.com/#founder",
+      "name": "Stuart John Andrew Rainey",
+      "jobTitle": "Founder & Studio Director",
+      "worksFor": { "@id": "https://raineylagunastudios.com/#org" },
+      "nationality": "British",
+      "homeLocation": { "@type": "City", "name": "Lima" },
+      "knowsLanguage": ["es-PE", "en-GB"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://raineylagunastudios.com/#website",
+      "url": "https://raineylagunastudios.com/",
+      "name": "Rainey Laguna Studios",
+      "publisher": { "@id": "https://raineylagunastudios.com/#org" },
+      "inLanguage": ["es-PE", "en"]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://raineylagunastudios.com/#service-identidad",
+      "serviceType": "Brand identity design",
+      "provider": { "@id": "https://raineylagunastudios.com/#studio" },
+      "name": "Identidad de marca",
+      "description": "Identidad visual completa: naming, logotipo, sistema gráfico y pautas de uso para negocios independientes en Lima.",
+      "areaServed": { "@type": "City", "name": "Lima" },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "PEN",
+        "price": "2500",
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": "2500", "priceCurrency": "PEN" }
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://raineylagunastudios.com/#service-impresos",
+      "serviceType": "Print production",
+      "provider": { "@id": "https://raineylagunastudios.com/#studio" },
+      "name": "Impresos",
+      "description": "Tirajes de impresos en risograph y offset corto: papelería, broadsheets, fanzines, etiquetas.",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "PEN",
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": "600", "priceCurrency": "PEN" }
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://raineylagunastudios.com/#service-3d",
+      "serviceType": "3D printing",
+      "provider": { "@id": "https://raineylagunastudios.com/#studio" },
+      "name": "Impresión 3D",
+      "description": "Fabricación aditiva por filamento (FDM) y resina para piezas pequeñas, prototipos y objetos de marca.",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "PEN",
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": "80", "priceCurrency": "PEN" }
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://raineylagunastudios.com/#service-hidrografia",
+      "serviceType": "Hydroprinting",
+      "provider": { "@id": "https://raineylagunastudios.com/#studio" },
+      "name": "Hidrografía",
+      "description": "Decoración por inmersión en agua (hydro-dipping). Patrones aplicados sobre objetos cerámicos, plásticos y metales.",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "PEN",
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": "45", "priceCurrency": "PEN" }
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://raineylagunastudios.com/#service-consultoria",
+      "serviceType": "Brand consultancy",
+      "provider": { "@id": "https://raineylagunastudios.com/#studio" },
+      "name": "Consultoría de marca",
+      "description": "Acompañamiento mensual a negocios independientes: posicionamiento, sistema visual, decisiones editoriales.",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "PEN",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "1200",
+          "priceCurrency": "PEN",
+          "unitText": "MON"
+        }
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://raineylagunastudios.com/#service-web",
+      "serviceType": "Web design and development",
+      "provider": { "@id": "https://raineylagunastudios.com/#studio" },
+      "name": "Web · raineylaguna.com",
+      "description": "El estudio web de Rainey Laguna. Sitios cuidados para negocios locales independientes en Lima.",
+      "url": "https://raineylaguna.com/"
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -2959,8 +3121,8 @@
 
     <article class="rc-output" id="rcOutput" hidden aria-live="polite"></article>
 
-    <p class="lab-note" data-es="El briefing se genera con señales públicas y el criterio del estudio. En v0.3 se conecta a Vigía para leer el contexto real de tu distrito. Todo lo que mandamos lo revisa Stuart antes de contestar." data-en="The brief is generated from public signals and the studio's own criteria. In v0.3 it wires into Vigía to read your district's real context. Anything we send is reviewed by Stuart before replying.">
-      El briefing se genera con señales públicas y el criterio del estudio. En v0.3 se conecta a Vigía para leer el contexto real de tu distrito. Todo lo que mandamos lo revisa Stuart antes de contestar.
+    <p class="lab-note" data-es="El briefing se genera con señales públicas y el criterio del estudio. En v0.3 se conecta a Sereno para leer el contexto real de tu distrito. Todo lo que mandamos lo revisa Stuart antes de contestar." data-en="The brief is generated from public signals and the studio's own criteria. In v0.3 it wires into Sereno to read your district's real context. Anything we send is reviewed by Stuart before replying.">
+      El briefing se genera con señales públicas y el criterio del estudio. En v0.3 se conecta a Sereno para leer el contexto real de tu distrito. Todo lo que mandamos lo revisa Stuart antes de contestar.
     </p>
   </div>
 </section>
@@ -3160,7 +3322,7 @@
       <div class="make-cell" style="grid-column:1/-1">
         <span class="m-num">→ 07 / <span data-es="Web" data-en="Web">Web</span></span>
         <h3 class="m-name" data-es="<em>Pantalla</em> que trabaja." data-en="<em>Screens</em> that work." data-html="true"><em>Pantalla</em> que trabaja.</h3>
-        <p class="m-desc" data-es="La web está en manos de nuestra rama especializada, Rainey Laguna, en raineylaguna.com — sitios bilingües, Vigía, Garúa, Espejo. El mismo estudio, el mismo equipo, otra puerta." data-en="Web lives in our specialist arm, Rainey Laguna, at raineylaguna.com — bilingual sites, Vigía, Garúa, Espejo. Same studio, same team, different door.">La web está en manos de nuestra rama especializada, Rainey Laguna, en <a href="https://raineylaguna.com" target="_blank" rel="noopener">raineylaguna.com</a> — sitios bilingües, Vigía, Garúa, Espejo. El mismo estudio, el mismo equipo, otra puerta.</p>
+        <p class="m-desc" data-es="La web está en manos de nuestra rama especializada, Rainey Laguna, en raineylaguna.com — sitios bilingües, Sereno, Garúa, Espejo. El mismo estudio, el mismo equipo, otra puerta." data-en="Web lives in our specialist arm, Rainey Laguna, at raineylaguna.com — bilingual sites, Sereno, Garúa, Espejo. Same studio, same team, different door.">La web está en manos de nuestra rama especializada, Rainey Laguna, en <a href="https://raineylaguna.com" target="_blank" rel="noopener">raineylaguna.com</a> — sitios bilingües, Sereno, Garúa, Espejo. El mismo estudio, el mismo equipo, otra puerta.</p>
         <div class="m-foot"><span data-es="Ver" data-en="See">Ver</span><span class="price">raineylaguna.com →</span></div>
       </div>
     </div>
