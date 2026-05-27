@@ -2665,6 +2665,13 @@
             <span data-es="Hacer este objeto" data-en="Make this object">Hacer este objeto</span>
             <span aria-hidden="true">→</span>
           </a>
+
+          <!-- QR snapshot · SIGNATURE 02 · scripts/lab-qr-snapshot.js
+               Captures the current spec as PNG render + QR-encoded share URL.
+               The script self-attaches on DOMContentLoaded; it lazy-loads
+               the qrcode library from jsDelivr only after first click. -->
+          <button type="button" class="btn-secondary" id="labQrBtn"
+                  data-es="QR de tu pieza" data-en="QR of your piece">QR de tu pieza</button>
         </div>
       </aside>
     </div>
@@ -3916,6 +3923,7 @@ setInterval(fetchLimaWeather, 10 * 60 * 1000); // Refresh every 10 minutes
      SIGNATURE MODULES · loaded as ES modules (deferred after DOM parse)
      ===================================================================== -->
 <script type="module" src="scripts/hydroprint-lab.js"></script>
+<script src="scripts/lab-qr-snapshot.js" defer></script>
 <script type="module" src="scripts/reverse-commissioning.js"></script>
 <script src="scripts/reverse-drops.js" defer></script>
 <script type="module" src="scripts/memory-object.js"></script>

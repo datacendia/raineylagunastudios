@@ -125,6 +125,7 @@ for (const rel of PAGES) {
 // 3. Standalone .js modules referenced from index.html
 const SCRIPT_MODULES = [
   'scripts/hydroprint-lab.js',
+  'scripts/lab-qr-snapshot.js',
   'scripts/memory-object.js',
   'scripts/proof-of-fabrication.js',
   'scripts/reverse-commissioning.js',
