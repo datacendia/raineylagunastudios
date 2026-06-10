@@ -1,4 +1,4 @@
-﻿/*
+/*
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
@@ -7,11 +7,6 @@
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io https://cdn.jsdelivr.net https://esm.sh; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com https://plausible.io https://cdn.jsdelivr.net https://esm.sh; frame-ancestors 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-site
-  # PRE-LAUNCH ONLY: mirrors the <meta name="robots" content="noindex,nofollow">
-  # tag so crawlers that skip HTML parsing (AI fetchers, archival bots) also
-  # see the directive at the HTTP layer. Remove these two lines at launch
-  # when the meta tag is removed.
-  X-Robots-Tag: noindex, nofollow
 
 /*.svg
   Cache-Control: public, max-age=2592000, immutable
