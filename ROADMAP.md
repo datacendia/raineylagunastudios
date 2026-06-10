@@ -3,7 +3,7 @@
 > **Constraint:** no new paid services. Only time and effort. Items
 > requiring a new subscription, paid font, paid plugin, or paid asset
 > licence are excluded. Items that use *existing* paid services
-> (Resend via the CRM, Cloudflare, the Vercel deployment) and stay
+> (Resend via the CRM, Cloudflare, the Netlify deployment) and stay
 > within their envelope are included.
 >
 > **Status as of 2026-05-10:** ~90% complete. Static HTML, 124/124
@@ -242,7 +242,7 @@
 - **Effort:** 15 min.
 
 ### 28. Brotli-precompressed assets
-- Already in `vercel.json` indirectly; verify on prod.
+- Netlify serves Brotli/gzip automatically; verify on prod.
 - **Effort:** 30 min.
 
 ### 29. Per-page OG images via `scripts/og-render.mjs`
@@ -263,7 +263,7 @@
 
 **None.** This site is genuinely free to run at production:
 
-- **Hosting:** Vercel free tier (100 GB bandwidth, sufficient for an
+- **Hosting:** Netlify free tier (100 GB bandwidth, sufficient for an
   atmospheric studio site at any plausible traffic).
 - **Domain:** `raineylagunastudios.com` already owned.
 - **Analytics:** Cloudflare Analytics injection script (free).
@@ -313,7 +313,7 @@ ships, and the digital order pays for the twin many times over.
 
 - **A headless CMS.** Files in `data/` *are* the CMS. The friction
   is the point.
-- **An image CDN.** Vercel's edge cache + WebP/AVIF source
+- **An image CDN.** Netlify's edge cache + WebP/AVIF source
   conversion handle this for free.
 - **A custom analytics tool.** Cloudflare Analytics suffices.
 - **A "studio management" SaaS (Houzz Pro, Studio Designer, etc.).**
