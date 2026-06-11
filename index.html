@@ -918,7 +918,7 @@
     grid-template-columns: 1.35fr 1fr;
     gap: 40px;
     margin-bottom: 40px;
-    min-height: 540px;
+    align-items: start; /* don't stretch the 3D preview to the controls' height */
   }
   @media (max-width: 900px) { .lab-stage { grid-template-columns: 1fr; gap: 28px; } }
 
@@ -927,10 +927,12 @@
       radial-gradient(ellipse at 50% 25%, rgba(246, 242, 232, 0.04), transparent 60%),
       linear-gradient(180deg, #13110E 0%, #0E0D0B 60%, #0A0908 100%);
     border: 0.5px solid var(--rule);
-    position: relative;
-    min-height: 540px;
+    position: sticky;
+    top: 24px;
+    height: clamp(440px, 72vh, 640px); /* sane framed height instead of stretching */
     overflow: hidden;
   }
+  @media (max-width: 900px) { .lab-3d { position: static; height: clamp(360px, 60vh, 460px); } }
   .lab-3d canvas { display: block; width: 100% !important; height: 100% !important; outline: none; }
   .lab-3d canvas:focus-visible {
     outline: 2px solid var(--vermilion);
