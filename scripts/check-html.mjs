@@ -107,8 +107,9 @@ for (const rel of PAGES) {
     }
   }
 
-  // 2. Inline JS blocks — parse-check only (no exec; DOM APIs unavailable)
-  const jsRe = /<script(?![^>]*type="application\/ld\+json")(?![^>]*src=)(?:[^>]*)>([\s\S]*?)<\/script>/g;
+  // 2. Inline JS blocks — parse-check only (no exec; DOM APIs unavailable).
+  //    Skip non-JS script types: ld+json (handled above) and importmap (JSON).
+  const jsRe = /<script(?![^>]*type="application\/ld\+json")(?![^>]*type="importmap")(?![^>]*src=)(?:[^>]*)>([\s\S]*?)<\/script>/g;
   let j = 0;
   for (const m of html.matchAll(jsRe)) {
     j++; total++;
