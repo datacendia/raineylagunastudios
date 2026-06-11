@@ -3731,12 +3731,13 @@ function wireLabControls() {
       btn.addEventListener('click', () => {
         state.form = btn.getAttribute('data-form');
         setPressed(formGroup, btn);
-        // Update 3D readout label since the model itself stays the mug
+        // Swap the 3D model to match the selected object type.
+        if (lab()) lab().setObjectType(state.form);
         const readout = document.querySelector('.lab-3d-readout .accent');
-        if (readout && state.form !== 'mug') {
-          readout.textContent = lang() === 'en' ? 'PREVIEW · MUG' : 'VISTA · TAZA';
-        } else if (readout) {
-          readout.textContent = lang() === 'en' ? 'WebGL VIEWER' : 'VISOR WebGL';
+        if (readout) {
+          const L = lang();
+          const name = (L === 'en' ? FORMS[state.form].shortEn : FORMS[state.form].shortEs).toUpperCase();
+          readout.textContent = (L === 'en' ? 'PREVIEW · ' : 'VISTA · ') + name;
         }
         render();
       });
