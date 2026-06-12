@@ -135,7 +135,10 @@
   /* triptych */
   .triptych { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0 10px; }
   .triptych figure { margin: 0; }
-  .triptych video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #000; border: 1px solid var(--iron-04); display: block; }
+  .triptych video, .triptych img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #000; border: 1px solid var(--iron-04); display: block; }
+  .city { margin-top: 56px; border-top: 1px solid var(--iron-04); padding-top: 40px; }
+  .city > h2 { margin-top: 0; }
+  .city-event { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--bone-45); margin-bottom: 18px; }
   .triptych figcaption { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--bone-45); margin-top: 8px; }
   .triptych figcaption b { color: var(--vermilion); font-weight: 400; }
   .triptych-cap { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--bone-45); margin-top: 4px; }
@@ -205,26 +208,55 @@
   <p data-es="<strong>Cada ciudad, tres estados:</strong> el antes, el instante, y lo que queda. Investigas reliquias, lees el desastre, y reconstruyes lo que pasó — pieza por pieza, ciudad por ciudad." data-en="<strong>Every city, three states:</strong> the before, the instant, and what remains. You investigate relics, read the disaster, and reconstruct what happened — piece by piece, city by city."></p>
   <p data-es="Cien ciudades. Diez capítulos. Una estética de pintura al óleo — claroscuro, polvo, luz dorada. Construido en <strong>Unreal Engine</strong>." data-en="A hundred cities. Ten chapters. An oil-painting register — chiaroscuro, dust, gold light. Built in <strong>Unreal Engine</strong>."></p>
 
-  <h2 data-es="Lisboa, <em>1755</em>" data-en="Lisbon, <em>1755</em>">Lisboa, 1755</h2>
-  <p data-es="Tres clips, una ciudad, la misma estructura que el juego. El antes en calma, el terremoto, y la sola figura en el puerto destruido." data-en="Three clips, one city, the same structure as the game. The calm before, the earthquake, and the lone figure in the wrecked harbour."></p>
-  <div class="triptych">
-    <figure>
-      <video muted loop playsinline preload="none" controls poster="/relic/video/poster-before.jpg"><source src="/relic/video/lisbon-before.mp4" type="video/mp4"></video>
-      <figcaption><b data-es="Antes" data-en="Before">Antes</b></figcaption>
-    </figure>
-    <figure>
-      <video muted loop playsinline preload="none" controls poster="/relic/video/poster-during.jpg"><source src="/relic/video/lisbon-during.mp4" type="video/mp4"></video>
-      <figcaption><b data-es="Durante" data-en="During">Durante</b></figcaption>
-    </figure>
-    <figure>
-      <video muted loop playsinline preload="none" controls poster="/relic/video/poster-after.jpg"><source src="/relic/video/lisbon-after.mp4" type="video/mp4"></video>
-      <figcaption><b data-es="Después" data-en="After">Después</b></figcaption>
-    </figure>
-  </div>
-  <p class="triptych-cap">Lisboa · 1755</p>
+  <div class="eyebrow" data-es="Las ciudades" data-en="The cities">Las ciudades</div>
 
-  <h2 data-es="En desarrollo ahora" data-en="In development now">En desarrollo ahora</h2>
-  <p data-es="<strong>Glasgow, 1919</strong> — Viernes Sangriento, la plaza George. La primera ciudad jugable. Arthur llega después del derrumbe, cuando el humo aún no se asienta." data-en="<strong>Glasgow, 1919</strong> — Bloody Friday, George Square. The first playable city. Arthur arrives after the collapse, while the smoke is still settling."></p>
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       HOW TO ADD A NEW CITY  (no coding needed)
+       1. Optimise your 3 stills to ~1600px-wide JPGs and drop them in
+          /relic/media/  named   <city>-before.jpg  <city>-during.jpg  <city>-after.jpg
+          (for VIDEO shots, copy the Lisbon <section> below instead.)
+       2. COPY the CITY TEMPLATE block below, paste it directly under this
+          comment (newest city on top), and change ONLY four things:
+            • the city + year in the <h2>
+            • the data-es / data-en event line
+            • the 3 image file names
+       3. Save. Done.
+
+       ── CITY TEMPLATE (copy everything between the dashes) ──────────────────
+       <section class="city">
+         <h2 data-es="Ciudad, <em>Año</em>" data-en="City, <em>Year</em>">Ciudad, Año</h2>
+         <p class="city-event" data-es="Evento · lugar" data-en="Event · place">Evento · lugar</p>
+         <div class="triptych">
+           <figure><img src="/relic/media/CITY-before.jpg" alt="" loading="lazy"><figcaption><b data-es="Antes" data-en="Before">Antes</b></figcaption></figure>
+           <figure><img src="/relic/media/CITY-during.jpg" alt="" loading="lazy"><figcaption><b data-es="Durante" data-en="During">Durante</b></figcaption></figure>
+           <figure><img src="/relic/media/CITY-after.jpg" alt="" loading="lazy"><figcaption><b data-es="Después" data-en="After">Después</b></figcaption></figure>
+         </div>
+       </section>
+       ───────────────────────────────────────────────────────────────────── -->
+
+  <!-- CITY · Glasgow 1919 (images) -->
+  <section class="city">
+    <h2 data-es="Glasgow, <em>1919</em>" data-en="Glasgow, <em>1919</em>">Glasgow, 1919</h2>
+    <p class="city-event" data-es="Viernes Sangriento · George Square · primera ciudad jugable" data-en="Bloody Friday · George Square · first playable city">Viernes Sangriento · George Square</p>
+    <div class="triptych">
+      <figure><img src="/relic/media/glasgow-before.jpg" alt="Glasgow 1919, before the riot" loading="lazy"><figcaption><b data-es="Antes" data-en="Before">Antes</b></figcaption></figure>
+      <figure><img src="/relic/media/glasgow-during.jpg" alt="Glasgow 1919, the George Square riot" loading="lazy"><figcaption><b data-es="Durante" data-en="During">Durante</b></figcaption></figure>
+      <figure><img src="/relic/media/glasgow-after.jpg" alt="Glasgow 1919, the emptied square at dusk" loading="lazy"><figcaption><b data-es="Después" data-en="After">Después</b></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- CITY · Lisbon 1755 (video) -->
+  <section class="city">
+    <h2 data-es="Lisboa, <em>1755</em>" data-en="Lisbon, <em>1755</em>">Lisboa, 1755</h2>
+    <p class="city-event" data-es="El gran terremoto" data-en="The great earthquake">El gran terremoto</p>
+    <div class="triptych">
+      <figure><video muted loop playsinline preload="none" controls poster="/relic/video/poster-before.jpg"><source src="/relic/video/lisbon-before.mp4" type="video/mp4"></video><figcaption><b data-es="Antes" data-en="Before">Antes</b></figcaption></figure>
+      <figure><video muted loop playsinline preload="none" controls poster="/relic/video/poster-during.jpg"><source src="/relic/video/lisbon-during.mp4" type="video/mp4"></video><figcaption><b data-es="Durante" data-en="During">Durante</b></figcaption></figure>
+      <figure><video muted loop playsinline preload="none" controls poster="/relic/video/poster-after.jpg"><source src="/relic/video/lisbon-after.mp4" type="video/mp4"></video><figcaption><b data-es="Después" data-en="After">Después</b></figcaption></figure>
+    </div>
+  </section>
+
+  <p class="triptych-cap" data-es="Próximamente: Hiroshima · Pompeya · Constantinopla…" data-en="Coming: Hiroshima · Pompeii · Constantinople…">Próximamente: Hiroshima · Pompeya · Constantinopla…</p>
 
   <div class="signup">
     <h2 data-es="Entra a la lista" data-en="Join the wishlist">Entra a la lista</h2>
