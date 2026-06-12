@@ -14,6 +14,7 @@ const PAGES = [
   'verify.html',
   '404.html',
   'about/index.html',
+  'relic/index.html',
   'marca/index.html',
   'memory/index.html',
   'work/index.html',
