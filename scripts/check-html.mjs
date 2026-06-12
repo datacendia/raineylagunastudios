@@ -11,17 +11,11 @@ import { DANGEROUS_RE } from './lib/sanitize.mjs';
 
 const PAGES = [
   'index.html',
-  'verify.html',
   '404.html',
   'about/index.html',
   'relic/index.html',
-  'marca/index.html',
-  'memory/index.html',
-  'work/index.html',
-  'servicios/index.html',
-  'journal/index.html',
-  'journal/firmar-objetos/index.html',
-  'journal/tres-meses/index.html',
+  'almanac/index.html',
+  'changelog/index.html',
   'privacy/index.html',
   'terms/index.html',
   'og-image.html',
@@ -125,14 +119,7 @@ for (const rel of PAGES) {
 }
 
 // 3. Standalone .js modules referenced from index.html
-const SCRIPT_MODULES = [
-  'scripts/hydroprint-lab.js',
-  'scripts/lab-qr-snapshot.js',
-  'scripts/memory-object.js',
-  'scripts/proof-of-fabrication.js',
-  'scripts/reverse-commissioning.js',
-  'scripts/twin-wall.js',
-];
+const SCRIPT_MODULES = [];
 console.log(`\n— standalone modules —`);
 for (const rel of SCRIPT_MODULES) {
   const abs = path.resolve(rel);
@@ -164,11 +151,8 @@ for (const rel of SCRIPT_MODULES) {
 
 // 4. Validate the data/ JSON files too
 const DATA_FILES = [
-  'data/twins.json',
-  'data/proofs/DEMO-0001.json',
-  'data/drops.json',
-  'data/brand/color-witness.json',
-  'data/brand/asset-manifest.json',
+  'data/almanac.json',
+  'data/manifesto.json',
   'site.webmanifest',
   'sitemap.xml',
 ];
