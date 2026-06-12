@@ -14,7 +14,6 @@ const PAGES = [
   '404.html',
   'about/index.html',
   'relic/index.html',
-  'almanac/index.html',
   'changelog/index.html',
   'privacy/index.html',
   'terms/index.html',
@@ -151,7 +150,6 @@ for (const rel of SCRIPT_MODULES) {
 
 // 4. Validate the data/ JSON files too
 const DATA_FILES = [
-  'data/almanac.json',
   'data/manifesto.json',
   'site.webmanifest',
   'sitemap.xml',
