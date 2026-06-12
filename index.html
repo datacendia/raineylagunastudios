@@ -7,14 +7,7 @@
 <!-- Import map so three.js addon modules (e.g. OrbitControls) can resolve
      their bare `three` specifier. Without it that import throws and the
      Hydroprint Lab 3D canvas never boots. Must precede the module scripts. -->
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-  }
-}
-</script>
+
 
 <!-- =============================================================
      RAINEY LAGUNA STUDIOS · v0.1 · May 2026
@@ -58,8 +51,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="https://api.open-meteo.com">
-<link rel="preload" as="fetch" href="/data/twins.json" type="application/json" crossorigin="anonymous">
-<link rel="preload" as="fetch" href="/data/proofs/DEMO-0001.json" type="application/json" crossorigin="anonymous">
 <!-- Fraunces: variable serif with weight (100-900), opsz (9-144), and italic/slant axes.
      JetBrains Mono: for all UI / metadata / technical readouts. -->
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -2104,39 +2095,6 @@
     },
     {
       "@type": "Service",
-      "@id": "https://raineylagunastudios.com/#service-identidad",
-      "serviceType": "Brand identity design",
-      "provider": { "@id": "https://raineylagunastudios.com/#studio" },
-      "name": "Identidad de marca",
-      "description": "Identidad visual completa: naming, logotipo, sistema gráfico y pautas de uso para negocios independientes en Lima.",
-      "areaServed": { "@type": "City", "name": "Lima" },
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "PEN",
-        "price": "2500",
-        "priceSpecification": { "@type": "PriceSpecification", "minPrice": "2500", "priceCurrency": "PEN" }
-      }
-    },
-    {
-      "@type": "Service",
-      "@id": "https://raineylagunastudios.com/#service-consultoria",
-      "serviceType": "Brand consultancy",
-      "provider": { "@id": "https://raineylagunastudios.com/#studio" },
-      "name": "Consultoría de marca",
-      "description": "Acompañamiento mensual a negocios independientes: posicionamiento, sistema visual, decisiones editoriales.",
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "PEN",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "1200",
-          "priceCurrency": "PEN",
-          "unitText": "MON"
-        }
-      }
-    },
-    {
-      "@type": "Service",
       "@id": "https://raineylagunastudios.com/#service-ai-media",
       "serviceType": "AI video and media production",
       "provider": { "@id": "https://raineylagunastudios.com/#studio" },
@@ -2162,12 +2120,11 @@
     },
     {
       "@type": "Service",
-      "@id": "https://raineylagunastudios.com/#service-web",
-      "serviceType": "Web design and development",
+      "@id": "https://raineylagunastudios.com/#service-ai-branding",
+      "serviceType": "AI-assisted branding and identity",
       "provider": { "@id": "https://raineylagunastudios.com/#studio" },
-      "name": "Web · raineylaguna.com",
-      "description": "El estudio web de Rainey Laguna. Sitios cuidados para negocios locales independientes en Lima.",
-      "url": "https://raineylaguna.com/"
+      "name": "Marca con IA",
+      "description": "Logo, sistema visual, voz y dirección de arte construidos con un flujo acelerado por IA."
     }
   ]
 }
@@ -2391,15 +2348,11 @@
   </a>
 
   <div class="nav-links">
-    <a href="/relic/"><span class="idx">↗</span><span data-es="Relic of Ages" data-en="Relic of Ages">Relic of Ages</span></a>
     <a href="#manifesto"><span class="idx">01</span><span data-es="Manifiesto" data-en="Manifesto">Manifiesto</span></a>
-    <a href="#lab"><span class="idx">02</span><span data-es="Laboratorio" data-en="Lab">Laboratorio</span></a>
-    <a href="#brand"><span class="idx">03</span><span data-es="Marca" data-en="Brand">Marca</span></a>
-    <a href="#commission"><span class="idx">04</span><span data-es="Comisión" data-en="Brief">Comisión</span></a>
-    <a href="#memory"><span class="idx">05</span><span data-es="Memoria" data-en="Memory">Memoria</span></a>
-    <a href="#work"><span class="idx">06</span><span data-es="Trabajo" data-en="Work">Trabajo</span></a>
-    <a href="#make"><span class="idx">07</span><span data-es="Hacemos" data-en="We Make">Hacemos</span></a>
-    <a href="#contact"><span class="idx">08</span><span data-es="Contacto" data-en="Contact">Contacto</span></a>
+    <a href="#work"><span class="idx">02</span><span data-es="El juego" data-en="The game">El juego</span></a>
+    <a href="#make"><span class="idx">03</span><span data-es="Servicios IA" data-en="AI services">Servicios IA</span></a>
+    <a href="#contact"><span class="idx">04</span><span data-es="Contacto" data-en="Contact">Contacto</span></a>
+    <a href="/relic/"><span class="idx">↗</span><span data-es="Relic of Ages" data-en="Relic of Ages">Relic of Ages</span></a>
   </div>
 
   <div class="nav-right">
@@ -2511,157 +2464,7 @@
      Studios ceramic mug. Drop an image, pick a preset, orbit to inspect,
      order the real object. The site IS the product configurator.
      ============================================================ -->
-<section class="chapter" id="lab" aria-labelledby="labH">
-  <div class="chapter-label">
-    <span><span class="num">02 /</span> <span data-es="El Laboratorio" data-en="The Lab">El Laboratorio</span></span>
-    <span class="note" data-es="Deja caer una imagen, elige un patrón de la casa, arrastra para orbitar. Un experimento del estudio: mira cómo un patrón se envuelve sobre una forma 3D en tiempo real, en el navegador." data-en="Drop in an image, pick a house pattern, drag to orbit. A studio experiment: watch a pattern wrap onto a 3D form in real time, in the browser.">Deja caer una imagen, elige un patrón de la casa, arrastra para orbitar. Un experimento del estudio: mira cómo un patrón se envuelve sobre una forma 3D en tiempo real, en el navegador.</span>
-  </div>
-  <div class="chapter-body">
-    <div id="labH" class="mono" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bone-45);margin-bottom:28px">
-      <span data-es="EL LABORATORIO · VISOR EN VIVO · TAZA CONQUISTADORES" data-en="THE LAB · LIVE PREVIEW · CONQUISTADORES MUG">EL LABORATORIO · VISOR EN VIVO · TAZA CONQUISTADORES</span>
-    </div>
 
-    <!-- B6 · Compact "what is hydroprinting" explainer for first-time visitors. -->
-    <aside class="hp-explainer" aria-label="Cómo funciona la hidrografía / How hydroprinting works">
-      <div>
-        <div class="hp-explainer-eyebrow" data-es="¿QUÉ ES HIDROGRAFÍA?" data-en="WHAT IS HYDROPRINTING?">¿QUÉ ES HIDROGRAFÍA?</div>
-        <p class="hp-explainer-def" data-es="Una técnica que <em>envuelve</em> un objeto con un patrón usando una película que flota sobre agua. El objeto se sumerge, la película se ajusta a la forma. Así nace una superficie que el calado sólo no puede dar." data-en="A technique that <em>wraps</em> an object with a pattern via a film floating on water. The object is dipped; the film conforms to the shape. The result is a surface flat printing simply cannot make." data-html="true">Una técnica que <em>envuelve</em> un objeto con un patrón usando una película que flota sobre agua. El objeto se sumerge, la película se ajusta a la forma. Así nace una superficie que el calado sólo no puede dar.</p>
-      </div>
-      <div class="hp-explainer-steps">
-        <div class="hp-step">
-          <span class="hp-step-num" data-es="01 · IMPRIMIR" data-en="01 · PRINT">01 · IMPRIMIR</span>
-          <span class="hp-step-label" data-es="Patrón sobre película" data-en="Pattern onto film">Patrón sobre película</span>
-          <span class="hp-step-desc" data-es="El diseño se imprime en una película PVA hidrosoluble." data-en="The design is printed onto a water-soluble PVA film.">El diseño se imprime en una película PVA hidrosoluble.</span>
-        </div>
-        <div class="hp-step">
-          <span class="hp-step-num" data-es="02 · SUMERGIR" data-en="02 · DIP">02 · SUMERGIR</span>
-          <span class="hp-step-label" data-es="Activar y bajar" data-en="Activate, dip">Activar y bajar</span>
-          <span class="hp-step-desc" data-es="Se rocía un activador, la tinta flota, y el objeto entra en el tanque a 22 °C." data-en="An activator is sprayed, the ink floats, and the object enters the 22 °C tank.">Se rocía un activador, la tinta flota, y el objeto entra en el tanque a 22 °C.</span>
-        </div>
-        <div class="hp-step">
-          <span class="hp-step-num" data-es="03 · CURAR" data-en="03 · CURE">03 · CURAR</span>
-          <span class="hp-step-label" data-es="Sellar y secar" data-en="Seal and dry">Sellar y secar</span>
-          <span class="hp-step-desc" data-es="24 h de curado, sellado al horno; cada pieza queda única — la película nunca envuelve dos veces igual." data-en="24 h cure, kiln-sealed; every piece is unique — the film never wraps the same twice.">24 h de curado, sellado al horno; cada pieza queda única — la película nunca envuelve dos veces igual.</span>
-        </div>
-      </div>
-    </aside>
-
-    <div class="lab-stage">
-      <div class="lab-3d" id="lab3d" role="img" aria-label="3D preview of a ceramic mug with hydroprinted pattern">
-        <div class="lab-3d-readout">
-          <span class="live-dot" aria-hidden="true"></span>
-          <span class="accent" data-es="VISOR WebGL" data-en="WebGL VIEWER">VISOR WebGL</span>
-          · <span data-es="arrastra para rotar" data-en="drag to rotate">arrastra para rotar</span>
-        </div>
-      </div>
-
-      <aside class="lab-controls">
-        <div class="lab-group">
-          <span class="lab-group-label"><span class="lgn">→ 00</span><span data-es="Tipo de pieza" data-en="Object type">Tipo de pieza</span></span>
-          <div class="lab-forms" role="radiogroup" aria-label="Object type">
-            <button type="button" class="lab-form" aria-pressed="true"  data-form="mug"     data-es="Taza · 350ml"            data-en="Mug · 350ml">Taza · 350ml</button>
-            <button type="button" class="lab-form" aria-pressed="false" data-form="plate"   data-es="Plato · 24cm"            data-en="Plate · 24cm">Plato · 24cm</button>
-            <button type="button" class="lab-form" aria-pressed="false" data-form="vase"    data-es="Florero · 22cm"          data-en="Vase · 22cm">Florero · 22cm</button>
-            <button type="button" class="lab-form" aria-pressed="false" data-form="coaster" data-es="Posavasos · juego de 4"  data-en="Coasters · set of 4">Posavasos · juego de 4</button>
-            <button type="button" class="lab-form" aria-pressed="false" data-form="panel"   data-es="Panel decorativo · 30×40" data-en="Decorative panel · 30×40">Panel decorativo · 30×40</button>
-          </div>
-        </div>
-
-        <div class="lab-group">
-          <span class="lab-group-label"><span class="lgn">→ 01</span><span data-es="Patrón de la casa" data-en="House pattern">Patrón de la casa</span></span>
-          <div class="lab-patterns" role="radiogroup" aria-label="Pattern">
-            <!-- 5 presets, inline SVG data-URI backgrounds so no external assets -->
-            <button type="button" class="lab-pattern" aria-pressed="false" data-pattern-id="p1"
-              style="background-image:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 40 40&quot;&gt;&lt;rect width=&quot;40&quot; height=&quot;40&quot; fill=&quot;%23f6f2e8&quot;/&gt;&lt;path stroke=&quot;%230e0d0b&quot; stroke-width=&quot;0.6&quot; fill=&quot;none&quot; d=&quot;M0 5 H40 M0 15 H40 M0 25 H40 M0 35 H40 M5 0 V40 M15 0 V40 M25 0 V40 M35 0 V40&quot;/&gt;&lt;/svg&gt;')"
-              data-pattern-url="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f6f2e8%22/%3E%3Cpath stroke=%22%230e0d0b%22 stroke-width=%221%22 fill=%22none%22 d=%22M0 25 H200 M0 50 H200 M0 75 H200 M0 100 H200 M0 125 H200 M0 150 H200 M0 175 H200 M25 0 V200 M50 0 V200 M75 0 V200 M100 0 V200 M125 0 V200 M150 0 V200 M175 0 V200%22/%3E%3C/svg%3E">
-              <span class="tick">✓</span>
-            </button>
-            <button type="button" class="lab-pattern" aria-pressed="false" data-pattern-id="p2"
-              style="background-image:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 40 40&quot;&gt;&lt;rect width=&quot;40&quot; height=&quot;40&quot; fill=&quot;%23f6f2e8&quot;/&gt;&lt;path stroke=&quot;%238aa9a0&quot; stroke-width=&quot;1.5&quot; fill=&quot;none&quot; d=&quot;M0 20 Q10 12 20 20 T40 20 M0 30 Q10 22 20 30 T40 30 M0 10 Q10 2 20 10 T40 10&quot;/&gt;&lt;/svg&gt;')"
-              data-pattern-url="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f6f2e8%22/%3E%3Cpath stroke=%22%238aa9a0%22 stroke-width=%223%22 fill=%22none%22 d=%22M0 40 Q25 20 50 40 T100 40 T150 40 T200 40 M0 80 Q25 60 50 80 T100 80 T150 80 T200 80 M0 120 Q25 100 50 120 T100 120 T150 120 T200 120 M0 160 Q25 140 50 160 T100 160 T150 160 T200 160%22/%3E%3C/svg%3E">
-              <span class="tick">✓</span>
-            </button>
-            <button type="button" class="lab-pattern" aria-pressed="false" data-pattern-id="p3"
-              style="background-image:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 40 40&quot;&gt;&lt;rect width=&quot;40&quot; height=&quot;40&quot; fill=&quot;%23f6f2e8&quot;/&gt;&lt;g fill=&quot;%23e83c1e&quot;&gt;&lt;circle cx=&quot;10&quot; cy=&quot;10&quot; r=&quot;3&quot;/&gt;&lt;circle cx=&quot;30&quot; cy=&quot;10&quot; r=&quot;3&quot;/&gt;&lt;circle cx=&quot;20&quot; cy=&quot;20&quot; r=&quot;3&quot;/&gt;&lt;circle cx=&quot;10&quot; cy=&quot;30&quot; r=&quot;3&quot;/&gt;&lt;circle cx=&quot;30&quot; cy=&quot;30&quot; r=&quot;3&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;')"
-              data-pattern-url="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f6f2e8%22/%3E%3Cg fill=%22%23e83c1e%22%3E%3Ccircle cx=%2225%22 cy=%2225%22 r=%228%22/%3E%3Ccircle cx=%2275%22 cy=%2225%22 r=%228%22/%3E%3Ccircle cx=%22125%22 cy=%2225%22 r=%228%22/%3E%3Ccircle cx=%22175%22 cy=%2225%22 r=%228%22/%3E%3Ccircle cx=%2250%22 cy=%2275%22 r=%228%22/%3E%3Ccircle cx=%22100%22 cy=%2275%22 r=%228%22/%3E%3Ccircle cx=%22150%22 cy=%2275%22 r=%228%22/%3E%3Ccircle cx=%2225%22 cy=%22125%22 r=%228%22/%3E%3Ccircle cx=%2275%22 cy=%22125%22 r=%228%22/%3E%3Ccircle cx=%22125%22 cy=%22125%22 r=%228%22/%3E%3Ccircle cx=%22175%22 cy=%22125%22 r=%228%22/%3E%3Ccircle cx=%2250%22 cy=%22175%22 r=%228%22/%3E%3Ccircle cx=%22100%22 cy=%22175%22 r=%228%22/%3E%3Ccircle cx=%22150%22 cy=%22175%22 r=%228%22/%3E%3C/g%3E%3C/svg%3E">
-              <span class="tick">✓</span>
-            </button>
-            <button type="button" class="lab-pattern" aria-pressed="false" data-pattern-id="p4"
-              style="background-image:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 40 40&quot;&gt;&lt;rect width=&quot;40&quot; height=&quot;40&quot; fill=&quot;%230e0d0b&quot;/&gt;&lt;path fill=&quot;%23f6f2e8&quot; d=&quot;M0 0 L20 0 L0 20 Z M20 20 L40 20 L20 40 Z&quot;/&gt;&lt;/svg&gt;')"
-              data-pattern-url="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%230e0d0b%22/%3E%3Cpath fill=%22%23f6f2e8%22 d=%22M0 0 L50 0 L0 50 Z M50 0 L100 0 L50 50 Z M100 0 L150 0 L100 50 Z M150 0 L200 0 L150 50 Z M0 50 L50 50 L0 100 Z M50 50 L100 50 L50 100 Z M100 50 L150 50 L100 100 Z M150 50 L200 50 L150 100 Z M0 100 L50 100 L0 150 Z M50 100 L100 100 L50 150 Z M100 100 L150 100 L100 150 Z M150 100 L200 100 L150 150 Z M0 150 L50 150 L0 200 Z M50 150 L100 150 L50 200 Z M100 150 L150 150 L100 200 Z M150 150 L200 150 L150 200 Z%22/%3E%3C/svg%3E">
-              <span class="tick">✓</span>
-            </button>
-            <button type="button" class="lab-pattern" aria-pressed="false" data-pattern-id="p5"
-              style="background-image:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 40 40&quot;&gt;&lt;rect width=&quot;40&quot; height=&quot;40&quot; fill=&quot;%23f6f2e8&quot;/&gt;&lt;g fill=&quot;%230e0d0b&quot; opacity=&quot;0.8&quot;&gt;&lt;rect x=&quot;3&quot; y=&quot;5&quot; width=&quot;7&quot; height=&quot;4&quot;/&gt;&lt;rect x=&quot;14&quot; y=&quot;12&quot; width=&quot;9&quot; height=&quot;3&quot;/&gt;&lt;rect x=&quot;27&quot; y=&quot;8&quot; width=&quot;6&quot; height=&quot;5&quot;/&gt;&lt;rect x=&quot;6&quot; y=&quot;22&quot; width=&quot;10&quot; height=&quot;3&quot;/&gt;&lt;rect x=&quot;20&quot; y=&quot;26&quot; width=&quot;5&quot; height=&quot;4&quot;/&gt;&lt;rect x=&quot;28&quot; y=&quot;30&quot; width=&quot;8&quot; height=&quot;3&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;')"
-              data-pattern-url="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f6f2e8%22/%3E%3Cg fill=%22%230e0d0b%22%3E%3Crect x=%2215%22 y=%2225%22 width=%2235%22 height=%2220%22/%3E%3Crect x=%2270%22 y=%2260%22 width=%2245%22 height=%2215%22/%3E%3Crect x=%22135%22 y=%2240%22 width=%2230%22 height=%2225%22/%3E%3Crect x=%2230%22 y=%22110%22 width=%2250%22 height=%2215%22/%3E%3Crect x=%22100%22 y=%22130%22 width=%2225%22 height=%2220%22/%3E%3Crect x=%22140%22 y=%22150%22 width=%2240%22 height=%2215%22/%3E%3Crect x=%2240%22 y=%22165%22 width=%2235%22 height=%2215%22/%3E%3C/g%3E%3C/svg%3E">
-              <span class="tick">✓</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="lab-group">
-          <span class="lab-group-label"><span class="lgn">→ 02</span><span data-es="O sube tu propia imagen" data-en="Or upload your own image">O sube tu propia imagen</span></span>
-          <label class="lab-upload" for="labUpload">
-            <span aria-hidden="true">↑</span>
-            <span data-es="Elegir archivo" data-en="Choose file">Elegir archivo</span>
-            <span class="fname" id="labUploadName" data-es="ninguno" data-en="none">ninguno</span>
-            <input type="file" id="labUpload" accept="image/png,image/jpeg,image/svg+xml">
-          </label>
-        </div>
-
-        <div class="lab-group">
-          <span class="lab-group-label"><span class="lgn">→ 03</span><span data-es="Color base de la cerámica" data-en="Ceramic base colour">Color base de la cerámica</span></span>
-          <div class="lab-swatches" role="radiogroup" aria-label="Base colour">
-            <button type="button" class="lab-swatch" aria-pressed="true" data-color="0xf6f2e8" style="background:#f6f2e8" aria-label="Bone"></button>
-            <button type="button" class="lab-swatch" aria-pressed="false" data-color="0x0e0d0b" style="background:#0e0d0b" aria-label="Iron"></button>
-            <button type="button" class="lab-swatch" aria-pressed="false" data-color="0x8aa9a0" style="background:#8aa9a0" aria-label="Oxide"></button>
-            <button type="button" class="lab-swatch" aria-pressed="false" data-color="0xe83c1e" style="background:#e83c1e" aria-label="Vermilion"></button>
-            <button type="button" class="lab-swatch" aria-pressed="false" data-color="0xc8b78a" style="background:#c8b78a" aria-label="Raw clay"></button>
-          </div>
-        </div>
-
-        <div class="lab-group">
-          <span class="lab-group-label"><span class="lgn">→ 04</span><span data-es="Acabado" data-en="Finish">Acabado</span></span>
-          <div class="lab-finishes" role="radiogroup" aria-label="Finish">
-            <button type="button" class="lab-finish" aria-pressed="false" data-finish="matte" data-es="Mate" data-en="Matte">Mate</button>
-            <button type="button" class="lab-finish" aria-pressed="true"  data-finish="satin" data-es="Satín" data-en="Satin">Satín</button>
-            <button type="button" class="lab-finish" aria-pressed="false" data-finish="gloss" data-es="Brillo" data-en="Gloss">Brillo</button>
-          </div>
-        </div>
-
-        <div class="lab-group">
-          <span class="lab-group-label"><span class="lgn">→ 05</span><span data-es="Cantidad" data-en="Quantity">Cantidad</span></span>
-          <div class="lab-qty" role="group" aria-label="Quantity">
-            <button type="button" class="lab-qty-btn" data-qty-step="-1" aria-label="Decrease">−</button>
-            <input type="number" id="labQty" min="1" max="500" step="1" value="1" inputmode="numeric">
-            <button type="button" class="lab-qty-btn" data-qty-step="1" aria-label="Increase">+</button>
-            <span class="lab-qty-tier" id="labQtyTier" data-es="una pieza" data-en="single piece">una pieza</span>
-          </div>
-        </div>
-
-        <div class="lab-spec" id="labSpec" aria-live="polite">
-          <span class="lab-spec-eyebrow mono" data-es="ESPECIFICACIÓN ACTUAL" data-en="CURRENT SPEC">ESPECIFICACIÓN ACTUAL</span>
-          <ul class="lab-spec-list" id="labSpecList"></ul>
-        </div>
-
-        <div class="lab-order">
-          <p class="lab-experiment-note mono" data-es="Un experimento del estudio · no está a la venta." data-en="A studio experiment · not for sale.">Un experimento del estudio · no está a la venta.</p>
-
-          <!-- QR snapshot · SIGNATURE 02 · scripts/lab-qr-snapshot.js
-               Captures the current spec as PNG render + QR-encoded share URL.
-               The script self-attaches on DOMContentLoaded; it lazy-loads
-               the qrcode library from jsDelivr only after first click. -->
-          <button type="button" class="btn-secondary" id="labQrBtn"
-                  data-es="QR de tu pieza" data-en="QR of your piece">QR de tu pieza</button>
-        </div>
-      </aside>
-    </div>
-
-    <p class="lab-note" data-es="Un experimento del estudio: suelta un patrón y mira cómo se <em>envuelve</em> sobre una forma cerámica en 3D, en tiempo real. La simulación de la película de agua nunca envuelve dos veces igual." data-en="A studio experiment: drop in a pattern and watch it <em>wrap</em> onto a 3D ceramic form in real time. The water-film simulation never wraps the same twice." data-html="true">
-      Un experimento del estudio: suelta un patrón y mira cómo se <em>envuelve</em> sobre una forma cerámica en 3D, en tiempo real. La simulación de la película de agua nunca envuelve dos veces igual.
-    </p>
-  </div>
-</section>
 
 <!-- ============================================================
      SIGNATURE 03 · BRAND PRACTICE
@@ -2796,100 +2599,7 @@
     .bp-preview-row { grid-template-columns: repeat(3, 1fr); }
   }
 </style>
-<section class="chapter" id="brand" aria-labelledby="brandH">
-  <div class="chapter-label">
-    <span><span class="num">03 /</span> <span data-es="La marca" data-en="The brand">La marca</span></span>
-    <span class="note" data-es="La mayoría de estudios entregan un PDF y una carpeta de Dropbox, y ahí termina la relación. Aquí no. Ocho mecánicas — ninguna existe en otro estudio — para que tu marca envejezca bien, se aplique correctamente, y pueda probarse en cualquier momento." data-en="Most studios deliver a PDF and a Dropbox folder, and that's where the relationship ends. Not here. Eight mechanics — none of them exist in any other studio — so your brand ages well, gets applied correctly, and can be proven at any moment.">La mayoría de estudios entregan un PDF y una carpeta de Dropbox, y ahí termina la relación. Aquí no. Ocho mecánicas — ninguna existe en otro estudio — para que tu marca envejezca bien, se aplique correctamente, y pueda probarse en cualquier momento.</span>
-  </div>
-  <div class="chapter-body">
-    <div id="brandH" class="mono" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bone-45);margin-bottom:28px">
-      <span data-es="PRÁCTICA DE MARCA · 8 MECÁNICAS · NINGUNA EXISTE EN OTRO ESTUDIO" data-en="BRAND PRACTICE · 8 MECHANICS · NONE EXIST IN ANY OTHER STUDIO">PRÁCTICA DE MARCA · 8 MECÁNICAS · NINGUNA EXISTE EN OTRO ESTUDIO</span>
-    </div>
 
-    <div class="bp-intro">
-      <p data-es="<strong>Una marca vive o muere por su gestión.</strong> Casi todo lo que se rompe en una marca pasa <em>después</em> de la entrega — el proveedor usa el archivo viejo, el equipo nuevo aplica el color desactualizado, el papel cambia y nadie lo nota. Studios trata la marca como tratamos los objetos: con procedencia firmada, testigos físicos, y verificación pública." data-en="<strong>A brand lives or dies by its stewardship.</strong> Almost everything that breaks in a brand happens <em>after</em> delivery — the vendor uses the old file, the new team applies the stale color, the paper changes and no one notices. Studios treats brands the way we treat objects: signed provenance, physical witnesses, public verification."></p>
-    </div>
-
-    <!-- mini stress-test preview to show one of the mechanics live -->
-    <div class="bp-preview-row" aria-label="Logo on three real surfaces">
-      <div class="bp-preview-tile t-paper">
-        <svg viewBox="0 0 200 80" aria-hidden="true">
-          <text x="100" y="58" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="56" font-weight="320" font-style="italic" class="rls-ink">RL<tspan font-style="normal" font-weight="400" fill="#0E0D0B">·S</tspan></text>
-        </svg>
-        <span class="bpt-label dark" data-es="Conqueror 120g" data-en="Conqueror 120g">Conqueror 120g</span>
-      </div>
-      <div class="bp-preview-tile t-fabric">
-        <svg viewBox="0 0 200 80" aria-hidden="true">
-          <text x="100" y="58" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="56" font-weight="320" font-style="italic" class="rls-ink">RL<tspan font-style="normal" font-weight="400" fill="#0E0D0B">·S</tspan></text>
-        </svg>
-        <span class="bpt-label dark" data-es="Algodón 200g" data-en="Cotton 200g">Algodón 200g</span>
-      </div>
-      <div class="bp-preview-tile t-iron">
-        <svg viewBox="0 0 200 80" aria-hidden="true">
-          <text x="100" y="58" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="56" font-weight="320" font-style="italic" class="rls-ink">RL<tspan font-style="normal" font-weight="400" fill="#F6F2E8">·S</tspan></text>
-        </svg>
-        <span class="bpt-label" data-es="Hierro mate" data-en="Matte iron">Hierro mate</span>
-      </div>
-    </div>
-
-    <!-- 8 mechanic chips -->
-    <div class="bp-grid">
-      <a class="bp-cell" href="/marca/#provenance">
-        <span class="bp-num">01</span>
-        <span class="bp-name" data-es="Cadena de <em>procedencia</em>" data-en="<em>Provenance</em> chain" data-html="true">Cadena de <em>procedencia</em></span>
-        <span class="bp-desc" data-es="Cada archivo firmado · arrastra para verificar." data-en="Every file signed · drag to verify.">Cada archivo firmado · arrastra para verificar.</span>
-        <span class="bp-status live" data-es="OPERATIVO · ED25519" data-en="LIVE · ED25519">OPERATIVO · ED25519</span>
-      </a>
-      <a class="bp-cell" href="/marca/#stress">
-        <span class="bp-num">02</span>
-        <span class="bp-name" data-es="Muro de <em>estrés</em>" data-en="<em>Stress-test</em> wall" data-html="true">Muro de <em>estrés</em></span>
-        <span class="bp-desc" data-es="Tu logo en 24+ superficies, tamaños, luces." data-en="Your logo on 24+ surfaces, sizes, lights.">Tu logo en 24+ superficies, tamaños, luces.</span>
-        <span class="bp-status live" data-es="OPERATIVO · DEMO ARRIBA" data-en="LIVE · PREVIEW ABOVE">OPERATIVO · DEMO ARRIBA</span>
-      </a>
-      <a class="bp-cell" href="/marca/#witness">
-        <span class="bp-num">03</span>
-        <span class="bp-name" data-es="Testigo de <em>color</em>" data-en="<em>Color</em> witness" data-html="true">Testigo de <em>color</em></span>
-        <span class="bp-desc" data-es="Muestras físicas · proveedor · fecha · ΔE." data-en="Physical samples · supplier · date · ΔE.">Muestras físicas · proveedor · fecha · ΔE.</span>
-        <span class="bp-status live" data-es="OPERATIVO · 8 TESTIGOS" data-en="LIVE · 8 WITNESSES">OPERATIVO · 8 TESTIGOS</span>
-      </a>
-      <a class="bp-cell" href="/marca/#letter">
-        <span class="bp-num">04</span>
-        <span class="bp-name" data-es="Carta a <em>2 años</em>" data-en="<em>Two-year</em> letter" data-html="true">Carta a <em>2 años</em></span>
-        <span class="bp-desc" data-es="Casos honestos · escritos a mano · 24 meses post-lanzamiento." data-en="Honest cases · handwritten · 24 months post-launch.">Casos honestos · escritos a mano · 24 meses post-lanzamiento.</span>
-        <span class="bp-status scheduled" data-es="PRIMERA CARTA · MAYO 2028" data-en="FIRST LETTER · MAY 2028">PRIMERA CARTA · MAYO 2028</span>
-      </a>
-      <a class="bp-cell" href="/marca/#shadow">
-        <span class="bp-num">05</span>
-        <span class="bp-name" data-es="Sombra de <em>marca</em>" data-en="<em>Brand</em> shadow" data-html="true">Sombra de <em>marca</em></span>
-        <span class="bp-desc" data-es="La dirección alterna · custodiada 7 años." data-en="The alternate direction · vaulted 7 years.">La dirección alterna · custodiada 7 años.</span>
-        <span class="bp-status scheduled" data-es="OPERATIVO CON CADA ENCARGO" data-en="LIVE WITH EVERY COMMISSION">OPERATIVO CON CADA ENCARGO</span>
-      </a>
-      <a class="bp-cell" href="/marca/#naming">
-        <span class="bp-num">06</span>
-        <span class="bp-name" data-es="Consulta de <em>nombre</em>" data-en="<em>Naming</em> Q&amp;A" data-html="true">Consulta de <em>nombre</em></span>
-        <span class="bp-desc" data-es="S/ 200 · 48 h · INDECOPI · fonética · dominio." data-en="S/ 200 · 48 h · INDECOPI · phonetics · domain.">S/ 200 · 48 h · INDECOPI · fonética · dominio.</span>
-        <span class="bp-status live" data-es="OPERATIVO · FORMULARIO ABAJO" data-en="LIVE · FORM BELOW">OPERATIVO · FORMULARIO ABAJO</span>
-      </a>
-      <a class="bp-cell" href="/marca/#heartbeat">
-        <span class="bp-num">07</span>
-        <span class="bp-name" data-es="Pulso de <em>marca</em>" data-en="<em>Brand</em> heartbeat" data-html="true">Pulso de <em>marca</em></span>
-        <span class="bp-desc" data-es="Auditoría anual de campo · informe a mano · 4 páginas." data-en="Annual field audit · handwritten report · 4 pages.">Auditoría anual de campo · informe a mano · 4 páginas.</span>
-        <span class="bp-status scheduled" data-es="SUSCRIPCIÓN · S/ 480 / AÑO" data-en="SUBSCRIPTION · S/ 480 / YEAR">SUSCRIPCIÓN · S/ 480 / AÑO</span>
-      </a>
-      <a class="bp-cell" href="/marca/#voice">
-        <span class="bp-num">08</span>
-        <span class="bp-name" data-es="Calibrador de <em>voz</em>" data-en="<em>Voice</em> calibrator" data-html="true">Calibrador de <em>voz</em></span>
-        <span class="bp-desc" data-es="Pega copy · recibe métricas · contra el perfil." data-en="Paste copy · get metrics · against the profile.">Pega copy · recibe métricas · contra el perfil.</span>
-        <span class="bp-status live" data-es="OPERATIVO · INTERACTIVO" data-en="LIVE · INTERACTIVE">OPERATIVO · INTERACTIVO</span>
-      </a>
-    </div>
-
-    <div class="bp-cta">
-      <div class="bp-cta-text" data-es="<strong>Ver las 8 mecánicas en detalle</strong> — con verificador de archivos, muro de estrés completo, galería de testigos, calibrador de voz operativo, y formulario de Consulta de nombre." data-en="<strong>See all 8 mechanics in detail</strong> — with file verifier, full stress-test wall, witness gallery, working voice calibrator, and Naming Q&amp;A form."></div>
-      <a href="/marca/" data-es="Entrar a /marca/ →" data-en="Enter /marca/ →">Entrar a /marca/ →</a>
-    </div>
-  </div>
-</section>
 
 <!-- ============================================================
      SIGNATURE 04 · REVERSE COMMISSIONING
@@ -2897,221 +2607,7 @@
      receive an unsolicited critique-and-proposal generated from
      public signals and the studio's house brief template.
      ============================================================ -->
-<section class="chapter" id="commission" aria-labelledby="commissionH">
-  <div class="chapter-label">
-    <span><span class="num">04 /</span> <span data-es="Comisión inversa" data-en="Reverse brief">Comisión inversa</span></span>
-    <span class="note" data-es="Tú no nos contactas. Nosotros te escribimos primero. Pon el nombre de tu lugar y la categoría. En menos de un minuto te devolvemos un briefing no solicitado — observación, diagnóstico, propuesta, inversión. Sin compromiso. Descártalo si quieres." data-en="You don't contact us. We write you first. Enter your place's name and category. In under a minute we return an unsolicited brief — observation, diagnosis, proposal, investment. No obligation. Discard it if you want.">Tú no nos contactas. Nosotros te escribimos primero. Pon el nombre de tu lugar y la categoría. En menos de un minuto te devolvemos un briefing no solicitado — observación, diagnóstico, propuesta, inversión. Sin compromiso. Descártalo si quieres.</span>
-  </div>
-  <div class="chapter-body">
-    <div id="commissionH" class="mono" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bone-45);margin-bottom:28px">
-      <span data-es="COMISIÓN INVERSA · DOS PUERTAS" data-en="REVERSE COMMISSIONING · TWO DOORS">COMISIÓN INVERSA · DOS PUERTAS</span>
-    </div>
 
-    <!-- ============= LIVE DROP PANEL ============= -->
-    <style>
-      .rc-drop {
-        border: 0.5px solid var(--rule-heavy);
-        background: var(--iron-02);
-        padding: 28px 28px 24px;
-        margin-bottom: 32px;
-      }
-      .rc-drop-head {
-        display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
-        margin-bottom: 8px;
-      }
-      .rc-drop-state {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
-        padding: 4px 9px; border-radius: 999px;
-      }
-      .rc-drop-state.upcoming { background: var(--iron-04); color: var(--copper); border: 1px solid var(--copper); }
-      .rc-drop-state.live     { background: var(--vermilion); color: var(--bone); }
-      .rc-drop-state.closed   { background: transparent; color: var(--bone-45); border: 1px solid var(--rule); }
-      .rc-drop-name {
-        font-family: 'Fraunces', serif;
-        font-variation-settings: 'wght' 320, 'opsz' 96;
-        font-size: clamp(28px, 4vw, 44px);
-        line-height: 1; letter-spacing: -1.2px;
-        color: var(--bone);
-      }
-      .rc-drop-name em { color: var(--vermilion); font-style: italic; }
-      .rc-drop-tagline {
-        font-family: 'Fraunces', serif; font-style: italic;
-        font-variation-settings: 'wght' 320, 'opsz' 24, 'slnt' -8;
-        font-size: 16px; color: var(--bone-70);
-        margin-bottom: 18px; max-width: 560px;
-      }
-      .rc-drop-countdown {
-        display: flex; gap: 18px; flex-wrap: wrap; margin: 12px 0 8px;
-        font-family: 'JetBrains Mono', monospace;
-      }
-      .rc-cd {
-        border-top: 1px solid var(--rule); padding-top: 6px; min-width: 64px;
-      }
-      .rc-cd .num {
-        font-family: 'Fraunces', serif;
-        font-variation-settings: 'wght' 320, 'opsz' 96;
-        font-size: 32px; line-height: 1; color: var(--bone);
-      }
-      .rc-cd .lbl {
-        font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
-        color: var(--bone-45); margin-top: 2px;
-      }
-      .rc-drop-meta {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 11px; letter-spacing: 1px; color: var(--bone-45);
-        margin-top: 8px;
-      }
-      .rc-drop-meta strong { color: var(--bone); font-weight: 500; }
-      .rc-drop-actions {
-        display: flex; gap: 14px; flex-wrap: wrap;
-        margin-top: 18px;
-      }
-      .rc-drop-actions a, .rc-drop-actions button {
-        display: inline-flex; align-items: center; gap: 8px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-        padding: 12px 18px; border-radius: 2px;
-        text-decoration: none; cursor: pointer;
-        border: 0.5px solid var(--rule); background: transparent; color: var(--bone-70);
-        transition: border-color .15s, color .15s;
-      }
-      .rc-drop-actions .primary {
-        background: var(--vermilion); color: var(--bone); border-color: var(--vermilion);
-      }
-      .rc-drop-actions .primary:hover { background: #d43515; }
-      .rc-drop-actions a:hover, .rc-drop-actions button:hover {
-        border-color: var(--vermilion); color: var(--bone);
-      }
-
-      .rc-pieces {
-        display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 14px; margin: 24px 0 0;
-      }
-      .rc-piece {
-        border: 0.5px solid var(--rule);
-        background: var(--iron);
-        padding: 16px;
-        display: flex; flex-direction: column;
-        transition: border-color .2s;
-      }
-      .rc-piece:hover { border-color: var(--bone-20); }
-      .rc-piece.sold {
-        opacity: 0.55;
-      }
-      .rc-piece-thumb {
-        aspect-ratio: 1.2;
-        background: var(--iron-02);
-        position: relative; overflow: hidden;
-        margin-bottom: 12px;
-        display: flex; align-items: center; justify-content: center;
-      }
-      .rc-piece-thumb .form-glyph {
-        font-family: 'Fraunces', serif; font-style: italic;
-        font-size: 56px; color: var(--vermilion); opacity: 0.4;
-      }
-      .rc-piece-ref {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 9px; letter-spacing: 2px; color: var(--bone-45);
-      }
-      .rc-piece-name {
-        font-family: 'Fraunces', serif;
-        font-variation-settings: 'wght' 360, 'opsz' 36;
-        font-size: 16px; color: var(--bone);
-        margin: 4px 0 6px;
-      }
-      .rc-piece-pattern {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px; line-height: 1.5; letter-spacing: 0.5px;
-        color: var(--bone-45);
-        margin-bottom: 12px;
-      }
-      .rc-piece-foot {
-        display: flex; justify-content: space-between; align-items: center;
-        margin-top: auto; padding-top: 10px;
-        border-top: 0.5px solid var(--rule);
-      }
-      .rc-piece-price {
-        font-family: 'Fraunces', serif;
-        font-variation-settings: 'wght' 360, 'opsz' 48;
-        font-size: 18px; color: var(--bone);
-      }
-      .rc-piece-claim {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
-        text-decoration: none;
-        color: var(--vermilion); border-bottom: 1px solid var(--vermilion);
-        padding-bottom: 2px;
-        transition: color .15s;
-      }
-      .rc-piece-claim:hover { color: var(--bone); border-color: var(--bone); }
-      .rc-piece-claim.sold-tag {
-        color: var(--bone-45); border: 0; cursor: default; pointer-events: none;
-      }
-
-      /* second-door divider */
-      .rc-second-door {
-        margin: 56px 0 24px;
-        padding-top: 28px;
-        border-top: 1px solid var(--rule);
-      }
-      .rc-second-door-eyebrow {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-        color: var(--vermilion); margin-bottom: 8px;
-      }
-      .rc-second-door-head {
-        font-family: 'Fraunces', serif;
-        font-variation-settings: 'wght' 320, 'opsz' 72;
-        font-size: clamp(22px, 3vw, 32px);
-        line-height: 1.1; letter-spacing: -0.6px;
-        color: var(--bone);
-        margin-bottom: 8px;
-      }
-      .rc-second-door-head em { color: var(--vermilion); font-style: italic; }
-      .rc-second-door-sub {
-        font-family: 'Fraunces', serif; font-style: italic;
-        font-variation-settings: 'wght' 320, 'opsz' 24, 'slnt' -8;
-        font-size: 15px; color: var(--bone-70); max-width: 540px;
-        margin-bottom: 16px;
-      }
-    </style>
-
-    <article class="rc-drop" id="rcDrop">
-      <p class="rc-drop-tagline" data-es="La primera puerta es un concepto que estamos prototipando: tiradas de objetos en edición limitada, anunciadas y reservadas en vivo. Todavía no está a la venta." data-en="The first door is a concept we're prototyping: limited-edition object drops, announced and reserved live. Not for sale yet.">La primera puerta es un concepto que estamos prototipando: tiradas de objetos en edición limitada, anunciadas y reservadas en vivo. Todavía no está a la venta.</p>
-    </article>
-
-    <div class="rc-second-door">
-      <div class="rc-second-door-eyebrow" data-es="O · LA OTRA PUERTA" data-en="OR · THE OTHER DOOR">O · LA OTRA PUERTA</div>
-      <h3 class="rc-second-door-head" data-es="No puedes esperar. <em>Te escribimos primero</em>." data-en="Can't wait. <em>We write first</em>." data-html="true">No puedes esperar. <em>Te escribimos primero</em>.</h3>
-      <p class="rc-second-door-sub" data-es="Pon el nombre de tu lugar y la categoría. En menos de un minuto te devolvemos un briefing no solicitado — observación, diagnóstico, propuesta, inversión. Sin compromiso. Descártalo si quieres." data-en="Enter your place's name and category. In under a minute we return an unsolicited brief — observation, diagnosis, proposal, investment. No obligation. Discard it if you want."></p>
-    </div>
-
-    <form id="rcForm" class="rc-form" autocomplete="off">
-      <input name="rcName" type="text" required
-        placeholder="Nombre del lugar (ej. Curcucho Café)"
-        data-placeholder-es="Nombre del lugar (ej. Curcucho Café)"
-        data-placeholder-en="Place name (e.g. Curcucho Café)"
-        aria-label="Business name">
-      <select name="rcCategory" required aria-label="Category">
-        <option value="" data-es="— Categoría —" data-en="— Category —">— Categoría —</option>
-        <option value="cafe" data-es="Café / Cafetería" data-en="Café / Coffeeshop">Café / Cafetería</option>
-        <option value="restaurant" data-es="Restaurante" data-en="Restaurant">Restaurante</option>
-        <option value="fitness" data-es="Gimnasio / Estudio de fitness" data-en="Gym / Fitness studio">Gimnasio / Estudio de fitness</option>
-        <option value="wellness" data-es="Spa / Wellness / Estética" data-en="Spa / Wellness / Aesthetics">Spa / Wellness / Estética</option>
-        <option value="boutique" data-es="Boutique / Retail" data-en="Boutique / Retail">Boutique / Retail</option>
-        <option value="school" data-es="Escuela / Taller / Educación" data-en="School / Workshop / Education">Escuela / Taller / Educación</option>
-      </select>
-      <button type="submit" data-es="Generar briefing" data-en="Generate brief">Generar briefing</button>
-    </form>
-
-    <article class="rc-output" id="rcOutput" hidden aria-live="polite"></article>
-
-    <p class="lab-note" data-es="El briefing se genera con señales públicas y el criterio del estudio. En v0.3 se conecta a Sereno para leer el contexto real de tu distrito. Todo lo que mandamos lo revisa Stuart antes de contestar." data-en="The brief is generated from public signals and the studio's own criteria. In v0.3 it wires into Sereno to read your district's real context. Anything we send is reviewed by Stuart before replying.">
-      El briefing se genera con señales públicas y el criterio del estudio. En v0.3 se conecta a Sereno para leer el contexto real de tu distrito. Todo lo que mandamos lo revisa Stuart antes de contestar.
-    </p>
-  </div>
-</section>
 
 <!-- ============================================================
      SIGNATURE 04 · THE OBJECT THAT REMEMBERS YOU
@@ -3120,132 +2616,26 @@
      Lima weather that day, the manifesto's typography that day, and
      a fabrication timelapse of your specific object. Demo below.
      ============================================================ -->
-<section class="chapter" id="memory" aria-labelledby="memoryH">
-  <div class="chapter-label">
-    <span><span class="num">05 /</span> <span data-es="Objeto con memoria" data-en="Object with memory">Objeto con memoria</span></span>
-    <span class="note" data-es="Cada objeto sale del estudio con un chip NFC discreto en la base. Acércalo al teléfono: aparece una página privada que sólo tú puedes ver — la fecha en que se encargó, el clima de Lima ese día, la tipografía del manifiesto esa tarde, un timelapse del objeto mientras se creaba. Prueba el demo." data-en="Every object leaves the studio with a discreet NFC chip in the base. Tap it with your phone: a private page appears, visible only to you — the order date, Lima's weather that day, the manifesto's typography that afternoon, a timelapse of your object while it was made. Try the demo.">Cada objeto sale del estudio con un chip NFC discreto en la base. Acércalo al teléfono: aparece una página privada que sólo tú puedes ver — la fecha en que se encargó, el clima de Lima ese día, la tipografía del manifiesto esa tarde, un timelapse del objeto mientras se creaba. Prueba el demo.</span>
-  </div>
-  <div class="chapter-body">
-    <div id="memoryH" class="mono" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bone-45);margin-bottom:28px">
-      <span data-es="OBJETO CON MEMORIA · DEMO INTERACTIVO" data-en="OBJECT WITH MEMORY · INTERACTIVE DEMO">OBJETO CON MEMORIA · DEMO INTERACTIVO</span>
-    </div>
 
-    <div class="memory-demo">
-      <div class="memory-object" aria-label="A Studios mug with an embedded NFC chip in the base">
-        <div class="memory-serial-label">
-          <span data-es="DEMO" data-en="DEMO">DEMO</span>
-          <span class="v">RLS-LMJ9T-4X7K</span>
-        </div>
-        <button type="button" id="nfcTap" class="nfc-tap" aria-expanded="false" aria-controls="memoryPage">
-          <span class="nfc-icon" aria-hidden="true">◉</span>
-          <span data-es="Acercar teléfono (simular)" data-en="Tap with phone (simulate)">Acercar teléfono (simular)</span>
-        </button>
-      </div>
-
-      <div class="memory-page" id="memoryPage" hidden>
-        <header class="memory-header">
-          <h3 id="memProductName">Taza Conquistadores N.º 047</h3>
-          <span class="serial" id="memSerial">RLS-LMJ9T-4X7K</span>
-        </header>
-
-        <div class="memory-section">
-          <h4 data-es="Fecha de encargo" data-en="Order date">Fecha de encargo</h4>
-          <p class="m-body" id="memOrderDate">—</p>
-          <p class="m-blurb" id="memOrderBlurb">—</p>
-        </div>
-
-        <div class="memory-section">
-          <h4 data-es="Clima en Lima ese día" data-en="Lima weather that day">Clima en Lima ese día</h4>
-          <div class="memory-wx-grid">
-            <div><span data-es="Condición" data-en="Condition">Condición</span><span class="v" id="memWxCond">—</span></div>
-            <div><span data-es="Temp." data-en="Temp.">Temp.</span><span class="v" id="memWxTemp">—</span></div>
-            <div><span data-es="Humedad" data-en="Humidity">Humedad</span><span class="v" id="memWxHum">—</span></div>
-            <div><span data-es="Viento" data-en="Wind">Viento</span><span class="v" id="memWxWind">—</span></div>
-          </div>
-        </div>
-
-        <div class="memory-section">
-          <h4 data-es="Tipografía del manifiesto esa tarde" data-en="Manifesto typography that afternoon">Tipografía del manifiesto esa tarde</h4>
-          <p class="memory-type-echo" id="memTypeEcho">
-            <span data-es="Rainey Laguna Studios hace cosas. Cosas que se miran, que se tocan, que duran. El manifiesto se leyó así el día que tu objeto fue creado." data-en="Rainey Laguna Studios makes things. Things you look at, things you hold, things that last. The manifesto read like this on the day your object was made.">Rainey Laguna Studios hace cosas. Cosas que se miran, que se tocan, que duran. El manifiesto se leyó así el día que tu objeto fue creado.</span>
-            <small><span id="memTypeWght">wght · —</span> · <span id="memTypeOpsz">opsz · —</span></small>
-          </p>
-          <p class="m-blurb" id="memTypeNote">—</p>
-        </div>
-
-        <div class="memory-section">
-          <h4 data-es="Fabricación" data-en="Fabrication">Fabricación</h4>
-          <div class="memory-fab-list">
-            <span data-es="Impreso" data-en="Printed">Impreso</span>          <span class="v" id="memFabDate">—</span>
-            <span data-es="Duración" data-en="Duration">Duración</span>      <span class="v" id="memFabDuration">—</span>
-            <span data-es="Archivo" data-en="File">Archivo</span>            <span class="v" id="memFabFile">—</span>
-            <span data-es="Operador" data-en="Operator">Operador</span>      <span class="v" id="memFabOperator">—</span>
-            <span data-es="Envío" data-en="Shipped">Envío</span>             <span class="v" id="memShipDate">—</span>
-          </div>
-        </div>
-
-        <button type="button" class="memory-reset" id="memoryReset">
-          ← <span data-es="Cerrar memoria" data-en="Close memory">Cerrar memoria</span>
-        </button>
-      </div>
-    </div>
-
-    <p class="lab-note" data-es="Un concepto que estamos prototipando: cada objeto lleva un chip NFC (≈ $1) y una página de memoria que se genera sola — su certificado, su gemelo, su procedencia. Esta demo usa un objeto simulado." data-en="A concept we're prototyping: each object carries an NFC chip (≈ $1) and a memory page that generates itself — its certificate, its twin, its provenance. This demo uses a simulated object.">
-      Un concepto que estamos prototipando: cada objeto lleva un chip NFC (≈ $1) y una página de memoria que se genera sola — su certificado, su gemelo, su procedencia. Esta demo usa un objeto simulado.
-    </p>
-
-    <!-- Proof of Fabrication · public companion to the private NFC page -->
-    <div class="proof-panel">
-      <div class="proof-panel-text">
-        <span class="proof-panel-eyebrow mono" data-es="LA PRUEBA PÚBLICA · FIRMA ED25519" data-en="PUBLIC PROOF · ED25519 SIGNATURE">LA PRUEBA PÚBLICA · FIRMA ED25519</span>
-        <h3 class="proof-panel-title" data-es="Un concepto: cada cosa que hacemos puede llevar un certificado <em>verificable para siempre</em>." data-en="A concept: everything we make can carry a certificate that is <em>verifiable forever</em>." data-html="true">Un concepto: cada cosa que hacemos puede llevar un certificado <em>verificable para siempre</em>.</h3>
-        <p class="proof-panel-body" data-es="Un concepto que estamos prototipando: cada pieza lleva un QR que abre una página pública y demuestra, con firma criptográfica, que salió de este estudio, en esta fecha, desde el archivo que firmamos. Sin falsificaciones. Sin copias indistinguibles." data-en="A concept we're prototyping: each piece carries a QR that opens a public page and proves, with a cryptographic signature, that it came from this studio, on this date, from the file we signed. No forgeries. No indistinguishable copies.">Un concepto que estamos prototipando: cada pieza lleva un QR que abre una página pública y demuestra, con firma criptográfica, que salió de este estudio, en esta fecha, desde el archivo que firmamos. Sin falsificaciones. Sin copias indistinguibles.</p>
-      </div>
-      <!-- Mini preview auto-rendered from data/proofs/DEMO-0001.json -->
-      <div class="proof-panel-preview" data-proof-preview="DEMO-0001"></div>
-    </div>
-  </div>
-</section>
 
 <!-- ============================================================
      WORK
      ============================================================ -->
 <section class="chapter" id="work" aria-labelledby="workH">
   <div class="chapter-label">
-    <span><span class="num">06 /</span> <span data-es="Trabajo" data-en="Work">Trabajo</span></span>
-    <span class="note" data-es="El estudio es nuevo. El trabajo está creciendo. Lo que sí entregamos ya se puede ver." data-en="The studio is new. The work is growing. What we have delivered, you can already see.">El estudio es nuevo. El trabajo está creciendo. Lo que sí entregamos ya se puede ver.</span>
+    <span><span class="num">02 /</span> <span data-es="El juego" data-en="The game">El juego</span></span>
+    <span class="note" data-es="Estamos construyendo nuestro propio juego — una investigación histórica a través de ciudades en el instante exacto en que la historia las parte en dos. Hecho en Unreal Engine, con medios generados por IA." data-en="We're building our own game — a historical investigation across cities at the exact instant history splits them in two. Built in Unreal Engine, with AI-generated media.">Estamos construyendo nuestro propio juego — una investigación histórica a través de ciudades en el instante exacto en que la historia las parte en dos. Hecho en Unreal Engine, con medios generados por IA.</span>
   </div>
   <div class="chapter-body">
     <div id="workH" class="mono" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bone-45);margin-bottom:28px">
-      <span data-es="TRABAJO · 2026 →" data-en="WORK · 2026 →">TRABAJO · 2026 →</span>
+      <span data-es="RELIC OF AGES · EN DESARROLLO" data-en="RELIC OF AGES · IN DEVELOPMENT">RELIC OF AGES · EN DESARROLLO</span>
     </div>
 
-    <!-- ======= The Twin Wall · live mosaic of every twin fabricated ======= -->
-    <div class="twin-intro">
-      <span class="mono twin-intro-eyebrow" data-es="MURO DE GEMELOS · CONCEPTO" data-en="THE TWIN WALL · CONCEPT">MURO DE GEMELOS · CONCEPTO</span>
-      <h3 class="twin-intro-title" data-es="Un concepto que prototipamos: cada cosa que hacemos tiene un <em>gemelo</em> digital. Uno se entrega. El otro se queda en este muro." data-en="A concept we prototype: everything we make has a digital <em>twin</em>. One ships. The other stays on this wall." data-html="true">Un concepto que prototipamos: cada cosa que hacemos tiene un <em>gemelo</em> digital. Uno se entrega. El otro se queda en este muro.</h3>
+    <div style="border:0.5px solid var(--rule);padding:clamp(28px,5vw,56px)">
+      <h3 style="font-family:'Fraunces',serif;font-variation-settings:'wght' 340,'opsz' 96;font-size:clamp(40px,7vw,82px);line-height:0.95;letter-spacing:-2px;color:var(--bone);margin:0 0 22px">Relic of <em style="color:var(--vermilion);font-style:italic">Ages</em></h3>
+      <p style="font-family:'Fraunces',serif;font-size:clamp(17px,2.4vw,22px);line-height:1.5;color:var(--bone-70);max-width:60ch;margin:0 0 30px" data-es="Un detective fuera del tiempo, Arthur Vance, investiga ciudades en el momento en que la historia las quiebra — Lisboa 1755, Glasgow, Pompeya. Reconstruye el antes, vive el durante, camina el después." data-en="A detective out of time, Arthur Vance, investigates cities at the moment history breaks them — Lisbon 1755, Glasgow, Pompeii. Reconstruct the before, live the during, walk the after.">Un detective fuera del tiempo, Arthur Vance, investiga ciudades en el momento en que la historia las quiebra — Lisboa 1755, Glasgow, Pompeya. Reconstruye el antes, vive el durante, camina el después.</p>
+      <a href="/relic/" style="display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--bone);border:1px solid var(--bone);padding:14px 24px;text-decoration:none" data-es="Ver Relic of Ages →" data-en="See Relic of Ages →">Ver Relic of Ages →</a>
     </div>
-    <div id="twinWall" class="twin-wall"></div>
-
-    <div class="twin-sep" aria-hidden="true"></div>
-
-    <a class="work-row" href="https://raineylaguna.com" target="_blank" rel="noopener">
-      <span class="work-idx">01</span>
-      <span class="work-name">Rainey <em>Laguna</em> .com</span>
-      <span class="work-meta">
-        <span class="cat" data-es="Sitio web · Marca · Sistema bilingüe" data-en="Website · Brand · Bilingual system">Sitio web · Marca · Sistema bilingüe</span>
-        <span class="year">2026</span>
-      </span>
-    </a>
-
-    <a class="work-row" href="/relic/">
-      <span class="work-idx">02</span>
-      <span class="work-name">Relic of <em>Ages</em></span>
-      <span class="work-meta">
-        <span class="cat" data-es="Juego · Mundos interactivos · Medios con IA" data-en="Game · Interactive worlds · AI media">Juego · Mundos interactivos · Medios con IA</span>
-        <span class="year" data-es="En desarrollo" data-en="In development">En desarrollo</span>
-      </span>
-    </a>
   </div>
 </section>
 
@@ -3254,55 +2644,41 @@
      ============================================================ -->
 <section class="chapter" id="make" aria-labelledby="makeH">
   <div class="chapter-label">
-    <span><span class="num">07 /</span> <span data-es="Hacemos" data-en="We Make">Hacemos</span></span>
-    <span class="note" data-es="Seis campos. Un estudio. Mundos interactivos, medios con IA, y marcas que duran." data-en="Six fields. One studio. Interactive worlds, AI media, and brands that last.">Seis campos. Un estudio. Mundos interactivos, medios con IA, y marcas que duran.</span>
+    <span><span class="num">03 /</span> <span data-es="Servicios de IA" data-en="AI services">Servicios de IA</span></span>
+    <span class="note" data-es="Cuatro servicios. Un estudio. Video, imagen, mundos interactivos y marca — todo con IA." data-en="Four services. One studio. Video, image, interactive worlds and brand — all with AI.">Cuatro servicios. Un estudio. Video, imagen, mundos interactivos y marca — todo con IA.</span>
   </div>
   <div class="chapter-body">
     <div id="makeH" class="mono" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bone-45);margin-bottom:28px">
-      <span data-es="HACEMOS · 06 CAMPOS" data-en="WE MAKE · 06 FIELDS">HACEMOS · 06 CAMPOS</span>
+      <span data-es="SERVICIOS DE IA · 04" data-en="AI SERVICES · 04">SERVICIOS DE IA · 04</span>
     </div>
 
     <div class="make-grid">
       <div class="make-cell">
-        <span class="m-num">→ 01 / <span data-es="Identidad" data-en="Identity">Identidad</span></span>
-        <h3 class="m-name" data-es="<em>Marca</em> de raíz." data-en="<em>Brand</em> from the root." data-html="true"><em>Marca</em> de raíz.</h3>
-        <p class="m-desc" data-es="Logo, sistema tipográfico, paleta, voz, y las reglas que mantienen la marca viva mientras el lugar crece — con un flujo acelerado por IA donde suma. Diseñada una vez, resiste diez años." data-en="Logo, type system, palette, voice, and the rules that keep the brand alive as the place grows — with an AI-accelerated workflow where it helps. Designed once, holds for ten years.">Logo, sistema tipográfico, paleta, voz, y las reglas que mantienen la marca viva mientras el lugar crece — con un flujo acelerado por IA donde suma. Diseñada una vez, resiste diez años.</p>
-        <div class="m-foot"><span data-es="Desde" data-en="From">Desde</span><span class="price">S/ 2,500</span></div>
-      </div>
-
-      <div class="make-cell">
-        <span class="m-num">→ 02 / <span data-es="Medios con IA" data-en="AI media">Medios con IA</span></span>
+        <span class="m-num">→ 01 / <span data-es="Medios con IA" data-en="AI media">Medios con IA</span></span>
         <h3 class="m-name" data-es="<em>Video</em> que se mueve." data-en="<em>Video</em> that moves." data-html="true"><em>Video</em> que se mueve.</h3>
         <p class="m-desc" data-es="Clips cinemáticos, reels y motion generados y dirigidos con IA — para campañas, redes y lanzamientos. Las mismas secuencias que abren las ciudades de Relic of Ages." data-en="Cinematic clips, reels and motion generated and directed with AI — for campaigns, social and launches. The same sequences that open the cities of Relic of Ages.">Clips cinemáticos, reels y motion generados y dirigidos con IA — para campañas, redes y lanzamientos. Las mismas secuencias que abren las ciudades de Relic of Ages.</p>
         <div class="m-foot"><span data-es="Por proyecto" data-en="Per project">Por proyecto</span><span class="price" data-es="Consultar" data-en="Get a quote">Consultar</span></div>
       </div>
 
       <div class="make-cell">
-        <span class="m-num">→ 03 / <span data-es="Imagen con IA" data-en="AI image">Imagen con IA</span></span>
+        <span class="m-num">→ 02 / <span data-es="Imagen con IA" data-en="AI image">Imagen con IA</span></span>
         <h3 class="m-name" data-es="<em>Mundos</em> en una imagen." data-en="<em>Worlds</em> in a still." data-html="true"><em>Mundos</em> en una imagen.</h3>
         <p class="m-desc" data-es="Concept art, key art, personajes, entornos y ciudades — imágenes que no existían, generadas con IA y dirigidas a mano. Las mismas que construyen las ciudades del juego." data-en="Concept art, key art, characters, environments and cities — images that didn't exist, generated with AI and art-directed by hand. The same ones building the game's cities.">Concept art, key art, personajes, entornos y ciudades — imágenes que no existían, generadas con IA y dirigidas a mano. Las mismas que construyen las ciudades del juego.</p>
         <div class="m-foot"><span data-es="Por imagen" data-en="Per image">Por imagen</span><span class="price" data-es="Consultar" data-en="Get a quote">Consultar</span></div>
       </div>
 
       <div class="make-cell">
-        <span class="m-num">→ 04 / <span data-es="Mundos interactivos" data-en="Interactive worlds">Mundos interactivos</span></span>
+        <span class="m-num">→ 03 / <span data-es="Mundos interactivos" data-en="Interactive worlds">Mundos interactivos</span></span>
         <h3 class="m-name" data-es="<em>Mundos</em> jugables." data-en="<em>Playable</em> worlds." data-html="true"><em>Mundos</em> jugables.</h3>
         <p class="m-desc" data-es="Experiencias en tiempo real, demos y mundos interactivos construidos en Unreal Engine. Nuestro propio juego, Relic of Ages, es el primero — y la prueba de lo que el estudio puede construir." data-en="Real-time experiences, demos and interactive worlds built in Unreal Engine. Our own game, Relic of Ages, is the first — and the proof of what the studio can build.">Experiencias en tiempo real, demos y mundos interactivos construidos en Unreal Engine. Nuestro propio juego, Relic of Ages, es el primero — y la prueba de lo que el estudio puede construir.</p>
         <div class="m-foot"><span data-es="Ver" data-en="See">Ver</span><span class="price"><a href="/relic/" style="color:inherit">Relic of Ages →</a></span></div>
       </div>
 
-      <div class="make-cell">
-        <span class="m-num">→ 05 / <span data-es="Consultoría de marca" data-en="Brand consulting">Consultoría de marca</span></span>
-        <h3 class="m-name" data-es="<em>Dirección</em> que se queda." data-en="<em>Direction</em> that sticks." data-html="true"><em>Dirección</em> que se queda.</h3>
-        <p class="m-desc" data-es="Gestión de marca en curso — auditoría, dirección creativa, supervisión de proveedores, reuniones mensuales. Para lugares que tienen marca pero necesitan mano firme que la mantenga alineada." data-en="Ongoing brand management — audits, creative direction, vendor supervision, monthly working sessions. For places that have a brand and need a steady hand to keep it aligned.">Gestión de marca en curso — auditoría, dirección creativa, supervisión de proveedores, reuniones mensuales. Para lugares que tienen marca pero necesitan mano firme que la mantenga alineada.</p>
-        <div class="m-foot"><span data-es="Por mes" data-en="Per month">Por mes</span><span class="price" data-es="S/ 1,200 +" data-en="S/ 1,200 +">S/ 1,200 +</span></div>
-      </div>
-
       <div class="make-cell" style="grid-column:1/-1">
-        <span class="m-num">→ 06 / <span data-es="Web" data-en="Web">Web</span></span>
-        <h3 class="m-name" data-es="<em>Pantalla</em> que trabaja." data-en="<em>Screens</em> that work." data-html="true"><em>Pantalla</em> que trabaja.</h3>
-        <p class="m-desc" data-es="La web está en manos de nuestra rama especializada, Rainey Laguna, en raineylaguna.com — sitios bilingües, Sereno, Garúa, Espejo. El mismo estudio, el mismo equipo, otra puerta." data-en="Web lives in our specialist arm, Rainey Laguna, at raineylaguna.com — bilingual sites, Sereno, Garúa, Espejo. Same studio, same team, different door.">La web está en manos de nuestra rama especializada, Rainey Laguna, en <a href="https://raineylaguna.com" target="_blank" rel="noopener">raineylaguna.com</a> — sitios bilingües, Sereno, Garúa, Espejo. El mismo estudio, el mismo equipo, otra puerta.</p>
-        <div class="m-foot"><span data-es="Ver" data-en="See">Ver</span><span class="price">raineylaguna.com →</span></div>
+        <span class="m-num">→ 04 / <span data-es="Marca con IA" data-en="AI branding">Marca con IA</span></span>
+        <h3 class="m-name" data-es="<em>Identidad</em> acelerada." data-en="<em>Identity</em>, accelerated." data-html="true"><em>Identidad</em> acelerada.</h3>
+        <p class="m-desc" data-es="Logo, sistema visual, voz y dirección de arte — construidos con un flujo acelerado por IA: cientos de direcciones exploradas, una elegida y refinada a mano. Marca que se siente hecha a medida, en una fracción del tiempo." data-en="Logo, visual system, voice and art direction — built with an AI-accelerated workflow: hundreds of directions explored, one chosen and refined by hand. A brand that feels bespoke, in a fraction of the time.">Logo, sistema visual, voz y dirección de arte — construidos con un flujo acelerado por IA: cientos de direcciones exploradas, una elegida y refinada a mano. Marca que se siente hecha a medida, en una fracción del tiempo.</p>
+        <div class="m-foot"><span data-es="Por proyecto" data-en="Per project">Por proyecto</span><span class="price" data-es="Consultar" data-en="Get a quote">Consultar</span></div>
       </div>
     </div>
   </div>
@@ -3361,13 +2737,10 @@
   <div class="col">
     <h5 data-es="Mapa" data-en="Map">Mapa</h5>
     <a href="/about/" data-es="Sobre el estudio" data-en="About the studio">Sobre el estudio</a><br>
-    <a href="/who-we-serve/" data-es="A quién servimos" data-en="Who we serve">A quién servimos</a><br>
-    <a href="/servicios/" data-es="Servicios · 7 campos" data-en="Services · 7 fields">Servicios · 7 campos</a><br>
-    <a href="/marca/" data-es="Marca · 8 mecánicas" data-en="Brand · 8 mechanics">Marca · 8 mecánicas</a><br>
-    <a href="/work/" data-es="Trabajo" data-en="Work">Trabajo</a><br>
+    <a href="/relic/" data-es="Relic of Ages · el juego" data-en="Relic of Ages · the game">Relic of Ages · el juego</a><br>
+    <a href="#make" data-es="Servicios de IA" data-en="AI services">Servicios de IA</a><br>
     <a href="/journal/" data-es="Diario" data-en="Journal">Diario</a><br>
-    <a href="/changelog/" data-es="Cambios · manifiesto" data-en="Changelog · manifesto">Cambios · manifiesto</a><br>
-    <a href="/verify.html" data-es="Verificar →" data-en="Verify →">Verificar →</a>
+    <a href="/changelog/" data-es="Cambios · manifiesto" data-en="Changelog · manifesto">Cambios · manifiesto</a>
   </div>
   <div class="col">
     <h5 data-es="Legal" data-en="Legal">Legal</h5>
@@ -3530,376 +2903,21 @@ function applyWeather(c) {
   window.__rls_weather = { desc, temp, code };
 }
 
-// =========================================================================
-// SIGNATURE 02 · HYDROPRINT LAB · CONTROLS WIRING
-// The Three.js scene is booted in scripts/hydroprint-lab.js, which exposes
-// window.__hydroprintLab. This block wires the DOM controls to that API.
-// =========================================================================
-function wireLabControls() {
-  const lab = () => window.__hydroprintLab;
-
-  // ------- pricing model ----------------------------------------------------
-  const FORMS = {
-    mug:     { es: 'Taza Conquistadores',          en: 'Conquistadores mug',         shortEs: 'Taza',     shortEn: 'Mug',      base: 120 },
-    plate:   { es: 'Plato Garúa · 24 cm',          en: 'Garúa plate · 24 cm',        shortEs: 'Plato',    shortEn: 'Plate',    base:  95 },
-    vase:    { es: 'Florero Atalaya · 22 cm',      en: 'Atalaya vase · 22 cm',       shortEs: 'Florero',  shortEn: 'Vase',     base: 240 },
-    coaster: { es: 'Posavasos · juego de 4',       en: 'Coasters · set of 4',        shortEs: 'Posavasos',shortEn: 'Coasters', base: 180 },
-    panel:   { es: 'Panel decorativo · 30 × 40 cm',en: 'Decorative panel · 30 × 40 cm',shortEs: 'Panel',  shortEn: 'Panel',    base: 380 }
-  };
-  const FINISH_MULT = { matte: 1.0, satin: 1.05, gloss: 1.15 };
-  const FINISH_LABEL = {
-    matte: { es: 'Mate',  en: 'Matte' },
-    satin: { es: 'Satín', en: 'Satin' },
-    gloss: { es: 'Brillo',en: 'Gloss' }
-  };
-  const COLOR_LABEL = {
-    'f6f2e8': { es: 'Hueso (#F6F2E8)',     en: 'Bone (#F6F2E8)' },
-    '0e0d0b': { es: 'Hierro (#0E0D0B)',    en: 'Iron (#0E0D0B)' },
-    '8aa9a0': { es: 'Cobre oxidado (#8AA9A0)', en: 'Oxide copper (#8AA9A0)' },
-    'e83c1e': { es: 'Vermellón (#E83C1E)', en: 'Vermilion (#E83C1E)' },
-    'c8b78a': { es: 'Arcilla cruda (#C8B78A)', en: 'Raw clay (#C8B78A)' }
-  };
-  const PATTERN_LABEL = {
-    p1: { es: 'Cuadrícula casa', en: 'House grid' },
-    p2: { es: 'Onda cobre',      en: 'Copper wave' },
-    p3: { es: 'Puntos vermellón',en: 'Vermilion dots' },
-    p4: { es: 'Mosaico hierro',  en: 'Iron mosaic' },
-    p5: { es: 'Confeti urbano',  en: 'Urban confetti' }
-  };
-  const QTY_TIERS = [
-    { min: 20, mult: 0.78, es: 'tirada · plazo a confirmar', en: 'production run · timeline TBC' },
-    { min: 6,  mult: 0.85, es: '6 + unidades · −15 %',       en: '6+ units · −15%' },
-    { min: 2,  mult: 0.92, es: '2 a 5 unidades · −8 %',      en: '2–5 units · −8%' },
-    { min: 1,  mult: 1.00, es: 'una pieza',                  en: 'single piece' }
-  ];
-  const CUSTOM_PATTERN_FEE = 30;
-
-  // ------- state -----------------------------------------------------------
-  const state = {
-    form: 'mug',
-    pattern: null,            // 'p1'..'p5' or 'custom'
-    customName: null,
-    color: 'f6f2e8',
-    finish: 'satin',
-    qty: 1
-  };
-
-  const setPressed = (group, el) => {
-    group.querySelectorAll('[aria-pressed]').forEach(n => n.setAttribute('aria-pressed', 'false'));
-    if (el) el.setAttribute('aria-pressed', 'true');
-  };
-  const lang = () => document.body.getAttribute('data-lang') === 'en' ? 'en' : 'es';
-
-  // ------- compute & render ------------------------------------------------
-  function compute() {
-    const form    = FORMS[state.form];
-    const fmult   = FINISH_MULT[state.finish] || 1;
-    const qty     = Math.max(1, Math.min(500, state.qty || 1));
-    const tier    = QTY_TIERS.find(t => qty >= t.min);
-    const custom  = state.pattern === 'custom' ? CUSTOM_PATTERN_FEE : 0;
-    const perPiece = (form.base + custom) * fmult;
-    const subtotal = perPiece * qty;
-    const total   = Math.round(subtotal * tier.mult);
-    return { form, fmult, qty, tier, custom, perPiece, total };
-  }
-
-  function fmtPEN(n) {
-    return 'S/ ' + Math.round(n).toLocaleString('es-PE');
-  }
-
-  function render() {
-    const L = lang();
-    const c = compute();
-
-    // Price + label
-    const priceEl  = document.getElementById('labPrice');
-    const labelEl  = document.getElementById('labPriceLabel');
-    const metaEl   = document.getElementById('labPriceMeta');
-    const tierEl   = document.getElementById('labQtyTier');
-    if (priceEl) priceEl.textContent = fmtPEN(c.total);
-    if (labelEl) labelEl.textContent = (L === 'en' ? c.form.shortEn : c.form.shortEs)
-      + ' · ' + (L === 'en' ? 'made to order' : 'pedido a medida');
-    if (metaEl) {
-      const perPieceTxt = L === 'en'
-        ? `${fmtPEN(c.perPiece)} per piece · ${c.qty} ${c.qty === 1 ? 'unit' : 'units'} · ${c.tier.en}`
-        : `${fmtPEN(c.perPiece)} por pieza · ${c.qty} ${c.qty === 1 ? 'unidad' : 'unidades'} · ${c.tier.es}`;
-      metaEl.textContent = perPieceTxt;
-    }
-    if (tierEl) tierEl.textContent = L === 'en' ? c.tier.en : c.tier.es;
-
-    // Spec list
-    const list = document.getElementById('labSpecList');
-    if (list) {
-      const patName = state.pattern === 'custom'
-        ? (state.customName || (L === 'en' ? 'custom upload' : 'archivo subido'))
-        : state.pattern && PATTERN_LABEL[state.pattern]
-          ? (L === 'en' ? PATTERN_LABEL[state.pattern].en : PATTERN_LABEL[state.pattern].es)
-          : (L === 'en' ? '— pick one —' : '— elegir —');
-      const colorLab  = COLOR_LABEL[state.color] || { es: state.color, en: state.color };
-      const finishLab = FINISH_LABEL[state.finish] || { es: state.finish, en: state.finish };
-      list.innerHTML = [
-        ['form',    L === 'en' ? c.form.en : c.form.es],
-        ['pattern', patName],
-        ['color',   L === 'en' ? colorLab.en : colorLab.es],
-        ['finish',  L === 'en' ? finishLab.en : finishLab.es],
-        ['qty',     c.qty + (L === 'en' ? (c.qty === 1 ? ' unit' : ' units') : (c.qty === 1 ? ' unidad' : ' unidades'))]
-      ].map(([k, v]) => `<li><span class="label">${k}</span><span class="val">${escapeHtml(v)}</span></li>`).join('');
-    }
-
-    // WhatsApp deep link with full spec
-    const wa = document.getElementById('labWaLink');
-    if (wa) {
-      const lines = L === 'en'
-        ? [
-            `Hi Stuart — I want to order this from the Lab:`,
-            ``,
-            `· Object: ${c.form.en}`,
-            `· Pattern: ${state.pattern === 'custom' ? (state.customName || 'custom upload') : (state.pattern ? PATTERN_LABEL[state.pattern].en : '(undecided)')}`,
-            `· Base color: ${COLOR_LABEL[state.color] ? COLOR_LABEL[state.color].en : state.color}`,
-            `· Finish: ${FINISH_LABEL[state.finish].en}`,
-            `· Quantity: ${c.qty}`,
-            `· Estimated total: ${fmtPEN(c.total)} (${c.tier.en})`,
-            ``,
-            `Lead time and deposit?`
-          ]
-        : [
-            `Hola Stuart — quiero hacer este pedido del Laboratorio:`,
-            ``,
-            `· Objeto: ${c.form.es}`,
-            `· Patrón: ${state.pattern === 'custom' ? (state.customName || 'archivo subido') : (state.pattern ? PATTERN_LABEL[state.pattern].es : '(por definir)')}`,
-            `· Color base: ${COLOR_LABEL[state.color] ? COLOR_LABEL[state.color].es : state.color}`,
-            `· Acabado: ${FINISH_LABEL[state.finish].es}`,
-            `· Cantidad: ${c.qty}`,
-            `· Total estimado: ${fmtPEN(c.total)} (${c.tier.es})`,
-            ``,
-            `¿Plazo de entrega y depósito?`
-          ];
-      wa.setAttribute('href', 'https://wa.me/51912418482?text=' + encodeURIComponent(lines.join('\n')));
-    }
-  }
-  function escapeHtml(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-
-  // ------- wire controls --------------------------------------------------
-
-  // Object form selector
-  const formGroup = document.querySelector('.lab-forms');
-  if (formGroup) {
-    formGroup.querySelectorAll('.lab-form').forEach(btn => {
-      btn.addEventListener('click', () => {
-        state.form = btn.getAttribute('data-form');
-        setPressed(formGroup, btn);
-        // Swap the 3D model to match the selected object type.
-        if (lab()) lab().setObjectType(state.form);
-        const readout = document.querySelector('.lab-3d-readout .accent');
-        if (readout) {
-          const L = lang();
-          const name = (L === 'en' ? FORMS[state.form].shortEn : FORMS[state.form].shortEs).toUpperCase();
-          readout.textContent = (L === 'en' ? 'PREVIEW · ' : 'VISTA · ') + name;
-        }
-        render();
-      });
-    });
-  }
-
-  // Patterns
-  const patternGroup = document.querySelector('.lab-patterns');
-  if (patternGroup) {
-    patternGroup.querySelectorAll('.lab-pattern').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const url = btn.getAttribute('data-pattern-url');
-        const id  = btn.getAttribute('data-pattern-id');
-        setPressed(patternGroup, btn);
-        state.pattern = id;
-        state.customName = null;
-        const fname = document.getElementById('labUploadName');
-        if (fname) fname.textContent = lang() === 'en' ? 'none' : 'ninguno';
-        if (lab()) lab().setPattern(url);
-        render();
-      });
-    });
-  }
-
-  // Upload
-  const upload = document.getElementById('labUpload');
-  const fnameEl = document.getElementById('labUploadName');
-  if (upload) {
-    upload.addEventListener('change', (e) => {
-      const file = e.target.files && e.target.files[0];
-      if (!file) return;
-      if (fnameEl) fnameEl.textContent = file.name;
-      state.pattern = 'custom';
-      state.customName = file.name;
-      const url = URL.createObjectURL(file);
-      if (patternGroup) setPressed(patternGroup, null);
-      if (lab()) lab().setPattern(url);
-      render();
-    });
-  }
-
-  // Swatches
-  const swatchGroup = document.querySelector('.lab-swatches');
-  if (swatchGroup) {
-    swatchGroup.querySelectorAll('.lab-swatch').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const hexAttr = btn.getAttribute('data-color') || '0xf6f2e8';
-        const hexHex  = hexAttr.replace(/^0x/i, '').toLowerCase();
-        const hexInt  = parseInt(hexAttr, 16);
-        setPressed(swatchGroup, btn);
-        state.color = hexHex;
-        if (lab()) lab().setBaseColor(hexInt);
-        render();
-      });
-    });
-  }
-
-  // Finish
-  const finishGroup = document.querySelector('.lab-finishes');
-  if (finishGroup) {
-    finishGroup.querySelectorAll('.lab-finish').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const finish = btn.getAttribute('data-finish');
-        setPressed(finishGroup, btn);
-        state.finish = finish;
-        if (lab()) lab().setFinish(finish);
-        render();
-      });
-    });
-  }
-
-  // Quantity stepper
-  const qtyInput = document.getElementById('labQty');
-  if (qtyInput) {
-    qtyInput.addEventListener('input', () => {
-      const v = parseInt(qtyInput.value, 10);
-      state.qty = isNaN(v) ? 1 : Math.max(1, Math.min(500, v));
-      render();
-    });
-    document.querySelectorAll('.lab-qty-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const step = parseInt(btn.getAttribute('data-qty-step'), 10) || 0;
-        const next = Math.max(1, Math.min(500, (state.qty || 1) + step));
-        state.qty = next;
-        qtyInput.value = next;
-        render();
-      });
-    });
-  }
-
-  // Re-render on language change
-  const mo = new MutationObserver(() => render());
-  mo.observe(document.body, { attributes: true, attributeFilter: ['data-lang'] });
-
-  // Initial finish + first render
-  document.getElementById('lab3d')?.addEventListener('lab:ready', () => {
-    if (lab()) lab().setFinish('satin');
-  });
-  render();
-}
-
-// ---------- Kiln cap ------------------------------------------------------
-// Reads /data/kiln.json (operator-editable weekly), renders the "Next firing"
-// scarcity panel above the Lab CTA. Fails silent — the panel starts hidden,
-// so a missing/invalid JSON simply leaves the CTA as before.
-// ROADMAP item 6 · "Scarcity > availability for parent brand."
-let _kilnData = null;
-async function fetchKiln() {
-  try {
-    const res = await fetch('/data/kiln.json', { cache: 'no-store' });
-    if (!res.ok) return;
-    _kilnData = await res.json();
-    renderKiln();
-  } catch (_) { /* fail silent */ }
-}
-
-/** Render the panel from _kilnData and current LANG. Safe to call repeatedly. */
-function renderKiln() {
-  const el = document.getElementById('kilnCap');
-  if (!el || !_kilnData) return;
-  const { next_firing, total_slots, reserved, cutoff_offset_days = 1 } = _kilnData;
-  if (!next_firing || !total_slots) return;
-
-  // Parse as Lima-local midnight (America/Lima = UTC-05, no DST).
-  const firing = new Date(next_firing + 'T00:00:00-05:00');
-  if (isNaN(firing)) return;
-  const now = new Date();
-  const msPerDay = 86400000;
-  const daysUntil = Math.ceil((firing - now) / msPerDay);
-
-  const remaining = Math.max(0, total_slots - reserved);
-  const pct = Math.min(100, Math.round((reserved / total_slots) * 100));
-  const locale = LANG === 'es' ? 'es-PE' : 'en-GB';
-  const dateFmt = new Intl.DateTimeFormat(locale, {
-    weekday: 'long', day: 'numeric', month: 'long', timeZone: 'America/Lima',
-  });
-  const prettyDate = dateFmt.format(firing)
-    .replace(/,/g, '').toUpperCase();
-
-  // State machine: closed > cutoff > open. Closed = batch full OR past firing.
-  // Cutoff = within `cutoff_offset_days` of firing → "last call".
-  let state = 'open';
-  if (remaining <= 0 || daysUntil < 0) state = 'closed';
-  else if (daysUntil <= cutoff_offset_days) state = 'cutoff';
-  el.dataset.state = state;
-
-  const dateEl = document.getElementById('kilnCapDate');
-  const slotsEl = document.getElementById('kilnCapSlots');
-  const eyebrowEl = document.getElementById('kilnCapEyebrow');
-  const barEl = document.getElementById('kilnCapBar');
-  const footEl = document.getElementById('kilnCapFoot');
-
-  dateEl.innerHTML = `<em>${prettyDate}</em>`;
-
-  if (state === 'closed') {
-    eyebrowEl.textContent = LANG === 'es' ? 'Tirada cerrada' : 'Batch closed';
-    slotsEl.innerHTML = LANG === 'es'
-      ? '<strong>0</strong> / ' + total_slots + ' piezas'
-      : '<strong>0</strong> / ' + total_slots + ' pieces';
-    footEl.textContent = LANG === 'es'
-      ? 'Siguiente cocción: el próximo lunes. Escríbenos para reservar.'
-      : 'Next firing: next Monday. Message us to reserve a slot.';
-  } else {
-    eyebrowEl.textContent = LANG === 'es' ? 'Próxima cocción' : 'Next firing';
-    slotsEl.innerHTML = LANG === 'es'
-      ? `<strong>${remaining}</strong> de ${total_slots} piezas libres`
-      : `<strong>${remaining}</strong> of ${total_slots} slots open`;
-    if (state === 'cutoff') {
-      footEl.textContent = LANG === 'es'
-        ? `Cierre en ${daysUntil === 0 ? 'horas' : daysUntil + ' día' + (daysUntil === 1 ? '' : 's')}. Encendemos los lunes.`
-        : `Closes in ${daysUntil === 0 ? 'hours' : daysUntil + ' day' + (daysUntil === 1 ? '' : 's')}. We fire on Mondays.`;
-    } else {
-      footEl.textContent = LANG === 'es'
-        ? 'Encendemos los lunes. Una sola tirada por semana.'
-        : 'We fire on Mondays. One batch per week.';
-    }
-  }
-
-  barEl.style.setProperty('--fill', pct + '%');
-  el.hidden = false;
-}
-
-// Re-render the Kiln cap when the operator flips locales so the labels switch.
-// Extra listeners alongside the existing setLang handlers — idempotent, and
-// avoids reassigning the function declaration (which can surprise hoisting).
-document.getElementById('langEs')?.addEventListener('click', renderKiln);
-document.getElementById('langEn')?.addEventListener('click', renderKiln);
-
 // ---------- Init ----------------------------------------------------------
 applyI18n();
 renderMastheadDate();
-wireLabControls();
 fetchLimaWeather();
-fetchKiln();
 setInterval(fetchLimaWeather, 10 * 60 * 1000); // Refresh every 10 minutes
 </script>
 
 <!-- =====================================================================
      SIGNATURE MODULES · loaded as ES modules (deferred after DOM parse)
      ===================================================================== -->
-<script type="module" src="scripts/hydroprint-lab.js"></script>
-<script src="scripts/lab-qr-snapshot.js" defer></script>
-<script type="module" src="scripts/reverse-commissioning.js"></script>
-<script type="module" src="scripts/memory-object.js"></script>
-<script type="module" src="scripts/proof-of-fabrication.js"></script>
-<script type="module" src="scripts/twin-wall.js"></script>
+
+
+
+
+
+
 </body>
 </html>
