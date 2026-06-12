@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title data-title-es="Relic of Ages — Rainey Laguna Studios" data-title-en="Relic of Ages — Rainey Laguna Studios">Relic of Ages — Rainey Laguna Studios</title>
+<meta name="description" content="Relic of Ages — un juego de investigación histórica en desarrollo. Arthur Vance recorre las catástrofes que partieron la historia: el antes, el instante, y lo que queda. Construido en Unreal Engine por Rainey Laguna Studios." data-desc-es="Relic of Ages — un juego de investigación histórica en desarrollo. Arthur Vance recorre las catástrofes que partieron la historia: el antes, el instante, y lo que queda. Construido en Unreal Engine por Rainey Laguna Studios." data-desc-en="Relic of Ages — a historical investigation game in development. Arthur Vance walks the catastrophes that split history: the before, the instant, and what remains. Built in Unreal Engine by Rainey Laguna Studios.">
+<meta name="author" content="Stuart John Andrew Rainey">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0E0D0B">
+<meta name="color-scheme" content="dark">
+
+<link rel="canonical" href="https://raineylagunastudios.com/relic/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rainey Laguna Studios">
+<meta property="og:title" content="Relic of Ages">
+<meta property="og:description" content="A historical investigation game in development. The before, the instant, and what remains. Built in Unreal Engine.">
+<meta property="og:url" content="https://raineylagunastudios.com/relic/">
+<meta property="og:image" content="https://raineylagunastudios.com/relic/video/poster-after.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://raineylagunastudios.com/relic/video/poster-after.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Relic of Ages",
+  "url": "https://raineylagunastudios.com/relic/",
+  "description": "A historical investigation game in development — a Scottish archivist, Arthur Vance, investigates history's catastrophes across a hundred cities, reading each as a before, an instant, and what remains.",
+  "genre": ["Adventure", "Mystery", "Historical"],
+  "gamePlatform": ["PC", "Windows"],
+  "applicationCategory": "Game",
+  "inLanguage": ["en", "es"],
+  "author": {
+    "@type": "Organization",
+    "@id": "https://raineylagunastudios.com/#org",
+    "name": "Rainey Laguna Studios",
+    "url": "https://raineylagunastudios.com"
+  },
+  "publisher": { "@id": "https://raineylagunastudios.com/#org" }
+}
+</script>
+
+<style>
+  :root {
+    --iron:      #0E0D0B;
+    --iron-02:   #15130F;
+    --iron-04:   #1E1B15;
+    --bone:      #F6F2E8;
+    --bone-70:   rgba(246,242,232,0.70);
+    --bone-45:   rgba(246,242,232,0.45);
+    --bone-20:   rgba(246,242,232,0.20);
+    --vermilion: #E83C1E;
+    --copper:    #8AA9A0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--iron);
+    color: var(--bone);
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: 'wght' 360, 'opsz' 24;
+    line-height: 1.55;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .skip-link {
+    position: absolute; top: -40px; left: 0;
+    background: var(--bone); color: var(--iron);
+    padding: 8px 12px; font-family: 'JetBrains Mono',monospace;
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .skip-link:focus { top: 0; }
+
+  .top-nav {
+    position: sticky; top: 0;
+    background: var(--iron);
+    border-bottom: 1px solid var(--iron-04);
+    padding: 16px 5vw;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100;
+  }
+  .top-nav .wordmark {
+    color: var(--bone); text-decoration: none;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'wght' 320, 'opsz' 36;
+    font-size: 18px; letter-spacing: -0.5px;
+  }
+  .top-nav .wordmark em { color: var(--vermilion); font-style: italic; }
+  .top-nav nav { display: flex; gap: 24px; align-items: center; }
+  .top-nav nav a, .top-nav nav button {
+    color: var(--bone-70); text-decoration: none;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    background: transparent; border: 0; cursor: pointer; transition: color .2s;
+  }
+  .top-nav nav a:hover, .top-nav nav button:hover { color: var(--vermilion); }
+  .lang-toggle button.active { color: var(--bone); }
+
+  /* hero */
+  .relic-hero { position: relative; width: 100%; height: clamp(420px, 78vh, 680px); overflow: hidden; border-bottom: 1px solid var(--iron-04); }
+  .relic-hero video { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.68) saturate(0.95); }
+  .relic-hero .overlay {
+    position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end;
+    padding: clamp(24px, 5vw, 72px);
+    background: linear-gradient(0deg, rgba(14,13,11,0.92) 0%, rgba(14,13,11,0.35) 45%, transparent 75%);
+  }
+  .relic-hero .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--vermilion); margin-bottom: 16px; }
+  .relic-hero h1 {
+    font-family: 'Fraunces', serif; font-variation-settings: 'wght' 340, 'opsz' 144;
+    font-size: clamp(52px, 10vw, 120px); line-height: 0.92; letter-spacing: -3px; margin-bottom: 18px;
+  }
+  .relic-hero .lede {
+    font-size: clamp(18px, 2.4vw, 26px); line-height: 1.45; color: var(--bone-70);
+    font-style: italic; font-variation-settings: 'wght' 320, 'opsz' 24, 'slnt' -8; max-width: 640px;
+  }
+
+  main { max-width: 920px; margin: 0 auto; padding: 80px 24px 120px; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--bone-45); margin-bottom: 20px; }
+  h2 { font-family: 'Fraunces', serif; font-variation-settings: 'wght' 320, 'opsz' 96; font-size: clamp(28px, 3.5vw, 42px); line-height: 1.1; letter-spacing: -1px; margin: 56px 0 20px; }
+  h2 em { color: var(--vermilion); font-style: italic; }
+  p { margin-bottom: 18px; max-width: 680px; color: var(--bone-70); }
+  p strong { color: var(--bone); font-variation-settings: 'wght' 500; }
+
+  /* triptych */
+  .triptych { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0 10px; }
+  .triptych figure { margin: 0; }
+  .triptych video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #000; border: 1px solid var(--iron-04); display: block; }
+  .triptych figcaption { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--bone-45); margin-top: 8px; }
+  .triptych figcaption b { color: var(--vermilion); font-weight: 400; }
+  .triptych-cap { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--bone-45); margin-top: 4px; }
+  @media (max-width: 700px) { .triptych { grid-template-columns: 1fr; } }
+
+  /* wishlist */
+  .signup { border-top: 1px solid var(--iron-04); margin-top: 64px; padding-top: 48px; }
+  .signup form { display: flex; flex-wrap: wrap; gap: 12px; max-width: 520px; margin-top: 20px; }
+  .signup input[type=email] {
+    flex: 1; min-width: 220px; background: var(--iron-02); border: 1px solid var(--iron-04); color: var(--bone);
+    font-family: 'JetBrains Mono', monospace; font-size: 14px; padding: 14px 16px; border-radius: 2px;
+  }
+  .signup input[type=email]:focus { outline: none; border-color: var(--vermilion); }
+  .signup button {
+    background: var(--vermilion); color: var(--bone); border: 0; cursor: pointer;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 14px 24px; border-radius: 2px; transition: opacity .2s;
+  }
+  .signup button:hover { opacity: 0.88; }
+  .signup .fine { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--bone-45); margin-top: 14px; letter-spacing: 0.5px; }
+
+  footer {
+    border-top: 1px solid var(--iron-04); padding: 40px 5vw;
+    display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--bone-45);
+  }
+  footer a { color: var(--bone-70); text-decoration: none; transition: color .2s; }
+  footer a:hover { color: var(--vermilion); }
+
+  [data-en] { display: inline; }
+  body[data-lang="en"] [data-es]:not([data-en]) { display: none; }
+  /* The rule above blanket-sets bilingual nodes inline; keep our block
+     elements block (they all carry both data-es and data-en). */
+  h2[data-es], h2[data-en], p[data-es], p[data-en], .eyebrow[data-es], .eyebrow[data-en] { display: block; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .relic-hero video { display: none; } }
+</style>
+</head>
+<body data-lang="es">
+
+<a href="#main" class="skip-link" data-es="Ir al contenido" data-en="Skip to content">Ir al contenido</a>
+
+<header class="top-nav">
+  <a href="/" class="wordmark">Rainey <em>Laguna</em> Studios</a>
+  <nav aria-label="Primary">
+    <a href="/" data-es="← Estudio" data-en="← Studio">← Estudio</a>
+    <span class="lang-toggle">
+      <button id="langEs" class="active">ES</button>
+      /
+      <button id="langEn">EN</button>
+    </span>
+  </nav>
+</header>
+
+<section class="relic-hero">
+  <video autoplay muted loop playsinline preload="metadata" poster="/relic/video/poster-after.jpg">
+    <source src="/relic/video/lisbon-after.mp4" type="video/mp4">
+  </video>
+  <div class="overlay">
+    <div class="eyebrow" data-es="Rainey Laguna Studios · En desarrollo" data-en="Rainey Laguna Studios · In development">Rainey Laguna Studios · En desarrollo</div>
+    <h1>Relic of Ages</h1>
+    <p class="lede" data-es="Un juego de investigación histórica. Arthur Vance, un archivista escocés, recorre las catástrofes que partieron la historia — y la ciudad que quedó después." data-en="A historical investigation game. Arthur Vance, a Scottish archivist, walks the catastrophes that split history — and the city left standing after."></p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="eyebrow" data-es="Qué es" data-en="What it is">Qué es</div>
+  <p data-es="<strong>Cada ciudad, tres estados:</strong> el antes, el instante, y lo que queda. Investigas reliquias, lees el desastre, y reconstruyes lo que pasó — pieza por pieza, ciudad por ciudad." data-en="<strong>Every city, three states:</strong> the before, the instant, and what remains. You investigate relics, read the disaster, and reconstruct what happened — piece by piece, city by city."></p>
+  <p data-es="Cien ciudades. Diez capítulos. Una estética de pintura al óleo — claroscuro, polvo, luz dorada. Construido en <strong>Unreal Engine</strong>." data-en="A hundred cities. Ten chapters. An oil-painting register — chiaroscuro, dust, gold light. Built in <strong>Unreal Engine</strong>."></p>
+
+  <h2 data-es="Lisboa, <em>1755</em>" data-en="Lisbon, <em>1755</em>">Lisboa, 1755</h2>
+  <p data-es="Tres clips, una ciudad, la misma estructura que el juego. El antes en calma, el terremoto, y la sola figura en el puerto destruido." data-en="Three clips, one city, the same structure as the game. The calm before, the earthquake, and the lone figure in the wrecked harbour."></p>
+  <div class="triptych">
+    <figure>
+      <video muted loop playsinline preload="none" controls poster="/relic/video/poster-before.jpg"><source src="/relic/video/lisbon-before.mp4" type="video/mp4"></video>
+      <figcaption><b data-es="Antes" data-en="Before">Antes</b></figcaption>
+    </figure>
+    <figure>
+      <video muted loop playsinline preload="none" controls poster="/relic/video/poster-during.jpg"><source src="/relic/video/lisbon-during.mp4" type="video/mp4"></video>
+      <figcaption><b data-es="Durante" data-en="During">Durante</b></figcaption>
+    </figure>
+    <figure>
+      <video muted loop playsinline preload="none" controls poster="/relic/video/poster-after.jpg"><source src="/relic/video/lisbon-after.mp4" type="video/mp4"></video>
+      <figcaption><b data-es="Después" data-en="After">Después</b></figcaption>
+    </figure>
+  </div>
+  <p class="triptych-cap">Lisboa · 1755</p>
+
+  <h2 data-es="En desarrollo ahora" data-en="In development now">En desarrollo ahora</h2>
+  <p data-es="<strong>Glasgow, 1919</strong> — Viernes Sangriento, la plaza George. La primera ciudad jugable. Arthur llega después del derrumbe, cuando el humo aún no se asienta." data-en="<strong>Glasgow, 1919</strong> — Bloody Friday, George Square. The first playable city. Arthur arrives after the collapse, while the smoke is still settling."></p>
+
+  <div class="signup">
+    <h2 data-es="Entra a la lista" data-en="Join the wishlist">Entra a la lista</h2>
+    <p data-es="Te aviso cuando haya algo jugable y cuando salga la página de Steam. Sin spam — un correo cuando importe." data-en="I'll tell you when there's something playable and when the Steam page goes live. No spam — one email when it matters."></p>
+    <form name="relic-wishlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/relic/?ok=1">
+      <input type="hidden" name="form-name" value="relic-wishlist">
+      <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+      <input type="email" name="email" required autocomplete="email" placeholder="tu@email.com" aria-label="Email">
+      <button type="submit" data-es="Avísame →" data-en="Notify me →">Avísame →</button>
+    </form>
+    <p class="fine" id="signupMsg" data-es="Un proyecto de Rainey Laguna Studios." data-en="A Rainey Laguna Studios project."></p>
+  </div>
+</main>
+
+<footer>
+  <span>© 2026 Rainey Laguna Studios</span>
+  <span><a href="/">Estudio</a> · <a href="/privacy/">Privacidad</a> · <a href="/terms/">Términos</a> · <a href="/verify.html">Verificar</a></span>
+  <span>Relic of Ages · Unreal Engine</span>
+</footer>
+
+<script>
+(function(){
+  var body = document.body;
+  var btnEs = document.getElementById('langEs');
+  var btnEn = document.getElementById('langEn');
+  function applyLang(lang){
+    body.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'es-PE');
+    btnEs.classList.toggle('active', lang === 'es');
+    btnEn.classList.toggle('active', lang === 'en');
+    document.querySelectorAll('[data-es]').forEach(function(el){
+      var key = lang === 'en' ? 'data-en' : 'data-es';
+      var v = el.getAttribute(key);
+      if (v != null) { if (/<[a-z]/i.test(v)) el.innerHTML = v; else el.textContent = v; }
+    });
+    var t = document.querySelector('title');
+    var d = document.querySelector('meta[name="description"]');
+    if (t) { var tk = t.getAttribute(lang === 'en' ? 'data-title-en' : 'data-title-es'); if (tk) t.textContent = tk; }
+    if (d) { var dk = d.getAttribute(lang === 'en' ? 'data-desc-en' : 'data-desc-es'); if (dk) d.setAttribute('content', dk); }
+    try { localStorage.setItem('rls-lang', lang); } catch(e){}
+  }
+  btnEs.addEventListener('click', function(){ applyLang('es'); });
+  btnEn.addEventListener('click', function(){ applyLang('en'); });
+  var saved; try { saved = localStorage.getItem('rls-lang'); } catch(e){}
+  var url = new URLSearchParams(location.search).get('lang');
+  var initial = url || saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'es');
+  applyLang(initial);
+
+  // Wishlist confirmation (Netlify posts back to ?ok=1)
+  if (new URLSearchParams(location.search).get('ok')) {
+    var m = document.getElementById('signupMsg');
+    if (m) { m.removeAttribute('data-es'); m.removeAttribute('data-en');
+      m.textContent = (body.getAttribute('data-lang') === 'en') ? "You're on the list. Talk soon." : 'Estás en la lista. Hablamos pronto.'; }
+  }
+})();
+</script>
+
+</body>
+</html>
