@@ -16,41 +16,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://raineylagunastudios.com/who-we-serve/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://raineylagunastudios.com/marca/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://raineylagunastudios.com/servicios/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://raineylagunastudios.com/work/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://raineylagunastudios.com/journal/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://raineylagunastudios.com/journal/firmar-objetos/</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://raineylagunastudios.com/journal/tres-meses/</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://raineylagunastudios.com/privacy/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
@@ -59,10 +24,5 @@
     <loc>https://raineylagunastudios.com/terms/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://raineylagunastudios.com/verify.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
 </urlset>
