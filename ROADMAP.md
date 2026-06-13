@@ -22,7 +22,7 @@
 > page renderer), #4 (twin-wall counter), #5 (newsletter signup).
 >
 > **Voice register:** atmospheric, slow, poetic, Spanish-first.
-> Capitalised brand words ("Twin", "Almanac", "Proof") are sparing.
+> Capitalised brand words ("Relic of Ages", "Arthur Vance") are sparing.
 > Run `npm run wrap` before commit. Verify SRI on any new CDN import.
 
 ---
@@ -70,10 +70,10 @@
 - **Effort:** 2 hours.
 
 ### 5. Newsletter signup primitive
-- **Why:** No way to subscribe to the almanac drops. The single most
-  underused channel for an atmospheric brand like this is a monthly
-  letter.
-- **How:** Single email field on the homepage + the `/almanac/` page.
+- **Why:** No way to subscribe to studio updates or the Relic of Ages
+  wishlist. The single most underused channel for an atmospheric brand
+  like this is a monthly letter.
+- **How:** Single email field on the homepage + the `/relic/` page.
   POSTs to a new endpoint in `raineylaguna-crm` (free; reuse the
   existing Postgres + Resend). Per `Ley Nº 29733`, single opt-in is
   lawful in Peru for legitimate-interest sends; no double opt-in
@@ -86,7 +86,7 @@
   *"Adding more checks later (markdown link-check, lychee for
   external links, Lighthouse CI) is straightforward"*.
 - **How:** New job in `ci.yml` runs `@lhci/cli` against the four
-  primary pages (home, marca, almanac, journal). Free, no token
+  primary pages (home, about, relic). Free, no token
   required for public reports.
 - **Effort:** 2 hours.
 
@@ -196,16 +196,6 @@
   Linked from the homepage.
 - **Effort:** 2 hours for the page; calendar-time discipline for
   the livestream itself.
-
-### 21. Almanac preorder ledger (no payment)
-- **Why:** The almanac directory exists; preorders are listed in
-  `data/`. A ledger of who has reserved which copy turns a
-  preorder into a public commitment.
-- **How:** Form posts to a new CRM endpoint that adds a row to
-  `almanac_reservations`. UI on `/almanac/` shows
-  "27 reservadas · 73 copias disponibles". No payment processing —
-  the studio collects on shipment.
-- **Effort:** 4 hours.
 
 ### 22. Reverse-commissioning catalogue
 - **Why:** `scripts/reverse-commissioning.js` exists and is
