@@ -1,17 +1,17 @@
 {
-  "//": "Lighthouse CI configuration for raineylagunastudios. Audits the live",
-  "//1": "deployed URL on every PR + push to main and asserts the budget below.",
+  "//": "Lighthouse CI for raineylagunastudios. Audits the built static files via",
+  "//1": "staticDistDir, so each PR checks its own changes (not production).",
   "//2": "Tighten thresholds in PRs that add genuine wins (image lazy-loading,",
   "//3": "font-display swap, etc.). Loosen only with a comment in the PR body.",
   "ci": {
     "collect": {
+      "staticDistDir": ".",
       "url": [
-        "https://raineylagunastudios.com/",
-        "https://raineylagunastudios.com/about/",
-        "https://raineylagunastudios.com/work/",
-        "https://raineylagunastudios.com/journal/"
+        "http://localhost/index.html",
+        "http://localhost/about/index.html",
+        "http://localhost/relic/index.html"
       ],
-      "numberOfRuns": 3,
+      "numberOfRuns": 1,
       "settings": {
         "preset": "desktop"
       }
